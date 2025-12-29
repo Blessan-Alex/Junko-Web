@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Junko - Industrial Packaging Solutions</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Roboto+Mono:wght@400;500;700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#E78E42",
+                        "primary-dark": "#d17631",
+                        "primary-hover": "#cf762f",
+                        "secondary": "#251A5B",
+                        "background-light": "#F9FAFB",
+                        "background-dark": "#0B0912",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#181426",
+                        "text-main": "#181426",
+                        "text-sub": "#4B4859",
+                        "border-color": "#E5E3EB",
+                        "footer-bg": "#251A5B",
+                         "card-dark": "#1e293b",
+                         "text-muted": "#64748b"
+                    },
+                    fontFamily: {
+                        "sans": ["Inter", "system-ui", "-apple-system", "sans-serif"],
+                        "serif": ["Playfair Display", "Merriweather", "Libre Baskerville", "Georgia", "serif"],
+                        "mono": ["Roboto Mono", "JetBrains Mono", "monospace"],
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.125rem", 
+                        "sm": "0.125rem",
+                        "md": "0.25rem", 
+                        "lg": "0.375rem", 
+                        "xl": "0.5rem",
+                        "2xl": "1rem",
+                        "hero-b-rounded": "28px"
+                    },
+                    backgroundImage: {
+                        'texture-dots': 'radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px)',
+                    },
+                    backgroundSize: {
+                        'texture-dots': '20px 20px',
+                    },
+                },
+            },
+        }
+    </script>
+    <style type="text/tailwindcss">
+        :root {
+            --hero-gradient: linear-gradient(
+                90deg,
+                rgba(15,23,42,0.85) 0%,
+                rgba(15,23,42,0.55) 40%,
+                rgba(15,23,42,0.15) 70%,
+                rgba(15,23,42,0.0) 100%
+            );
+            --navy-dark: #0F172A;
+            --subtle-navy-texture: repeating-linear-gradient(
+                45deg,
+                rgba(37, 26, 91, 0.05) 0,
+                rgba(37, 26, 91, 0.05) 1px,
+                transparent 1px,
+                transparent 50%
+            );
+            --dark-blue-texture: repeating-linear-gradient(
+                45deg,
+                rgba(15, 23, 42, 0.05) 0,
+                rgba(15, 23, 42, 0.05) 1px,
+                transparent 1px,
+                transparent 50%
+            );
+        }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react-router-dom": "https://esm.sh/react-router-dom@^7.11.0",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3"
+  }
+}
+</script>
+</head>
+  <body class="bg-background-light dark:bg-background-dark text-text-main dark:text-gray-100 overflow-x-hidden font-sans">
+    <div id="root"></div>
+  </body>
+</html>
