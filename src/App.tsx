@@ -23,10 +23,7 @@ const Header = () => {
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           <Link to="/" className="flex items-center gap-2">
-            <div className="flex items-center justify-center size-8 bg-primary text-white rounded">
-              <span className="material-symbols-outlined text-[20px]">package_2</span>
-            </div>
-            <span className="text-xl font-bold font-serif tracking-tight text-text-main dark:text-white">Junko</span>
+            <img src="/logo.png" alt="Junko Logo" className="h-10 w-auto object-contain" />
           </Link>
           <nav className="hidden md:flex gap-8">
             <Link to="/" className="text-sm font-medium text-text-main dark:text-gray-200 hover:text-primary dark:hover:text-primary transition-colors">Home</Link>
@@ -58,10 +55,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           <div>
             <div className="flex items-center gap-2 mb-6">
-              <div className="flex items-center justify-center size-8 bg-primary text-white rounded">
-                <span className="material-symbols-outlined text-[20px]">package_2</span>
-              </div>
-              <span className="text-xl font-bold font-serif tracking-tight">Junko</span>
+              <img src="/logo.png" alt="Junko Logo" className="h-12 w-auto object-contain" />
             </div>
             <p className="text-blue-200 text-sm mb-6 leading-relaxed font-sans">
               Junko Industrial supplies heavy-duty packaging machinery to the GCC region. We prioritize reliability, stock availability, and honest technical advice.
