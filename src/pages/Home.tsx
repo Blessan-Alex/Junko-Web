@@ -173,16 +173,16 @@ const Home = () => {
         <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="order-2 lg:order-1 relative">
-              <div className="grid grid-cols-2 gap-6">
-                <div className="space-y-6 mt-8">
-                  <div className="bg-gradient-to-br from-blue-950 to-secondary p-6 rounded-xl shadow-lg h-64 flex flex-col justify-between border border-blue-800">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div className="space-y-6 sm:mt-8">
+                  <div className="bg-gradient-to-br from-blue-950 to-secondary p-6 rounded-xl shadow-lg min-h-[200px] sm:h-64 flex flex-col justify-between border border-blue-800">
                     <span className="material-symbols-outlined text-4xl text-primary">checklist</span>
                     <div>
                       <h3 className="font-bold text-xl mb-2 text-white font-serif">Machine Selection Support</h3>
                       <p className="text-sm text-blue-200 font-sans">Expert guidance to choose the right model for your daily output volume.</p>
                     </div>
                   </div>
-                  <div className="bg-gradient-to-br from-blue-950 to-secondary p-6 rounded-xl shadow-lg h-48 flex flex-col justify-between border border-blue-800">
+                  <div className="bg-gradient-to-br from-blue-950 to-secondary p-6 rounded-xl shadow-lg min-h-[160px] sm:h-48 flex flex-col justify-between border border-blue-800">
                     <span className="material-symbols-outlined text-4xl text-primary">inventory_2</span>
                     <div>
                       <h3 className="font-bold text-xl mb-2 text-white font-serif">Parts and Consumables Ready</h3>
@@ -191,14 +191,14 @@ const Home = () => {
                   </div>
                 </div>
                 <div className="space-y-6">
-                  <div className="bg-primary p-6 rounded-xl shadow-lg h-48 flex flex-col justify-between text-white border border-primary">
+                  <div className="bg-primary p-6 rounded-xl shadow-lg min-h-[160px] sm:h-48 flex flex-col justify-between text-white border border-primary">
                     <span className="material-symbols-outlined text-4xl">engineering</span>
                     <div>
                       <h3 className="font-bold text-xl mb-2 font-serif">Service and Technical Guidance</h3>
                       <p className="text-sm opacity-90 font-sans">Direct access to technicians for troubleshooting and setup.</p>
                     </div>
                   </div>
-                  <div className="bg-gradient-to-br from-blue-950 to-secondary p-6 rounded-xl shadow-lg h-64 flex flex-col justify-between border border-blue-800">
+                  <div className="bg-gradient-to-br from-blue-950 to-secondary p-6 rounded-xl shadow-lg min-h-[200px] sm:h-64 flex flex-col justify-between border border-blue-800">
                     <span className="material-symbols-outlined text-4xl text-primary">verified_user</span>
                     <div>
                       <h3 className="font-bold text-xl mb-2 text-white font-serif">Trusted Brands</h3>
