@@ -36,7 +36,7 @@ const Home = () => {
               Trusted by manufacturers across the UAE & GCC
             </p>
           </div>
-          <div className="absolute bottom-6 right-6 lg:right-8 bg-secondary/80 backdrop-blur-sm p-4 rounded-lg shadow-xl border border-secondary text-white max-w-[200px]">
+          <div className="hidden md:block md:absolute md:bottom-6 md:right-6 lg:right-8 bg-secondary/80 backdrop-blur-sm p-4 rounded-lg shadow-xl border border-secondary text-white max-w-[200px]">
             <div className="flex items-start gap-3">
               <span className="material-symbols-outlined text-primary mt-1 text-2xl">precision_manufacturing</span>
               <div>
