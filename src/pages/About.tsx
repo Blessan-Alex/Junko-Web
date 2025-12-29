@@ -155,14 +155,18 @@ const About = () => {
           </div>
         </div>
       </div>
-      <div className="py-20 px-4 md:px-10 lg:px-40 flex justify-center bg-[#251A5B] bg-texture-dots bg-size-texture-dots">
-        <div className="layout-content-container flex flex-col items-center text-center max-w-[800px] gap-6">
-          <h2 className="text-white text-3xl md:text-4xl font-bold font-serif leading-tight tracking-[-0.033em]">Ready to streamline your packaging?</h2>
-          <p className="text-indigo-100 text-lg max-w-[600px]">Speak directly with our team in Sharjah about your specific packaging needs and discover how Junko FZE can increase your efficiency.</p>
-          <div className="flex gap-4 pt-4">
-            <Link to="/contact" className="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded h-12 px-6 bg-primary hover:bg-primary-hover transition-colors text-white text-base font-bold leading-normal tracking-[0.015em]">
-              Talk to Sales
-            </Link>
+      <div className="py-20 px-4 md:px-10 lg:px-40 flex justify-center bg-white dark:bg-background-dark">
+        <div className="bg-secondary rounded-2xl overflow-hidden relative shadow-xl w-full max-w-[1200px]">
+          <div className="absolute inset-0 opacity-20 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-primary via-transparent to-transparent"></div>
+          <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "var(--subtle-navy-texture)", backgroundSize: "10px 10px" }}></div>
+          <div className="relative z-10 flex flex-col items-center text-center gap-6 py-16 px-6 md:px-12">
+            <h2 className="text-white text-3xl md:text-4xl font-bold font-serif leading-tight tracking-[-0.033em]">Ready to streamline your packaging?</h2>
+            <p className="text-indigo-100 text-lg max-w-[600px]">Speak directly with our team in Sharjah about your specific packaging needs and discover how Junko FZE can increase your efficiency.</p>
+            <div className="flex gap-4 pt-4">
+              <Link to="/contact" className="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded h-12 px-6 bg-primary hover:bg-primary-hover transition-colors text-white text-base font-bold leading-normal tracking-[0.015em]">
+                Talk to Sales
+              </Link>
+            </div>
           </div>
         </div>
       </div>
