@@ -1,9 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 
 const Products = () => {
   return (
     <div className="flex flex-1 max-w-[1440px] mx-auto w-full">
+      <Helmet>
+        <title>Industrial Packaging Machinery Catalog | Junko FZE</title>
+        <meta name="description" content="Browse our range of bag closing machines, heat sealers, weighing scales, and sewing heads. Heavy-duty equipment for high-volume production." />
+      </Helmet>
       <aside className="w-72 hidden md:block flex-shrink-0 border-r border-gray-200 dark:border-gray-800 bg-white dark:bg-[#201830] p-6 overflow-y-auto h-[calc(100vh-65px)] sticky top-[65px]">
         <div className="flex items-center justify-between mb-6">
           <h3 className="font-serif font-bold text-lg text-secondary dark:text-white">Filters</h3>
@@ -241,8 +246,8 @@ const Products = () => {
               </div>
             </div>
           </Link>
-           {/* Product 5 */}
-           <Link to="/product/5" className="group flex flex-col bg-white dark:bg-[#201830] border border-gray-200 dark:border-gray-800 rounded overflow-hidden hover:shadow-lg transition-shadow duration-300">
+          {/* Product 5 */}
+          <Link to="/product/5" className="group flex flex-col bg-white dark:bg-[#201830] border border-gray-200 dark:border-gray-800 rounded overflow-hidden hover:shadow-lg transition-shadow duration-300">
             <div className="h-64 bg-gray-100 dark:bg-[#2e2340] relative overflow-hidden flex items-center justify-center p-6">
               <img className="object-cover w-full h-full mix-blend-multiply dark:mix-blend-normal" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7gM_sTKQwpFnhkfXCuTb_-SOjOY0EMKSPQiHe9VMHaKeIj5HtoTXFF_WYqYQuU4Jl1M-_TVCfQuwJzqPPGTCclC6Ivnr7MYVUwMId2IBNSqoq4TaShgMv-bv4Ll8hCJFk0Ub9yo8nbDUGJxpdyZOljtsJwMzFmnszzhM1wFLOXLNFDU70iy-wYatnP-2bsV6JZTWssse_ly5nQs5BWXUIO9PCa6eUm6VQRWGY3OwdcYgvrGMu9vsv2y5ZM5pZ5NVfEPigmzsN84I" alt="Large industrial valve and piping" />
             </div>
@@ -278,8 +283,8 @@ const Products = () => {
               </div>
             </div>
           </Link>
-           {/* Product 6 */}
-           <Link to="/product/6" className="group flex flex-col bg-white dark:bg-[#201830] border border-gray-200 dark:border-gray-800 rounded overflow-hidden hover:shadow-lg transition-shadow duration-300">
+          {/* Product 6 */}
+          <Link to="/product/6" className="group flex flex-col bg-white dark:bg-[#201830] border border-gray-200 dark:border-gray-800 rounded overflow-hidden hover:shadow-lg transition-shadow duration-300">
             <div className="h-64 bg-gray-100 dark:bg-[#2e2340] relative overflow-hidden flex items-center justify-center p-6">
               <img className="object-cover w-full h-full mix-blend-multiply dark:mix-blend-normal" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBcaXTdOb8F5lorpzvEW83ShyNB3L-_oHu0O71apR8MdUwVDU6vZwNetiwoNM2BZF8_ZhvDy1_LuTBovF6Mp77F6rQcbXIAnEnUYu7myoclSp65BP9WsCVDRlMJqEP3PMS_xIwsZeaJO1I4aiWjnQ0btjJGcVxOBi3Lvcq8xfnN6T0mtR9EkMUPIl6i77tUIqmQtuyQ5vLAwPWMbgYmXv_PHfR0b7YNxzj6hQKRSmU66EJySI7glGtGtKBLtgLVL2RZoYEzar8a4OE" alt="Factory automation conveyor belt" />
             </div>
@@ -318,15 +323,15 @@ const Products = () => {
         </div>
         <div className="flex justify-center mt-12 mb-6">
           <div className="flex items-center gap-1 bg-white dark:bg-[#201830] border border-gray-200 dark:border-gray-800 rounded p-1">
-            <button className="w-10 h-10 flex items-center justify-center rounded text-gray-500 hover:bg-gray-100 dark:hover:bg-[#2e2340] disabled:opacity-50" disabled>
+            <button className="w-10 h-10 flex items-center justify-center rounded text-gray-500 hover:bg-gray-100 dark:hover:bg-[#2e2340] disabled:opacity-50" disabled aria-label="Previous Page">
               <span className="material-symbols-outlined text-lg">chevron_left</span>
             </button>
-            <button className="w-10 h-10 flex items-center justify-center rounded bg-primary text-white font-medium text-sm">1</button>
+            <button className="w-10 h-10 flex items-center justify-center rounded bg-primary text-white font-medium text-sm" aria-current="page">1</button>
             <button className="w-10 h-10 flex items-center justify-center rounded text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-[#2e2340] font-medium text-sm">2</button>
             <button className="w-10 h-10 flex items-center justify-center rounded text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-[#2e2340] font-medium text-sm">3</button>
             <span className="px-2 text-gray-400">...</span>
             <button className="w-10 h-10 flex items-center justify-center rounded text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-[#2e2340] font-medium text-sm">8</button>
-            <button className="w-10 h-10 flex items-center justify-center rounded text-gray-500 hover:bg-gray-100 dark:hover:bg-[#2e2340]">
+            <button className="w-10 h-10 flex items-center justify-center rounded text-gray-500 hover:bg-gray-100 dark:hover:bg-[#2e2340]" aria-label="Next Page">
               <span className="material-symbols-outlined text-lg">chevron_right</span>
             </button>
           </div>

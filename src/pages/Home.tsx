@@ -1,9 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 
 const Home = () => {
   return (
     <>
+      <Helmet>
+        <title>Junko FZE | Industrial Packaging Machinery & Supplies UAE</title>
+        <meta name="description" content="Leading supplier of industrial bag closing, heat sealing, and weighing machinery in the UAE & GCC. Spare parts and technical support available in Sharjah." />
+      </Helmet>
       <section className="relative w-full h-[600px] md:h-[700px] lg:h-[800px] flex items-center text-white overflow-hidden rounded-b-hero-b-rounded" style={{ background: "var(--hero-gradient), url('https://lh3.googleusercontent.com/aida-public/AB6AXuAdUsbtf_IKQQAoCRlZFpD4XghxFjcEpQpCkBH_M0PoDe1_ltP2GymJWornVwfRELRrJUmNLnH14neipgDMJjKNf24waYjByBP1F8juFiLKaxO_bFDU4fcrLa3Zyze-GOw46ASa6ULuDvKVaSQCFVMGQ_gwf65kC1kteuY0pH_ZdDxcjkssyaJs4qtv4Xu3wf35Ub1sRwGXR1j2LHXOXSaSbIwpxFPA1VL7Xuq1d8oCQquzGm88A3s8xv3hCwmtIDahQJCJs4nN3_I') no-repeat center center / cover" }}>
         <div className="absolute inset-0 bg-gradient-to-r from-[var(--navy-dark)] via-[var(--navy-dark)]/50 to-transparent"></div>
         <div className="relative z-10 max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 w-full">
@@ -73,7 +78,11 @@ const Home = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <Link to="/products" className="group bg-white dark:bg-surface-dark rounded-2xl shadow-xl overflow-hidden cursor-pointer flex flex-col hover:shadow-2xl transition-all duration-300">
               <div className="aspect-[16/9] bg-gray-100 overflow-hidden relative">
-                <div className="w-full h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="Industrial bag sewing machine" style={{ backgroundImage: "url('https://lh3.googleusercontent.com/aida-public/AB6AXuAnzwi2IXd5qAJnkNlaiiWuaaQAG24FPrM20mYyETqz8uU0WFINsl74p_P4v9SJ3pCrVAxUfbi6n6Dw_eWJ7uVG-Xf-8FMJr85xn3t0faJgQG72QsEKdwqmvKYtNg4KGKnFrK10Q0yHkdx_M8QW2OYq_joeImLbVEgMRIbMiPQxSYBhuyZF8A4fp4wwF47cdPsD0t6pa41x1kZ1qgOljHTMiYxjTgQ0b3i02fMqEo_xfW06Ydf2YmXb3YTOzelTphX7l9ll58KlxWo')" }}></div>
+                <img
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuAnzwi2IXd5qAJnkNlaiiWuaaQAG24FPrM20mYyETqz8uU0WFINsl74p_P4v9SJ3pCrVAxUfbi6n6Dw_eWJ7uVG-Xf-8FMJr85xn3t0faJgQG72QsEKdwqmvKYtNg4KGKnFrK10Q0yHkdx_M8QW2OYq_joeImLbVEgMRIbMiPQxSYBhuyZF8A4fp4wwF47cdPsD0t6pa41x1kZ1qgOljHTMiYxjTgQ0b3i02fMqEo_xfW06Ydf2YmXb3YTOzelTphX7l9ll58KlxWo"
+                  alt="Industrial bag sewing machine"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
                 <div className="absolute top-4 right-4 bg-secondary text-white text-xs px-3 py-1.5 rounded-full backdrop-blur-sm font-bold font-sans tracking-wide">Heavy Duty</div>
               </div>
               <div className="p-8 flex flex-col justify-between flex-grow">
@@ -91,7 +100,11 @@ const Home = () => {
             </Link>
             <Link to="/products" className="group bg-white dark:bg-surface-dark rounded-2xl shadow-xl overflow-hidden cursor-pointer flex flex-col hover:shadow-2xl transition-all duration-300">
               <div className="aspect-[16/9] bg-gray-100 overflow-hidden relative">
-                <div className="w-full h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="Continuous band sealer" style={{ backgroundImage: "url('https://lh3.googleusercontent.com/aida-public/AB6AXuCp0o6xTtI-hxSOUuB5Xg5Ak2j49x6RGKBVK8ErxxxPDlT7mUyQNIpIgqcwgQ_R4hZV05r0x324hoBOOU5kx60LyNA7KfCV9gYaw1suin7V9jedV8Vzr8sA_-fL3xRD9znLvHK6VgqE0_tuKSnNPMtV3VVsTvrWGT-4ZeMNzubul87VqNeiecl5hAhoiyAdNTc-Ze0kzwIYNyeR-yH1MSCFHJ7CrmpubSxBaPRzxuludeyhAVth51XIyZsDbyB15Y44qZopDdh0_cs')" }}></div>
+                <img
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuCp0o6xTtI-hxSOUuB5Xg5Ak2j49x6RGKBVK8ErxxxPDlT7mUyQNIpIgqcwgQ_R4hZV05r0x324hoBOOU5kx60LyNA7KfCV9gYaw1suin7V9jedV8Vzr8sA_-fL3xRD9znLvHK6VgqE0_tuKSnNPMtV3VVsTvrWGT-4ZeMNzubul87VqNeiecl5hAhoiyAdNTc-Ze0kzwIYNyeR-yH1MSCFHJ7CrmpubSxBaPRzxuludeyhAVth51XIyZsDbyB15Y44qZopDdh0_cs"
+                  alt="Continuous band sealer"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
                 <div className="absolute top-4 right-4 bg-secondary text-white text-xs px-3 py-1.5 rounded-full backdrop-blur-sm font-bold font-sans tracking-wide">Air-Tight</div>
               </div>
               <div className="p-8 flex flex-col justify-between flex-grow">
@@ -109,7 +122,11 @@ const Home = () => {
             </Link>
             <Link to="/products" className="group bg-white dark:bg-surface-dark rounded-2xl shadow-xl overflow-hidden cursor-pointer flex flex-col hover:shadow-2xl transition-all duration-300">
               <div className="aspect-[16/9] bg-gray-100 overflow-hidden relative">
-                <div className="w-full h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="Specialty sewing machine" style={{ backgroundImage: "url('https://lh3.googleusercontent.com/aida-public/AB6AXuDWwcFGxf8Nz5TbMYhT8OtteDTn_Y7g3hP_92WnFNytw3Vg9qDjc7_FvAXR8Hx8OZWiTAWbA16Jbvg343iiyz4Vtj390Ep1oAns7qfBG4_NHsGp0O_E0f4FwDnIc9apAdwilpOQlo5l0FxnpRLJBGy6YoPaysSTsXyL8PsF7RAlqeGmaZW8KvtLnQydzGogFACnZitzKh-kJEfOeOJYmo8szSMiwFkrFg5nolgOjkh2oRdKO-XxpPmOp_w-HQev7JpwN_IaBtjP4sk')" }}></div>
+                <img
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuDWwcFGxf8Nz5TbMYhT8OtteDTn_Y7g3hP_92WnFNytw3Vg9qDjc7_FvAXR8Hx8OZWiTAWbA16Jbvg343iiyz4Vtj390Ep1oAns7qfBG4_NHsGp0O_E0f4FwDnIc9apAdwilpOQlo5l0FxnpRLJBGy6YoPaysSTsXyL8PsF7RAlqeGmaZW8KvtLnQydzGogFACnZitzKh-kJEfOeOJYmo8szSMiwFkrFg5nolgOjkh2oRdKO-XxpPmOp_w-HQev7JpwN_IaBtjP4sk"
+                  alt="Specialty sewing machine"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
                 <div className="absolute top-4 right-4 bg-secondary text-white text-xs px-3 py-1.5 rounded-full backdrop-blur-sm font-bold font-sans tracking-wide">Specialty</div>
               </div>
               <div className="p-8 flex flex-col justify-between flex-grow">
@@ -127,7 +144,11 @@ const Home = () => {
             </Link>
             <Link to="/products" className="group bg-white dark:bg-surface-dark rounded-2xl shadow-xl overflow-hidden cursor-pointer flex flex-col hover:shadow-2xl transition-all duration-300">
               <div className="aspect-[16/9] bg-gray-100 overflow-hidden relative">
-                <div className="w-full h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="Industrial digital scale" style={{ backgroundImage: "url('https://lh3.googleusercontent.com/aida-public/AB6AXuBa3MjFOxSZbzD5wOGZ70v2zjfq-kaz0TzdIamcuULnCDigjnooe9PEiYc19dOuvksOkHWCQUDnQnv2BI6ocorh51jaKYONTSjwRoFXXq3VuSBS0Y_Fh3kLYol5yz3uvg9HJ92CxpkZILxOyEEQyeX3RpmmZajVaE67FJKMBMc8YJUZeVGEB1KjocmVQVJ3dKZ1Rm1rxbmwY4w72PQBTZbmiJa8WjqS31OhvdMPOrgBiPZunq81-7loR4MrkcbdomJdrSgBmNKlAbk')" }}></div>
+                <img
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuBa3MjFOxSZbzD5wOGZ70v2zjfq-kaz0TzdIamcuULnCDigjnooe9PEiYc19dOuvksOkHWCQUDnQnv2BI6ocorh51jaKYONTSjwRoFXXq3VuSBS0Y_Fh3kLYol5yz3uvg9HJ92CxpkZILxOyEEQyeX3RpmmZajVaE67FJKMBMc8YJUZeVGEB1KjocmVQVJ3dKZ1Rm1rxbmwY4w72PQBTZbmiJa8WjqS31OhvdMPOrgBiPZunq81-7loR4MrkcbdomJdrSgBmNKlAbk"
+                  alt="Industrial digital scale"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
                 <div className="absolute top-4 right-4 bg-secondary text-white text-xs px-3 py-1.5 rounded-full backdrop-blur-sm font-bold font-sans tracking-wide">Precision</div>
               </div>
               <div className="p-8 flex flex-col justify-between flex-grow">

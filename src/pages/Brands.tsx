@@ -1,9 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 
 const Brands = () => {
   return (
     <div className="flex flex-col min-h-screen w-full">
+      <Helmet>
+        <title>Our Brands & Partners | Junko FZE</title>
+        <meta name="description" content="We supply top global brands in packaging machinery. Trusted distributors for Newlong, Fischbein, Yao Han, and other leading manufacturers." />
+      </Helmet>
       <div className="px-4 md:px-10 lg:px-40 flex justify-center py-6 md:py-10 flex-grow">
         <div className="flex flex-col max-w-[1200px] w-full gap-8">
           <div className="flex flex-wrap gap-2 text-sm md:text-base px-2 font-mono text-xs tracking-wide">

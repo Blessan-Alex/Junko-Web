@@ -1,9 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 
 const Services = () => {
   return (
     <>
+      <Helmet>
+        <title>Service & Support | Packaging Machine Repair Dubai & Sharjah</title>
+        <meta name="description" content="Expert installation, training, and repair services for industrial packaging machinery. We stock spare parts and provide fast technical support to minimize downtime." />
+      </Helmet>
       <div className="w-full flex justify-center bg-background-light dark:bg-background-dark">
         <div className="max-w-[1200px] w-full px-4 md:px-10 py-10 flex flex-col gap-10">
           <div className="rounded-2xl overflow-hidden relative min-h-[480px] flex flex-col justify-end p-8 md:p-16 shadow-xl" style={{ backgroundImage: 'linear-gradient(rgba(37, 26, 91, 0.4) 0%, rgba(37, 26, 91, 0.9) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuAJIvyaibl_DTh04HESW5VEOtRwqZO_ycgYyTc5-fspMJfkU-rt7S0jbMcJit2A8uZd0gj0i22jNMyyGATBLuzrIs1Bc-RsH3VfSziBrkBKmXTvf8w_klf4tt2Jn9fiwz9SI4g31GJ4liEMwp1HsuYV-_ZgEd0g9lcOE0d_Od7ODBQtFpS2Evm9m5vSyoCphvuiahD8sa7nCsz7xCinEcV6oCG7zYJcc9KXPOZHlj-sIw-txrdpryUsFvd5OqNa9pPOnR5kFgKgjUA")', backgroundSize: 'cover', backgroundPosition: 'center' }}>

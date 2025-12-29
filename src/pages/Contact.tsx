@@ -1,8 +1,13 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 
 const Contact = () => {
   return (
     <section className="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <Helmet>
+        <title>Contact Junko FZE | Packaging Machine Sales & Support</title>
+        <meta name="description" content="Get a quote or request support. Visit our office in Sharjah SAIF Zone, call us, or send an inquiry. We respond typically within 24 hours." />
+      </Helmet>
       <div className="flex flex-col gap-2 mb-10">
         <h1 className="text-4xl md:text-5xl font-black tracking-tight text-text-main-light dark:text-white font-serif">Contact Sales & Support</h1>
         <p className="text-lg text-text-sec-light dark:text-text-sec-dark max-w-2xl">
@@ -59,10 +64,24 @@ const Contact = () => {
                 <h2 className="text-2xl font-bold text-text-main-light dark:text-white mb-2 font-serif">Request a Quote / Call Back</h2>
                 <p className="text-text-sec-light dark:text-text-sec-dark text-sm">Tell us about your requirements, and our team will get back to you shortly.</p>
               </div>
-              <form action="#" className="grid grid-cols-1 md:grid-cols-2 gap-6" method="POST" onSubmit={(e) => e.preventDefault()}>
+              <form action="#" className="grid grid-cols-1 md:grid-cols-2 gap-6" method="POST" onSubmit={(e) => {
+                e.preventDefault();
+                const formData = new FormData(e.currentTarget);
+                // Honeypot check
+                if (formData.get('website')) {
+                  console.log('Bot detected!');
+                  return;
+                }
+                alert('Thank you! Your message has been sent.');
+              }}>
+                {/* Honeypot Field - Hidden from users */}
+                <div className="hidden">
+                  <label htmlFor="website">Website</label>
+                  <input type="text" id="website" name="website" tabIndex={-1} autoComplete="off" />
+                </div>
                 <div className="col-span-1">
                   <label className="block text-sm font-semibold text-text-main-light dark:text-gray-200 mb-2" htmlFor="name">Full Name</label>
-                  <input className="w-full rounded border-border-light dark:border-gray-600 bg-input-light dark:bg-input-dark text-text-main-light dark:text-white shadow-sm focus:border-primary focus:ring-primary dark:focus:border-primary dark:focus:ring-primary px-4 py-2.5 text-sm placeholder:text-gray-400 font-sans" id="name" name="name" placeholder="Your name" type="text" />
+                  <input className="w-full rounded border-border-light dark:border-gray-600 bg-input-light dark:bg-input-dark text-text-main-light dark:text-white shadow-sm focus:border-primary focus:ring-primary dark:focus:border-primary dark:focus:ring-primary px-4 py-2.5 text-sm placeholder:text-gray-400 font-sans" id="name" name="name" placeholder="Your name" type="text" required />
                 </div>
                 <div className="col-span-1">
                   <label className="block text-sm font-semibold text-text-main-light dark:text-gray-200 mb-2" htmlFor="company">Company Name</label>
@@ -74,7 +93,7 @@ const Contact = () => {
                     <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
                       <span className="material-symbols-outlined text-gray-400 text-[20px]">email</span>
                     </div>
-                    <input className="w-full rounded border-border-light dark:border-gray-600 bg-input-light dark:bg-input-dark text-text-main-light dark:text-white shadow-sm focus:border-primary focus:ring-primary dark:focus:border-primary dark:focus:ring-primary pl-10 pr-4 py-2.5 text-sm placeholder:text-gray-400 font-sans" id="email" name="email" placeholder="john@company.com" type="email" />
+                    <input className="w-full rounded border-border-light dark:border-gray-600 bg-input-light dark:bg-input-dark text-text-main-light dark:text-white shadow-sm focus:border-primary focus:ring-primary dark:focus:border-primary dark:focus:ring-primary pl-10 pr-4 py-2.5 text-sm placeholder:text-gray-400 font-sans" id="email" name="email" placeholder="john@company.com" type="email" required />
                   </div>
                 </div>
                 <div className="col-span-1">
@@ -83,7 +102,7 @@ const Contact = () => {
                     <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
                       <span className="material-symbols-outlined text-gray-400 text-[20px]">phone</span>
                     </div>
-                    <input className="w-full rounded border-border-light dark:border-gray-600 bg-input-light dark:bg-input-dark text-text-main-light dark:text-white shadow-sm focus:border-primary focus:ring-primary dark:focus:border-primary dark:focus:ring-primary pl-10 pr-4 py-2.5 text-sm placeholder:text-gray-400 font-sans" id="phone" name="phone" placeholder="+971 5X XXX XXXX" type="tel" />
+                    <input className="w-full rounded border-border-light dark:border-gray-600 bg-input-light dark:bg-input-dark text-text-main-light dark:text-white shadow-sm focus:border-primary focus:ring-primary dark:focus:border-primary dark:focus:ring-primary pl-10 pr-4 py-2.5 text-sm placeholder:text-gray-400 font-sans" id="phone" name="phone" placeholder="+971 5X XXX XXXX" type="tel" required />
                   </div>
                 </div>
                 <div className="col-span-1 md:col-span-2">
@@ -99,7 +118,7 @@ const Contact = () => {
                 </div>
                 <div className="col-span-1 md:col-span-2">
                   <label className="block text-sm font-semibold text-text-main-light dark:text-gray-200 mb-2" htmlFor="message">Message / Project Details</label>
-                  <textarea className="w-full rounded border-border-light dark:border-gray-600 bg-input-light dark:bg-input-dark text-text-main-light dark:text-white shadow-sm focus:border-primary focus:ring-primary dark:focus:border-primary dark:focus:ring-primary px-4 py-2.5 text-sm placeholder:text-gray-400 font-sans" id="message" name="message" placeholder="Please describe your requirements..." rows={4}></textarea>
+                  <textarea className="w-full rounded border-border-light dark:border-gray-600 bg-input-light dark:bg-input-dark text-text-main-light dark:text-white shadow-sm focus:border-primary focus:ring-primary dark:focus:border-primary dark:focus:ring-primary px-4 py-2.5 text-sm placeholder:text-gray-400 font-sans" id="message" name="message" placeholder="Please describe your requirements..." rows={4} required></textarea>
                 </div>
                 <div className="col-span-1 md:col-span-2 pt-2">
                   <button className="w-full md:w-auto bg-secondary text-white font-bold py-3 px-8 rounded shadow-md hover:brightness-110 transition-all focus:ring-2 focus:ring-offset-2 focus:ring-secondary font-sans bg-texture-dots bg-size-texture-dots" type="submit">

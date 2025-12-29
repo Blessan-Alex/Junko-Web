@@ -1,9 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 
 const About = () => {
   return (
     <div className="flex flex-col">
+      <Helmet>
+        <title>About Junko FZE | Industrial Packaging Solutions Sharjah</title>
+        <meta name="description" content="Since 2011, Junko FZE has provided top-tier industrial packaging machines and consumables. Based in Sharjah SAIF Zone, serving the entire GCC region." />
+      </Helmet>
       <div className="px-4 md:px-10 lg:px-40 flex flex-1 justify-center py-10 lg:py-20">
         <div className="layout-content-container flex flex-col max-w-[1200px] flex-1">
           <div className="@container">
@@ -33,7 +38,7 @@ const About = () => {
           </div>
         </div>
       </div>
-      <div className="w-full bg-[#251A5B] bg-texture-dots bg-size-texture-dots border-y border-border-color dark:border-gray-800">
+      <div className="w-full bg-[#160F52] bg-texture-dots bg-size-texture-dots border-y border-border-color dark:border-gray-800">
         <div className="px-4 md:px-10 lg:px-40 flex flex-1 justify-center py-12">
           <div className="layout-content-container flex flex-col max-w-[1200px] flex-1">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
