@@ -113,7 +113,7 @@ const Services = () => {
           </div>
 
           <div className="bg-secondary dark:bg-black rounded-2xl p-10 md:p-20 text-center relative overflow-hidden shadow-2xl mt-8">
-            <div className="absolute top-0 left-0 w-full h-full opacity-20 pointer-events-none" style={{ backgroundImage: 'radial-gradient(#E78E42 1px, transparent 1px)', backgroundSize: '30px 30px' }}></div>
+            <div className="absolute top-0 left-0 w-full h-full opacity-20 pointer-events-none" style={{ backgroundImage: 'radial-gradient(#F27025 1px, transparent 1px)', backgroundSize: '30px 30px' }}></div>
             <div className="relative z-10 flex flex-col items-center gap-8">
               <h2 className="text-white text-3xl md:text-5xl font-bold font-serif tracking-tight max-w-3xl leading-tight">
                 Need help with a machine or spare part?

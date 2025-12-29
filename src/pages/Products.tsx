@@ -18,19 +18,19 @@ const Products = () => {
           <h4 className="text-sm font-sans font-semibold mb-3 dark:text-gray-200 uppercase tracking-wider text-gray-500">Category</h4>
           <div className="space-y-2">
             <label className="flex items-center gap-3 cursor-pointer group">
-              <input className="rounded border-gray-300 text-primary focus:ring-primary bg-gray-50 dark:bg-[#2e2340] dark:border-gray-700" type="checkbox" />
+              <input className="rounded border-gray-300 text-primary focus:ring-primary bg-primary/5 dark:bg-[#2e2340] dark:border-gray-700" type="checkbox" />
               <span className="text-sm text-gray-700 dark:text-gray-300 group-hover:text-primary transition-colors">Bag Closing Machines</span>
             </label>
             <label className="flex items-center gap-3 cursor-pointer group">
-              <input defaultChecked className="rounded border-gray-300 text-primary focus:ring-primary bg-gray-50 dark:bg-[#2e2340] dark:border-gray-700" type="checkbox" />
+              <input defaultChecked className="rounded border-gray-300 text-primary focus:ring-primary bg-primary/5 dark:bg-[#2e2340] dark:border-gray-700" type="checkbox" />
               <span className="text-sm text-gray-700 dark:text-gray-300 group-hover:text-primary transition-colors font-medium">Bag Sealing & Heat Sealing</span>
             </label>
             <label className="flex items-center gap-3 cursor-pointer group">
-              <input className="rounded border-gray-300 text-primary focus:ring-primary bg-gray-50 dark:bg-[#2e2340] dark:border-gray-700" type="checkbox" />
+              <input className="rounded border-gray-300 text-primary focus:ring-primary bg-primary/5 dark:bg-[#2e2340] dark:border-gray-700" type="checkbox" />
               <span className="text-sm text-gray-700 dark:text-gray-300 group-hover:text-primary transition-colors">Bag Making & Stitching</span>
             </label>
             <label className="flex items-center gap-3 cursor-pointer group">
-              <input className="rounded border-gray-300 text-primary focus:ring-primary bg-gray-50 dark:bg-[#2e2340] dark:border-gray-700" type="checkbox" />
+              <input className="rounded border-gray-300 text-primary focus:ring-primary bg-primary/5 dark:bg-[#2e2340] dark:border-gray-700" type="checkbox" />
               <span className="text-sm text-gray-700 dark:text-gray-300 group-hover:text-primary transition-colors">Weighing Scales</span>
             </label>
           </div>
@@ -40,15 +40,15 @@ const Products = () => {
           <h4 className="text-sm font-sans font-semibold mb-3 dark:text-gray-200 uppercase tracking-wider text-gray-500">Industry</h4>
           <div className="space-y-2">
             <label className="flex items-center gap-3 cursor-pointer group">
-              <input className="rounded border-gray-300 text-primary focus:ring-primary bg-gray-50 dark:bg-[#2e2340] dark:border-gray-700" type="checkbox" />
+              <input className="rounded border-gray-300 text-primary focus:ring-primary bg-primary/5 dark:bg-[#2e2340] dark:border-gray-700" type="checkbox" />
               <span className="text-sm text-gray-700 dark:text-gray-300 group-hover:text-primary transition-colors">Food & Agriculture</span>
             </label>
             <label className="flex items-center gap-3 cursor-pointer group">
-              <input className="rounded border-gray-300 text-primary focus:ring-primary bg-gray-50 dark:bg-[#2e2340] dark:border-gray-700" type="checkbox" />
+              <input className="rounded border-gray-300 text-primary focus:ring-primary bg-primary/5 dark:bg-[#2e2340] dark:border-gray-700" type="checkbox" />
               <span className="text-sm text-gray-700 dark:text-gray-300 group-hover:text-primary transition-colors">Industrial Packaging</span>
             </label>
             <label className="flex items-center gap-3 cursor-pointer group">
-              <input className="rounded border-gray-300 text-primary focus:ring-primary bg-gray-50 dark:bg-[#2e2340] dark:border-gray-700" type="checkbox" />
+              <input className="rounded border-gray-300 text-primary focus:ring-primary bg-primary/5 dark:bg-[#2e2340] dark:border-gray-700" type="checkbox" />
               <span className="text-sm text-gray-700 dark:text-gray-300 group-hover:text-primary transition-colors">Building Materials</span>
             </label>
           </div>
@@ -61,15 +61,15 @@ const Products = () => {
           </summary>
           <div className="pt-2 space-y-2 pl-1">
             <label className="flex items-center gap-3 cursor-pointer group">
-              <input className="rounded border-gray-300 text-primary focus:ring-primary bg-gray-50 dark:bg-[#2e2340] dark:border-gray-700" type="checkbox" />
+              <input className="rounded border-gray-300 text-primary focus:ring-primary bg-primary/5 dark:bg-[#2e2340] dark:border-gray-700" type="checkbox" />
               <span className="text-sm text-gray-700 dark:text-gray-300">&lt; 10 bags/min</span>
             </label>
             <label className="flex items-center gap-3 cursor-pointer group">
-              <input className="rounded border-gray-300 text-primary focus:ring-primary bg-gray-50 dark:bg-[#2e2340] dark:border-gray-700" type="checkbox" />
+              <input className="rounded border-gray-300 text-primary focus:ring-primary bg-primary/5 dark:bg-[#2e2340] dark:border-gray-700" type="checkbox" />
               <span className="text-sm text-gray-700 dark:text-gray-300">10-30 bags/min</span>
             </label>
             <label className="flex items-center gap-3 cursor-pointer group">
-              <input className="rounded border-gray-300 text-primary focus:ring-primary bg-gray-50 dark:bg-[#2e2340] dark:border-gray-700" type="checkbox" />
+              <input className="rounded border-gray-300 text-primary focus:ring-primary bg-primary/5 dark:bg-[#2e2340] dark:border-gray-700" type="checkbox" />
               <span className="text-sm text-gray-700 dark:text-gray-300">&gt; 30 bags/min</span>
             </label>
           </div>
@@ -125,7 +125,7 @@ const Products = () => {
                 </ul>
               </div>
               <div className="mt-auto flex gap-3">
-                <button className="flex-1 bg-primary text-white text-sm font-bold py-2.5 px-4 rounded hover:bg-[#d67d36] transition-colors">
+                <button className="flex-1 bg-primary text-white text-sm font-bold py-2.5 px-4 rounded hover:bg-primary-hover transition-colors">
                   Request Quote
                 </button>
                 <div className="flex items-center justify-center border border-gray-300 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-[#2e2340] text-secondary dark:text-white rounded p-2.5 transition-colors">
@@ -162,7 +162,7 @@ const Products = () => {
                 </ul>
               </div>
               <div className="mt-auto flex gap-3">
-                <button className="flex-1 bg-primary text-white text-sm font-bold py-2.5 px-4 rounded hover:bg-[#d67d36] transition-colors">
+                <button className="flex-1 bg-primary text-white text-sm font-bold py-2.5 px-4 rounded hover:bg-primary-hover transition-colors">
                   Request Quote
                 </button>
                 <div className="flex items-center justify-center border border-gray-300 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-[#2e2340] text-secondary dark:text-white rounded p-2.5 transition-colors">
@@ -200,7 +200,7 @@ const Products = () => {
                 </ul>
               </div>
               <div className="mt-auto flex gap-3">
-                <button className="flex-1 bg-primary text-white text-sm font-bold py-2.5 px-4 rounded hover:bg-[#d67d36] transition-colors">
+                <button className="flex-1 bg-primary text-white text-sm font-bold py-2.5 px-4 rounded hover:bg-primary-hover transition-colors">
                   Request Quote
                 </button>
                 <div className="flex items-center justify-center border border-gray-300 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-[#2e2340] text-secondary dark:text-white rounded p-2.5 transition-colors">
@@ -237,7 +237,7 @@ const Products = () => {
                 </ul>
               </div>
               <div className="mt-auto flex gap-3">
-                <button className="flex-1 bg-primary text-white text-sm font-bold py-2.5 px-4 rounded hover:bg-[#d67d36] transition-colors">
+                <button className="flex-1 bg-primary text-white text-sm font-bold py-2.5 px-4 rounded hover:bg-primary-hover transition-colors">
                   Request Quote
                 </button>
                 <div className="flex items-center justify-center border border-gray-300 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-[#2e2340] text-secondary dark:text-white rounded p-2.5 transition-colors">
@@ -274,7 +274,7 @@ const Products = () => {
                 </ul>
               </div>
               <div className="mt-auto flex gap-3">
-                <button className="flex-1 bg-primary text-white text-sm font-bold py-2.5 px-4 rounded hover:bg-[#d67d36] transition-colors">
+                <button className="flex-1 bg-primary text-white text-sm font-bold py-2.5 px-4 rounded hover:bg-primary-hover transition-colors">
                   Request Quote
                 </button>
                 <div className="flex items-center justify-center border border-gray-300 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-[#2e2340] text-secondary dark:text-white rounded p-2.5 transition-colors">
@@ -311,7 +311,7 @@ const Products = () => {
                 </ul>
               </div>
               <div className="mt-auto flex gap-3">
-                <button className="flex-1 bg-primary text-white text-sm font-bold py-2.5 px-4 rounded hover:bg-[#d67d36] transition-colors">
+                <button className="flex-1 bg-primary text-white text-sm font-bold py-2.5 px-4 rounded hover:bg-primary-hover transition-colors">
                   Request Quote
                 </button>
                 <div className="flex items-center justify-center border border-gray-300 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-[#2e2340] text-secondary dark:text-white rounded p-2.5 transition-colors">

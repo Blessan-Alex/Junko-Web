@@ -34,7 +34,7 @@ const Brands = () => {
                 <span className="inline-flex items-center rounded-full bg-green-50 dark:bg-green-900/30 px-2 py-1 text-[10px] font-mono font-medium text-green-700 dark:text-green-300 ring-1 ring-inset ring-green-600/20 uppercase tracking-wider">Commonly Used</span>
               </div>
               <div className="mb-6 flex items-start justify-between">
-                <div className="h-16 w-16 rounded-lg bg-orange-50 dark:bg-white/10 flex items-center justify-center text-primary">
+                <div className="h-16 w-16 rounded-lg bg-primary/5 dark:bg-white/10 flex items-center justify-center text-primary">
                   <span className="material-symbols-outlined text-4xl">settings_suggest</span>
                 </div>
               </div>
@@ -50,7 +50,7 @@ const Brands = () => {
             </div>
             <div className="group flex flex-col bg-white dark:bg-card-dark rounded-lg shadow-sm hover:shadow-md border border-gray-100 dark:border-white/5 transition-all duration-300 p-6">
               <div className="mb-6 flex items-start justify-between">
-                <div className="h-16 w-16 rounded-lg bg-orange-50 dark:bg-white/10 flex items-center justify-center text-primary">
+                <div className="h-16 w-16 rounded-lg bg-primary/5 dark:bg-white/10 flex items-center justify-center text-primary">
                   <span className="material-symbols-outlined text-4xl">factory</span>
                 </div>
               </div>
@@ -66,7 +66,7 @@ const Brands = () => {
             </div>
             <div className="group flex flex-col bg-white dark:bg-card-dark rounded-lg shadow-sm hover:shadow-md border border-gray-100 dark:border-white/5 transition-all duration-300 p-6">
               <div className="mb-6 flex items-start justify-between">
-                <div className="h-16 w-16 rounded-lg bg-orange-50 dark:bg-white/10 flex items-center justify-center text-primary">
+                <div className="h-16 w-16 rounded-lg bg-primary/5 dark:bg-white/10 flex items-center justify-center text-primary">
                   <span className="material-symbols-outlined text-4xl">air</span>
                 </div>
               </div>
@@ -82,7 +82,7 @@ const Brands = () => {
             </div>
             <div className="group flex flex-col bg-white dark:bg-card-dark rounded-lg shadow-sm hover:shadow-md border border-gray-100 dark:border-white/5 transition-all duration-300 p-6">
               <div className="mb-6 flex items-start justify-between">
-                <div className="h-16 w-16 rounded-lg bg-orange-50 dark:bg-white/10 flex items-center justify-center text-primary">
+                <div className="h-16 w-16 rounded-lg bg-primary/5 dark:bg-white/10 flex items-center justify-center text-primary">
                   <span className="material-symbols-outlined text-4xl">sensors</span>
                 </div>
               </div>
@@ -98,7 +98,7 @@ const Brands = () => {
             </div>
             <div className="group flex flex-col bg-white dark:bg-card-dark rounded-lg shadow-sm hover:shadow-md border border-gray-100 dark:border-white/5 transition-all duration-300 p-6">
               <div className="mb-6 flex items-start justify-between">
-                <div className="h-16 w-16 rounded-lg bg-orange-50 dark:bg-white/10 flex items-center justify-center text-primary">
+                <div className="h-16 w-16 rounded-lg bg-primary/5 dark:bg-white/10 flex items-center justify-center text-primary">
                   <span className="material-symbols-outlined text-4xl">electric_bolt</span>
                 </div>
               </div>
@@ -114,7 +114,7 @@ const Brands = () => {
             </div>
             <div className="group flex flex-col bg-white dark:bg-card-dark rounded-lg shadow-sm hover:shadow-md border border-gray-100 dark:border-white/5 transition-all duration-300 p-6">
               <div className="mb-6 flex items-start justify-between">
-                <div className="h-16 w-16 rounded-lg bg-orange-50 dark:bg-white/10 flex items-center justify-center text-primary">
+                <div className="h-16 w-16 rounded-lg bg-primary/5 dark:bg-white/10 flex items-center justify-center text-primary">
                   <span className="material-symbols-outlined text-4xl">robot_2</span>
                 </div>
               </div>
