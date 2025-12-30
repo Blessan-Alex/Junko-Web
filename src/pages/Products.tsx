@@ -94,9 +94,9 @@ const Products = () => {
                   </ul>
                 </div>
                 <div className="mt-auto flex gap-3">
-                  <button className="flex-1 bg-primary text-white text-sm font-bold py-2.5 px-4 rounded hover:bg-primary-hover transition-colors">
+                  <a href="https://wa.me/971503426615" target="_blank" className="flex-1 bg-primary text-white text-sm font-bold py-2.5 px-4 rounded hover:bg-primary-hover transition-colors text-center">
                     Request Quote
-                  </button>
+                  </a>
                   <div className="flex items-center justify-center border border-gray-300 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-[#2e2340] text-secondary dark:text-white rounded p-2.5 transition-colors">
                     <span className="material-symbols-outlined text-[20px]">arrow_forward</span>
                   </div>
@@ -138,10 +138,10 @@ const Products = () => {
         </div>
 
         <div className="flex justify-center mt-16 mb-6">
-          <Link to="/contact" className="inline-flex items-center gap-2 px-6 py-3 bg-secondary text-white rounded-lg font-bold hover:bg-secondary/90 transition-colors">
+          <a href="https://wa.me/971503426615" target="_blank" className="inline-flex items-center gap-2 px-6 py-3 bg-secondary text-white rounded-lg font-bold hover:bg-secondary/90 transition-colors">
             <span className="material-symbols-outlined">support_agent</span>
             Contact for Custom Orders
-          </Link>
+          </a>
         </div>
       </main>
     </div>

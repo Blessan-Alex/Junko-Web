@@ -142,9 +142,9 @@ const Brands = () => {
               </p>
             </div>
             <div className="flex-shrink-0 z-10">
-              <Link to="/contact" className="flex items-center justify-center rounded-lg bg-primary hover:bg-primary/90 text-white font-bold h-12 px-8 transition-all transform hover:scale-105 shadow-lg shadow-black/20 font-sans">
+              <a href="https://wa.me/971503426615" target="_blank" className="flex items-center justify-center rounded-lg bg-primary hover:bg-primary/90 text-white font-bold h-12 px-8 transition-all transform hover:scale-105 shadow-lg shadow-black/20 font-sans">
                 Check Compatibility
-              </Link>
+              </a>
             </div>
           </div>
         </div>

@@ -13,7 +13,7 @@ const Header = () => {
     };
 
     return (
-        <header className="sticky top-0 z-50 w-full bg-background-light dark:bg-surface-dark border-b border-border-color dark:border-gray-800 shadow-sm font-sans">
+        <header className="sticky top-0 z-50 w-full bg-[#fdfcfc] dark:bg-surface-dark border-b border-border-color dark:border-gray-800 shadow-sm font-sans">
             <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex h-16 items-center justify-between">
                     <Link to="/" className="flex items-center gap-2" onClick={closeMenu}>
@@ -55,7 +55,7 @@ const Header = () => {
 
             {/* Mobile Navigation Overlay */}
             {isMenuOpen && (
-                <div className="md:hidden absolute top-16 left-0 w-full bg-background-light dark:bg-surface-dark border-b border-border-color dark:border-gray-800 shadow-lg animate-fade-in-down z-40">
+                <div className="md:hidden absolute top-16 left-0 w-full bg-[#fdfcfc] dark:bg-surface-dark border-b border-border-color dark:border-gray-800 shadow-lg animate-fade-in-down z-40">
                     <nav className="flex flex-col p-4 gap-4">
                         <Link to="/" onClick={closeMenu} className="text-base font-medium text-text-main dark:text-gray-200 hover:text-primary dark:hover:text-primary transition-colors py-2 border-b border-border-color/50 dark:border-gray-800/50">Home</Link>
                         <Link to="/products" onClick={closeMenu} className="text-base font-medium text-text-main dark:text-gray-200 hover:text-primary dark:hover:text-primary transition-colors py-2 border-b border-border-color/50 dark:border-gray-800/50">Products</Link>

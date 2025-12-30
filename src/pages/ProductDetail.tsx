@@ -26,7 +26,7 @@ const ProductDetail = () => {
   }
 
   // Use product image or a placeholder if missing (conceptually, all main ones have images now)
-  const mainImage = product.image || 'https://lh3.googleusercontent.com/aida-public/AB6AXuDQXI-XB_x2P5q6uE1ih9GJtZ5h3kZr2gosZAbVLOZ0k3SMcR4c3Bkntzch9cnKElzMurOTafjbCcp70Jl5qO0MwPwZOq7TVOd9I51vdqr0FPHXaGoEIDaKGMvispCmj8rvRevJ8YuZ5tmYgSp5xdFAaBkSUZYpALy_Wxi_4YzU8SFl711mP5Um2T7to-Of47kdWAx17sGkC4KHdMp3VefyZSgaEVOFyMz3IRqqC4zSK0Rl_GFFYJCvNnmLu80wsWYGdQ8yHY0ogEI';
+  const mainImage = product.image || '/products/placeholders/no-image.png';
 
   return (
     <div className="layout-container flex h-full grow flex-col max-w-[1280px] mx-auto w-full px-4 sm:px-6 lg:px-8">
@@ -87,12 +87,12 @@ const ProductDetail = () => {
               {product.description || `High quality ${product.name} designed for industrial applications. Part of our premium ${product.category} line.`}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 mb-8">
-              <Link to="/contact" className="flex-1 min-h-[56px] flex items-center justify-center rounded-lg bg-primary hover:bg-primary-hover text-white text-base font-bold shadow-md transition-all hover:shadow-lg font-serif tracking-wide">
+              <a href="https://wa.me/971503426615" target="_blank" className="flex-1 min-h-[56px] flex items-center justify-center rounded-lg bg-primary hover:bg-primary-hover text-white text-base font-bold shadow-md transition-all hover:shadow-lg font-serif tracking-wide">
                 Request a Quote
-              </Link>
-              <button className="flex-1 min-h-[56px] cursor-pointer items-center justify-center rounded-lg border-2 border-gray-200 dark:border-gray-600 bg-transparent hover:bg-gray-50 dark:hover:bg-gray-800 text-text-main dark:text-white text-base font-bold transition-all">
+              </a>
+              <a href="https://wa.me/971503426615" target="_blank" className="flex-1 min-h-[56px] cursor-pointer flex items-center justify-center rounded-lg border-2 border-gray-200 dark:border-gray-600 bg-transparent hover:bg-gray-50 dark:hover:bg-gray-800 text-text-main dark:text-white text-base font-bold transition-all">
                 Talk to Technical Support
-              </button>
+              </a>
             </div>
 
             {product.specs && (

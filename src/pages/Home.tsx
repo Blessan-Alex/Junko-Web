@@ -28,9 +28,9 @@ const Home = () => {
               <Link to="/products" className="h-12 px-8 bg-primary hover:bg-primary-dark text-white font-bold rounded transition-colors flex items-center gap-2 text-base">
                 Explore Machinery
               </Link>
-              <Link to="/contact" className="h-12 px-8 bg-transparent border-2 border-white hover:bg-white/10 text-white font-bold rounded transition-colors flex items-center gap-2 text-base">
+              <a href="https://wa.me/971503426615" target="_blank" className="h-12 px-8 bg-transparent border-2 border-white hover:bg-white/10 text-white font-bold rounded transition-colors flex items-center gap-2 text-base">
                 Talk to an Engineer
-              </Link>
+              </a>
             </div>
             <p className="text-sm text-blue-200 mt-4">
               Trusted by manufacturers across the UAE & GCC
@@ -168,8 +168,8 @@ const Home = () => {
         </div>
       </section>
 
-      <section className="py-20 bg-secondary text-white relative overflow-hidden" style={{ backgroundImage: "var(--dark-blue-texture)", backgroundSize: "10px 10px" }}>
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-primary/10 via-transparent to-transparent opacity-30"></div>
+      <section className="py-20 bg-secondary text-white relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'radial-gradient(#ffffff 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
         <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="order-2 lg:order-1 relative">
@@ -322,20 +322,19 @@ const Home = () => {
       <section className="py-20 bg-background-light dark:bg-background-dark">
         <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-secondary rounded-2xl overflow-hidden relative shadow-xl">
-            <div className="absolute inset-0 opacity-20 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-primary via-transparent to-transparent"></div>
-            <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "var(--subtle-navy-texture)", backgroundSize: "10px 10px" }}></div>
+            <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'radial-gradient(#ffffff 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
             <div className="relative z-10 px-8 py-16 md:px-16 md:py-20 flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
               <div className="max-w-xl">
                 <h2 className="text-4xl font-semibold font-serif text-white mb-4 leading-tight">Need pricing or a recommendation?</h2>
                 <p className="text-blue-100 text-lg font-sans">Our team is ready to help you find the right equipment for your production targets.</p>
               </div>
               <div className="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
-                <Link to="/contact" className="h-12 px-8 bg-primary hover:bg-primary-dark text-white font-bold rounded shadow-lg transition-colors whitespace-nowrap flex items-center justify-center text-base">
+                <a href="https://wa.me/971503426615" target="_blank" className="h-12 px-8 bg-primary hover:bg-primary-dark text-white font-bold rounded shadow-lg transition-colors whitespace-nowrap flex items-center justify-center text-base">
                   Request Quote
-                </Link>
-                <Link to="/contact" className="h-12 px-8 bg-transparent border-2 border-white text-white hover:bg-white/10 font-bold rounded transition-colors whitespace-nowrap flex items-center justify-center text-base">
+                </a>
+                <a href="https://wa.me/971503426615" target="_blank" className="h-12 px-8 bg-transparent border-2 border-white text-white hover:bg-white/10 font-bold rounded transition-colors whitespace-nowrap flex items-center justify-center text-base">
                   Talk to Sales
-                </Link>
+                </a>
               </div>
             </div>
           </div>
