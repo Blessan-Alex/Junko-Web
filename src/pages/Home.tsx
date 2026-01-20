@@ -1,48 +1,100 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+import heroImage2 from '../assets/hero-commercial-dock.jpg';
+import heroImage3 from '../assets/hero-worker-part.jpg';
+import heroImage4 from '../assets/hero-red-machine.jpg';
+import heroImage5 from '../assets/hero-warehouse-shelves.jpg';
+import heroImage6 from '../assets/hero-warehouse-concrete.jpg';
+
+const heroImages = [heroImage2, heroImage3, heroImage4, heroImage5, heroImage6];
 
 const Home = () => {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % heroImages.length);
+    }, 8000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <>
       <Helmet>
         <title>Junko FZE | Industrial Packaging Machinery & Supplies UAE</title>
         <meta name="description" content="Leading supplier of industrial bag closing, heat sealing, and weighing machinery in the UAE & GCC. Spare parts and technical support available in Sharjah." />
       </Helmet>
-      <section className="relative w-full h-[600px] md:h-[700px] lg:h-[800px] flex items-center text-white overflow-hidden rounded-b-hero-b-rounded" style={{ background: "var(--hero-gradient), url('https://lh3.googleusercontent.com/aida-public/AB6AXuAdUsbtf_IKQQAoCRlZFpD4XghxFjcEpQpCkBH_M0PoDe1_ltP2GymJWornVwfRELRrJUmNLnH14neipgDMJjKNf24waYjByBP1F8juFiLKaxO_bFDU4fcrLa3Zyze-GOw46ASa6ULuDvKVaSQCFVMGQ_gwf65kC1kteuY0pH_ZdDxcjkssyaJs4qtv4Xu3wf35Ub1sRwGXR1j2LHXOXSaSbIwpxFPA1VL7Xuq1d8oCQquzGm88A3s8xv3hCwmtIDahQJCJs4nN3_I') no-repeat center center / cover" }}>
-        <div className="absolute inset-0 bg-gradient-to-r from-[var(--navy-dark)] via-[var(--navy-dark)]/50 to-transparent"></div>
-        <div className="relative z-10 max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <div className="flex flex-col gap-6 max-w-2xl text-left">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary text-white text-xs font-bold font-sans uppercase tracking-wider w-fit">
-              <span className="material-symbols-outlined text-[16px]">location_on</span>
+
+      {/* Hero Section */}
+      <section className="relative w-full h-[600px] md:h-[700px] lg:h-[800px] flex items-center text-white overflow-hidden rounded-b-hero-b-rounded">
+        {/* Background Slideshow */}
+        {heroImages.map((img, index) => (
+          <div
+            key={index}
+            className={`absolute inset-0 bg-cover bg-center transition-opacity duration-[2000ms] ease-in-out ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'
+              }`}
+            style={{
+              backgroundImage: `var(--hero-gradient), url('${img}')`
+            }}
+          />
+        ))}
+
+        {/* Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[var(--navy-dark)] via-[var(--navy-dark)]/50 to-transparent z-10"></div>
+
+        {/* Content */}
+        <div className="relative z-20 max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 w-full">
+          <div className="flex flex-col gap-8 max-w-2xl text-left">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary text-white text-xs font-bold font-sans uppercase tracking-widest w-fit shadow-md border border-white/10">
+              <span className="material-symbols-outlined text-[16px]">verified</span>
               UAE Based • GCC Supply & Support
             </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-medium tracking-tight leading-[1.1] pr-4">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.1] pr-4 font-serif">
               Packaging solutions<br />for high-volume industry
             </h1>
-            <p className="text-lg md:text-xl text-blue-100 leading-relaxed font-sans max-w-xl">
+            <p className="text-xl md:text-2xl text-blue-100 leading-relaxed font-sans max-w-xl">
               Industrial bag closing, sealing, weighing, and end-of-line machinery
               selected for reliability in dust, heat, and continuous operation.
             </p>
-            <div className="flex flex-wrap gap-4 mt-2">
-              <Link to="/products" className="h-12 px-8 bg-primary hover:bg-primary-dark text-white font-bold rounded transition-colors flex items-center gap-2 text-base">
-                Explore Machinery
-              </Link>
-              <a href="https://wa.me/971503426615" target="_blank" className="h-12 px-8 bg-transparent border-2 border-white hover:bg-white/10 text-white font-bold rounded transition-colors flex items-center gap-2 text-base">
-                Talk to an Engineer
-              </a>
+            <div className="flex flex-col gap-6">
+              <div className="flex flex-wrap gap-4">
+                <Link to="/products" className="h-14 px-8 bg-primary hover:bg-primary-dark text-white font-bold rounded-md transition-all duration-200 hover:shadow-lg active:scale-95 flex items-center justify-center gap-2 text-base min-w-[180px]">
+                  Explore Machinery
+                </Link>
+                <a href="https://wa.me/971503426615" target="_blank" className="h-14 px-8 bg-transparent border-2 border-white hover:bg-white/10 text-white font-bold rounded-md transition-all duration-200 hover:shadow-lg active:scale-95 flex items-center justify-center gap-2 text-base min-w-[180px]">
+                  Talk to an Engineer
+                </a>
+              </div>
+
+              {/* Trust Bullets */}
+              <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-blue-200 font-medium font-sans">
+                <div className="flex items-center gap-2">
+                  <span className="material-symbols-outlined text-green-400 text-[18px]">bolt</span>
+                  24–48h Dispatch
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="material-symbols-outlined text-green-400 text-[18px]">build_circle</span>
+                  Install + After-sales Support
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="material-symbols-outlined text-green-400 text-[18px]">thermostat</span>
+                  Dust/Heat Rated
+                </div>
+              </div>
             </div>
-            <p className="text-sm text-blue-200 mt-4">
-              Trusted by manufacturers across the UAE & GCC
-            </p>
           </div>
-          <div className="hidden md:block md:absolute md:bottom-6 md:right-6 lg:right-8 bg-secondary/80 backdrop-blur-sm p-4 rounded-lg shadow-xl border border-secondary text-white max-w-[200px]">
-            <div className="flex items-start gap-3">
-              <span className="material-symbols-outlined text-primary mt-1 text-2xl">precision_manufacturing</span>
+
+          {/* Availability Card */}
+          <div className="hidden md:block absolute bottom-8 right-8 bg-black/40 backdrop-blur-md p-5 rounded-xl shadow-2xl border border-white/10 text-white max-w-[240px]">
+            <div className="flex items-start gap-4">
+              <span className="material-symbols-outlined text-primary mt-1 text-3xl">precision_manufacturing</span>
               <div>
-                <p className="text-xs text-blue-200 font-bold uppercase font-sans">Availability</p>
-                <p className="text-base font-bold text-white font-mono leading-tight">In Stock – Sharjah</p>
-                <p className="text-xs text-blue-300 font-mono mt-1">24–48h UAE Dispatch</p>
+                <p className="text-[10px] text-blue-300 font-semibold uppercase tracking-widest font-sans mb-1">Availability</p>
+                <p className="text-lg font-bold text-white font-mono leading-none mb-1 tracking-tight">IN STOCK</p>
+                <p className="text-lg font-bold text-white tracking-tight leading-tight">Sharjah, UAE</p>
+                <p className="text-xs text-blue-200/90 font-mono mt-2 leading-snug">24–48h Dispatch</p>
               </div>
             </div>
           </div>
@@ -75,7 +127,7 @@ const Home = () => {
               View All Categories <span className="material-symbols-outlined text-sm">arrow_forward</span>
             </Link>
           </div>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <Link to="/products" className="group bg-white dark:bg-surface-dark rounded-2xl shadow-xl overflow-hidden cursor-pointer flex flex-col hover:shadow-2xl transition-all duration-300">
               <div className="aspect-[16/9] bg-gray-100 overflow-hidden relative">
                 <img
@@ -89,7 +141,7 @@ const Home = () => {
                 <div>
                   <h3 className="text-2xl font-bold font-serif text-text-main dark:text-white mb-3 group-hover:text-primary transition-colors">Bag Closing Systems</h3>
                   <p className="text-base text-text-sub dark:text-gray-500 mb-6 leading-relaxed font-sans">
-                    Portable bag closers and fixed sewing heads for woven PP, paper, and jute bags. Built to withstand dusty, high-production environments with minimal maintenance.
+                    Portable bag closers, fixed sewing heads, and spring balancers for woven PP, paper, and jute bags. Built to withstand dusty, high-production environments with minimal maintenance.
                   </p>
                 </div>
                 <div className="flex items-center text-sm font-medium text-gray-500 gap-3 font-mono">
@@ -164,9 +216,53 @@ const Home = () => {
                 </div>
               </div>
             </Link>
+            <Link to="/products" className="group bg-white dark:bg-surface-dark rounded-2xl shadow-xl overflow-hidden cursor-pointer flex flex-col hover:shadow-2xl transition-all duration-300">
+              <div className="aspect-[16/9] bg-gray-100 overflow-hidden relative">
+                <img
+                  src="/category/annie-spratt-hzdgFPz1V24-unsplash.jpg"
+                  alt="Industrial Sewing Machine"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute top-4 right-4 bg-secondary text-white text-xs px-3 py-1.5 rounded-full backdrop-blur-sm font-bold font-sans tracking-wide">Industrial</div>
+              </div>
+              <div className="p-8 flex flex-col justify-between flex-grow">
+                <div>
+                  <h3 className="text-2xl font-bold font-serif text-text-main dark:text-white mb-3 group-hover:text-primary transition-colors">Sewing Machines</h3>
+                  <p className="text-base text-text-sub dark:text-gray-500 mb-6 leading-relaxed font-sans">
+                    High-performance industrial sewing machines for versatile applications. Designed for durability and precision stitching.
+                  </p>
+                </div>
+                <div className="flex items-center text-sm font-medium text-gray-500 gap-3 font-mono">
+                  <span className="material-symbols-outlined text-[20px] text-primary">manufacturing</span> Heavy Duty
+                  <span className="material-symbols-outlined text-[20px] text-primary ml-4">build</span> Reliable
+                </div>
+              </div>
+            </Link>
+            <Link to="/products" className="group bg-white dark:bg-surface-dark rounded-2xl shadow-xl overflow-hidden cursor-pointer flex flex-col hover:shadow-2xl transition-all duration-300">
+              <div className="aspect-[16/9] bg-gray-100 overflow-hidden relative">
+                <img
+                  src="https://images.unsplash.com/photo-1530124566582-a618bc2615dc?auto=format&fit=crop&q=80&w=800"
+                  alt="Spare Parts & Consumables"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute top-4 right-4 bg-secondary text-white text-xs px-3 py-1.5 rounded-full backdrop-blur-sm font-bold font-sans tracking-wide">Genuine</div>
+              </div>
+              <div className="p-8 flex flex-col justify-between flex-grow">
+                <div>
+                  <h3 className="text-2xl font-bold font-serif text-text-main dark:text-white mb-3 group-hover:text-primary transition-colors">Spare Parts & Consumables</h3>
+                  <p className="text-base text-text-sub dark:text-gray-500 mb-6 leading-relaxed font-sans">
+                    Genuine spare parts, needles, threads, and oil to keep your machinery running smoothly. Immediate dispatch available.
+                  </p>
+                </div>
+                <div className="flex items-center text-sm font-medium text-gray-500 gap-3 font-mono">
+                  <span className="material-symbols-outlined text-[20px] text-primary">inventory</span> In Stock
+                  <span className="material-symbols-outlined text-[20px] text-primary ml-4">settings_suggest</span> Support
+                </div>
+              </div>
+            </Link>
           </div>
-        </div>
-      </section>
+        </div >
+      </section >
 
       <section className="py-20 bg-secondary text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'radial-gradient(#ffffff 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>

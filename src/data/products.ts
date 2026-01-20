@@ -166,7 +166,7 @@ export const allProducts: Product[] = [
     { id: 'schmetz-needles', name: 'Schmetz Needles', category: 'Consumables', subcategory: 'Needles' },
     { id: 'oil', name: 'Sewing Machine Oil', category: 'Consumables', subcategory: 'Others' },
     { id: 'spare-parts', name: 'Spare Parts (on enquiry)', category: 'Consumables', subcategory: 'Services / Parts' },
-    { id: 'spring-balancers', name: 'Spring Balancers', category: 'Consumables', subcategory: 'Services / Parts' },
+    { id: 'spare-parts', name: 'Spare Parts (on enquiry)', category: 'Consumables', subcategory: 'Services / Parts' },
 
     // --- FILLING AND PACKING ---
     { id: 'cjs-25ih', name: 'CJS-25IH', category: 'Filling and Packing Machines', subcategory: 'Weighing & Filling' },
@@ -269,6 +269,14 @@ export const allProducts: Product[] = [
     { id: 'hand-pallet-truck', name: 'Hand Pallet Truck', category: 'Weighing Scales', subcategory: 'Mechanical' },
     { id: 'manual-platform', name: 'Manual Platform Scale', category: 'Weighing Scales', subcategory: 'Mechanical' },
     { id: 'counter-scale', name: 'Counter Weighing Scale', category: 'Weighing Scales', subcategory: 'Mechanical' },
+
+    // --- SEWING MACHINES ---
+    { id: 'ind-sewing-machine', name: 'Industrial Sewing Machine Standard', category: 'Sewing Machines', subcategory: 'General' },
+    { id: 'hvy-sewing-machine', name: 'Heavy Duty Sewing Machine', category: 'Sewing Machines', subcategory: 'Heavy Duty' },
+
+    // --- SPARE PARTS ---
+    { id: 'spring-balancer-new', name: 'Spring Balancer', category: 'Spare Parts', subcategory: 'Tools' },
+    { id: 'spare-parts-kit', name: 'Spare Parts Kit', category: 'Spare Parts', subcategory: 'Parts' },
 ];
 
 export const productsByCategory = allProducts.reduce((acc, product) => {
@@ -281,13 +289,15 @@ export const productsByCategory = allProducts.reduce((acc, product) => {
 
 export const categories: Category[] = [
     { name: 'Bag Closing Machines', subcategories: ['Bag Closing Machine Systems', 'Machine Heads', 'Bag Making Machines', 'Conveyors', 'Feeding Devices'] },
+    { name: 'Bag Closing Thread', subcategories: [] },
+    { name: 'Carpet Overedging Machines', subcategories: ['Heavy Duty', 'Standard'] },
+    { name: 'Consumables', subcategories: ['Needles', 'Others', 'Services / Parts'] },
+    { name: 'Filling and Packing Machines', subcategories: ['Weighing & Filling', 'Shrink Packaging', 'Carton Sealers', 'Strapping Machines'] },
+    { name: 'Packaging Materials', subcategories: [] },
+    { name: 'Packaging Tools', subcategories: ['Strapping Tools', 'Sealers & Powered Tools'] },
     { name: 'Portable Bag Closers', subcategories: ['Single Needle, Single Thread', 'Battery Operated', 'Double Thread, Single Needle', 'Double Thread, Double Needle'] },
     { name: 'Sealing Machines', subcategories: ['Impulse Sealers', 'Band Sealers', 'Heavy Duty & Specialty', 'Blister & Coding', 'Vacuum & Carton'] },
-    { name: 'Filling and Packing Machines', subcategories: ['Weighing & Filling', 'Shrink Packaging', 'Carton Sealers', 'Strapping Machines'] },
+    { name: 'Sewing Machines', subcategories: ['General', 'Heavy Duty'] },
+    { name: 'Spare Parts', subcategories: ['Tools', 'Parts'] },
     { name: 'Weighing Scales', subcategories: ['Electronic', 'Mechanical'] },
-    { name: 'Carpet Overedging Machines', subcategories: ['Heavy Duty', 'Standard'] },
-    { name: 'Packaging Tools', subcategories: ['Strapping Tools', 'Sealers & Powered Tools'] },
-    { name: 'Packaging Materials', subcategories: [] },
-    { name: 'Bag Closing Thread', subcategories: [] },
-    { name: 'Consumables', subcategories: ['Needles', 'Others', 'Services / Parts'] },
 ];

@@ -1,8 +1,13 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const location = useLocation();
+
+    const isActive = (path: string) => location.pathname === path;
+    const linkClasses = (path: string) => `text-sm font-semibold transition-all duration-200 ${isActive(path) ? 'text-primary' : 'text-text-main dark:text-gray-200 hover:text-primary dark:hover:text-primary'}`;
+
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
@@ -22,12 +27,11 @@ const Header = () => {
 
                     {/* Desktop Navigation */}
                     <nav className="hidden md:flex gap-8">
-                        <Link to="/" className="text-sm font-medium text-text-main dark:text-gray-200 hover:text-primary dark:hover:text-primary transition-colors">Home</Link>
-                        <Link to="/products" className="text-sm font-medium text-text-main dark:text-gray-200 hover:text-primary dark:hover:text-primary transition-colors">Products</Link>
-                        <Link to="/services" className="text-sm font-medium text-text-main dark:text-gray-200 hover:text-primary dark:hover:text-primary transition-colors">Services</Link>
-                        <Link to="/about" className="text-sm font-medium text-text-main dark:text-gray-200 hover:text-primary dark:hover:text-primary transition-colors">About Us</Link>
-                        <Link to="/brands" className="text-sm font-medium text-text-main dark:text-gray-200 hover:text-primary dark:hover:text-primary transition-colors">Brands</Link>
-                        <Link to="/contact" className="text-sm font-medium text-text-main dark:text-gray-200 hover:text-primary dark:hover:text-primary transition-colors">Contact Us</Link>
+                        <Link to="/" className={linkClasses('/')}>Home</Link>
+                        <Link to="/products" className={linkClasses('/products')}>Products</Link>
+                        <Link to="/services" className={linkClasses('/services')}>Services</Link>
+                        <Link to="/about" className={linkClasses('/about')}>About Us</Link>
+                        <Link to="/contact" className={linkClasses('/contact')}>Contact Us</Link>
                     </nav>
 
                     <div className="flex items-center gap-4">
@@ -61,7 +65,7 @@ const Header = () => {
                         <Link to="/products" onClick={closeMenu} className="text-base font-medium text-text-main dark:text-gray-200 hover:text-primary dark:hover:text-primary transition-colors py-2 border-b border-border-color/50 dark:border-gray-800/50">Products</Link>
                         <Link to="/services" onClick={closeMenu} className="text-base font-medium text-text-main dark:text-gray-200 hover:text-primary dark:hover:text-primary transition-colors py-2 border-b border-border-color/50 dark:border-gray-800/50">Services</Link>
                         <Link to="/about" onClick={closeMenu} className="text-base font-medium text-text-main dark:text-gray-200 hover:text-primary dark:hover:text-primary transition-colors py-2 border-b border-border-color/50 dark:border-gray-800/50">About Us</Link>
-                        <Link to="/brands" onClick={closeMenu} className="text-base font-medium text-text-main dark:text-gray-200 hover:text-primary dark:hover:text-primary transition-colors py-2 border-b border-border-color/50 dark:border-gray-800/50">Brands</Link>
+
                         <Link to="/contact" onClick={closeMenu} className="text-base font-medium text-text-main dark:text-gray-200 hover:text-primary dark:hover:text-primary transition-colors py-2">Contact Us</Link>
 
                         <div className="flex flex-col gap-4 mt-2 pt-4 border-t border-border-color dark:border-gray-800">

@@ -3,28 +3,22 @@
 @tailwind utilities;
 
 :root {
-  --hero-gradient: linear-gradient(
-      90deg,
+  --hero-gradient: linear-gradient(90deg,
       rgba(22, 15, 82, 0.85) 0%,
       rgba(22, 15, 82, 0.55) 40%,
       rgba(22, 15, 82, 0.15) 70%,
-      rgba(22, 15, 82, 0.0) 100%
-  );
+      rgba(22, 15, 82, 0.0) 100%);
   --navy-dark: #160F52;
-  --subtle-navy-texture: repeating-linear-gradient(
-      45deg,
+  --subtle-navy-texture: repeating-linear-gradient(45deg,
       rgba(22, 15, 82, 0.05) 0,
       rgba(22, 15, 82, 0.05) 1px,
       transparent 1px,
-      transparent 50%
-  );
-  --dark-blue-texture: repeating-linear-gradient(
-      45deg,
+      transparent 50%);
+  --dark-blue-texture: repeating-linear-gradient(45deg,
       rgba(22, 15, 82, 0.05) 0,
       rgba(22, 15, 82, 0.05) 1px,
       transparent 1px,
-      transparent 50%
-  );
+      transparent 50%);
 }
 
 .material-symbols-outlined {
