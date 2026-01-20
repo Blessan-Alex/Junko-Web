@@ -12,7 +12,7 @@ const About = () => {
       <div className="px-4 md:px-10 lg:px-40 flex flex-1 justify-center py-10 lg:py-20">
         <div className="layout-content-container flex flex-col max-w-[1200px] flex-1">
           <div className="@container">
-            <div className="flex flex-col-reverse gap-6 lg:gap-16 lg:flex-row items-center">
+            <div className="flex flex-col-reverse gap-6 lg:gap-16 lg:flex-row items-center animate-fade-in-up">
               <div className="flex flex-col gap-6 flex-1 lg:max-w-[500px]">
                 <div className="flex flex-col gap-4 text-left">
                   <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-primary/10 w-fit">
@@ -31,7 +31,7 @@ const About = () => {
                 </Link>
               </div>
               <div className="w-full flex-1">
-                <div className="w-full bg-center bg-no-repeat bg-cover rounded aspect-[4/3] lg:aspect-auto lg:h-[400px] shadow-lg" style={{ backgroundImage: 'url("https://lh3.googleusercontent.com/aida-public/AB6AXuA9_uH4cQERu2uBfSq2jj5cgCAAK71QwffuS4thP56iFnwKfTPgtPhIUkvme8ry7XZMAArYQh_ugnQqghbNp1vnT2_IHh9wfVQqTqPg2V_bwTRHli9EZOrDvUSnpM-QxEO31QPa13ZpjAgpaf2Vd4G7ubrZj8Sqb1r8a2sETONtr0gw1_HTy_EKGu_0xXCuvQJ79xGeEmuRSwSFKS6h_Oaj6RUaXTw2VZbEazQS8diW5CeXkoZ7Wk4Bczd_wUd30hVHiyKOjH_sRdk")' }}>
+                <div className="w-full bg-center bg-no-repeat bg-cover rounded aspect-[4/3] lg:aspect-auto lg:h-[400px] shadow-lg" style={{ backgroundImage: 'url("https://images.pexels.com/photos/18471441/pexels-photo-18471441.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1")' }}>
                 </div>
               </div>
             </div>
@@ -167,7 +167,7 @@ const About = () => {
             <h2 className="text-white text-3xl md:text-4xl font-bold font-serif leading-tight tracking-[-0.033em]">Ready to streamline your packaging?</h2>
             <p className="text-indigo-100 text-lg max-w-[600px]">Speak directly with our team in Sharjah about your specific packaging needs and discover how Junko FZE can increase your efficiency.</p>
             <div className="flex gap-4 pt-4">
-              <a href="https://wa.me/971503426615" target="_blank" className="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded h-12 px-6 bg-primary hover:bg-primary-hover transition-colors text-white text-base font-bold leading-normal tracking-[0.015em]">
+              <a href="https://wa.me/971503426615?text=Hi, I would like to speak to sales." target="_blank" className="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded h-12 px-6 bg-primary hover:bg-primary-hover transition-colors text-white text-base font-bold leading-normal tracking-[0.015em]">
                 Talk to Sales
               </a>
             </div>

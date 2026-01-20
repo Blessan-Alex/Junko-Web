@@ -28,7 +28,7 @@ const Home = () => {
       </Helmet>
 
       {/* Hero Section */}
-      <section className="relative w-full h-[600px] md:h-[700px] lg:h-[800px] flex items-center text-white overflow-hidden rounded-b-hero-b-rounded">
+      <section className="relative w-full h-[600px] md:h-[700px] lg:h-[800px] flex items-center justify-center text-white overflow-hidden rounded-b-hero-b-rounded">
         {/* Background Slideshow */}
         {heroImages.map((img, index) => (
           <div
@@ -42,59 +42,46 @@ const Home = () => {
         ))}
 
         {/* Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[var(--navy-dark)] via-[var(--navy-dark)]/50 to-transparent z-10"></div>
+        <div className="absolute inset-0 bg-black/50 z-10"></div>
 
         {/* Content */}
-        <div className="relative z-20 max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <div className="flex flex-col gap-8 max-w-2xl text-left">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary text-white text-xs font-bold font-sans uppercase tracking-widest w-fit shadow-md border border-white/10">
-              <span className="material-symbols-outlined text-[16px]">verified</span>
+        <div className="relative z-20 max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 w-full flex flex-col items-center text-center animate-fade-in-up">
+          <div className="flex flex-col gap-8 max-w-4xl items-center">
+            <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary text-white text-sm font-bold font-sans uppercase tracking-widest w-fit shadow-md border border-white/10">
+              <span className="material-symbols-outlined text-[20px]">verified</span>
               UAE Based • GCC Supply & Support
             </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.1] pr-4 font-serif">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-tight pr-0 font-serif">
               Packaging solutions<br />for high-volume industry
             </h1>
-            <p className="text-xl md:text-2xl text-blue-100 leading-relaxed font-sans max-w-xl">
+            <p className="text-2xl md:text-3xl text-blue-100 leading-relaxed font-sans max-w-3xl">
               Industrial bag closing, sealing, weighing, and end-of-line machinery
               selected for reliability in dust, heat, and continuous operation.
             </p>
-            <div className="flex flex-col gap-6">
-              <div className="flex flex-wrap gap-4">
-                <Link to="/products" className="h-14 px-8 bg-primary hover:bg-primary-dark text-white font-bold rounded-md transition-all duration-200 hover:shadow-lg active:scale-95 flex items-center justify-center gap-2 text-base min-w-[180px]">
+            <div className="flex flex-col gap-8 w-full items-center">
+              <div className="flex flex-wrap justify-center gap-4 w-full">
+                <Link to="/products" className="h-16 px-10 bg-primary hover:bg-primary-dark text-white font-bold rounded-md transition-all duration-200 hover:shadow-lg active:scale-95 flex items-center justify-center gap-3 text-lg min-w-[200px]">
                   Explore Machinery
                 </Link>
-                <a href="https://wa.me/971503426615" target="_blank" className="h-14 px-8 bg-transparent border-2 border-white hover:bg-white/10 text-white font-bold rounded-md transition-all duration-200 hover:shadow-lg active:scale-95 flex items-center justify-center gap-2 text-base min-w-[180px]">
+                <a href="https://wa.me/971503426615?text=Hi, I would like to speak to an engineer regarding packaging solutions." target="_blank" className="h-16 px-10 bg-transparent border-2 border-white hover:bg-white/10 text-white font-bold rounded-md transition-all duration-200 hover:shadow-lg active:scale-95 flex items-center justify-center gap-3 text-lg min-w-[200px]">
                   Talk to an Engineer
                 </a>
               </div>
 
               {/* Trust Bullets */}
-              <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-blue-200 font-medium font-sans">
+              <div className="flex flex-wrap justify-center gap-x-8 gap-y-3 text-base text-blue-200 font-medium font-sans">
                 <div className="flex items-center gap-2">
-                  <span className="material-symbols-outlined text-green-400 text-[18px]">bolt</span>
+                  <span className="material-symbols-outlined text-green-400 text-[20px]">bolt</span>
                   24–48h Dispatch
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="material-symbols-outlined text-green-400 text-[18px]">build_circle</span>
+                  <span className="material-symbols-outlined text-green-400 text-[20px]">build_circle</span>
                   Install + After-sales Support
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="material-symbols-outlined text-green-400 text-[18px]">thermostat</span>
+                  <span className="material-symbols-outlined text-green-400 text-[20px]">thermostat</span>
                   Dust/Heat Rated
                 </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Availability Card */}
-          <div className="hidden md:block absolute bottom-8 right-8 bg-black/40 backdrop-blur-md p-5 rounded-xl shadow-2xl border border-white/10 text-white max-w-[240px]">
-            <div className="flex items-start gap-4">
-              <span className="material-symbols-outlined text-primary mt-1 text-3xl">precision_manufacturing</span>
-              <div>
-                <p className="text-[10px] text-blue-300 font-semibold uppercase tracking-widest font-sans mb-1">Availability</p>
-                <p className="text-lg font-bold text-white font-mono leading-none mb-1 tracking-tight">IN STOCK</p>
-                <p className="text-lg font-bold text-white tracking-tight leading-tight">Sharjah, UAE</p>
-                <p className="text-xs text-blue-200/90 font-mono mt-2 leading-snug">24–48h Dispatch</p>
               </div>
             </div>
           </div>
@@ -425,10 +412,10 @@ const Home = () => {
                 <p className="text-blue-100 text-lg font-sans">Our team is ready to help you find the right equipment for your production targets.</p>
               </div>
               <div className="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
-                <a href="https://wa.me/971503426615" target="_blank" className="h-12 px-8 bg-primary hover:bg-primary-dark text-white font-bold rounded shadow-lg transition-colors whitespace-nowrap flex items-center justify-center text-base">
+                <a href="https://wa.me/971503426615?text=Hi, I would like to request a quote." target="_blank" className="h-12 px-8 bg-primary hover:bg-primary-dark text-white font-bold rounded shadow-lg transition-colors whitespace-nowrap flex items-center justify-center text-base">
                   Request Quote
                 </a>
-                <a href="https://wa.me/971503426615" target="_blank" className="h-12 px-8 bg-transparent border-2 border-white text-white hover:bg-white/10 font-bold rounded transition-colors whitespace-nowrap flex items-center justify-center text-base">
+                <a href="https://wa.me/971503426615?text=Hi, I would like to speak to sales." target="_blank" className="h-12 px-8 bg-transparent border-2 border-white text-white hover:bg-white/10 font-bold rounded transition-colors whitespace-nowrap flex items-center justify-center text-base">
                   Talk to Sales
                 </a>
               </div>

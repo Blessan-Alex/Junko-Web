@@ -1,148 +1,229 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useMemo } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { featuredProducts, categories, productsByCategory } from '../data/products';
+import { allProducts, categories } from '../data/products';
+import ProductCard from '../components/ProductCard';
 
 const Products = () => {
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [activeSubcategories, setActiveSubcategories] = useState<string[]>([]);
+  const [showFilters, setShowFilters] = useState(false);
+
+  // Derive categories for ease of use
+  const categoryNames = useMemo(() => categories.map(c => c.name), []);
+
+  const handleCategoryChange = (category: string) => {
+    if (selectedCategory === category) {
+      setSelectedCategory(null);
+      setActiveSubcategories([]);
+    } else {
+      setSelectedCategory(category);
+      setActiveSubcategories([]);
+    }
+  };
+
+  const toggleSubcategory = (sub: string) => {
+    setActiveSubcategories(prev =>
+      prev.includes(sub) ? prev.filter(s => s !== sub) : [...prev, sub]
+    );
+  };
+
+  const filteredProducts = useMemo(() => {
+    return allProducts.filter(product => {
+      // 1. Search Filter
+      const matchesSearch = product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        product.id.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        product.description?.toLowerCase().includes(searchQuery.toLowerCase());
+
+      if (!matchesSearch) return false;
+
+      // 2. Category Filter
+      if (selectedCategory && product.category !== selectedCategory) {
+        return false;
+      }
+
+      // 3. Subcategory Filter
+      if (activeSubcategories.length > 0 && (!product.subcategory || !activeSubcategories.includes(product.subcategory))) {
+        return false;
+      }
+
+      return true;
+    });
+  }, [selectedCategory, searchQuery, activeSubcategories]);
+
+  // Handle Sort? (Optional for now, default is order in file usually)
+
+  const currentCategoryData = categories.find(c => c.name === selectedCategory);
+
   return (
-    <div className="flex flex-1 max-w-[1440px] mx-auto w-full">
+    <div className="flex flex-1 max-w-[1440px] mx-auto w-full min-h-screen">
       <Helmet>
-        <title>Industrial Packaging Machinery Catalog | Junko FZE</title>
-        <meta name="description" content="Browse our range of bag closing machines, heat sealers, weighing scales, and sewing heads. Heavy-duty equipment for high-volume production." />
+        <title>Industrial Catalog | Junko FZE</title>
+        <meta name="description" content="Browse our complete catalog of industrial bag closing machines, sealers, and consumers. High-performance machinery for your production line." />
       </Helmet>
-      <aside className="w-72 hidden md:block flex-shrink-0 border-r border-gray-200 dark:border-gray-800 bg-white dark:bg-[#201830] p-6 overflow-y-auto h-[calc(100vh-65px)] sticky top-[65px]">
-        <div className="flex items-center justify-between mb-6">
-          <h3 className="font-serif font-bold text-lg text-secondary dark:text-white">Filters</h3>
-          <button className="text-xs text-primary font-medium hover:underline">Clear All</button>
-        </div>
-        <div className="mb-6">
-          <h4 className="text-sm font-sans font-semibold mb-3 dark:text-gray-200 uppercase tracking-wider text-gray-500">Category</h4>
-          <div className="space-y-2">
-            {categories.map((category) => (
-              <label key={category.name} className="flex items-center gap-3 cursor-pointer group">
-                <input className="rounded border-gray-300 text-primary focus:ring-primary bg-primary/5 dark:bg-[#2e2340] dark:border-gray-700" type="checkbox" />
-                <span className="text-sm text-gray-700 dark:text-gray-300 group-hover:text-primary transition-colors">{category.name}</span>
-              </label>
-            ))}
+
+      {/* Mobile Filter Toggle */}
+      <div className="fixed bottom-6 right-6 z-50 md:hidden">
+        <button
+          onClick={() => setShowFilters(!showFilters)}
+          className="bg-primary text-white p-4 rounded-full shadow-2xl flex items-center justify-center"
+        >
+          <span className="material-symbols-outlined">filter_list</span>
+        </button>
+      </div>
+
+      {/* Sidebar Filters */}
+      <aside className={`
+        fixed inset-y-0 left-0 z-40 w-96 bg-white dark:bg-[#151520] transform transition-transform duration-300 ease-in-out border-r border-gray-200 dark:border-white/10 overflow-y-auto
+        md:sticky md:top-24 md:translate-x-0 md:block md:h-[calc(100vh-8rem)]
+        ${showFilters ? 'translate-x-0' : '-translate-x-full'}
+      `}>
+        <div className="p-6 pb-20 md:pb-6">
+          <div className="flex items-center justify-between mb-6">
+            <h3 className="font-serif font-bold text-xl text-secondary dark:text-white">Filters</h3>
+            <button
+              onClick={() => {
+                setSelectedCategory(null);
+                setActiveSubcategories([]);
+                setSearchQuery('');
+              }}
+              className="text-xs text-primary font-bold hover:underline uppercase tracking-wider"
+            >
+              Clear All
+            </button>
           </div>
-        </div>
-        <hr className="border-gray-100 dark:border-gray-800 mb-6" />
-        <details className="group mb-4">
-          <summary className="flex cursor-pointer items-center justify-between py-2 text-sm font-sans font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-200">
-            Production Speed
-            <span className="material-symbols-outlined text-gray-400 transition group-open:rotate-180 text-[20px]">expand_more</span>
-          </summary>
-          <div className="pt-2 space-y-2 pl-1">
-            <label className="flex items-center gap-3 cursor-pointer group">
-              <input className="rounded border-gray-300 text-primary focus:ring-primary bg-primary/5 dark:bg-[#2e2340] dark:border-gray-700" type="checkbox" />
-              <span className="text-sm text-gray-700 dark:text-gray-300">&lt; 10 bags/min</span>
-            </label>
-            <label className="flex items-center gap-3 cursor-pointer group">
-              <input className="rounded border-gray-300 text-primary focus:ring-primary bg-primary/5 dark:bg-[#2e2340] dark:border-gray-700" type="checkbox" />
-              <span className="text-sm text-gray-700 dark:text-gray-300">10-30 bags/min</span>
-            </label>
-            <label className="flex items-center gap-3 cursor-pointer group">
-              <input className="rounded border-gray-300 text-primary focus:ring-primary bg-primary/5 dark:bg-[#2e2340] dark:border-gray-700" type="checkbox" />
-              <span className="text-sm text-gray-700 dark:text-gray-300">&gt; 30 bags/min</span>
-            </label>
+
+          {/* Search Input */}
+          <div className="relative mb-6">
+            <input
+              type="text"
+              placeholder="Search by name..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg py-3 pl-10 pr-4 text-sm focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all dark:text-white"
+            />
+            <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-lg">search</span>
           </div>
-        </details>
-      </aside>
-      <main className="flex-1 p-6 lg:p-10">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
-          <div>
-            <h1 className="text-3xl md:text-4xl font-serif font-black text-secondary dark:text-white tracking-tight mb-2">Industrial Machinery</h1>
-            <p className="text-gray-500 dark:text-gray-400">Reliable equipment for food, industrial, and bulk packaging applications.</p>
-          </div>
-          <div className="flex items-center gap-4">
-            <span className="text-sm text-gray-500 dark:text-gray-400 hidden sm:inline">Featured Selection</span>
-            <div className="relative">
-              <select className="appearance-none bg-white dark:bg-[#201830] border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-200 py-2 pl-4 pr-10 rounded text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary cursor-pointer font-sans">
-                <option>Sort by: Featured</option>
-                <option>Newest Arrivals</option>
-                <option>Price: Low to High</option>
-              </select>
-              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-500">
-                <span className="material-symbols-outlined text-[20px]">expand_more</span>
+
+          {/* Categories */}
+          <div className="space-y-6">
+            <div>
+              <h4 className="text-xs font-sans font-bold mb-3 dark:text-gray-400 uppercase tracking-widest opacity-70">Categories</h4>
+              <div className="space-y-1">
+                {categories.map((category) => (
+                  <div key={category.name}>
+                    <label className={`
+                                    flex items-center gap-3 cursor-pointer group p-2 rounded-lg transition-colors
+                                    ${selectedCategory === category.name ? 'bg-primary/10 dark:bg-primary/20' : 'hover:bg-gray-50 dark:hover:bg-white/5'}
+                                `}>
+                      <input
+                        type="checkbox"
+                        className="w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary bg-transparent"
+                        checked={selectedCategory === category.name}
+                        onChange={() => handleCategoryChange(category.name)}
+                      />
+                      <span className={`text-base font-bold transition-colors ${selectedCategory === category.name ? 'text-primary' : 'text-gray-700 dark:text-gray-200'}`}>
+                        {category.name}
+                      </span>
+                    </label>
+
+                    {/* Subcategories (Only shown when parent is selected) */}
+                    {selectedCategory === category.name && category.subcategories.length > 0 && (
+                      <div className="ml-7 mt-1 space-y-1 border-l-2 border-gray-100 dark:border-white/10 pl-3">
+                        {category.subcategories.map(sub => (
+                          <label key={sub} className="flex items-center gap-2 cursor-pointer group py-1">
+                            <input
+                              type="checkbox"
+                              className="w-3 h-3 rounded-sm border-gray-300 text-secondary focus:ring-secondary"
+                              checked={activeSubcategories.includes(sub)}
+                              onChange={() => toggleSubcategory(sub)}
+                            />
+                            <span className="text-sm text-gray-500 dark:text-gray-400 group-hover:text-primary transition-colors">
+                              {sub}
+                            </span>
+                          </label>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                ))}
               </div>
             </div>
           </div>
         </div>
+      </aside>
 
-        {/* Featured Products Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 mb-16">
-          {featuredProducts.map((product) => (
-            <Link key={product.id} to={`/product/${product.id}`} className="group flex flex-col bg-white dark:bg-[#201830] border border-gray-200 dark:border-gray-800 rounded overflow-hidden hover:shadow-lg transition-shadow duration-300">
-              <div className="h-64 bg-gray-100 dark:bg-[#2e2340] relative overflow-hidden flex items-center justify-center p-6">
-                <img className="object-cover w-full h-full mix-blend-multiply dark:mix-blend-normal" src={product.image} alt={product.name} />
-                <div className="absolute top-3 left-3 bg-primary text-white text-xs font-mono font-bold px-2 py-1 rounded">FEATURED</div>
-              </div>
-              <div className="p-5 flex flex-col flex-1">
-                <div className="mb-4">
-                  <p className="text-xs font-mono text-gray-400 mb-1">MODEL: {product.id.toUpperCase().substring(0, 8)}</p>
-                  <h3 className="text-xl font-serif font-bold text-secondary dark:text-white group-hover:text-primary transition-colors">{product.name}</h3>
-                  <p className="mt-2 text-sm text-gray-600 dark:text-gray-300 line-clamp-2">{product.description}</p>
-                </div>
-                <div className="bg-background-light dark:bg-[#2e2340]/50 rounded p-3 mb-6">
-                  <ul className="space-y-2 text-sm">
-                    {product.specs && Object.entries(product.specs).map(([key, value]) => (
-                      <li key={key} className="flex items-center justify-between">
-                        <span className="text-gray-500 dark:text-gray-400">{key}</span>
-                        <span className="font-mono font-medium dark:text-gray-200">{value}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="mt-auto flex gap-3">
-                  <a href="https://wa.me/971503426615" target="_blank" className="flex-1 bg-primary text-white text-sm font-bold py-2.5 px-4 rounded hover:bg-primary-hover transition-colors text-center">
-                    Request Quote
-                  </a>
-                  <div className="flex items-center justify-center border border-gray-300 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-[#2e2340] text-secondary dark:text-white rounded p-2.5 transition-colors">
-                    <span className="material-symbols-outlined text-[20px]">arrow_forward</span>
-                  </div>
-                </div>
-              </div>
-            </Link>
-          ))}
+      {/* Overlay for mobile sidebar */}
+      {showFilters && (
+        <div
+          className="fixed inset-0 bg-black/50 z-30 md:hidden backdrop-blur-sm"
+          onClick={() => setShowFilters(false)}
+        ></div>
+      )}
+
+      <main className="flex-1 p-6 lg:p-12 overflow-hidden w-full">
+        {/* Header */}
+        <div className="mb-8">
+          <h1 className="text-3xl md:text-5xl font-serif font-black text-secondary dark:text-white tracking-tight mb-4">
+            {selectedCategory || 'All Products'}
+          </h1>
+          <p className="text-gray-500 dark:text-gray-400 max-w-2xl text-lg">
+            {(selectedCategory && currentCategoryData?.subcategories.length === 0)
+              ? `Explore our range of ${selectedCategory}.`
+              : "Premium industrial machinery for high-volume manufacturing lines."
+            }
+          </p>
         </div>
 
-        {/* Full Catalog Section */}
-        <div className="border-t border-gray-200 dark:border-gray-800 pt-16">
-          <div className="mb-10 text-center">
-            <h2 className="text-3xl md:text-4xl font-serif font-bold text-secondary dark:text-white mb-4">Complete Product Catalog</h2>
-            <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">Explore our extensive range of industrial machinery, parts, and consumables.</p>
+        {/* Results Info */}
+        <div className="flex items-center justify-between mb-6 pb-6 border-b border-gray-100 dark:border-white/10">
+          <div className="text-sm font-medium text-gray-500">
+            Showing <span className="text-secondary dark:text-white font-bold">{filteredProducts.length}</span> results
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
-            {categories.map((category) => (
-              <div key={category.name} className="bg-white dark:bg-[#201830] rounded-xl border border-gray-200 dark:border-gray-800 p-6">
-                <h3 className="text-xl font-bold text-primary mb-4 font-serif pb-2 border-b border-gray-100 dark:border-gray-700">
-                  {category.name}
-                </h3>
-                <ul className="space-y-3">
-                  {productsByCategory[category.name]?.map((product) => (
-                    <li key={product.id} className="flex items-start gap-2 group">
-                      <span className="material-symbols-outlined text-gray-400 text-[18px] mt-0.5 group-hover:text-primary transition-colors">chevron_right</span>
-                      <a href={`/product/${product.id}`} className="text-sm text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors font-medium">
-                        {product.name}
-                        {product.subcategory && (
-                          <span className="block text-xs text-gray-400 font-normal mt-0.5">{product.subcategory}</span>
-                        )}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+          {/* Active Filters Display */}
+          {(selectedCategory || searchQuery) && (
+            <div className="flex gap-2 flex-wrap justify-end">
+              {searchQuery && (
+                <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-gray-100 dark:bg-white/10 text-xs font-bold text-secondary dark:text-white">
+                  "{searchQuery}"
+                  <button onClick={() => setSearchQuery('')} className="hover:text-red-500"><span className="material-symbols-outlined text-[14px]">close</span></button>
+                </span>
+              )}
+              {activeSubcategories.map(sub => (
+                <span key={sub} className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-primary/10 text-xs font-bold text-primary">
+                  {sub}
+                  <button onClick={() => toggleSubcategory(sub)} className="hover:text-primary-dark"><span className="material-symbols-outlined text-[14px]">close</span></button>
+                </span>
+              ))}
+            </div>
+          )}
+        </div>
+
+        {/* Product Grid */}
+        {filteredProducts.length > 0 ? (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 pb-20">
+            {filteredProducts.map(product => (
+              <ProductCard key={product.id} product={product} />
             ))}
           </div>
-        </div>
-
-        <div className="flex justify-center mt-16 mb-6">
-          <a href="https://wa.me/971503426615" target="_blank" className="inline-flex items-center gap-2 px-6 py-3 bg-secondary text-white rounded-lg font-bold hover:bg-secondary/90 transition-colors">
-            <span className="material-symbols-outlined">support_agent</span>
-            Contact for Custom Orders
-          </a>
-        </div>
+        ) : (
+          <div className="flex flex-col items-center justify-center py-20 text-center">
+            <span className="material-symbols-outlined text-6xl text-gray-200 dark:text-gray-700 mb-4">inventory_2</span>
+            <h3 className="text-xl font-bold text-secondary dark:text-white mb-2">No products found</h3>
+            <p className="text-gray-500 max-w-md">We couldn't find any products matching your current filters. Try adjusting your search or category selection.</p>
+            <button
+              onClick={() => {
+                setSelectedCategory(null);
+                setSearchQuery('');
+                setActiveSubcategories([]);
+              }}
+              className="mt-6 text-primary font-bold hover:underline"
+            >
+              Clear all filters
+            </button>
+          </div>
+        )}
       </main>
     </div>
   );

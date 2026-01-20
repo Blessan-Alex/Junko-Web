@@ -11,7 +11,7 @@ const Services = () => {
       </Helmet>
       <div className="w-full flex justify-center bg-background-light dark:bg-background-dark">
         <div className="max-w-[1200px] w-full px-4 md:px-10 py-10 flex flex-col gap-10">
-          <div className="rounded-2xl overflow-hidden relative min-h-[480px] flex flex-col justify-end p-8 md:p-16 shadow-xl" style={{ backgroundImage: 'linear-gradient(rgba(37, 26, 91, 0.4) 0%, rgba(37, 26, 91, 0.9) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuAJIvyaibl_DTh04HESW5VEOtRwqZO_ycgYyTc5-fspMJfkU-rt7S0jbMcJit2A8uZd0gj0i22jNMyyGATBLuzrIs1Bc-RsH3VfSziBrkBKmXTvf8w_klf4tt2Jn9fiwz9SI4g31GJ4liEMwp1HsuYV-_ZgEd0g9lcOE0d_Od7ODBQtFpS2Evm9m5vSyoCphvuiahD8sa7nCsz7xCinEcV6oCG7zYJcc9KXPOZHlj-sIw-txrdpryUsFvd5OqNa9pPOnR5kFgKgjUA")', backgroundSize: 'cover', backgroundPosition: 'center' }}>
+          <div className="rounded-2xl overflow-hidden relative min-h-[480px] flex flex-col justify-end p-8 md:p-16 shadow-xl animate-fade-in-up" style={{ backgroundImage: 'linear-gradient(rgba(37, 26, 91, 0.4) 0%, rgba(37, 26, 91, 0.9) 100%), url("https://images.pexels.com/photos/29181492/pexels-photo-29181492.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1")', backgroundSize: 'cover', backgroundPosition: 'center' }}>
             <div className="flex flex-col gap-6 max-w-[700px] text-left">
               <h1 className="text-white text-4xl md:text-5xl lg:text-6xl font-bold font-serif leading-tight">
                 Sales Support & After-Sales Service for Packaging Operations
@@ -21,7 +21,7 @@ const Services = () => {
               </h2>
             </div>
             <div className="mt-10">
-              <a href="https://wa.me/971503426615" target="_blank" className="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded h-14 px-8 bg-primary text-white text-lg font-bold leading-normal tracking-[0.015em] hover:bg-primary-hover transition-all transform hover:scale-105 shadow-lg w-fit">
+              <a href="https://wa.me/971503426615?text=Hi, I would like to speak to sales." target="_blank" className="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded h-14 px-8 bg-primary text-white text-lg font-bold leading-normal tracking-[0.015em] hover:bg-primary-hover transition-all transform hover:scale-105 shadow-lg w-fit">
                 <span className="truncate">Talk to Sales</span>
               </a>
             </div>
@@ -42,7 +42,7 @@ const Services = () => {
                 <p className="text-text-sub dark:text-gray-300 text-sm leading-relaxed flex-grow">
                   Need help choosing the right strapping or wrapping machine? Our sales team will guide you to the best model for your specific products and daily volume.
                 </p>
-                <a href="https://wa.me/971503426615" target="_blank" className="text-primary font-bold text-sm mt-4 flex items-center gap-1 hover:gap-2 transition-all">
+                <a href="https://wa.me/971503426615?text=Hi, I would like to speak to sales." target="_blank" className="text-primary font-bold text-sm mt-4 flex items-center gap-1 hover:gap-2 transition-all">
                   Contact Sales <span className="material-symbols-outlined text-sm font-bold">arrow_forward</span>
                 </a>
               </div>
@@ -56,7 +56,7 @@ const Services = () => {
                 <p className="text-text-sub dark:text-gray-300 text-sm leading-relaxed flex-grow">
                   Once you purchase a machine, we can help set it up and show your staff how to operate it safely and efficiently, ensuring you get started without delays.
                 </p>
-                <a href="https://wa.me/971503426615" target="_blank" className="text-primary font-bold text-sm mt-4 flex items-center gap-1 hover:gap-2 transition-all">
+                <a href="https://wa.me/971503426615?text=Hi, I need help with machine installation." target="_blank" className="text-primary font-bold text-sm mt-4 flex items-center gap-1 hover:gap-2 transition-all">
                   Book Installation <span className="material-symbols-outlined text-sm font-bold">arrow_forward</span>
                 </a>
               </div>
@@ -70,7 +70,7 @@ const Services = () => {
                 <p className="text-text-sub dark:text-gray-300 text-sm leading-relaxed flex-grow">
                   From strapping rolls to replacement motors and blades, we stock a wide range of parts and consumables to keep your machines running without long interruptions.
                 </p>
-                <a href="https://wa.me/971503426615" target="_blank" className="text-primary font-bold text-sm mt-4 flex items-center gap-1 hover:gap-2 transition-all">
+                <a href="https://wa.me/971503426615?text=Hi, checking availability for spare parts." target="_blank" className="text-primary font-bold text-sm mt-4 flex items-center gap-1 hover:gap-2 transition-all">
                   Check Availability <span className="material-symbols-outlined text-sm font-bold">arrow_forward</span>
                 </a>
               </div>
@@ -84,30 +84,9 @@ const Services = () => {
                 <p className="text-text-sub dark:text-gray-300 text-sm leading-relaxed flex-grow">
                   If a machine breaks down or needs a tune-up, our technicians are available to troubleshoot and repair your equipment, minimizing downtime for your business.
                 </p>
-                <a href="https://wa.me/971503426615" target="_blank" className="text-primary font-bold text-sm mt-4 flex items-center gap-1 hover:gap-2 transition-all">
+                <a href="https://wa.me/971503426615?text=Hi, I need to request service/repair." target="_blank" className="text-primary font-bold text-sm mt-4 flex items-center gap-1 hover:gap-2 transition-all">
                   Request Service <span className="material-symbols-outlined text-sm font-bold">arrow_forward</span>
                 </a>
-              </div>
-            </div>
-          </div>
-
-          <div className="bg-white dark:bg-card-dark rounded-xl border border-border-color dark:border-gray-800 p-8 md:p-12 flex flex-col lg:flex-row items-center justify-between gap-10 shadow-sm mt-8">
-            <div className="flex flex-col gap-4 max-w-lg">
-              <div className="flex items-center gap-2 text-primary font-bold uppercase tracking-wider text-sm">
-                <span className="material-symbols-outlined text-xl">search</span>
-                Quick Search
-              </div>
-              <h2 className="text-secondary dark:text-white text-3xl font-bold font-serif leading-tight">Need a spare part or consumable?</h2>
-              <p className="text-text-sub dark:text-gray-300 text-lg">
-                Check availability instantly. Enter your part number below to see stock status.
-              </p>
-            </div>
-            <div className="w-full lg:w-auto flex-1 max-w-[500px]">
-              <div className="flex flex-col sm:flex-row gap-3 w-full">
-                <input className="flex-1 bg-slate-100 dark:bg-gray-800 text-slate-900 dark:text-white placeholder:text-slate-500 dark:placeholder:text-gray-500 rounded-lg h-14 px-6 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all border-none font-mono text-base" placeholder="Part Number (e.g., PKS-9920)" type="text" />
-                <button className="flex items-center justify-center rounded-lg h-14 px-8 bg-primary text-white text-base font-bold leading-normal tracking-[0.015em] hover:bg-primary-hover transition-colors whitespace-nowrap shadow-md">
-                  Check
-                </button>
               </div>
             </div>
           </div>
@@ -122,10 +101,10 @@ const Services = () => {
                 Our support team is standing by to help you minimize downtime and get back to full production capacity.
               </p>
               <div className="flex flex-col sm:flex-row gap-6 mt-4">
-                <a href="https://wa.me/971503426615" target="_blank" className="flex min-w-[180px] cursor-pointer items-center justify-center rounded-lg h-14 px-8 bg-primary text-white text-lg font-bold hover:bg-primary-hover transition-all hover:scale-105 shadow-xl">
+                <a href="https://wa.me/971503426615?text=Hi, I need to request service." target="_blank" className="flex min-w-[180px] cursor-pointer items-center justify-center rounded-lg h-14 px-8 bg-primary text-white text-lg font-bold hover:bg-primary-hover transition-all hover:scale-105 shadow-xl">
                   Request Service
                 </a>
-                <a href="https://wa.me/971503426615" target="_blank" className="flex min-w-[180px] cursor-pointer items-center justify-center rounded-lg h-14 px-8 bg-transparent border-2 border-white/30 text-white text-lg font-bold hover:bg-white/10 transition-colors">
+                <a href="https://wa.me/971503426615?text=Hi, I would like to speak to sales." target="_blank" className="flex min-w-[180px] cursor-pointer items-center justify-center rounded-lg h-14 px-8 bg-transparent border-2 border-white/30 text-white text-lg font-bold hover:bg-white/10 transition-colors">
                   Contact Sales
                 </a>
               </div>

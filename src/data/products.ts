@@ -4,9 +4,10 @@ export interface Product {
     category: string;
     subcategory?: string;
     description?: string;
-    image?: string;
-    featured?: boolean;
+    image: string; // Now required
     specs?: Record<string, string>;
+    features?: string[];
+    featured?: boolean;
 }
 
 export interface Category {
@@ -14,270 +15,862 @@ export interface Category {
     subcategories: string[];
 }
 
-export const featuredProducts: Product[] = [
+export const allProducts: Product[] = [
+    // --- BAG CLOSING MACHINES ---
+    // Machine Heads & Systems
     {
-        id: 'fischbein-model-100',
-        name: 'Fischbein Model 100',
+        id: '80800rl',
+        name: 'Union Special 80800RL',
         category: 'Bag Closing Machines',
-        subcategory: 'Machine Heads',
-        description: 'Heavy-duty industrial bag closing machine head for high-volume production lines. Known for reliability and durability in harsh environments.',
-        image: '/products/fischbein-model-100.png',
-        featured: true,
-        specs: {
-            'Speed': '1900 rpm',
-            'Stitch Type': 'Double Thread Chain Stitch',
-            'Lubrication': 'Automatic Oil Bath'
-        }
+        subcategory: 'Machine Heads & Systems',
+        description: 'Automatic 2-thread double-locked stitch bag closing machine. Built for superior performance in automated lines with a start-stop foot switch operation.',
+        image: '/products/Bag Closing Machines/Machine_heads/80800RL.jpg',
+        featured: true
     },
     {
-        id: 'frb-770i',
-        name: 'FRB-770I Band Sealer',
-        category: 'Sealing Machines',
-        subcategory: 'Band Sealers',
-        description: 'Continuous band sealer suitable for sealing all types of plastic materials and bags. Features adjustable speed and temperature control.',
-        image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCp0o6xTtI-hxSOUuB5Xg5Ak2j49x6RGKBVK8ErxxxPDlT7mUyQNIpIgqcwgQ_R4hZV05r0x324hoBOOU5kx60LyNA7KfCV9gYaw1suin7V9jedV8Vzr8sA_-fL3xRD9znLvHK6VgqE0_tuKSnNPMtV3VVsTvrWGT-4ZeMNzubul87VqNeiecl5hAhoiyAdNTc-Ze0kzwIYNyeR-yH1MSCFHJ7CrmpubSxBaPRzxuludeyhAVth51XIyZsDbyB15Y44qZopDdh0_cs',
-        featured: true,
-        specs: {
-            'Sealing Speed': '0-16 m/min',
-            'Sealing Width': '10mm',
-            'Temp Range': '0-300°C'
-        }
+        id: 'bcm-1',
+        name: 'Semi-Automatic Bag Closer 80800 C',
+        category: 'Bag Closing Machines',
+        subcategory: 'Machine Heads & Systems',
+        description: 'Robust semi-automatic machine engineered for durability. Features a long curved stitch plate for smooth feeding and a continuously driven nibbler knife.',
+        image: '/products/Bag Closing Machines/Machine_heads/BCM_1.png'
     },
     {
-        id: 'ac-robot-palletizer',
-        name: 'RoboPalletizer System',
-        category: 'Filling and Packing Machines',
-        subcategory: 'Automation',
-        description: 'Advanced robotic palletizing solution for automated end-of-line packaging. Increases throughput and reduces manual labor.',
-        image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDV-xasBYt1b1UV23xGPOCGLNMLRcwiH6WLWVyVZDlm71Qr-Wllj1XAeEWj-RuDxtvtqQTgaXd0E4XDjyClh54A4XL1uFcwIgzVstC_NDctNUDyCfq-K_peGraTu8wAFak6WBxEH5FtOnoMy6pdN9npNHHTIuvWcUj9UgEtVohUZ8tHnxc8B0cNzP2xBBnZd_H6LwY4JxnILM-5wc1SkTjFqIWN6Cn-BgQ42W0anYDx0zX8X_e54BnFltMjjoAJihSJTn9k4r8srGg',
-        featured: true,
-        specs: {
-            'Payload': 'Up to 100kg',
-            'Reach': '2200mm',
-            'Cycles': 'Up to 15/min'
-        }
+        id: 'bcm-2',
+        name: 'High Speed Bag Closer (GK-35 2C)',
+        category: 'Bag Closing Machines',
+        subcategory: 'Machine Heads & Systems',
+        description: 'High-speed single needle bag closer operating at 1900 RPM. Features an adjustable stitch range of 6.5-11mm and manual nibbler knife system.',
+        image: '/products/Bag Closing Machines/Machine_heads/BCM_2.png'
     },
     {
-        id: 'np-7a-portable',
-        name: 'NP-7A Portable Closer',
+        id: 'bcm-3',
+        name: 'High Speed Chain Stitcher',
+        category: 'Bag Closing Machines',
+        subcategory: 'Machine Heads & Systems',
+        description: 'Reliable double thread chain stitch machine with 1600 RPM max speed. Optimized for paper and PP bags with automatic crepe tape cutting.',
+        image: '/products/Bag Closing Machines/Machine_heads/BCM_3.png'
+    },
+    {
+        id: 'bcm-4',
+        name: 'Automatic Crepe Tape Cutter Head',
+        category: 'Bag Closing Machines',
+        subcategory: 'Machine Heads & Systems',
+        description: 'High-performance head (2700 RPM) with built-in automatic crepe tape cutter. Ideal for bag making lines requiring precise 4P paper bag closing.',
+        image: '/products/Bag Closing Machines/Machine_heads/BCM_4.png'
+    },
+    {
+        id: 'bcm-7',
+        name: 'Heavy Duty Bag Closer (Fischbein Model 100)',
+        category: 'Bag Closing Machines',
+        subcategory: 'Machine Heads & Systems',
+        description: 'Heavy-duty industrial head. Features a pressurized self-lubricating system and variable stitch width (2-4 SPI). Perfect for demanding environments.',
+        image: '/products/Bag Closing Machines/Machine_heads/BCM_7.png',
+        featured: true
+    },
+    {
+        id: 'ds-9a',
+        name: 'DS-9A High Speed Head',
+        category: 'Bag Closing Machines',
+        subcategory: 'Machine Heads & Systems',
+        description: 'Fastest in class (2700 RPM) single needle double thread machine with mechanically operated cutter and oil bath lubrication.',
+        image: '/products/Bag Closing Machines/Machine_heads/DS-9A.png',
+        specs: {
+            'Max Speed': '2,700 rpm',
+            'Seam': 'Double Thread Chain Stitch',
+            'Stitch width': '7-11.5mm',
+            'Bag Material': 'Paper. PP',
+            'Thickness': 'Paper bag 4P with a Tuck',
+            'Needle': 'DR-H30 \#26',
+        },
+    },
+    {
+        id: 'gk35-6c',
+        name: 'Double Needle Bag Closer',
+        category: 'Bag Closing Machines',
+        subcategory: 'Machine Heads & Systems',
+        description: 'Double-needle, four-thread machine for leak-proof sealing. Sews two parallel stitch lines simultaneously for maximum security.',
+        image: '/products/Bag Closing Machines/Machine_heads/GK35-6C.png'
+    },
+    {
+        id: 'a1-p-ds-2ii',
+        name: 'Automatic Pedestal System A1-P',
+        category: 'Bag Closing Machines',
+        subcategory: 'Machine Heads & Systems',
+        description: 'Complete semi-automatic pedestal system with DS-2II head and foot switch. Adjustable height for versatile production lines.',
+        image: '/products/Bag Closing Machines/bag_closing_machine_systems/A1-P-DS-2II.png'
+    },
+    {
+        id: 'bcm-6',
+        name: 'Automatic Bag Closing System',
+        category: 'Bag Closing Machines',
+        subcategory: 'Machine Heads & Systems',
+        description: 'Fully automatic height-adjustable bag closing system (A1 PB – DS 9C). Vector drive technology for seamless conveyor integration.',
+        image: '/products/Bag Closing Machines/bag_closing_machine_systems/BCM_6.png'
+    },
+    {
+        id: 'fbk-24d',
+        name: 'FBK Automatic Packaging System',
+        category: 'Bag Closing Machines',
+        subcategory: 'Machine Heads & Systems',
+        description: 'Integrated one-line sealing and stitching system. Automatically trims, stitches, and seals kraft or laminated bags for a premium finish.',
+        image: '/products/Sealing Machines/Sealing and Stitching Packaging Machine/FBK-24D.png',
+        featured: true
+    },
+    {
+        id: 'fbk-332c',
+        name: 'Heavy Duty Sealing System',
+        category: 'Bag Closing Machines',
+        subcategory: 'Machine Heads & Systems',
+        description: 'Advanced automatic packaging machine for single or multi-layer kraft paper bags. Ensuring dust-proof and sift-proof closures.',
+        image: '/products/Sealing Machines/Sealing and Stitching Packaging Machine/FBK-332C.png',
+        features: [
+            'Sealing and Stitching Automatic Packaging Machine',
+        ],
+    },
+    {
+        id: 'fn600a',
+        name: 'Pedestal for Portable Closer',
+        category: 'Bag Closing Machines',
+        subcategory: 'Machine Heads & Systems',
+        description: 'Adjustable pedestal mount for NP-7A portable closers. Features track wheels and foot switch for hands-free factory operation.',
+        image: '/products/Bag Closing Machines/bag_closing_machine_systems/FN600A.png',
+        specs: {
+            'Sewing Speed': '0-1900 rpm',
+            'Working Speed': '0-1700 rpm',
+            'Sewing Thickness': '0-8mm',
+            'Stitch Adjustment Range': '6.5-11mm',
+            'Sewing Stitch Type': 'double chain type (401)',
+            'Needle Model': '80800 (200-250\#)',
+            'MTHREADS': '2 Thread',
+            'START/STOP': 'Foot Switch',
+            'WEIGHT': '29kg',
+            'MATERIALS': 'Burlap Bag, Jute, Paper, PE-Material, PP Laminated Woven Fabric, PP Woven Fabric',
+            'CLOSURE TYPE': 'Closure with Filler-Cord, Fold Over Closure, Plain Closure',
+            'BAGS PER HOUR': '1000',
+            'BAG FEED-IN': 'Manual Feed',
+            'STITCH RANGE': '6.5 – 11mm',
+            'FOOT LIFT': '11mm',
+            'THREAD CHAIN & TAPE CUTTER': 'Continuously Driven Nibbler Knife',
+        },
+        features: [
+            'Sliding plate with grooved wheels for easy motion.',
+            'GK35-6A',
+        ],
+    },
+    {
+        id: 'gk-l26',
+        name: 'Sliding Board Pedestal',
+        category: 'Bag Closing Machines',
+        subcategory: 'Machine Heads & Systems',
+        description: 'Heavy-duty angle iron traverse system for NP-7A. Allows the sewing head to glide across the bag mouth for consistent closure.',
+        image: '/products/Bag Closing Machines/bag_closing_machine_systems/GK-L26.jpg'
+    },
+    {
+        id: 'mw-6-5',
+        name: 'Suspended Spring Balancer Unit',
+        category: 'Bag Closing Machines',
+        subcategory: 'Machine Heads & Systems',
+        description: 'Complete suspension unit for NP-7A, reducing operator fatigue to zero. Includes balancer and hanger assembly.',
+        image: '/products/Bag Closing Machines/bag_closing_machine_systems/MW-6.5.jpg'
+    },
+    {
+        id: 'sm-1',
+        name: 'Heavy Duty Heat Sealing System',
+        category: 'Bag Closing Machines',
+        subcategory: 'Machine Heads & Systems',
+        description: 'Industrial heavy-duty heat sealer with integrated dust cleaning. Variable temperature control (0-400°C) for thick industrial bags.',
+        image: '/products/Sealing Machines/Sealing and Stitching Packaging Machine/SM-1.png',
+        specs: {
+            'Voltage(V/Hz)': 'AC 380/50',
+            'Gross Power(KW': '5',
+            'Transmission Power(KW)': '0.75',
+            'Motor Power of Sewing Machine(KW)': '0.37',
+            'Heating Power(KW)': '0.5×6',
+            'Deduster Power(KW)': '0.75',
+            'Sealing Speed(m/min)': '8\. 5(limit 11\)',
+            'Temperature Range(℃)': '0-400',
+            'Net Weight(kg)': '500',
+        },
+    },
+
+    // Bag Making Machines
+    {
+        id: 'as-102-hs',
+        name: 'High Speed Making Machine (Armstrong)',
+        category: 'Bag Closing Machines',
+        subcategory: 'Bag Making Machines',
+        description: '2-Needle 4-Thread chain stitch machine for bag manufacturing. High speed (3500 RPM) operation for high volume production.',
+        image: '/products/Bag Closing Machines/bag_making_machines/AS-102-HS-1-e1709140399614.png'
+    },
+    {
+        id: 'as-502-hd',
+        name: 'Heavy Duty 2-Needle Machine',
+        category: 'Bag Closing Machines',
+        subcategory: 'Bag Making Machines',
+        description: 'Robust 2-needle machine for thick multi-wall paper or PP material manufacturing.',
+        image: '/products/Bag Closing Machines/bag_making_machines/AS-502-HD.png'
+    },
+    {
+        id: 'dkn-3gp',
+        name: 'Newlong Industrial Bag Maker',
+        category: 'Bag Closing Machines',
+        subcategory: 'Bag Making Machines',
+        description: 'Premium Japanese 1-needle 2-thread bag making machine. Ultra-high speed (5000 RPM) for maximum factory throughput.',
+        image: '/products/Bag Closing Machines/bag_making_machines/DKN-3WGP-DKN-3BPGP.jpeg'
+    },
+    {
+        id: 'dn-2hs',
+        name: 'High Speed Newlong Maker',
+        category: 'Bag Closing Machines',
+        subcategory: 'Bag Making Machines',
+        description: 'Classic high-speed bag making head from Newlong Japan. Known for reliability and consistent stitch quality at 2800 RPM.',
+        image: '/products/Bag Closing Machines/bag_making_machines/DN-2HS.jpg'
+    },
+    {
+        id: 'u561',
+        name: 'YaoHan Bag Maker',
+        category: 'Bag Closing Machines',
+        subcategory: 'Bag Making Machines',
+        description: 'Cost-effective high-speed (5000 RPM) chain stitch machine for woven sack manufacturing.',
+        image: '/products/Bag Closing Machines/bag_making_machines/U561.png'
+    },
+
+    // Ancillary Equipment
+    {
+        id: 'belt-conveyor',
+        name: 'Industrial Belt Conveyor',
+        category: 'Bag Closing Machines',
+        subcategory: 'Ancillary Equipment',
+        description: 'Heavy-duty slat or belt conveyor for bagging lines. Available in 2.5m to 5m lengths with adjustable speed and guide rails.',
+        image: '/products/Bag Closing Machines/conveyors/Belt-Conveyor-e1709141117967.jpg',
+        features: [
+            'Belt Conveyor – 2500 mm / 3000 mm / 4000 mm / 5000 mm',
+        ],
+    },
+    {
+        id: 'cm4900-3',
+        name: 'Crepe Tape Infeed',
+        category: 'Bag Closing Machines',
+        subcategory: 'Ancillary Equipment',
+        description: 'Precision crepe tape binding attachment with Mitsubishi motor for smooth tape application.',
+        image: '/products/Bag Closing Machines/feeding_device/CM4900-3-e1709141785103.png',
+        features: [
+            'Bag Infeed for Crepe Tape (Mitsubishi Motor)',
+            '# Bag closing thread',
+        ],
+    },
+    {
+        id: 'cp4900',
+        name: 'Bag Folding Device',
+        category: 'Bag Closing Machines',
+        subcategory: 'Ancillary Equipment',
+        description: 'Automatic bag top folding device. Prepares the bag mouth for sewing by creating a clean, strong fold.',
+        image: '/products/Bag Closing Machines/feeding_device/CP4900-e1709141518888.png',
+        features: [
+            'Bag Folding Device',
+            'Mitsubishi Motor',
+        ],
+    },
+
+    // --- PORTABLE BAG CLOSERS ---
+    {
+        id: 'n600a-12v',
+        name: 'Battery Operated Handheld Closer',
+        category: 'Portable Bag Closers',
+        subcategory: 'Battery Operated',
+        description: 'Cordless freedom for field work. 12V battery-operated single thread chain stitch machine.',
+        image: '/products/Portable bag closers/Battery Operated Single Needle Single Thread Chain Stitch Machines/N600A-12V-BTN.jpg'
+    },
+    {
+        id: 'kp-3000b',
+        name: 'Cordless Bag Closer',
+        category: 'Portable Bag Closers',
+        subcategory: 'Battery Operated',
+        description: 'Lightweight battery-powered bag closer. Ideal for closing bags in warehouses or fields without power access.',
+        image: '/products/Portable bag closers/Battery Operated Single Needle Single Thread Chain Stitch Machines/PBC_KP-3000B.png'
+    },
+    {
+        id: 'de-da6',
+        name: 'Double Needle Portable',
+        category: 'Portable Bag Closers',
+        subcategory: 'Double Thread',
+        description: 'Double-thread, double-needle portable machine for extra strong closures preventing sifting.',
+        image: '/products/Portable bag closers/Double Thread Double Needle Chain Stitch Machines/DE-DA6.jpg'
+    },
+    {
+        id: 'de-da',
+        name: 'Heavy Duty Double Stitch',
+        category: 'Portable Bag Closers',
+        subcategory: 'Double Thread',
+        description: 'Industrial grade double-needle portable. Rugged construction for continuous use on thick bags.',
+        image: '/products/Portable bag closers/Double Thread Double Needle Chain Stitch Machines/PBC_LPI_DE-DA.png'
+    },
+    {
+        id: 'n620a',
+        name: 'N-Series Double Needle',
+        category: 'Portable Bag Closers',
+        subcategory: 'Double Thread',
+        description: 'Double needle version of the popular N600 series. Provides a secure dual-stitch closure.',
+        image: '/products/Portable bag closers/Double Thread Double Needle Chain Stitch Machines/PBC_N620A.png'
+    },
+    {
+        id: 'd-2',
+        name: 'D-2 Single Needle Portable',
         category: 'Portable Bag Closers',
         subcategory: 'Single Needle',
-        description: 'The industry standard portable bag closing machine. Lightweight, robust, and easy to operate for closing paper, jute, and poly bags.',
-        image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuC4F2CLdOhEBrl-wgeQPcWqbsYEOByuwyYOHd-D5KX9zdvL0JjhQsnayW7tag0qJ69_20mA677aJMCFc9EiXdU0aMdC5cXDVm3I1IMsxVy98993qf1_amNOHKlRndFNEPd83AQjeEw715B5FLweatUpRoVq1LGUSkmuzUcie3tLKRIa4MQHIzwuFV4q30DdDkPJiFn-LxTIB-B9oNuHF-U-JmO0OZWNLAh53xUrJPwXrUhS4wHRmOKV40m5tgZtAb0_uPkxWkSkixE',
-        featured: true,
-        specs: {
-            'Speed': '1700 rpm',
-            'Weight': '5.5 kg',
-            'Stitch Length': '8.5 mm (fixed)'
-        }
+        description: 'Reliable single needle, double thread portable machine. Offers a stronger seam than localized single thread machines.',
+        image: '/products/Portable bag closers/Double Thread Single Needle Chain Stitch Machines/D-2.jpg'
     },
     {
-        id: 'cjd-25iiz',
-        name: 'CJD-25IIZ Weighing System',
-        category: 'Filling and Packing Machines',
-        subcategory: 'Weighing & Filling',
-        description: 'Automatic weighing and filling machine designed for granular products. Ensures high precision and consistent bagging weights.',
-        image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBa3MjFOxSZbzD5wOGZ70v2zjfq-kaz0TzdIamcuULnCDigjnooe9PEiYc19dOuvksOkHWCQUDnQnv2BI6ocorh51jaKYONTSjwRoFXXq3VuSBS0Y_Fh3kLYol5yz3uvg9HJ92CxpkZILxOyEEQyeX3RpmmZajVaE67FJKMBMc8YJUZeVGEB1KjocmVQVJ3dKZ1Rm1rxbmwY4w72PQBTZbmiJa8WjqS31OhvdMPOrgBiPZunq81-7loR4MrkcbdomJdrSgBmNKlAbk',
-        featured: true,
+        id: 'dad-r',
+        name: 'Heavy Duty Handheld',
+        category: 'Portable Bag Closers',
+        subcategory: 'Single Needle',
+        description: 'Reinforced portable bag closer designed for harsh environments and thicker geotechnical textiles.',
+        image: '/products/Portable bag closers/Double Thread Single Needle Chain Stitch Machines/DAD-R.png',
         specs: {
-            'Capacity': '10-50kg',
-            'Accuracy': '±0.2%',
-            'Output': '300-600 bags/hr'
-        }
+            'Power': '50',
+            'Bag Closing Speed': '1800 stitch per minute',
+            'Type of Stitch': 'Federal stitch type 101 parallel chain-stitch',
+            'Stitch Length': '3.5 stitches/ inch (25.4 mm) Fixed',
+            'Model naem': 'frm-1010iii',
+            'Max Speed': '1550 rpm',
+            'Cutter': 'Half Automatic Thread Cutter',
+            'Brand': 'Newlong Industrial',
+            'Model name': 'Manual Counter Weighing Scale',
+            'Power Requirement': '-** Ac/Dc',
+            'Motor': '1/10 Hp 8000 Rpm 220v , 1.5 Amps',
+            'Sewing Speed': '1600 – 1800 rpm',
+            'Needle': 'DBx1 200/25 (Groz Backert, Germany).',
+            'Image naem': 'SM-9',
+            'Voltage': 'AC 220/50 110/60',
+            'Sealing Power (W)': '2000',
+            'Sealing Speed(m/min)': '8\. 5(limit 11\)',
+            'Sealing Width(mm)': '** 10',
+            'Iamge naem': 'High-Speed-Band-sealer-FRB-770I',
+            'Voltage (V/Hz)': 'AC 380/50',
+            'Motor Power (W)': '** 100',
+            'Speed(m/min)': '0-12',
+            'Seal Width(mm)': '10',
+            'Imae name': 'FBK-332C',
+            'Gross Power(KW': '** 5',
+            'Transmission Power(KW)': '0.75',
+            'Motor Power of Sewing Machine(KW)': '0.37',
+            'Heating Power(KW)': '0.5×6',
+            'Deduster Power(KW)': '0.75',
+            'Temperature Range(℃)': '0-400',
+            'Net Weight(kg)': '** 500',
+            'Power source': '** 220 V, 50Hz, 3KW',
+            'Heating time (second)': '** 0-10 seconds (Adjustable)',
+            'Cooling time (second)': '** 0-10 seconds (Adjustable)',
+            'Shifting thermoelectricity device': '** Eight adjustable channel',
+            'Pressure area (mm)': '** 500mm; 750mm',
+            'Capacity': '10 kg',
+            'Qty of mold': '** 1 set for 2 pcs ( produce specially)',
+            'Height of packing objects': '** 2mm-150mm (changeable)',
+            'Packing material': '** PVC attracting models and revertex card',
+            'Machine size': '** 1240mm;1450mm; 1450mm',
+            'Weight': '** 170kg',
+            'The name is given in website as [Blister Pack Heat Sealer XBF-750](https': '//junko-fze.com/product/blister-pack-heat-sealer-xbf-750/)',
+            'Power (W)': '** 1000',
+            'Gas Pressure (Mpa)': '** 0.4\~0.6',
+            'Max. Carton Size (W×H) (mm)': '** ∞X500X500',
+            'Min. Carton Size (W×H) (mm)': '** 130X80X90',
+            'Taping Speed (m/min)': '** 20( Fixed mode:25-45 cartons / min ; Automatic mode:10-25 cartons / min )',
+            'Adhesive Tape Used': '** BOPP Water-free Adhesive Tape PVC Adhesive Tape',
+            'Height of Table (mm)': '** 750',
+            'Width of Adhesive Tape (mm)': '** 36,48',
+            'Net Weight (kg)': '55',
+            'Max. Conveyor Load(kg)': '** 30',
+            'Speed (m/min)': '** 0-12 (0-16)',
+            'Temperature Range (℃)': '** 0-300',
+            'Printing Type': '** Solid-Ink Roller',
+            'Distance from Sealing Center to Conveyor Table (mm)': '** 10-40',
+            'Distance from Base plate to Interior Conveyor (mm)': '** 65-85',
+            'Conveyor Table Size (L × W) (mm)': '** 954×180',
+            'Overall Conveyor Loading(kg)': '** ≤10',
+            'Printing Heating Power (W)': '40×2',
+            'Sealing Width (mm)': '** 10',
+            'Conveyor Table Size (L × W)': '** 1065×205',
+            'Overall Conveyor Loading (kg)': '≤10',
+            'Max. Strapping Size (L×H) (mm)': '** 800\*600',
+            'Strapping Speed (sec/cycle)': '** ≤2.5',
+            'Strapping Force (V/hz) (N)': '** 25-700 (Adjustable)',
+            'Width of Strap Used (mm)': '** Plastic strap 9-15, thickness 0.5-1.1',
+            'Net  Weight (kg)': '** 240',
+            'Max Loading Weight(kg)': '** 30',
+            'Air Source (MPa)': '0.5 – 0.6',
+            'Chamber Dimension (L×W×H)': '284×(200-400）',
+            'Max. Stretch depth (mm)': '≤80',
+            'Vacuum Pump capacity (m3/h)': '100 or 160 or 200',
+            'Capacity (Times/min)': '4 – 6 times/min',
+            'Cooling Type': 'Water – cooling',
+            'Net Weight (Kg)': 'Approx.1500',
+            '[**Animal Scale**](https': '//junko-fze.com/product/animal-scale/)**(image name:asss.jpg)**',
+            '[**Pallet Scale**](https': '//junko-fze.com/product/pallet-scale/)**(image name:pallet-scale-1734x2048)**',
+            '[**Platform Type Weighing Scale**](https': '//junko-fze.com/product/platform-type-weighing-scale/)**(image name:Platform\_Type)**',
+            '[**Heavy Platform**](https': '//junko-fze.com/product/heavy-platform/)**(image name:heavy\_platform)**',
+            'Description': 'Manual Counter Weighing Scale',
+            '[**Price Computing**](https': '//junko-fze.com/product/price-computing/)**(image name:Price\_Computing)**',
+            '[**Mini Bench Model**](https': '//junko-fze.com/product/mini-bench-model/)**(image name:Bench\_Model\_Mini)**',
+            '[**Bench Platform Weighing Scale**](https': '//junko-fze.com/product/bench-platform-weighing-scale/)**(image name:Bench\_Model)**',
+            '[**Table Top Weighing Scale**](https': '//junko-fze.com/product/table-top-weighing-scale/)**(image name:Table\_Top)**',
+            'Descripotn': 'Manual Platform Weighing Scale',
+            '[**Field Scale**](https': '//junko-fze.com/product/field-scale/)**(image name:Field\_Scale)**',
+            '[**Jewellery Scale**](https': '//junko-fze.com/product/jewellery-scale/)**(image name:Jewelley\_Scale)**',
+            'Model  name': '[**Manual Platform Weighing Scale**](https://junko-fze.com/product/manual-platform-weighing-scale/)',
+        },
+        features: [
+            '## Bag Closing Machine,',
+            'NP-311 is a Double Thread Chain Stitch Machine',
+            '##### **Made in Japan**',
+            '### **Heavy Duty 2 Thread Machine**',
+            'Combined upper and lower feed grips both sides of material',
+            'Built in thread chain cutter',
+            'Adjustable stitch length',
+            '#### Double Thread Double Needle Chain Stitch Machines',
+            '### **High Speed Bag Closing Machine**',
+            'Two Needle Two Thread Machine',
+            'With Mechanical Clutter',
+            '### **Portable Bag Closer, LPI DE-DA**',
+            'Double Needle Double Thread Chain Stitch Machine',
+            'Made in India',
+            '# Sealing macines',
+            '### Hand Impulse Sealer',
+            '### Hand Impulse Sealer with Cutter',
+            '### Plastic Bag Heat Sealer',
+            '### Pedal Impulse Sealer',
+            '### Table Style Pedal Impulse Sealer',
+            '### High Speed Band Sealer',
+            '### **Continuous Band Sealer FRB-770I**',
+            '### Horizontal Sealing Machine',
+            '## FRM-1120LD Band Sealer',
+            'Image name; FRM-1120LD',
+            '### Continuous Band Sealer Head',
+            '### Thickness Bag Band Sealer',
+            '● Well suited for heavy content bag sealing.',
+            '### Pneumatic Heavy Bag Sealer',
+            '### Heavy Duty Bag Sealing Machine',
+            '### Sealing and Stitching Packaging Machine',
+            '### Sealing and Stitching Automatic Packaging Machine',
+            'Next',
+            '## Blister Pack Heat Sealer XBF-750',
+            '## Carton Sealing Machine FXJ-5050QS',
+            '#### Below are Solid Ink Coding Band Sealer',
+            'Next',
+            '## Strapping Machine KZ-8060/D',
+            '# weighing scales',
+            '## Jewellery Scale',
+        ],
+    },
+    {
+        id: '2200a',
+        name: 'Standard Portable Closer',
+        category: 'Portable Bag Closers',
+        subcategory: 'Single Needle',
+        description: 'Economical and reliable portable bag closer for general purpose applications.',
+        image: '/products/Portable bag closers/Double Thread Single Needle Chain Stitch Machines/PBC_2200A.png'
+    },
+    {
+        id: 'np-311',
+        name: 'NP-311 Portable',
+        category: 'Portable Bag Closers',
+        subcategory: 'Single Needle',
+        description: 'Double thread portable machine known for its high speed and ease of maintenance.',
+        image: '/products/Portable bag closers/Double Thread Single Needle Chain Stitch Machines/PBC_NP-311.png'
+    },
+    {
+        id: 'np-7a',
+        name: 'Newlong NP-7A',
+        category: 'Portable Bag Closers',
+        subcategory: 'Single Needle',
+        description: 'The industry standard. High-speed, single-thread chain stitch portable machine with oil pump lubrication.',
+        image: '/products/Portable bag closers/Single Needle Single Thread Chain Stitch Machines/NP-7A.jpg',
+        specs: {
+            'Brand': 'LPI, Made in India',
+            'Maximum Speed': '1700 – 1900 rpm',
+            'Type of stitch': 'Single Thread Chain Stitch',
+            'Model name': 'DA-C**',
+            'Speed': '1500 – 1800 rpm',
+            'Type of Stitch': 'Single Thread Chain Stitch',
+            'Sewing Speed': '1600 – 1800 stitches per minute',
+            'Dimension': '44cm × 29cm × 36cm',
+        },
+        featured: true,
+        features: [
+            'Made in Japan',
+            '### Portable Bag Closer,',
+            'Single Needle Chain Stitch Machine',
+            '### **Portable Bag Closing Machine, GNP-7A**',
+            'Single Needle Chain Stitch Machine',
+            'Automatic Lubrication to reduce wear & tear',
+            'High speed motor with semiautomatic thread cutter',
+            '### **Portable Bag Closer,**',
+            'With Mechanical Cutter outside',
+            '### Portable Bag Closing Machine',
+        ],
+    },
+    {
+        id: 'np-7a-tape',
+        name: 'Tape Attachment Portable',
+        category: 'Portable Bag Closers',
+        subcategory: 'Single Needle',
+        description: 'NP-7A modified with a crepe tape binding attachment for sealing bags with a paper tape closure.',
+        image: '/products/Portable bag closers/Single Needle Single Thread Chain Stitch Machines/Crepe-tape-attachment-NP-7A.jpg'
+    },
+    {
+        id: 'pbc-fischbein',
+        name: 'Fischbein Model F Type',
+        category: 'Portable Bag Closers',
+        subcategory: 'Single Needle',
+        description: 'Classic design portable closer. Known for extreme durability and ability to sew through thick multi-wall paper.',
+        image: '/products/Portable bag closers/Single Needle Single Thread Chain Stitch Machines/PBC_Fischbein_Model.png',
+        featured: true
+    },
+    {
+        id: 'np-7h',
+        name: 'Horizontal Portable Closer',
+        category: 'Portable Bag Closers',
+        subcategory: 'Single Needle',
+        description: 'Horizontal handle configuration of the NP-7A, designed for closing horizontal bags on a conveyor or table.',
+        image: '/products/Portable bag closers/Single Needle Single Thread Chain Stitch Machines/NP-7H.jpg',
+        specs: {
+            'Image naem': 'NP-7H',
+        },
+    },
+    {
+        id: 'gk-9-2',
+        name: 'Economy Portable',
+        category: 'Portable Bag Closers',
+        subcategory: 'Single Needle',
+        description: 'Lightweight and affordable flywheel-type portable bag closer for low-volume applications.',
+        image: '/products/Portable bag closers/Single Needle Single Thread Chain Stitch Machines/PBC_GK-9-2.png'
+    },
+    {
+        id: 'kp-2701',
+        name: 'KP-2701 Portable',
+        category: 'Portable Bag Closers',
+        subcategory: 'Single Needle',
+        description: 'Robust single thread portable machine, excellent for PP woven and jute bags.',
+        image: '/products/Portable bag closers/Single Needle Single Thread Chain Stitch Machines/PBC_KP2701.png'
+    },
+
+    // --- CARPET OVEREDGING & SEWING ---
+    {
+        id: 'rpe-2500',
+        name: 'External Density Adjuster',
+        category: 'Carpet Overedging',
+        subcategory: 'Overedgers',
+        description: 'Carpet machine with external stitch density lever. Allows instant adjustment of stitch density without tools.',
+        image: '/products/Carpet_overedging_machines/COEM_1-1.jpg'
+    },
+    {
+        id: 'titan-2500ahc-3',
+        name: '3-Thread Carpet Overedger',
+        category: 'Carpet Overedging',
+        subcategory: 'Overedgers',
+        description: '3-Thread heavy duty machine for overedging car mats, airplane carpets, and boat mats.',
+        image: '/products/Carpet_overedging_machines/COEM_6.jpg'
     },
     {
         id: 'titan-2500ahc',
-        name: 'TITAN 2500AHC',
-        category: 'Carpet Overedging Machines',
-        subcategory: 'Heavy Duty',
-        description: 'Specialized carpet overedging machine for heavy duty applications. Handles thick carpets and rugs with ease.',
-        image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDWwcFGxf8Nz5TbMYhT8OtteDTn_Y7g3hP_92WnFNytw3Vg9qDjc7_FvAXR8Hx8OZWiTAWbA16Jbvg343iiyz4Vtj390Ep1oAns7qfBG4_NHsGp0O_E0f4FwDnIc9apAdwilpOQlo5l0FxnpRLJBGy6YoPaysSTsXyL8PsF7RAlqeGmaZW8KvtLnQydzGogFACnZitzKh-kJEfOeOJYmo8szSMiwFkrFg5nolgOjkh2oRdKO-XxpPmOp_w-HQev7JpwN_IaBtjP4sk',
-        featured: true,
-        specs: {
-            'Speed': '3000 rpm',
-            'Stitch Width': '10-12mm',
-            'Material Thickness': 'Up to 15mm'
-        }
+        name: '2-Thread Carpet Overedger',
+        category: 'Carpet Overedging',
+        subcategory: 'Overedgers',
+        description: 'Standard 2-thread overedging machine (Titan type). Perfect for finishing edges of rugs and mats.',
+        image: '/products/Carpet_overedging_machines/COEM_7.jpg'
+    },
+    {
+        id: 'titan-2530ahc',
+        name: 'Carpet Tape Binder',
+        category: 'Carpet Overedging',
+        subcategory: 'Binders & Fringers',
+        description: 'Specialized machine for applying binding tape around the edge of car mats and bath mats.',
+        image: '/products/Carpet_overedging_machines/Movable Carpet Overedging Machine/COEM_8.jpg'
+    },
+    {
+        id: 'titan-4510che',
+        name: 'Heavy Duty Buttseamer',
+        category: 'Carpet Overedging',
+        subcategory: 'Buttseamers',
+        description: 'Buttseaming machine for joining two pieces of carpet or heavy textile. Features heavy cutting knives to trim excess.',
+        image: '/products/Carpet_overedging_machines/Carpet Heavy Duty Buttseamer/TITAN-4510CHE-1536x678.png'
+    },
+    {
+        id: '2502wd-2',
+        name: 'Movable Carpet Overedger',
+        category: 'Carpet Overedging',
+        subcategory: 'Overedgers',
+        description: 'Portable/Movable carpet overedging machine on wheels. Ideal for working on large carpets that cannot be moved.',
+        image: '/products/Carpet_overedging_machines/Movable Carpet Overedging Machine/2502WD-2.webp'
+    },
+    {
+        id: 'titan-2200nc',
+        name: 'Fringing Machine',
+        category: 'Carpet Overedging',
+        subcategory: 'Binders & Fringers',
+        description: 'Special machine for sewing cut or uncut fringes onto carpets, blankets, or shawls.',
+        image: '/products/Carpet_overedging_machines/TITAN 2200NC, Special Fringing Machine to sew cut or uncut fringes/TITAN-2200-1536x681.png'
+    },
+
+    // --- FILLING & PACKING ---
+    {
+        id: 'flg-500a',
+        name: 'Auger Powder Filler',
+        category: 'Filling & Packing',
+        subcategory: 'Fillers',
+        description: 'Semi-automatic auger filler for non-free flowing powders like flour, spices, and chemicals.',
+        image: '/products/Filling and packing machines/Automatic weighing filling machine/FLG-500A.png'
+    },
+    {
+        id: 'cjs-25ih',
+        name: 'Automatic Electronic Scale',
+        category: 'Filling & Packing',
+        subcategory: 'Fillers',
+        description: 'High-precision gravity feed weighing machine for granules. Features digital display and pneumatic gate control.',
+        image: '/products/Filling and packing machines/Automatic weighing filling machine/PM-1.png'
+    },
+    {
+        id: 'cjd-25iiz',
+        name: 'Vibratory Feed Scale',
+        category: 'Filling & Packing',
+        subcategory: 'Fillers',
+        description: 'Electronic weighing and filling machine with vibration feeder. Ideal for difficult-to-flow materials.',
+        image: '/products/Filling and packing machines/Automatic weighing filling machine/PM-2.png'
+    },
+    {
+        id: 'pm-4',
+        name: 'Small Dosing Machine',
+        category: 'Filling & Packing',
+        subcategory: 'Fillers',
+        description: 'Compact filling machine for small pouches (50-250ml). Ideal for seeds, tea, and small granular products.',
+        image: '/products/Filling and packing machines/Automatic weighing filling machine/PM-4.png'
+    },
+    {
+        id: 'bs-4535la',
+        name: 'Shrink Tunnel',
+        category: 'Filling & Packing',
+        subcategory: 'Shrink & Seal',
+        description: 'High-efficiency heat shrink tunnel. Circulates heated air to shrink film tightly around products.',
+        image: '/products/Filling and packing machines/Shrink Packaging Machine/BS-4535LA.png'
+    },
+    {
+        id: 'bsf-5540a',
+        name: '2-in-1 Sealer & Shrink',
+        category: 'Filling & Packing',
+        subcategory: 'Shrink & Seal',
+        description: 'Chamber machine that cuts, seals, and shrinks in one operation. Transparent hood allows monitoring of the process.',
+        image: '/products/Filling and packing machines/Shrink Packaging Machine/BSF-5540A.png'
+    },
+    {
+        id: 'bsl-5045l',
+        name: 'L-Bar Sealer',
+        category: 'Filling & Packing',
+        subcategory: 'Shrink & Seal',
+        description: 'L-bar sealer for cutting and sealing shrink film around products before entering the tunnel.',
+        image: '/products/Filling and packing machines/Shrink Packaging Machine/BSL-5045L.png'
+    },
+    {
+        id: 'kz-8060d',
+        name: 'Automatic Strapping Machine',
+        category: 'Filling & Packing',
+        subcategory: 'Strapping',
+        description: 'High-speed fully automatic arch strapping machine. Features PLC control and auto-feed.',
+        image: '/products/Filling and packing machines/Strapping machine/KZ-8060D.png'
+    },
+    {
+        id: 'kzb-1',
+        name: 'Semi-Auto Strapping Machine',
+        category: 'Filling & Packing',
+        subcategory: 'Strapping',
+        description: 'The industry standard open-cabinet strapping machine. Reliable, fast, and easy to maintain.',
+        image: '/products/Filling and packing machines/Strapping machine/KZB-1.png'
+    },
+    {
+        id: 'kzb-a',
+        name: 'Manual Strapping Table',
+        category: 'Filling & Packing',
+        subcategory: 'Strapping',
+        description: 'Low-profile strapping machine designed for heavy or large boxes that are hard to lift.',
+        image: '/products/Filling and packing machines/Strapping machine/KZB-A.png'
+    },
+    {
+        id: 'fxj-4040a',
+        name: 'Carton Sealer (Small)',
+        category: 'Filling & Packing',
+        subcategory: 'Carton Sealers',
+        description: 'Top and bottom drive carton sealer for uniform small-to-medium boxes. Applies tape automatically.',
+        image: '/products/Filling and packing machines/carton sealer/FXJ-4040A.png'
+    },
+    {
+        id: 'fxj-5050a',
+        name: 'Heavy Duty Carton Sealer',
+        category: 'Filling & Packing',
+        subcategory: 'Carton Sealers',
+        description: 'Robust side-drive carton sealer. Handles heavier boxes with stability and precision taping.',
+        image: '/products/Filling and packing machines/carton sealer/FXJ-5050A.png'
+    },
+    {
+        id: 'fxj-8070b',
+        name: 'Auto-Flap Carton Sealer',
+        category: 'Filling & Packing',
+        subcategory: 'Carton Sealers',
+        description: 'Automatic carton sealer with top flap folding device. Closes flaps and tapes top and bottom automatically.',
+        image: '/products/Filling and packing machines/carton sealer/FXJ-8070B.png'
+    },
+
+    // --- STRAPPING TOOLS ---
+    {
+        id: 'pst-series',
+        name: 'Pneumatic Strapping Tool',
+        category: 'Strapping Tools',
+        subcategory: 'Pneumatic',
+        description: 'Powerful air-operated tool for friction welding PET/PP straps. High tension force for heavy loads.',
+        image: '/products/Packaging tools/Strapping tools/20210929173700_40350.jpg'
+    },
+    {
+        id: 'bst-auto',
+        name: 'Battery Strapping Tool',
+        category: 'Strapping Tools',
+        subcategory: 'Battery',
+        description: 'One-button automatic battery tool. Tensions, welds, and cuts strap with a single press.',
+        image: '/products/Packaging tools/Strapping tools/20240416100026_41086.jpg'
+    },
+    {
+        id: 'cst-standard',
+        name: 'Cord Strap Tensioner',
+        category: 'Strapping Tools',
+        subcategory: 'Manual',
+        description: 'Manual tensioner for woven cord strapping. Heavy-duty steel construction.',
+        image: '/products/Packaging tools/Strapping tools/20211011144058_21896.jpg'
+    },
+    {
+        id: 'pss-jwc',
+        name: 'Poly Strap Sealer',
+        category: 'Strapping Tools',
+        subcategory: 'Manual',
+        description: 'Long-handle sealer for crimping metal seals onto poly strapping.',
+        image: '/products/Packaging tools/Strapping tools/20211014160509_88035-2.jpg'
+    },
+
+    // --- CONSUMABLES & PARTS ---
+    {
+        id: 'thread-poly-20s6',
+        name: 'Industrial Bag Closing Thread',
+        category: 'Consumables & Parts',
+        subcategory: 'Threads & Tapes',
+        description: 'High tensile 100% polyester thread (20s/6). Silicone treated for heat resistance during high-speed sewing.',
+        image: '/products/Bag_closing_threads/Thread_7.jpg'
+    },
+    {
+        id: 'crepe-tape',
+        name: 'Crepe Paper Tape',
+        category: 'Consumables & Parts',
+        subcategory: 'Threads & Tapes',
+        description: 'Premium crepe paper tape for binding bag mouths. Available in 50mm and 70mm widths.',
+        image: '/products/consumables/Crepe paper tape/Crepe_paper_tape.png'
+    },
+    {
+        id: 'junko-oil',
+        name: 'Sewing Machine Oil',
+        category: 'Consumables & Parts',
+        subcategory: 'Maintenance',
+        description: 'Specially formulated clear oil for high-speed bag closing machines. Prevents rust and reduces wear.',
+        image: '/products/consumables/Oil for sewing machine/SWOil-e1708935103355.png'
+    },
+    {
+        id: 'sb-series',
+        name: 'Spring Balancer',
+        category: 'Consumables & Parts',
+        subcategory: 'Tools',
+        description: 'Retractable tool balancer to suspend portable bag closers. Makes the machine weightless for the operator.',
+        image: '/products/consumables/Spring balancers/spring_balancers_all.png'
+    },
+    {
+        id: 'needles-fischbein',
+        name: 'Fischbein Needles',
+        category: 'Consumables & Parts',
+        subcategory: 'Needles',
+        description: 'Genuine needles for Fischbein heads. Precision engineered for smooth penetration of multi-wall bags.',
+        image: '/products/consumables/Needles/Fischbein_needles.png'
+    },
+    {
+        id: 'needles-gb',
+        name: 'Groz-Beckert Needles',
+        category: 'Consumables & Parts',
+        subcategory: 'Needles',
+        description: 'Premium German needles. Titanium coated options available for extreme durability.',
+        image: '/products/consumables/Needles/Groz_beckert_needles-e1708936853463.png'
+    },
+
+    // --- WEIGHING SCALES ---
+    {
+        id: 'scale-bench',
+        name: 'Bench Platform Scale',
+        category: 'Weighing Scales',
+        subcategory: 'Industrial',
+        description: 'Stainless steel pole display bench scale. Heavy duty platform for industrial weighing.',
+        image: '/products/weighing scales/Electronic Weighing Scales/Bench_Model.png'
+    },
+    {
+        id: 'scale-pallet',
+        name: 'Pallet Scale',
+        category: 'Weighing Scales',
+        subcategory: 'Industrial',
+        description: 'U-beam pallet scale for weighing pallet jacks directly. heavy capacity up to 3 tons.',
+        image: '/products/weighing scales/Electronic Weighing Scales/pallet-scale-1734x2048.jpg'
+    },
+    {
+        id: 'scale-price',
+        name: 'Digital Computing Scale',
+        category: 'Weighing Scales',
+        subcategory: 'Retail',
+        description: 'Retail price computing scale with dual display. Rechargeable battery for mobile use.',
+        image: '/products/weighing scales/Electronic Weighing Scales/Price_Computing.png'
+    },
+    {
+        id: 'scale-waterproof',
+        name: 'Waterproof Table Top',
+        category: 'Weighing Scales',
+        subcategory: 'Retail',
+        description: 'Fully waterproof stainless steel scale (IP68). Ideal for seafood and wet processing environments.',
+        image: '/products/weighing scales/Electronic Weighing Scales/table_top_water_proof.png'
     }
 ];
 
-export const allProducts: Product[] = [
-    ...featuredProducts,
-    // --- BAG CLOSING MACHINES ---
-    { id: 'fbk-332c', name: 'FBK-332C', category: 'Bag Closing Machines', subcategory: 'Bag Closing Machine Systems' },
-    { id: 'fbk-24d', name: 'FBK-24D', category: 'Bag Closing Machines', subcategory: 'Bag Closing Machine Systems' },
-    { id: 'ds-9c', name: 'DS-9C', category: 'Bag Closing Machines', subcategory: 'Bag Closing Machine Systems' },
-    { id: 'gk-35-2c', name: 'GK-35 2C', category: 'Bag Closing Machines', subcategory: 'Bag Closing Machine Systems' },
-    { id: 'ds-9a', name: 'DS-9A', category: 'Bag Closing Machines', subcategory: 'Bag Closing Machine Systems' },
-    { id: '80800-rl', name: '80800 RL', category: 'Bag Closing Machines', subcategory: 'Bag Closing Machine Systems' },
-    { id: 'a1-pb-ds-9c', name: 'Bag Closing Machine A1 PB – DS 9C', category: 'Bag Closing Machines', subcategory: 'Bag Closing Machine Systems' },
-    { id: 'a1-pb', name: 'Bag Closing Machine A1-PB', category: 'Bag Closing Machines', subcategory: 'Bag Closing Machine Systems' },
-    { id: 'gk-l26', name: 'GK-L26', category: 'Bag Closing Machines', subcategory: 'Bag Closing Machine Systems' },
-    { id: 'a1-p-ds-2ii', name: 'A1-P (DS-2II)', category: 'Bag Closing Machines', subcategory: 'Bag Closing Machine Systems' },
-    { id: 'mw-6-5', name: 'MW-6.5', category: 'Bag Closing Machines', subcategory: 'Bag Closing Machine Systems' },
-    { id: 'fn600a', name: 'FN600A', category: 'Bag Closing Machines', subcategory: 'Bag Closing Machine Systems' },
-    { id: 'gk35-6c', name: 'GK35-6C', category: 'Bag Closing Machines', subcategory: 'Bag Closing Machine Systems' },
-    { id: 'gk35-6a', name: 'GK35-6A', category: 'Bag Closing Machines', subcategory: 'Bag Closing Machine Systems' },
-    { id: '80800-c', name: '80800 C', category: 'Bag Closing Machines', subcategory: 'Bag Closing Machine Systems' },
-    { id: 'newlong-ds-7c', name: 'Newlong Industrial DS-7C', category: 'Bag Closing Machines', subcategory: 'Bag Closing Machine Systems' },
-    { id: 'ind-stitching-paper', name: 'Industrial Stitching Bag Packaging Machine (Paper)', category: 'Bag Closing Machines', subcategory: 'Bag Closing Machine Systems' },
-
-    // Machine Heads (Some duplicates here as per list, but we list them as products)
-    { id: 'head-ds-9c', name: 'DS-9C Head', category: 'Bag Closing Machines', subcategory: 'Machine Heads' },
-    { id: 'head-fischbein-100', name: 'Fischbein Model 100 Head', category: 'Bag Closing Machines', subcategory: 'Machine Heads' },
-
-    // Bag Making
-    { id: 'u561', name: 'U561', category: 'Bag Closing Machines', subcategory: 'Bag Making Machines' },
-    { id: 'dn-2hs', name: 'DN-2HS', category: 'Bag Closing Machines', subcategory: 'Bag Making Machines' },
-    { id: 'dkn-3gp', name: 'DKN-3GP', category: 'Bag Closing Machines', subcategory: 'Bag Making Machines' },
-    { id: 'high-speed-pappu', name: 'High Speed Bag Making Machine (Pappu)', category: 'Bag Closing Machines', subcategory: 'Bag Making Machines' },
-    { id: 'as-502-hd', name: 'AS 502 HD', category: 'Bag Closing Machines', subcategory: 'Bag Making Machines' },
-    { id: 'as-102-hs', name: 'AS 102 HS', category: 'Bag Closing Machines', subcategory: 'Bag Making Machines' },
-
-    // Conveyors
-    { id: 'belt-conveyor', name: 'Belt Conveyor', category: 'Bag Closing Machines', subcategory: 'Conveyors' },
-
-    // Feeding Devices
-    { id: 'cp4900', name: 'CP4900', category: 'Bag Closing Machines', subcategory: 'Feeding Devices' },
-    { id: 'cm4900-3', name: 'CM4900-3', category: 'Bag Closing Machines', subcategory: 'Feeding Devices' },
-
-    // --- BAG CLOSING THREAD ---
-    { id: 'poly-thread-silicone', name: '100% Polyester 3–7% Silicone Treated Thread', category: 'Bag Closing Thread' },
-    { id: 'poly-thread', name: '100% Polyester Bag Closing Thread', category: 'Bag Closing Thread' },
-    { id: 'sewing-thread', name: 'Sewing Thread', category: 'Bag Closing Thread' },
-    { id: 'pp-multi-yarn', name: 'Polypropylene Multifilament Yarn', category: 'Bag Closing Thread' },
-    { id: 'mono-yarn', name: 'Monofilament Yarn', category: 'Bag Closing Thread' },
-    { id: 'crepe-tape', name: 'Crepe Paper Tape', category: 'Bag Closing Thread' },
-
-    // --- CARPET OVEREDGING ---
-    { id: 'rpe-2500', name: 'RPE 2500 (External Stitch Density Adjuster)', category: 'Carpet Overedging Machines' },
-    { id: 'titan-2500ahc-3', name: 'TITAN 2500AHC/3', category: 'Carpet Overedging Machines' },
-    { id: 'binding-tape-machine', name: 'Carpet Binding Tape Machine', category: 'Carpet Overedging Machines' },
-    { id: 'titan-2530ahc', name: 'TITAN 2530AHC', category: 'Carpet Overedging Machines' },
-    { id: 'butt-seamer', name: 'Carpet Heavy Duty Butt Seamer', category: 'Carpet Overedging Machines' },
-    { id: 'titan-4510che', name: 'TITAN 4510CHE', category: 'Carpet Overedging Machines' },
-    { id: 'titan-2200', name: 'TITAN 2200 (Fringing Machine)', category: 'Carpet Overedging Machines' },
-    { id: 'movable-overedger', name: 'Movable Carpet Overedging Machine', category: 'Carpet Overedging Machines' },
-
-    // --- CONSUMABLES ---
-    { id: 'fischbein-needles', name: 'Fischbein Needles', category: 'Consumables', subcategory: 'Needles' },
-    { id: 'groz-beckert-needles', name: 'Groz-Beckert Needles', category: 'Consumables', subcategory: 'Needles' },
-    { id: 'organ-needles', name: 'Organ Needles', category: 'Consumables', subcategory: 'Needles' },
-    { id: 'schmetz-needles', name: 'Schmetz Needles', category: 'Consumables', subcategory: 'Needles' },
-    { id: 'oil', name: 'Sewing Machine Oil', category: 'Consumables', subcategory: 'Others' },
-    { id: 'spare-parts', name: 'Spare Parts (on enquiry)', category: 'Consumables', subcategory: 'Services / Parts' },
-    { id: 'spare-parts', name: 'Spare Parts (on enquiry)', category: 'Consumables', subcategory: 'Services / Parts' },
-
-    // --- FILLING AND PACKING ---
-    { id: 'cjs-25ih', name: 'CJS-25IH', category: 'Filling and Packing Machines', subcategory: 'Weighing & Filling' },
-    { id: 'flg-500a', name: 'FLG-500A', category: 'Filling and Packing Machines', subcategory: 'Weighing & Filling' },
-    { id: 'kfg-250', name: 'KFG-250 (Filling Machine)', category: 'Filling and Packing Machines', subcategory: 'Weighing & Filling' },
-
-    { id: 'bsl-5045l', name: 'BSL-5045L', category: 'Filling and Packing Machines', subcategory: 'Shrink Packaging' },
-    { id: 'bsf-5540a', name: 'BSF-5540A', category: 'Filling and Packing Machines', subcategory: 'Shrink Packaging' },
-    { id: 'bs-4535la', name: 'BS-4535LA', category: 'Filling and Packing Machines', subcategory: 'Shrink Packaging' },
-
-    { id: 'fxj-4040a', name: 'FXJ-4040A', category: 'Filling and Packing Machines', subcategory: 'Carton Sealers' },
-    { id: 'fxj-5050a', name: 'FXJ-5050A', category: 'Filling and Packing Machines', subcategory: 'Carton Sealers' },
-    { id: 'fxj-8070b', name: 'FXJ-8070B', category: 'Filling and Packing Machines', subcategory: 'Carton Sealers' },
-
-    { id: 'kzb-1', name: 'KZB-1', category: 'Filling and Packing Machines', subcategory: 'Strapping Machines' },
-    { id: 'kzb-a', name: 'KZB-A', category: 'Filling and Packing Machines', subcategory: 'Strapping Machines' },
-    { id: 'kz-8060-d', name: 'KZ-8060/D', category: 'Filling and Packing Machines', subcategory: 'Strapping Machines' },
-
-    // --- PACKAGING MATERIALS ---
-    { id: 'bopp-tape', name: 'BOPP Tape', category: 'Packaging Materials' },
-    { id: 'polycord', name: 'Polycord', category: 'Packaging Materials' },
-    { id: 'polylash', name: 'Polylash', category: 'Packaging Materials' },
-    { id: 'polystrap', name: 'Polystrap', category: 'Packaging Materials' },
-    { id: 'polytex', name: 'Polytex', category: 'Packaging Materials' },
-
-    // --- PACKAGING TOOLS ---
-    { id: 'prem-strap-tens', name: 'Premium Strapping Tensioner', category: 'Packaging Tools', subcategory: 'Strapping Tools' },
-    { id: 'cord-strap-tens', name: 'Cord Strapping Tensioner', category: 'Packaging Tools', subcategory: 'Strapping Tools' },
-    { id: 'poly-strap-tens', name: 'Polyester Strapping Tensioner', category: 'Packaging Tools', subcategory: 'Strapping Tools' },
-    { id: 'hd-poly-strap-tens', name: 'Heavy Duty Poly Strap Tensioner', category: 'Packaging Tools', subcategory: 'Strapping Tools' },
-    { id: 'hd-cord-strap-tens', name: 'Heavy Duty Cord Strapping Tensioner', category: 'Packaging Tools', subcategory: 'Strapping Tools' },
-
-    { id: 'jwc-sealer', name: 'JWC Poly Strapping Sealer', category: 'Packaging Tools', subcategory: 'Sealers & Powered Tools' },
-    { id: 'strap-sealer', name: 'Strapping Sealer', category: 'Packaging Tools', subcategory: 'Sealers & Powered Tools' },
-    { id: 'pneu-cord-tens', name: 'Pneumatic Cord Strapping Tensioner', category: 'Packaging Tools', subcategory: 'Sealers & Powered Tools' },
-    { id: 'pneu-strap-tool', name: 'Pneumatic Strapping Tool', category: 'Packaging Tools', subcategory: 'Sealers & Powered Tools' },
-    { id: 'batt-strap-tool', name: 'Battery Operated Strapping Tool', category: 'Packaging Tools', subcategory: 'Sealers & Powered Tools' },
-
-    // --- PORTABLE BAG CLOSERS ---
-    { id: 'np-7a', name: 'NP-7A', category: 'Portable Bag Closers', subcategory: 'Single Needle, Single Thread' },
-    { id: 'gk-26-1a', name: 'GK 26-1A', category: 'Portable Bag Closers', subcategory: 'Single Needle, Single Thread' },
-    { id: 'gnp-7a', name: 'GNP-7A', category: 'Portable Bag Closers', subcategory: 'Single Needle, Single Thread' },
-    { id: 'da-c', name: 'DA-C', category: 'Portable Bag Closers', subcategory: 'Single Needle, Single Thread' },
-    { id: 'da-model', name: 'DA', category: 'Portable Bag Closers', subcategory: 'Single Needle, Single Thread' },
-    { id: 'fischbein-f', name: 'Fischbein Model F', category: 'Portable Bag Closers', subcategory: 'Single Needle, Single Thread' },
-    { id: 'l-1', name: 'L-1', category: 'Portable Bag Closers', subcategory: 'Single Needle, Single Thread' },
-    { id: 'kp2701', name: 'KP2701', category: 'Portable Bag Closers', subcategory: 'Single Needle, Single Thread' },
-    { id: 'da-6', name: 'DA-6', category: 'Portable Bag Closers', subcategory: 'Single Needle, Single Thread' },
-    { id: 'da-tex', name: 'DA-TEX', category: 'Portable Bag Closers', subcategory: 'Single Needle, Single Thread' },
-    { id: 'gk-9-2', name: 'GK 9-2', category: 'Portable Bag Closers', subcategory: 'Single Needle, Single Thread' },
-    { id: 'np-7h', name: 'NP-7H', category: 'Portable Bag Closers', subcategory: 'Single Needle, Single Thread' },
-    { id: 'np-7a-crepe', name: 'NP-7A with Crepe Tape Attachment', category: 'Portable Bag Closers', subcategory: 'Single Needle, Single Thread' },
-
-    { id: 'n600a', name: 'N600A-12V-BTN', category: 'Portable Bag Closers', subcategory: 'Battery Operated' },
-    { id: 'kp-2701b', name: 'KP-2701B', category: 'Portable Bag Closers', subcategory: 'Battery Operated' },
-    { id: 'kp-3000b', name: 'KP-3000B', category: 'Portable Bag Closers', subcategory: 'Battery Operated' },
-
-    { id: 'dad-r', name: 'DAD-R', category: 'Portable Bag Closers', subcategory: 'Double Thread, Single Needle' },
-    { id: 'd-2', name: 'D-2', category: 'Portable Bag Closers', subcategory: 'Double Thread, Single Needle' },
-    { id: 'np-311', name: 'NP-311', category: 'Portable Bag Closers', subcategory: 'Double Thread, Single Needle' },
-    { id: '2200a', name: '2200A', category: 'Portable Bag Closers', subcategory: 'Double Thread, Single Needle' },
-
-    { id: 'de-da6', name: 'DE-DA6', category: 'Portable Bag Closers', subcategory: 'Double Thread, Double Needle' },
-    { id: 'n620a', name: 'N620A', category: 'Portable Bag Closers', subcategory: 'Double Thread, Double Needle' },
-    { id: 'de-da', name: 'DE-DA', category: 'Portable Bag Closers', subcategory: 'Double Thread, Double Needle' },
-
-    // --- SEALING MACHINES ---
-    { id: 'impulse-sealer', name: 'Hand Impulse Sealer', category: 'Sealing Machines', subcategory: 'Impulse Sealers' },
-    { id: 'impulse-sealer-cutter', name: 'Hand Impulse Sealer with Cutter', category: 'Sealing Machines', subcategory: 'Impulse Sealers' },
-    { id: 'impulse-sealer-large', name: 'Hand Impulse Sealer (600/800/1000 mm)', category: 'Sealing Machines', subcategory: 'Impulse Sealers' },
-    { id: 'pedal-sealer', name: 'Pedal Impulse Sealer', category: 'Sealing Machines', subcategory: 'Impulse Sealers' },
-    { id: 'table-pedal-sealer', name: 'Table Style Pedal Impulse Sealer', category: 'Sealing Machines', subcategory: 'Impulse Sealers' },
-
-    { id: 'frb-770ii', name: 'FRB-770II (Continuous)', category: 'Sealing Machines', subcategory: 'Band Sealers' },
-    { id: 'frm-1120w', name: 'FRM-1120W', category: 'Sealing Machines', subcategory: 'Band Sealers' },
-    { id: 'frm-1120ld', name: 'FRM-1120LD', category: 'Sealing Machines', subcategory: 'Band Sealers' },
-    { id: 'fr-1370l-t', name: 'FR-1370L/T', category: 'Sealing Machines', subcategory: 'Band Sealers' },
-    { id: 'fr-1370ld', name: 'FR-1370LD', category: 'Sealing Machines', subcategory: 'Band Sealers' },
-
-    { id: 'qf-600l', name: 'QF-600L(S) (Pneumatic Heavy Bag Sealer)', category: 'Sealing Machines', subcategory: 'Heavy Duty & Specialty' },
-    { id: 'fbh-32', name: 'FBH-32 (Heavy Duty Bag Sealer)', category: 'Sealing Machines', subcategory: 'Heavy Duty & Specialty' },
-
-    { id: 'xbf-750', name: 'XBF-750 (Blister Pack Heat Sealer)', category: 'Sealing Machines', subcategory: 'Blister & Coding' },
-    { id: 'frm-810i', name: 'FRM-810I (Solid Ink Coding)', category: 'Sealing Machines', subcategory: 'Blister & Coding' },
-    { id: 'frm-1010iii', name: 'FRM-1010III (Solid Ink Coding)', category: 'Sealing Machines', subcategory: 'Blister & Coding' },
-
-    { id: 'fxj-5050qs', name: 'FXJ-5050QS (Carton Sealer)', category: 'Sealing Machines', subcategory: 'Vacuum & Carton' },
-    { id: 'hvr-320a', name: 'HVR-320A (Vacuum Packaging Machine)', category: 'Sealing Machines', subcategory: 'Vacuum & Carton' },
-
-    // --- WEIGHING SCALES ---
-    { id: 'animal-scale', name: 'Animal Scale', category: 'Weighing Scales', subcategory: 'Electronic' },
-    { id: 'pallet-scale', name: 'Pallet Scale', category: 'Weighing Scales', subcategory: 'Electronic' },
-    { id: 'platform-scale', name: 'Platform Type Scale', category: 'Weighing Scales', subcategory: 'Electronic' },
-    { id: 'heavy-platform', name: 'Heavy Platform Scale', category: 'Weighing Scales', subcategory: 'Electronic' },
-    { id: 'price-scale', name: 'Price Computing Scale', category: 'Weighing Scales', subcategory: 'Electronic' },
-    { id: 'mini-bench', name: 'Mini Bench Model', category: 'Weighing Scales', subcategory: 'Electronic' },
-    { id: 'bench-platform', name: 'Bench Platform Scale', category: 'Weighing Scales', subcategory: 'Electronic' },
-    { id: 'table-top', name: 'Table Top Scale', category: 'Weighing Scales', subcategory: 'Electronic' },
-    { id: 'waterproof-scale', name: 'Table Top Waterproof Scale', category: 'Weighing Scales', subcategory: 'Electronic' },
-    { id: 'hand-pallet-truck', name: 'Hand Pallet Truck', category: 'Weighing Scales', subcategory: 'Mechanical' },
-    { id: 'manual-platform', name: 'Manual Platform Scale', category: 'Weighing Scales', subcategory: 'Mechanical' },
-    { id: 'counter-scale', name: 'Counter Weighing Scale', category: 'Weighing Scales', subcategory: 'Mechanical' },
-
-    // --- SEWING MACHINES ---
-    { id: 'ind-sewing-machine', name: 'Industrial Sewing Machine Standard', category: 'Sewing Machines', subcategory: 'General' },
-    { id: 'hvy-sewing-machine', name: 'Heavy Duty Sewing Machine', category: 'Sewing Machines', subcategory: 'Heavy Duty' },
-
-    // --- SPARE PARTS ---
-    { id: 'spring-balancer-new', name: 'Spring Balancer', category: 'Spare Parts', subcategory: 'Tools' },
-    { id: 'spare-parts-kit', name: 'Spare Parts Kit', category: 'Spare Parts', subcategory: 'Parts' },
+export const categories: Category[] = [
+    {
+        name: 'Bag Closing Machines',
+        subcategories: ['Machine Heads & Systems', 'Bag Making Machines', 'Ancillary Equipment']
+    },
+    {
+        name: 'Portable Bag Closers',
+        subcategories: ['Single Needle', 'Battery Operated', 'Double Thread']
+    },
+    {
+        name: 'Carpet Overedging',
+        subcategories: ['Overedgers', 'Binders & Fringers', 'Buttseamers']
+    },
+    {
+        name: 'Filling & Packing',
+        subcategories: ['Fillers', 'Shrink & Seal', 'Strapping', 'Carton Sealers']
+    },
+    {
+        name: 'Strapping Tools',
+        subcategories: ['Pneumatic', 'Battery', 'Manual']
+    },
+    {
+        name: 'Consumables & Parts',
+        subcategories: ['Threads & Tapes', 'Needles', 'Maintenance', 'Tools']
+    },
+    {
+        name: 'Weighing Scales',
+        subcategories: ['Industrial', 'Retail']
+    }
 ];
+
+export const featuredProducts = allProducts.filter(p => p.featured);
 
 export const productsByCategory = allProducts.reduce((acc, product) => {
     if (!acc[product.category]) {
@@ -286,18 +879,3 @@ export const productsByCategory = allProducts.reduce((acc, product) => {
     acc[product.category].push(product);
     return acc;
 }, {} as Record<string, Product[]>);
-
-export const categories: Category[] = [
-    { name: 'Bag Closing Machines', subcategories: ['Bag Closing Machine Systems', 'Machine Heads', 'Bag Making Machines', 'Conveyors', 'Feeding Devices'] },
-    { name: 'Bag Closing Thread', subcategories: [] },
-    { name: 'Carpet Overedging Machines', subcategories: ['Heavy Duty', 'Standard'] },
-    { name: 'Consumables', subcategories: ['Needles', 'Others', 'Services / Parts'] },
-    { name: 'Filling and Packing Machines', subcategories: ['Weighing & Filling', 'Shrink Packaging', 'Carton Sealers', 'Strapping Machines'] },
-    { name: 'Packaging Materials', subcategories: [] },
-    { name: 'Packaging Tools', subcategories: ['Strapping Tools', 'Sealers & Powered Tools'] },
-    { name: 'Portable Bag Closers', subcategories: ['Single Needle, Single Thread', 'Battery Operated', 'Double Thread, Single Needle', 'Double Thread, Double Needle'] },
-    { name: 'Sealing Machines', subcategories: ['Impulse Sealers', 'Band Sealers', 'Heavy Duty & Specialty', 'Blister & Coding', 'Vacuum & Carton'] },
-    { name: 'Sewing Machines', subcategories: ['General', 'Heavy Duty'] },
-    { name: 'Spare Parts', subcategories: ['Tools', 'Parts'] },
-    { name: 'Weighing Scales', subcategories: ['Electronic', 'Mechanical'] },
-];

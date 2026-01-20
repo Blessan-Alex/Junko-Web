@@ -50,7 +50,7 @@ const Contact = () => {
         <title>Contact Junko FZE | Packaging Machine Sales & Support</title>
         <meta name="description" content="Get a quote or request support. Visit our office in Hamriyah Free Zone, Sharjah, call us, or send an inquiry. We respond typically within 24 hours." />
       </Helmet>
-      <div className="flex flex-col gap-2 mb-10">
+      <div className="flex flex-col gap-2 mb-10 animate-fade-in-up">
         <h1 className="text-4xl md:text-5xl font-black tracking-tight text-text-main-light dark:text-white font-serif">Contact Sales & Support</h1>
         <p className="text-lg text-text-sec-light dark:text-text-sec-dark max-w-2xl">
           Reach our team in the UAE for machinery sales, consumables, spare parts, and on-site support.
@@ -65,7 +65,7 @@ const Contact = () => {
               </div>
               <div className="flex flex-col gap-1">
                 <h3 className="text-base font-bold text-text-main-light dark:text-white font-serif">Phone</h3>
-                <p className="text-sm text-text-sec-light dark:text-text-sec-dark font-mono">+971 50 342 6615</p>
+                <a className="text-sm text-text-sec-light dark:text-text-sec-dark font-mono hover:text-primary hover:underline transition-colors block" href="https://wa.me/971503426615?text=Hi, I would like to speak to sales." target="_blank">+971 50 342 6615</a>
                 <p className="text-xs text-text-sec-light/70 dark:text-text-sec-dark/70">Mon–Sat 9:00–18:00 (UAE)</p>
               </div>
             </div>
@@ -75,7 +75,7 @@ const Contact = () => {
               </div>
               <div className="flex flex-col gap-1">
                 <h3 className="text-base font-bold text-text-main-light dark:text-white font-serif">Email</h3>
-                <a className="text-sm text-text-sec-light dark:text-text-sec-dark hover:text-primary hover:underline font-mono" href="mailto:sales@junko.ae">sales@junko.ae</a>
+                <a className="text-sm text-text-sec-light dark:text-text-sec-dark hover:text-primary hover:underline font-mono" href="mailto:info@junko-fze.com">info@junko-fze.com</a>
                 <p className="text-xs text-text-sec-light/70 dark:text-text-sec-dark/70">Typical response time: within 1 business day</p>
               </div>
             </div>
@@ -226,9 +226,7 @@ const Contact = () => {
             <div className="mt-10 p-6 rounded-lg bg-secondary bg-texture-dots bg-size-texture-dots flex flex-col sm:flex-row items-center gap-6 justify-between transition-all duration-300">
               <span className="text-xs font-semibold text-white/90 uppercase tracking-wider font-sans">ISO-aligned processes • Genuine parts • Local support</span>
               <div className="flex gap-6 items-center">
-                <div className="h-6 w-16 bg-white/20 rounded backdrop-blur-sm"></div>
-                <div className="h-6 w-16 bg-white/20 rounded backdrop-blur-sm"></div>
-                <div className="h-6 w-16 bg-white/20 rounded backdrop-blur-sm"></div>
+                {/* Removed empty placeholders */}
                 <div className="h-8 w-8 bg-white/20 rounded-full backdrop-blur-sm flex items-center justify-center text-[10px] font-bold text-white font-mono">QC</div>
               </div>
             </div>
