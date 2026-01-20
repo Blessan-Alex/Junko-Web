@@ -46,24 +46,24 @@ const Home = () => {
 
         {/* Content */}
         <div className="relative z-20 max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 w-full flex flex-col items-center text-center animate-fade-in-up">
-          <div className="flex flex-col gap-8 max-w-4xl items-center">
-            <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary text-white text-sm font-bold font-sans uppercase tracking-widest w-fit shadow-md border border-white/10">
-              <span className="material-symbols-outlined text-[20px]">verified</span>
+          <div className="flex flex-col gap-6 md:gap-8 max-w-4xl items-center">
+            <div className="inline-flex items-center gap-2 px-4 py-2 md:px-6 md:py-3 rounded-full bg-primary text-white text-xs md:text-sm font-bold font-sans uppercase tracking-widest w-fit shadow-md border border-white/10">
+              <span className="material-symbols-outlined text-[16px] md:text-[20px]">verified</span>
               UAE Based • GCC Supply & Support
             </div>
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-tight pr-0 font-serif">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-tight pr-0 font-serif">
               Packaging solutions<br />for high-volume industry
             </h1>
-            <p className="text-2xl md:text-3xl text-blue-100 leading-relaxed font-sans max-w-3xl">
+            <p className="text-lg sm:text-2xl md:text-3xl text-blue-100 leading-relaxed font-sans max-w-3xl">
               Industrial bag closing, sealing, weighing, and end-of-line machinery
               selected for reliability in dust, heat, and continuous operation.
             </p>
             <div className="flex flex-col gap-8 w-full items-center">
-              <div className="flex flex-wrap justify-center gap-4 w-full">
-                <Link to="/products" className="h-16 px-10 bg-primary hover:bg-primary-dark text-white font-bold rounded-md transition-all duration-200 hover:shadow-lg active:scale-95 flex items-center justify-center gap-3 text-lg min-w-[200px]">
+              <div className="flex flex-col sm:flex-row justify-center gap-4 w-full sm:w-auto">
+                <Link to="/products" className="h-14 md:h-16 px-6 md:px-10 bg-primary hover:bg-primary-dark text-white font-bold rounded-md transition-all duration-200 hover:shadow-lg active:scale-95 flex items-center justify-center gap-3 text-base md:text-lg w-full sm:w-auto min-w-[200px]">
                   Explore Machinery
                 </Link>
-                <a href="https://wa.me/971503426615?text=Hi, I would like to speak to an engineer regarding packaging solutions." target="_blank" className="h-16 px-10 bg-transparent border-2 border-white hover:bg-white/10 text-white font-bold rounded-md transition-all duration-200 hover:shadow-lg active:scale-95 flex items-center justify-center gap-3 text-lg min-w-[200px]">
+                <a href="https://wa.me/971503426615?text=Hi, I would like to speak to an engineer regarding packaging solutions." target="_blank" className="h-14 md:h-16 px-6 md:px-10 bg-transparent border-2 border-white hover:bg-white/10 text-white font-bold rounded-md transition-all duration-200 hover:shadow-lg active:scale-95 flex items-center justify-center gap-3 text-base md:text-lg w-full sm:w-auto min-w-[200px]">
                   Talk to an Engineer
                 </a>
               </div>

@@ -198,40 +198,40 @@ export const allProducts: Product[] = [
     {
         id: 'as-102-hs',
         name: 'High Speed Making Machine (Armstrong)',
-        category: 'BAG CLOSING MACHINES',
-        subcategory: 'Bag Making Machines',
+        category: 'SEWING MACHINE',
+        subcategory: 'SEWING MACHINE',
         description: '2-Needle 4-Thread chain stitch machine for bag manufacturing. High speed (3500 RPM) operation for high volume production.',
         image: '/products/Bag Closing Machines/bag_making_machines/AS-102-HS-1-e1709140399614.png'
     },
     {
         id: 'as-502-hd',
         name: 'Heavy Duty 2-Needle Machine',
-        category: 'BAG CLOSING MACHINES',
-        subcategory: 'Bag Making Machines',
+        category: 'SEWING MACHINE',
+        subcategory: 'SEWING MACHINE',
         description: 'Robust 2-needle machine for thick multi-wall paper or PP material manufacturing.',
         image: '/products/Bag Closing Machines/bag_making_machines/AS-502-HD.png'
     },
     {
         id: 'dkn-3gp',
         name: 'Newlong Industrial Bag Maker',
-        category: 'BAG CLOSING MACHINES',
-        subcategory: 'Bag Making Machines',
+        category: 'SEWING MACHINE',
+        subcategory: 'SEWING MACHINE',
         description: 'Premium Japanese 1-needle 2-thread bag making machine. Ultra-high speed (5000 RPM) for maximum factory throughput.',
         image: '/products/Bag Closing Machines/bag_making_machines/DKN-3WGP-DKN-3BPGP.jpeg'
     },
     {
         id: 'dn-2hs',
         name: 'High Speed Newlong Maker',
-        category: 'BAG CLOSING MACHINES',
-        subcategory: 'Bag Making Machines',
+        category: 'SEWING MACHINE',
+        subcategory: 'SEWING MACHINE',
         description: 'Classic high-speed bag making head from Newlong Japan. Known for reliability and consistent stitch quality at 2800 RPM.',
         image: '/products/Bag Closing Machines/bag_making_machines/DN-2HS.jpg'
     },
     {
         id: 'u561',
         name: 'YaoHan Bag Maker',
-        category: 'BAG CLOSING MACHINES',
-        subcategory: 'Bag Making Machines',
+        category: 'SEWING MACHINE',
+        subcategory: 'SEWING MACHINE',
         description: 'Cost-effective high-speed (5000 RPM) chain stitch machine for woven sack manufacturing.',
         image: '/products/Bag Closing Machines/bag_making_machines/U561.png'
     },
