@@ -54,7 +54,7 @@ const Home = () => {
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-tight pr-0 font-serif">
               Packaging solutions<br />for high-volume industry
             </h1>
-            <p className="text-lg sm:text-2xl md:text-3xl text-blue-100 leading-relaxed font-sans max-w-3xl">
+            <p className="hidden md:block text-2xl md:text-3xl text-blue-100 leading-relaxed font-sans max-w-3xl">
               Industrial bag closing, sealing, weighing, and end-of-line machinery
               selected for reliability in dust, heat, and continuous operation.
             </p>
