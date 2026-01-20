@@ -66,9 +66,10 @@ const Products = () => {
       <div className="fixed bottom-6 right-6 z-50 md:hidden">
         <button
           onClick={() => setShowFilters(!showFilters)}
-          className="bg-primary text-white p-4 rounded-full shadow-2xl flex items-center justify-center"
+          className="bg-primary hover:bg-primary-dark text-white px-6 py-3 rounded-full shadow-2xl flex items-center gap-2 transition-all active:scale-95"
         >
           <span className="material-symbols-outlined">filter_list</span>
+          <span className="font-bold font-sans">Filters</span>
         </button>
       </div>
 
@@ -80,7 +81,16 @@ const Products = () => {
       `}>
         <div className="p-6 pb-20 md:pb-6">
           <div className="flex items-center justify-between mb-6">
-            <h3 className="font-serif font-bold text-xl text-secondary dark:text-white">Filters</h3>
+            <div className="flex items-center gap-3">
+              <button
+                onClick={() => setShowFilters(false)}
+                className="md:hidden text-gray-500 hover:text-red-500 transition-colors p-1"
+                aria-label="Close filters"
+              >
+                <span className="material-symbols-outlined">close</span>
+              </button>
+              <h3 className="font-serif font-bold text-xl text-secondary dark:text-white">Filters</h3>
+            </div>
             <button
               onClick={() => {
                 setSelectedCategory(null);
