@@ -1,16 +1,28 @@
 import React, { useState, useMemo } from 'react';
 import { Helmet } from 'react-helmet-async';
+import { useSearchParams } from 'react-router-dom';
 import { allProducts, categories } from '../data/products';
 import ProductCard from '../components/ProductCard';
 
 const Products = () => {
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [searchParams] = useSearchParams();
+  const initialCategory = searchParams.get('category');
+
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(initialCategory);
   const [searchQuery, setSearchQuery] = useState('');
   const [activeSubcategories, setActiveSubcategories] = useState<string[]>([]);
   const [showFilters, setShowFilters] = useState(false);
 
   // Derive categories for ease of use
   const categoryNames = useMemo(() => categories.map(c => c.name), []);
+
+  // Effect to update selected category if URL changes (optional, but good for back button)
+  React.useEffect(() => {
+    const cat = searchParams.get('category');
+    if (cat) {
+      setSelectedCategory(cat);
+    }
+  }, [searchParams]);
 
   const handleCategoryChange = (category: string) => {
     if (selectedCategory === category) {

@@ -28,32 +28,24 @@ const Footer = () => {
                     <div>
                         <h4 className="font-bold font-serif mb-6 text-white">Solutions</h4>
                         <ul className="space-y-4 text-sm text-blue-200 font-sans">
-                            <li><Link to="/products" className="hover:text-white transition-colors">Bag Closing Systems</Link></li>
-                            <li><Link to="/products" className="hover:text-white transition-colors">Heat Sealing</Link></li>
-                            <li><Link to="/products" className="hover:text-white transition-colors">Weighing Scales</Link></li>
-                            <li><Link to="/products" className="hover:text-white transition-colors">Specialty Sewing</Link></li>
-                            <li><Link to="/products" className="hover:text-white transition-colors">Consumables</Link></li>
+                            <li><Link to="/products?category=BAG%20CLOSING%20MACHINES" className="hover:text-white transition-colors">Bag Closing Machines</Link></li>
+                            <li><Link to="/products?category=BAG%20CLOSING%20THREAD" className="hover:text-white transition-colors">Bag Closing Thread</Link></li>
+                            <li><Link to="/products?category=PACKAGING%20TOOLS" className="hover:text-white transition-colors">Packaging Tools</Link></li>
+                            <li><Link to="/products?category=SEALING%20MACHINES" className="hover:text-white transition-colors">Sealing Machines</Link></li>
+                            <li><Link to="/products?category=SEWING%20MACHINE" className="hover:text-white transition-colors">Sewing Machines</Link></li>
+                            <li><Link to="/products?category=SPARE%20PARTS" className="hover:text-white transition-colors">Spare Parts</Link></li>
                         </ul>
                     </div>
                     <div>
                         <h4 className="font-bold font-serif mb-6 text-white">Company</h4>
                         <ul className="space-y-4 text-sm text-blue-200 font-sans">
                             <li><Link to="/about" className="hover:text-white transition-colors">About Us</Link></li>
+                            <li><Link to="/vision" className="hover:text-white transition-colors">Our Vision</Link></li>
                             <li><Link to="/services" className="hover:text-white transition-colors">Our Process</Link></li>
                             <li><Link to="/services" className="hover:text-white transition-colors">Shipping Info</Link></li>
                             <li><Link to="/services" className="hover:text-white transition-colors">Support & Service</Link></li>
                             <li><Link to="/contact" className="hover:text-white transition-colors">Contact Us</Link></li>
                         </ul>
-                    </div>
-                    <div>
-                        <h4 className="font-bold font-serif mb-6 text-white">Stay Informed</h4>
-                        <p className="text-sm text-blue-200 mb-4 font-sans">Subscribe for stock updates and new machine arrivals.</p>
-                        <form className="flex gap-2">
-                            <input type="email" aria-label="Email address" placeholder="Email address" className="w-full bg-blue-900/50 border-blue-800 rounded text-sm text-white focus:ring-primary focus:border-primary placeholder-blue-300 font-sans" />
-                            <button type="submit" className="bg-primary hover:bg-primary-dark text-white p-2 rounded transition-colors">
-                                <span className="material-symbols-outlined text-[20px]">send</span>
-                            </button>
-                        </form>
                     </div>
                 </div>
                 <div className="border-t border-blue-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-blue-300 font-sans">

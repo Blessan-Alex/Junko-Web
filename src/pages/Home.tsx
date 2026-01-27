@@ -55,8 +55,7 @@ const Home = () => {
               Packaging solutions<br />for high-volume industry
             </h1>
             <p className="hidden md:block text-2xl md:text-3xl text-blue-100 leading-relaxed font-sans max-w-3xl">
-              Industrial bag closing, sealing, weighing, and end-of-line machinery
-              selected for reliability in dust, heat, and continuous operation.
+              Industrial bag closing, filling & packaging machinery, material, and tools selected for reliability in dust, heat, and continuous operation.
             </p>
             <div className="flex flex-col gap-8 w-full items-center">
               <div className="flex flex-col sm:flex-row justify-center gap-4 w-full sm:w-auto">
@@ -92,11 +91,13 @@ const Home = () => {
         <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-center text-sm font-semibold text-text-sub dark:text-gray-500 mb-6 uppercase tracking-wider font-sans">Trusted by leading manufacturers</p>
           <div className="flex flex-wrap justify-center items-center gap-x-12 gap-y-8 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
-            <div className="text-xl font-black font-sans text-gray-400">LOGISTICORP</div>
-            <div className="text-xl font-black font-sans text-gray-400">PACKMASTER</div>
-            <div className="text-xl font-black font-sans text-gray-400">INDUSGROUP</div>
-            <div className="text-xl font-black font-sans text-gray-400">GLOBALSHIP</div>
-            <div className="text-xl font-black font-sans text-gray-400">FLEXTECH</div>
+            <div className="text-xl font-black font-sans text-gray-400">FISCHBEIN</div>
+            <div className="text-xl font-black font-sans text-gray-400">Newlong Industrial</div>
+            <div className="text-xl font-black font-sans text-gray-400">TITAN</div>
+            <div className="text-xl font-black font-sans text-gray-400">NC Carpet</div>
+            <div className="text-xl font-black font-sans text-gray-400">DOHLE</div>
+            <div className="text-xl font-black font-sans text-gray-400">LPI</div>
+            <div className="text-xl font-black font-sans text-gray-400">ARM STRONG</div>
           </div>
         </div>
       </section>
@@ -115,135 +116,116 @@ const Home = () => {
             </Link>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <Link to="/products" className="group bg-white dark:bg-surface-dark rounded-2xl shadow-xl overflow-hidden cursor-pointer flex flex-col hover:shadow-2xl transition-all duration-300">
+            <Link to="/products?category=BAG%20CLOSING%20MACHINES" className="group bg-white dark:bg-surface-dark rounded-2xl shadow-xl overflow-hidden cursor-pointer flex flex-col hover:shadow-2xl transition-all duration-300">
               <div className="aspect-[16/9] bg-gray-100 overflow-hidden relative">
                 <img
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuAnzwi2IXd5qAJnkNlaiiWuaaQAG24FPrM20mYyETqz8uU0WFINsl74p_P4v9SJ3pCrVAxUfbi6n6Dw_eWJ7uVG-Xf-8FMJr85xn3t0faJgQG72QsEKdwqmvKYtNg4KGKnFrK10Q0yHkdx_M8QW2OYq_joeImLbVEgMRIbMiPQxSYBhuyZF8A4fp4wwF47cdPsD0t6pa41x1kZ1qgOljHTMiYxjTgQ0b3i02fMqEo_xfW06Ydf2YmXb3YTOzelTphX7l9ll58KlxWo"
-                  alt="Industrial bag sewing machine"
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                <div className="absolute top-4 right-4 bg-secondary text-white text-xs px-3 py-1.5 rounded-full backdrop-blur-sm font-bold font-sans tracking-wide">Heavy Duty</div>
-              </div>
-              <div className="p-8 flex flex-col justify-between flex-grow">
-                <div>
-                  <h3 className="text-2xl font-bold font-serif text-text-main dark:text-white mb-3 group-hover:text-primary transition-colors">Bag Closing Systems</h3>
-                  <p className="text-base text-text-sub dark:text-gray-500 mb-6 leading-relaxed font-sans">
-                    Portable bag closers, fixed sewing heads, and spring balancers for woven PP, paper, and jute bags. Built to withstand dusty, high-production environments with minimal maintenance.
-                  </p>
-                </div>
-                <div className="flex items-center text-sm font-medium text-gray-500 gap-3 font-mono">
-                  <span className="material-symbols-outlined text-[20px] text-primary">speed</span> Portable & Fixed
-                  <span className="material-symbols-outlined text-[20px] text-primary ml-4">settings</span> High Speed Sewing
-                </div>
-              </div>
-            </Link>
-            <Link to="/products" className="group bg-white dark:bg-surface-dark rounded-2xl shadow-xl overflow-hidden cursor-pointer flex flex-col hover:shadow-2xl transition-all duration-300">
-              <div className="aspect-[16/9] bg-gray-100 overflow-hidden relative">
-                <img
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuCp0o6xTtI-hxSOUuB5Xg5Ak2j49x6RGKBVK8ErxxxPDlT7mUyQNIpIgqcwgQ_R4hZV05r0x324hoBOOU5kx60LyNA7KfCV9gYaw1suin7V9jedV8Vzr8sA_-fL3xRD9znLvHK6VgqE0_tuKSnNPMtV3VVsTvrWGT-4ZeMNzubul87VqNeiecl5hAhoiyAdNTc-Ze0kzwIYNyeR-yH1MSCFHJ7CrmpubSxBaPRzxuludeyhAVth51XIyZsDbyB15Y44qZopDdh0_cs"
-                  alt="Continuous band sealer"
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                <div className="absolute top-4 right-4 bg-secondary text-white text-xs px-3 py-1.5 rounded-full backdrop-blur-sm font-bold font-sans tracking-wide">Air-Tight</div>
-              </div>
-              <div className="p-8 flex flex-col justify-between flex-grow">
-                <div>
-                  <h3 className="text-2xl font-bold font-serif text-text-main dark:text-white mb-3 group-hover:text-primary transition-colors">Bag Sealing / Heat Sealing</h3>
-                  <p className="text-base text-text-sub dark:text-gray-500 mb-6 leading-relaxed font-sans">
-                    Continuous band sealers for plastic and laminate pouches. Features include temperature control, optional date coding, and nitrogen flushing capabilities.
-                  </p>
-                </div>
-                <div className="flex items-center text-sm font-medium text-gray-500 gap-3 font-mono">
-                  <span className="material-symbols-outlined text-[20px] text-primary">straighten</span> Continuous Band
-                  <span className="material-symbols-outlined text-[20px] text-primary ml-4">verified</span> Consistent Seal
-                </div>
-              </div>
-            </Link>
-            <Link to="/products" className="group bg-white dark:bg-surface-dark rounded-2xl shadow-xl overflow-hidden cursor-pointer flex flex-col hover:shadow-2xl transition-all duration-300">
-              <div className="aspect-[16/9] bg-gray-100 overflow-hidden relative">
-                <img
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuDWwcFGxf8Nz5TbMYhT8OtteDTn_Y7g3hP_92WnFNytw3Vg9qDjc7_FvAXR8Hx8OZWiTAWbA16Jbvg343iiyz4Vtj390Ep1oAns7qfBG4_NHsGp0O_E0f4FwDnIc9apAdwilpOQlo5l0FxnpRLJBGy6YoPaysSTsXyL8PsF7RAlqeGmaZW8KvtLnQydzGogFACnZitzKh-kJEfOeOJYmo8szSMiwFkrFg5nolgOjkh2oRdKO-XxpPmOp_w-HQev7JpwN_IaBtjP4sk"
-                  alt="Specialty sewing machine"
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                <div className="absolute top-4 right-4 bg-secondary text-white text-xs px-3 py-1.5 rounded-full backdrop-blur-sm font-bold font-sans tracking-wide">Specialty</div>
-              </div>
-              <div className="p-8 flex flex-col justify-between flex-grow">
-                <div>
-                  <h3 className="text-2xl font-bold font-serif text-text-main dark:text-white mb-3 group-hover:text-primary transition-colors">Bag Making & Specialty Sewing</h3>
-                  <p className="text-base text-text-sub dark:text-gray-500 mb-6 leading-relaxed font-sans">
-                    Specialized industrial sewing machines for manufacturing geotextiles, shade nets, and attaching handles. Designed for thick materials and complex stitch patterns.
-                  </p>
-                </div>
-                <div className="flex items-center text-sm font-medium text-gray-500 gap-3 font-mono">
-                  <span className="material-symbols-outlined text-[20px] text-primary">bolt</span> Heavy Duty
-                  <span className="material-symbols-outlined text-[20px] text-primary ml-4">layers</span> Custom Stitch
-                </div>
-              </div>
-            </Link>
-            <Link to="/products" className="group bg-white dark:bg-surface-dark rounded-2xl shadow-xl overflow-hidden cursor-pointer flex flex-col hover:shadow-2xl transition-all duration-300">
-              <div className="aspect-[16/9] bg-gray-100 overflow-hidden relative">
-                <img
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuBa3MjFOxSZbzD5wOGZ70v2zjfq-kaz0TzdIamcuULnCDigjnooe9PEiYc19dOuvksOkHWCQUDnQnv2BI6ocorh51jaKYONTSjwRoFXXq3VuSBS0Y_Fh3kLYol5yz3uvg9HJ92CxpkZILxOyEEQyeX3RpmmZajVaE67FJKMBMc8YJUZeVGEB1KjocmVQVJ3dKZ1Rm1rxbmwY4w72PQBTZbmiJa8WjqS31OhvdMPOrgBiPZunq81-7loR4MrkcbdomJdrSgBmNKlAbk"
-                  alt="Industrial digital scale"
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                <div className="absolute top-4 right-4 bg-secondary text-white text-xs px-3 py-1.5 rounded-full backdrop-blur-sm font-bold font-sans tracking-wide">Precision</div>
-              </div>
-              <div className="p-8 flex flex-col justify-between flex-grow">
-                <div>
-                  <h3 className="text-2xl font-bold font-serif text-text-main dark:text-white mb-3 group-hover:text-primary transition-colors">Weighing Scales</h3>
-                  <p className="text-base text-text-sub dark:text-gray-500 mb-6 leading-relaxed font-sans">
-                    Digital platform scales, crane scales, and filling indicators ensuring precise weight measurement for production and logistics. Rugged construction for factory floors.
-                  </p>
-                </div>
-                <div className="flex items-center text-sm font-medium text-gray-500 gap-3 font-mono">
-                  <span className="material-symbols-outlined text-[20px] text-primary">scale</span> High Precision
-                  <span className="material-symbols-outlined text-[20px] text-primary ml-4">display_settings</span> Digital Displays
-                </div>
-              </div>
-            </Link>
-            <Link to="/products" className="group bg-white dark:bg-surface-dark rounded-2xl shadow-xl overflow-hidden cursor-pointer flex flex-col hover:shadow-2xl transition-all duration-300">
-              <div className="aspect-[16/9] bg-gray-100 overflow-hidden relative">
-                <img
-                  src="/category/annie-spratt-hzdgFPz1V24-unsplash.jpg"
-                  alt="Industrial Sewing Machine"
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  src="/products/Bag Closing Machines/Machine_heads/BCM_7.png"
+                  alt="Bag Closing Machines"
+                  className="w-full h-full object-contain p-4 transition-transform duration-500 group-hover:scale-105"
                 />
                 <div className="absolute top-4 right-4 bg-secondary text-white text-xs px-3 py-1.5 rounded-full backdrop-blur-sm font-bold font-sans tracking-wide">Industrial</div>
               </div>
               <div className="p-8 flex flex-col justify-between flex-grow">
                 <div>
-                  <h3 className="text-2xl font-bold font-serif text-text-main dark:text-white mb-3 group-hover:text-primary transition-colors">Sewing Machines</h3>
-                  <p className="text-base text-text-sub dark:text-gray-500 mb-6 leading-relaxed font-sans">
-                    High-performance industrial sewing machines for versatile applications. Designed for durability and precision stitching.
+                  <h3 className="text-xl font-bold font-serif text-text-main dark:text-white mb-3 group-hover:text-primary transition-colors">BAG CLOSING MACHINES</h3>
+                  <p className="text-sm text-text-sub dark:text-gray-500 mb-6 leading-relaxed font-sans">
+                    Portable bag closers, fixed sewing heads, and systems for woven PP, paper, and jute bags.
                   </p>
-                </div>
-                <div className="flex items-center text-sm font-medium text-gray-500 gap-3 font-mono">
-                  <span className="material-symbols-outlined text-[20px] text-primary">manufacturing</span> Heavy Duty
-                  <span className="material-symbols-outlined text-[20px] text-primary ml-4">build</span> Reliable
                 </div>
               </div>
             </Link>
-            <Link to="/products" className="group bg-white dark:bg-surface-dark rounded-2xl shadow-xl overflow-hidden cursor-pointer flex flex-col hover:shadow-2xl transition-all duration-300">
+
+            <Link to="/products?category=BAG%20CLOSING%20THREAD" className="group bg-white dark:bg-surface-dark rounded-2xl shadow-xl overflow-hidden cursor-pointer flex flex-col hover:shadow-2xl transition-all duration-300">
               <div className="aspect-[16/9] bg-gray-100 overflow-hidden relative">
                 <img
-                  src="https://images.unsplash.com/photo-1530124566582-a618bc2615dc?auto=format&fit=crop&q=80&w=800"
-                  alt="Spare Parts & Consumables"
+                  src="/products/Bag_closing_threads/Thread_7.jpg"
+                  alt="Bag Closing Thread"
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute top-4 right-4 bg-secondary text-white text-xs px-3 py-1.5 rounded-full backdrop-blur-sm font-bold font-sans tracking-wide">High Tensile</div>
+              </div>
+              <div className="p-8 flex flex-col justify-between flex-grow">
+                <div>
+                  <h3 className="text-xl font-bold font-serif text-text-main dark:text-white mb-3 group-hover:text-primary transition-colors">BAG CLOSING THREAD</h3>
+                  <p className="text-sm text-text-sub dark:text-gray-500 mb-6 leading-relaxed font-sans">
+                    Premium quality polyester threads designed for high-speed industrial bag closing machines.
+                  </p>
+                </div>
+              </div>
+            </Link>
+
+            <Link to="/products?category=PACKAGING%20TOOLS" className="group bg-white dark:bg-surface-dark rounded-2xl shadow-xl overflow-hidden cursor-pointer flex flex-col hover:shadow-2xl transition-all duration-300">
+              <div className="aspect-[16/9] bg-gray-100 overflow-hidden relative">
+                <img
+                  src="/products/Filling and packing machines/Strapping machine/KZB-1.png"
+                  alt="Packaging Tools"
+                  className="w-full h-full object-contain p-4 transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute top-4 right-4 bg-secondary text-white text-xs px-3 py-1.5 rounded-full backdrop-blur-sm font-bold font-sans tracking-wide">Automation</div>
+              </div>
+              <div className="p-8 flex flex-col justify-between flex-grow">
+                <div>
+                  <h3 className="text-xl font-bold font-serif text-text-main dark:text-white mb-3 group-hover:text-primary transition-colors">PACKAGING TOOLS</h3>
+                  <p className="text-sm text-text-sub dark:text-gray-500 mb-6 leading-relaxed font-sans">
+                    Strapping machines, carton sealers, and tools for securing your products efficiently.
+                  </p>
+                </div>
+              </div>
+            </Link>
+
+            <Link to="/products?category=SEALING%20MACHINES" className="group bg-white dark:bg-surface-dark rounded-2xl shadow-xl overflow-hidden cursor-pointer flex flex-col hover:shadow-2xl transition-all duration-300">
+              <div className="aspect-[16/9] bg-gray-100 overflow-hidden relative">
+                <img
+                  src="/products/Filling and packing machines/Shrink Packaging Machine/BSF-5540A.png"
+                  alt="Sealing Machines"
+                  className="w-full h-full object-contain p-4 transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute top-4 right-4 bg-secondary text-white text-xs px-3 py-1.5 rounded-full backdrop-blur-sm font-bold font-sans tracking-wide">Air-Tight</div>
+              </div>
+              <div className="p-8 flex flex-col justify-between flex-grow">
+                <div>
+                  <h3 className="text-xl font-bold font-serif text-text-main dark:text-white mb-3 group-hover:text-primary transition-colors">SEALING MACHINES</h3>
+                  <p className="text-sm text-text-sub dark:text-gray-500 mb-6 leading-relaxed font-sans">
+                    Heat sealers, continuous band sealers, and shrink wrapping solutions for various materials.
+                  </p>
+                </div>
+              </div>
+            </Link>
+
+            <Link to="/products?category=SEWING%20MACHINE" className="group bg-white dark:bg-surface-dark rounded-2xl shadow-xl overflow-hidden cursor-pointer flex flex-col hover:shadow-2xl transition-all duration-300">
+              <div className="aspect-[16/9] bg-gray-100 overflow-hidden relative">
+                <img
+                  src="/products/Bag Closing Machines/bag_making_machines/DN-2HS.jpg"
+                  alt="Sewing Machine"
+                  className="w-full h-full object-contain p-4 transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute top-4 right-4 bg-secondary text-white text-xs px-3 py-1.5 rounded-full backdrop-blur-sm font-bold font-sans tracking-wide">Heavy Duty</div>
+              </div>
+              <div className="p-8 flex flex-col justify-between flex-grow">
+                <div>
+                  <h3 className="text-xl font-bold font-serif text-text-main dark:text-white mb-3 group-hover:text-primary transition-colors">SEWING MACHINE</h3>
+                  <p className="text-sm text-text-sub dark:text-gray-500 mb-6 leading-relaxed font-sans">
+                    High-speed industrial sewing machines for bag manufacturing and heavy textile applications.
+                  </p>
+                </div>
+              </div>
+            </Link>
+
+            <Link to="/products?category=SPARE%20PARTS" className="group bg-white dark:bg-surface-dark rounded-2xl shadow-xl overflow-hidden cursor-pointer flex flex-col hover:shadow-2xl transition-all duration-300">
+              <div className="aspect-[16/9] bg-gray-100 overflow-hidden relative">
+                <img
+                  src="/products/consumables/Needles/Fischbein_needles.png"
+                  alt="Spare Parts"
+                  className="w-full h-full object-contain p-4 transition-transform duration-500 group-hover:scale-105"
                 />
                 <div className="absolute top-4 right-4 bg-secondary text-white text-xs px-3 py-1.5 rounded-full backdrop-blur-sm font-bold font-sans tracking-wide">Genuine</div>
               </div>
               <div className="p-8 flex flex-col justify-between flex-grow">
                 <div>
-                  <h3 className="text-2xl font-bold font-serif text-text-main dark:text-white mb-3 group-hover:text-primary transition-colors">Spare Parts & Consumables</h3>
-                  <p className="text-base text-text-sub dark:text-gray-500 mb-6 leading-relaxed font-sans">
-                    Genuine spare parts, needles, threads, and oil to keep your machinery running smoothly. Immediate dispatch available.
+                  <h3 className="text-xl font-bold font-serif text-text-main dark:text-white mb-3 group-hover:text-primary transition-colors">SPARE PARTS</h3>
+                  <p className="text-sm text-text-sub dark:text-gray-500 mb-6 leading-relaxed font-sans">
+                    Genuine replacement parts, needles, and accessories to keep your machinery running smoothly.
                   </p>
-                </div>
-                <div className="flex items-center text-sm font-medium text-gray-500 gap-3 font-mono">
-                  <span className="material-symbols-outlined text-[20px] text-primary">inventory</span> In Stock
-                  <span className="material-symbols-outlined text-[20px] text-primary ml-4">settings_suggest</span> Support
                 </div>
               </div>
             </Link>
@@ -265,11 +247,11 @@ const Home = () => {
                       <p className="text-sm text-blue-200 font-sans">Expert guidance to choose the right model for your daily output volume.</p>
                     </div>
                   </div>
-                  <div className="bg-gradient-to-br from-blue-950 to-secondary p-6 rounded-xl shadow-lg min-h-[160px] sm:h-48 flex flex-col justify-between border border-blue-800">
-                    <span className="material-symbols-outlined text-4xl text-primary">inventory_2</span>
+                  <div className="bg-primary p-6 rounded-xl shadow-lg min-h-[160px] sm:h-48 flex flex-col justify-between border border-primary text-white">
+                    <span className="material-symbols-outlined text-4xl text-white">inventory_2</span>
                     <div>
                       <h3 className="font-bold text-xl mb-2 text-white font-serif">Parts and Consumables Ready</h3>
-                      <p className="text-sm text-blue-200 font-sans">Needles, thread, oil, and spare parts in stock.</p>
+                      <p className="text-sm text-white/90 font-sans">Needles, thread, oil, and spare parts in stock.</p>
                     </div>
                   </div>
                 </div>

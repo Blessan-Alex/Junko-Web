@@ -32,6 +32,7 @@ const Header = () => {
                         <Link to="/services" className={linkClasses('/services')}>Services</Link>
                         <Link to="/about" className={linkClasses('/about')}>About Us</Link>
                         <Link to="/contact" className={linkClasses('/contact')}>Contact Us</Link>
+                        <Link to="/vision" className={linkClasses('/vision')}>Vision</Link>
                     </nav>
 
                     <div className="flex items-center gap-4">
@@ -76,6 +77,7 @@ const Header = () => {
                             <Link to="/services" onClick={closeMenu} className={`text-lg font-medium p-3 rounded-lg transition-colors ${isActive('/services') ? 'bg-primary/10 text-primary' : 'text-text-main dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800'}`}>Services</Link>
                             <Link to="/about" onClick={closeMenu} className={`text-lg font-medium p-3 rounded-lg transition-colors ${isActive('/about') ? 'bg-primary/10 text-primary' : 'text-text-main dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800'}`}>About Us</Link>
                             <Link to="/contact" onClick={closeMenu} className={`text-lg font-medium p-3 rounded-lg transition-colors ${isActive('/contact') ? 'bg-primary/10 text-primary' : 'text-text-main dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800'}`}>Contact Us</Link>
+                            <Link to="/vision" onClick={closeMenu} className={`text-lg font-medium p-3 rounded-lg transition-colors ${isActive('/vision') ? 'bg-primary/10 text-primary' : 'text-text-main dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800'}`}>Vision</Link>
                         </nav>
 
                         <div className="p-6 border-t border-border-color dark:border-gray-800 bg-gray-50 dark:bg-gray-900/30 space-y-4">

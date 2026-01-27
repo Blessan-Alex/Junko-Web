@@ -133,7 +133,7 @@
 ## PACKAGING MATERIALS
 
 * BOPP Tape
-* Polycord
+* Polycord 
 * Polylash
 * Polystrap
 * Polytex
@@ -141,6 +141,9 @@
 ---
 
 ## PACKAGING TOOLS
+Plastic strapping tools
+Metal strappping tools 
+
 
 **Strapping Tools**
 

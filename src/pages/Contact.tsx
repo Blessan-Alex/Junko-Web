@@ -88,6 +88,16 @@ const Contact = () => {
                 <p className="text-sm text-text-sec-light dark:text-text-sec-dark">Hamriya Free Zone<br />Sharjah - United Arab Emirates</p>
               </div>
             </div>
+            <div className="flex gap-4 rounded-lg border border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark p-5 shadow-sm items-start hover:border-primary/30 transition-colors group">
+              <div className="bg-primary/10 p-2.5 rounded text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+                <span className="material-symbols-outlined text-[24px]">warehouse</span>
+              </div>
+              <div className="flex flex-col gap-1">
+                <h3 className="text-base font-bold text-text-main-light dark:text-white font-serif">Warehouse Location</h3>
+                <p className="text-sm text-text-sec-light dark:text-text-sec-dark">7G2G+2XV - Maleha St<br />Industrial Areas - Sharjah</p>
+                <a className="text-xs text-primary hover:underline mt-1" href="https://maps.app.goo.gl/zDnmKvTbcLadgXMz8" target="_blank">View on Map</a>
+              </div>
+            </div>
           </div>
           <div className="rounded-lg overflow-hidden border border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark h-64 relative group">
             <iframe
@@ -201,6 +211,7 @@ const Contact = () => {
                     <option>Spare Parts</option>
                     <option>On-site Support</option>
                     <option>General Inquiry</option>
+                    <option>Others</option>
                   </select>
                 </div>
                 <div className="col-span-1 md:col-span-2">
