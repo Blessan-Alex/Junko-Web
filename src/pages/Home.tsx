@@ -127,7 +127,7 @@ const Home = () => {
               </div>
               <div className="p-8 flex flex-col justify-between flex-grow">
                 <div>
-                  <h3 className="text-xl font-bold font-serif text-text-main dark:text-white mb-3 group-hover:text-primary transition-colors">BAG CLOSING MACHINES</h3>
+                  <h3 className="text-2xl font-black font-serif text-black dark:text-white mb-3 group-hover:text-primary transition-colors">Bag Closing Machines</h3>
                   <p className="text-sm text-text-sub dark:text-gray-500 mb-6 leading-relaxed font-sans">
                     Portable bag closers, fixed sewing heads, and systems for woven PP, paper, and jute bags.
                   </p>
@@ -146,7 +146,7 @@ const Home = () => {
               </div>
               <div className="p-8 flex flex-col justify-between flex-grow">
                 <div>
-                  <h3 className="text-xl font-bold font-serif text-text-main dark:text-white mb-3 group-hover:text-primary transition-colors">BAG CLOSING THREAD</h3>
+                  <h3 className="text-2xl font-black font-serif text-black dark:text-white mb-3 group-hover:text-primary transition-colors">Bag Closing Thread</h3>
                   <p className="text-sm text-text-sub dark:text-gray-500 mb-6 leading-relaxed font-sans">
                     Premium quality polyester threads designed for high-speed industrial bag closing machines.
                   </p>
@@ -165,7 +165,7 @@ const Home = () => {
               </div>
               <div className="p-8 flex flex-col justify-between flex-grow">
                 <div>
-                  <h3 className="text-xl font-bold font-serif text-text-main dark:text-white mb-3 group-hover:text-primary transition-colors">PACKAGING TOOLS</h3>
+                  <h3 className="text-2xl font-black font-serif text-black dark:text-white mb-3 group-hover:text-primary transition-colors">Packaging Tools</h3>
                   <p className="text-sm text-text-sub dark:text-gray-500 mb-6 leading-relaxed font-sans">
                     Strapping machines, carton sealers, and tools for securing your products efficiently.
                   </p>
@@ -184,7 +184,7 @@ const Home = () => {
               </div>
               <div className="p-8 flex flex-col justify-between flex-grow">
                 <div>
-                  <h3 className="text-xl font-bold font-serif text-text-main dark:text-white mb-3 group-hover:text-primary transition-colors">SEALING MACHINES</h3>
+                  <h3 className="text-2xl font-black font-serif text-black dark:text-white mb-3 group-hover:text-primary transition-colors">Sealing Machines</h3>
                   <p className="text-sm text-text-sub dark:text-gray-500 mb-6 leading-relaxed font-sans">
                     Heat sealers, continuous band sealers, and shrink wrapping solutions for various materials.
                   </p>
@@ -203,7 +203,7 @@ const Home = () => {
               </div>
               <div className="p-8 flex flex-col justify-between flex-grow">
                 <div>
-                  <h3 className="text-xl font-bold font-serif text-text-main dark:text-white mb-3 group-hover:text-primary transition-colors">SEWING MACHINE</h3>
+                  <h3 className="text-2xl font-black font-serif text-black dark:text-white mb-3 group-hover:text-primary transition-colors">Sewing Machine</h3>
                   <p className="text-sm text-text-sub dark:text-gray-500 mb-6 leading-relaxed font-sans">
                     High-speed industrial sewing machines for bag manufacturing and heavy textile applications.
                   </p>
@@ -222,7 +222,7 @@ const Home = () => {
               </div>
               <div className="p-8 flex flex-col justify-between flex-grow">
                 <div>
-                  <h3 className="text-xl font-bold font-serif text-text-main dark:text-white mb-3 group-hover:text-primary transition-colors">SPARE PARTS</h3>
+                  <h3 className="text-2xl font-black font-serif text-black dark:text-white mb-3 group-hover:text-primary transition-colors">Spare Parts</h3>
                   <p className="text-sm text-text-sub dark:text-gray-500 mb-6 leading-relaxed font-sans">
                     Genuine replacement parts, needles, and accessories to keep your machinery running smoothly.
                   </p>

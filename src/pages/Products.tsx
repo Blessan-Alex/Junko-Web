@@ -43,20 +43,26 @@ const Products = () => {
   const filteredProducts = useMemo(() => {
     return allProducts.filter(product => {
       // 1. Search Filter
-      const matchesSearch = product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        product.id.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        product.description?.toLowerCase().includes(searchQuery.toLowerCase());
+      const term = searchQuery.toLowerCase();
+      const matchesSearch = product.name.toLowerCase().includes(term) ||
+        product.id.toLowerCase().includes(term) ||
+        (product.description && product.description.toLowerCase().includes(term)) ||
+        product.category.toLowerCase().includes(term) ||
+        (product.subcategory && product.subcategory.toLowerCase().includes(term));
 
       if (!matchesSearch) return false;
 
       // 2. Category Filter
-      if (selectedCategory && product.category !== selectedCategory) {
+      if (selectedCategory && product.category.toLowerCase() !== selectedCategory.toLowerCase()) {
         return false;
       }
 
       // 3. Subcategory Filter
-      if (activeSubcategories.length > 0 && (!product.subcategory || !activeSubcategories.includes(product.subcategory))) {
-        return false;
+      if (activeSubcategories.length > 0) {
+        if (!product.subcategory) return false;
+        // Check if product.subcategory matches any active subcategory (case-insensitive)
+        const isActive = activeSubcategories.some(active => active.toLowerCase() === product.subcategory!.toLowerCase());
+        if (!isActive) return false;
       }
 
       return true;
