@@ -1,0 +1,666 @@
+{
+    "new_categories": [
+        "PORTABLE BAG CLOSERS",
+        "FILLING AND PACKING MACHINES",
+        "WEIGHING SCALES",
+        "PACKAGING MATERIALS"
+    ],
+    "new_products": [
+        {
+            "id": "80800RL",
+            "name": "80800rl",
+            "category": "BAG CLOSING MACHINES",
+            "description": "",
+            "image": "/products/Bag Closing Machines/bag_closing_machine_systems/80800RL.jpg",
+            "featured": false
+        },
+        {
+            "id": "DS-9A",
+            "name": "Ds 9a",
+            "category": "BAG CLOSING MACHINES",
+            "description": "",
+            "image": "/products/Bag Closing Machines/bag_closing_machine_systems/DS-9A.png",
+            "featured": false
+        },
+        {
+            "id": "FBK-332C",
+            "name": "Fbk 332c",
+            "category": "BAG CLOSING MACHINES",
+            "description": "",
+            "image": "/products/Bag Closing Machines/bag_closing_machine_systems/FBK-332C.png",
+            "featured": false
+        },
+        {
+            "id": "FN600A",
+            "name": "Fn600a",
+            "category": "BAG CLOSING MACHINES",
+            "description": "",
+            "image": "/products/Bag Closing Machines/bag_closing_machine_systems/FN600A.png",
+            "featured": false
+        },
+        {
+            "id": "GK-L26",
+            "name": "Gk L26",
+            "category": "BAG CLOSING MACHINES",
+            "description": "",
+            "image": "/products/Bag Closing Machines/bag_closing_machine_systems/GK-L26.jpg",
+            "featured": false
+        },
+        {
+            "id": "GK35-6C",
+            "name": "Gk35 6c",
+            "category": "BAG CLOSING MACHINES",
+            "description": "",
+            "image": "/products/Bag Closing Machines/bag_closing_machine_systems/GK35-6C.png",
+            "featured": false
+        },
+        {
+            "id": "SM-1",
+            "name": "Sm 1",
+            "category": "BAG CLOSING MACHINES",
+            "description": "",
+            "image": "/products/Bag Closing Machines/bag_closing_machine_systems/SM-1.png",
+            "featured": false
+        },
+        {
+            "id": "AS-102-HS-1-e1709140399614",
+            "name": "As 102 Hs 1 E1709140399614",
+            "category": "BAG CLOSING MACHINES",
+            "description": "",
+            "image": "/products/Bag Closing Machines/bag_making_machines/AS-102-HS-1-e1709140399614.png",
+            "featured": false
+        },
+        {
+            "id": "DKN-3WGP-DKN-3BPGP",
+            "name": "Dkn 3wgp Dkn 3bpgp",
+            "category": "BAG CLOSING MACHINES",
+            "description": "",
+            "image": "/products/Bag Closing Machines/bag_making_machines/DKN-3WGP-DKN-3BPGP.jpeg",
+            "featured": false
+        },
+        {
+            "id": "DN-2HS",
+            "name": "Dn 2hs",
+            "category": "BAG CLOSING MACHINES",
+            "description": "",
+            "image": "/products/Bag Closing Machines/bag_making_machines/DN-2HS.jpg",
+            "featured": false
+        },
+        {
+            "id": "U561",
+            "name": "U561",
+            "category": "BAG CLOSING MACHINES",
+            "description": "",
+            "image": "/products/Bag Closing Machines/bag_making_machines/U561.png",
+            "featured": false
+        },
+        {
+            "id": "Belt-Conveyor-e1709141117967",
+            "name": "Belt Conveyor E1709141117967",
+            "category": "BAG CLOSING MACHINES",
+            "description": "",
+            "image": "/products/Bag Closing Machines/conveyors/Belt-Conveyor-e1709141117967.jpg",
+            "featured": false
+        },
+        {
+            "id": "CM4900-3-e1709141785103",
+            "name": "Cm4900 3 E1709141785103",
+            "category": "BAG CLOSING MACHINES",
+            "description": "",
+            "image": "/products/Bag Closing Machines/feeding_device/CM4900-3-e1709141785103.png",
+            "featured": false
+        },
+        {
+            "id": "CP4900-e1709141518888",
+            "name": "Cp4900 E1709141518888",
+            "category": "BAG CLOSING MACHINES",
+            "description": "",
+            "image": "/products/Bag Closing Machines/feeding_device/CP4900-e1709141518888.png",
+            "featured": false
+        },
+        {
+            "id": "DS-9A",
+            "name": "Ds 9a",
+            "category": "BAG CLOSING MACHINES",
+            "description": "",
+            "image": "/products/Bag Closing Machines/Machine_heads/DS-9A.png",
+            "featured": false
+        },
+        {
+            "id": "GK35-6C",
+            "name": "Gk35 6c",
+            "category": "BAG CLOSING MACHINES",
+            "description": "",
+            "image": "/products/Bag Closing Machines/Machine_heads/GK35-6C.png",
+            "featured": false
+        },
+        {
+            "id": "TITAN-2200-1536x681",
+            "name": "Titan 2200 1536x681",
+            "category": "SEWING MACHINE",
+            "description": "",
+            "image": "/products/Carpet_overedging_machines/TITAN 2200NC, Special Fringing Machine to sew cut or uncut fringes/TITAN-2200-1536x681.png",
+            "featured": false
+        },
+        {
+            "id": "SWOil-e1708935103355",
+            "name": "Swoil E1708935103355",
+            "category": "SPARE PARTS",
+            "description": "",
+            "image": "/products/consumables/Oil for sewing machine/SWOil-e1708935103355.png",
+            "featured": false
+        },
+        {
+            "id": "FLG-500A",
+            "name": "Flg 500a",
+            "category": "FILLING AND PACKING MACHINES",
+            "description": "",
+            "image": "/products/Filling and packing machines/Automatic weighing filling machine/FLG-500A.png",
+            "featured": false
+        },
+        {
+            "id": "PM-1",
+            "name": "Pm 1",
+            "category": "FILLING AND PACKING MACHINES",
+            "description": "",
+            "image": "/products/Filling and packing machines/Automatic weighing filling machine/PM-1.png",
+            "featured": false
+        },
+        {
+            "id": "PM-4",
+            "name": "Pm 4",
+            "category": "FILLING AND PACKING MACHINES",
+            "description": "",
+            "image": "/products/Filling and packing machines/Automatic weighing filling machine/PM-4.png",
+            "featured": false
+        },
+        {
+            "id": "BSL-5045L",
+            "name": "Bsl 5045l",
+            "category": "FILLING AND PACKING MACHINES",
+            "description": "",
+            "image": "/products/Filling and packing machines/Shrink Packaging Machine/BSL-5045L.png",
+            "featured": false
+        },
+        {
+            "id": "KZ-8060D",
+            "name": "Kz 8060d",
+            "category": "FILLING AND PACKING MACHINES",
+            "description": "",
+            "image": "/products/Filling and packing machines/Strapping machine/KZ-8060D.png",
+            "featured": false
+        },
+        {
+            "id": "brown-packaging-tape-500x500-1",
+            "name": "Brown Packaging Tape 500x500 1",
+            "category": "PACKAGING MATERIALS",
+            "description": "",
+            "image": "/products/Packaging materials/brown-packaging-tape-500x500-1.jpg",
+            "featured": false
+        },
+        {
+            "id": "Cyklop_PET",
+            "name": "Cyklop Pet",
+            "category": "PACKAGING MATERIALS",
+            "description": "",
+            "image": "/products/Packaging materials/Cyklop_PET.png",
+            "featured": false
+        },
+        {
+            "id": "Polycord-1",
+            "name": "Polycord 1",
+            "category": "PACKAGING MATERIALS",
+            "description": "",
+            "image": "/products/Packaging materials/Polycord-1.png",
+            "featured": false
+        },
+        {
+            "id": "polylash",
+            "name": "Polylash",
+            "category": "PACKAGING MATERIALS",
+            "description": "",
+            "image": "/products/Packaging materials/polylash.jpeg",
+            "featured": false
+        },
+        {
+            "id": "POLYTEX2",
+            "name": "Polytex2",
+            "category": "PACKAGING MATERIALS",
+            "description": "",
+            "image": "/products/Packaging materials/POLYTEX2.jpg",
+            "featured": false
+        },
+        {
+            "id": "20210929173700_40350",
+            "name": "20210929173700 40350",
+            "category": "PACKAGING TOOLS",
+            "description": "",
+            "image": "/products/Packaging tools/Strapping tools/20210929173700_40350.jpg",
+            "featured": false
+        },
+        {
+            "id": "20211011144058_21896",
+            "name": "20211011144058 21896",
+            "category": "PACKAGING TOOLS",
+            "description": "",
+            "image": "/products/Packaging tools/Strapping tools/20211011144058_21896.jpg",
+            "featured": false
+        },
+        {
+            "id": "20211012170012_97381",
+            "name": "20211012170012 97381",
+            "category": "PACKAGING TOOLS",
+            "description": "",
+            "image": "/products/Packaging tools/Strapping tools/20211012170012_97381.jpg",
+            "featured": false
+        },
+        {
+            "id": "20211013103553_33407",
+            "name": "20211013103553 33407",
+            "category": "PACKAGING TOOLS",
+            "description": "",
+            "image": "/products/Packaging tools/Strapping tools/20211013103553_33407.jpg",
+            "featured": false
+        },
+        {
+            "id": "20240416100026_41086",
+            "name": "20240416100026 41086",
+            "category": "PACKAGING TOOLS",
+            "description": "",
+            "image": "/products/Packaging tools/Strapping tools/20240416100026_41086.jpg",
+            "featured": false
+        },
+        {
+            "id": "N600A-12V-BTN",
+            "name": "N600a 12v Btn",
+            "category": "PORTABLE BAG CLOSERS",
+            "description": "",
+            "image": "/products/Portable bag closers/Battery Operated Single Needle Single Thread Chain Stitch Machines/N600A-12V-BTN.jpg",
+            "featured": false
+        },
+        {
+            "id": "PBC_KP-3000B",
+            "name": "Pbc Kp 3000b",
+            "category": "PORTABLE BAG CLOSERS",
+            "description": "",
+            "image": "/products/Portable bag closers/Battery Operated Single Needle Single Thread Chain Stitch Machines/PBC_KP-3000B.png",
+            "featured": false
+        },
+        {
+            "id": "DE-DA6",
+            "name": "De Da6",
+            "category": "PORTABLE BAG CLOSERS",
+            "description": "",
+            "image": "/products/Portable bag closers/Double Thread Double Needle Chain Stitch Machines/DE-DA6.jpg",
+            "featured": false
+        },
+        {
+            "id": "PBC_LPI_DE-DA",
+            "name": "Pbc Lpi De Da",
+            "category": "PORTABLE BAG CLOSERS",
+            "description": "",
+            "image": "/products/Portable bag closers/Double Thread Double Needle Chain Stitch Machines/PBC_LPI_DE-DA.png",
+            "featured": false
+        },
+        {
+            "id": "PBC_N620A",
+            "name": "Pbc N620a",
+            "category": "PORTABLE BAG CLOSERS",
+            "description": "",
+            "image": "/products/Portable bag closers/Double Thread Double Needle Chain Stitch Machines/PBC_N620A.png",
+            "featured": false
+        },
+        {
+            "id": "D-2",
+            "name": "D 2",
+            "category": "PORTABLE BAG CLOSERS",
+            "description": "",
+            "image": "/products/Portable bag closers/Double Thread Single Needle Chain Stitch Machines/D-2.jpg",
+            "featured": false
+        },
+        {
+            "id": "DAD-R",
+            "name": "Dad R",
+            "category": "PORTABLE BAG CLOSERS",
+            "description": "",
+            "image": "/products/Portable bag closers/Double Thread Single Needle Chain Stitch Machines/DAD-R.png",
+            "featured": false
+        },
+        {
+            "id": "PBC_2200A",
+            "name": "Pbc 2200a",
+            "category": "PORTABLE BAG CLOSERS",
+            "description": "",
+            "image": "/products/Portable bag closers/Double Thread Single Needle Chain Stitch Machines/PBC_2200A.png",
+            "featured": false
+        },
+        {
+            "id": "PBC_NP-311",
+            "name": "Pbc Np 311",
+            "category": "PORTABLE BAG CLOSERS",
+            "description": "",
+            "image": "/products/Portable bag closers/Double Thread Single Needle Chain Stitch Machines/PBC_NP-311.png",
+            "featured": false
+        },
+        {
+            "id": "Crepe-tape-attachment-NP-7A",
+            "name": "Crepe Tape Attachment Np 7a",
+            "category": "PORTABLE BAG CLOSERS",
+            "description": "",
+            "image": "/products/Portable bag closers/Single Needle Single Thread Chain Stitch Machines/Crepe-tape-attachment-NP-7A.jpg",
+            "featured": false
+        },
+        {
+            "id": "DA-6",
+            "name": "Da 6",
+            "category": "PORTABLE BAG CLOSERS",
+            "description": "",
+            "image": "/products/Portable bag closers/Single Needle Single Thread Chain Stitch Machines/DA-6.jpg",
+            "featured": false
+        },
+        {
+            "id": "HBC_DA_TEX",
+            "name": "Hbc Da Tex",
+            "category": "PORTABLE BAG CLOSERS",
+            "description": "",
+            "image": "/products/Portable bag closers/Single Needle Single Thread Chain Stitch Machines/HBC_DA_TEX.png",
+            "featured": false
+        },
+        {
+            "id": "L-1",
+            "name": "L 1",
+            "category": "PORTABLE BAG CLOSERS",
+            "description": "",
+            "image": "/products/Portable bag closers/Single Needle Single Thread Chain Stitch Machines/L-1.jpg",
+            "featured": false
+        },
+        {
+            "id": "NP-7A",
+            "name": "Np 7a",
+            "category": "PORTABLE BAG CLOSERS",
+            "description": "",
+            "image": "/products/Portable bag closers/Single Needle Single Thread Chain Stitch Machines/NP-7A.jpg",
+            "featured": false
+        },
+        {
+            "id": "NP-7H",
+            "name": "Np 7h",
+            "category": "PORTABLE BAG CLOSERS",
+            "description": "",
+            "image": "/products/Portable bag closers/Single Needle Single Thread Chain Stitch Machines/NP-7H.jpg",
+            "featured": false
+        },
+        {
+            "id": "PBC_Fischbein_Model",
+            "name": "Pbc Fischbein Model",
+            "category": "PORTABLE BAG CLOSERS",
+            "description": "",
+            "image": "/products/Portable bag closers/Single Needle Single Thread Chain Stitch Machines/PBC_Fischbein_Model.png",
+            "featured": false
+        },
+        {
+            "id": "PBC_GK-9-2",
+            "name": "Pbc Gk 9 2",
+            "category": "PORTABLE BAG CLOSERS",
+            "description": "",
+            "image": "/products/Portable bag closers/Single Needle Single Thread Chain Stitch Machines/PBC_GK-9-2.png",
+            "featured": false
+        },
+        {
+            "id": "PBC_GK_26_1A",
+            "name": "Pbc Gk 26 1a",
+            "category": "PORTABLE BAG CLOSERS",
+            "description": "",
+            "image": "/products/Portable bag closers/Single Needle Single Thread Chain Stitch Machines/PBC_GK_26_1A.png",
+            "featured": false
+        },
+        {
+            "id": "PBC_KP2701",
+            "name": "Pbc Kp2701",
+            "category": "PORTABLE BAG CLOSERS",
+            "description": "",
+            "image": "/products/Portable bag closers/Single Needle Single Thread Chain Stitch Machines/PBC_KP2701.png",
+            "featured": false
+        },
+        {
+            "id": "PBC_LPI_DA-C",
+            "name": "Pbc Lpi Da C",
+            "category": "PORTABLE BAG CLOSERS",
+            "description": "",
+            "image": "/products/Portable bag closers/Single Needle Single Thread Chain Stitch Machines/PBC_LPI_DA-C.png",
+            "featured": false
+        },
+        {
+            "id": "PBC_LPI_DA",
+            "name": "Pbc Lpi Da",
+            "category": "PORTABLE BAG CLOSERS",
+            "description": "",
+            "image": "/products/Portable bag closers/Single Needle Single Thread Chain Stitch Machines/PBC_LPI_DA.png",
+            "featured": false
+        },
+        {
+            "id": "Continuous-band-sealer-FRB-770I",
+            "name": "Continuous Band Sealer Frb 770i",
+            "category": "SEALING MACHINES",
+            "description": "",
+            "image": "/products/Sealing Machines/Band Sealers/Continuous-band-sealer-FRB-770I.png",
+            "featured": false
+        },
+        {
+            "id": "FR-1370LD",
+            "name": "Fr 1370ld",
+            "category": "SEALING MACHINES",
+            "description": "",
+            "image": "/products/Sealing Machines/Band Sealers/FR-1370LD.png",
+            "featured": false
+        },
+        {
+            "id": "FR-1370LT",
+            "name": "Fr 1370lt",
+            "category": "SEALING MACHINES",
+            "description": "",
+            "image": "/products/Sealing Machines/Band Sealers/FR-1370LT.png",
+            "featured": false
+        },
+        {
+            "id": "FRM-1120W",
+            "name": "Frm 1120w",
+            "category": "SEALING MACHINES",
+            "description": "",
+            "image": "/products/Sealing Machines/Band Sealers/FRM-1120W.png",
+            "featured": false
+        },
+        {
+            "id": "High-Speed-Band-sealer-FRB-770I",
+            "name": "High Speed Band Sealer Frb 770i",
+            "category": "SEALING MACHINES",
+            "description": "",
+            "image": "/products/Sealing Machines/Band Sealers/High-Speed-Band-sealer-FRB-770I.png",
+            "featured": false
+        },
+        {
+            "id": "SM-5",
+            "name": "Sm 5",
+            "category": "SEALING MACHINES",
+            "description": "",
+            "image": "/products/Sealing Machines/Blister Sealing Machine/SM-5.png",
+            "featured": false
+        },
+        {
+            "id": "SM-7",
+            "name": "Sm 7",
+            "category": "SEALING MACHINES",
+            "description": "",
+            "image": "/products/Sealing Machines/Carton Sealer/SM-7.png",
+            "featured": false
+        },
+        {
+            "id": "FBH-32",
+            "name": "Fbh 32",
+            "category": "SEALING MACHINES",
+            "description": "",
+            "image": "/products/Sealing Machines/Heavy Duty Bag Sealing Machine/FBH-32.png",
+            "featured": false
+        },
+        {
+            "id": "Hand-Impulse-Sealer-600-800-1000-mm",
+            "name": "Hand Impulse Sealer 600 800 1000 Mm",
+            "category": "SEALING MACHINES",
+            "description": "",
+            "image": "/products/Sealing Machines/Impulse Sealers/Hand-Impulse-Sealer-600-800-1000-mm.png",
+            "featured": false
+        },
+        {
+            "id": "hand-impulse-sealer-cutter",
+            "name": "Hand Impulse Sealer Cutter",
+            "category": "SEALING MACHINES",
+            "description": "",
+            "image": "/products/Sealing Machines/Impulse Sealers/hand-impulse-sealer-cutter.png",
+            "featured": false
+        },
+        {
+            "id": "hand-impulse-sealer-e1709270523894",
+            "name": "Hand Impulse Sealer E1709270523894",
+            "category": "SEALING MACHINES",
+            "description": "",
+            "image": "/products/Sealing Machines/Impulse Sealers/hand-impulse-sealer-e1709270523894.png",
+            "featured": false
+        },
+        {
+            "id": "pedal-impulse-sealer",
+            "name": "Pedal Impulse Sealer",
+            "category": "SEALING MACHINES",
+            "description": "",
+            "image": "/products/Sealing Machines/Impulse Sealers/pedal-impulse-sealer.png",
+            "featured": false
+        },
+        {
+            "id": "table-style-pedal-impulse-sealer",
+            "name": "Table Style Pedal Impulse Sealer",
+            "category": "SEALING MACHINES",
+            "description": "",
+            "image": "/products/Sealing Machines/Impulse Sealers/table-style-pedal-impulse-sealer.png",
+            "featured": false
+        },
+        {
+            "id": "QF-600LS",
+            "name": "Qf 600ls",
+            "category": "SEALING MACHINES",
+            "description": "",
+            "image": "/products/Sealing Machines/Pneumatic heavy bag sealer/QF-600LS.png",
+            "featured": false
+        },
+        {
+            "id": "FBK-24D",
+            "name": "Fbk 24d",
+            "category": "SEALING MACHINES",
+            "description": "",
+            "image": "/products/Sealing Machines/Sealing and Stitching Packaging Machine/FBK-24D.png",
+            "featured": false
+        },
+        {
+            "id": "FBK-332C",
+            "name": "Fbk 332c",
+            "category": "SEALING MACHINES",
+            "description": "",
+            "image": "/products/Sealing Machines/Sealing and Stitching Packaging Machine/FBK-332C.png",
+            "featured": false
+        },
+        {
+            "id": "SM-1",
+            "name": "Sm 1",
+            "category": "SEALING MACHINES",
+            "description": "",
+            "image": "/products/Sealing Machines/Sealing and Stitching Packaging Machine/SM-1.png",
+            "featured": false
+        },
+        {
+            "id": "SM-3",
+            "name": "Sm 3",
+            "category": "SEALING MACHINES",
+            "description": "",
+            "image": "/products/Sealing Machines/Solid Ink Coding Band Sealer/SM-3.png",
+            "featured": false
+        },
+        {
+            "id": "SM-6",
+            "name": "Sm 6",
+            "category": "SEALING MACHINES",
+            "description": "",
+            "image": "/products/Sealing Machines/Solid Ink Coding Band Sealer/SM-6.png",
+            "featured": false
+        },
+        {
+            "id": "SM-9",
+            "name": "Sm 9",
+            "category": "SEALING MACHINES",
+            "description": "",
+            "image": "/products/Sealing Machines/Strapping Machine/SM-9.png",
+            "featured": false
+        },
+        {
+            "id": "SM-8",
+            "name": "Sm 8",
+            "category": "SEALING MACHINES",
+            "description": "",
+            "image": "/products/Sealing Machines/Vaccum Packaging Machine/SM-8.png",
+            "featured": false
+        },
+        {
+            "id": "Bench_Model",
+            "name": "Bench Model",
+            "category": "WEIGHING SCALES",
+            "description": "",
+            "image": "/products/weighing scales/Electronic Weighing Scales/Bench_Model.png",
+            "featured": false
+        },
+        {
+            "id": "Platform_Type",
+            "name": "Platform Type",
+            "category": "WEIGHING SCALES",
+            "description": "",
+            "image": "/products/weighing scales/Electronic Weighing Scales/Platform_Type.png",
+            "featured": false
+        },
+        {
+            "id": "Table_Top",
+            "name": "Table Top",
+            "category": "WEIGHING SCALES",
+            "description": "",
+            "image": "/products/weighing scales/Electronic Weighing Scales/Table_Top.png",
+            "featured": false
+        },
+        {
+            "id": "table_top_front_back_display",
+            "name": "Table Top Front Back Display",
+            "category": "WEIGHING SCALES",
+            "description": "",
+            "image": "/products/weighing scales/Electronic Weighing Scales/table_top_front_back_display.png",
+            "featured": false
+        },
+        {
+            "id": "table_top_water_proof",
+            "name": "Table Top Water Proof",
+            "category": "WEIGHING SCALES",
+            "description": "",
+            "image": "/products/weighing scales/Electronic Weighing Scales/table_top_water_proof.png",
+            "featured": false
+        },
+        {
+            "id": "counter_scale",
+            "name": "Counter Scale",
+            "category": "WEIGHING SCALES",
+            "description": "",
+            "image": "/products/weighing scales/Mechanical Weighing Scales/counter_scale.png",
+            "featured": false
+        },
+        {
+            "id": "manual_platform",
+            "name": "Manual Platform",
+            "category": "WEIGHING SCALES",
+            "description": "",
+            "image": "/products/weighing scales/Mechanical Weighing Scales/manual_platform.png",
+            "featured": false
+        }
+    ]
+}

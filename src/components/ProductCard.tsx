@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { Product } from '../data/products';
 
 interface ProductCardProps {
@@ -9,7 +9,7 @@ interface ProductCardProps {
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     return (
         <Link
-            to={`/product/${product.id}`}
+            href={`/product/${product.id}`}
             className="group flex flex-col bg-white dark:bg-[#1a1a2e] border border-gray-200 dark:border-white/10 rounded-xl overflow-hidden hover:shadow-2xl hover:border-primary/50 dark:hover:border-primary/50 transition-all duration-300 transform hover:-translate-y-1 h-full"
         >
             <div className="relative h-64 bg-gray-50 dark:bg-white/5 overflow-hidden p-6 flex items-center justify-center">

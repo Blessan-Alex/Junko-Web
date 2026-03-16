@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 const Footer = () => {
     return (
@@ -28,23 +28,23 @@ const Footer = () => {
                     <div>
                         <h4 className="font-bold font-serif mb-6 text-white">Solutions</h4>
                         <ul className="space-y-4 text-sm text-blue-200 font-sans">
-                            <li><Link to="/products?category=BAG%20CLOSING%20MACHINES" className="hover:text-white transition-colors">Bag Closing Machines</Link></li>
-                            <li><Link to="/products?category=BAG%20CLOSING%20THREAD" className="hover:text-white transition-colors">Bag Closing Thread</Link></li>
-                            <li><Link to="/products?category=PACKAGING%20TOOLS" className="hover:text-white transition-colors">Packaging Tools</Link></li>
-                            <li><Link to="/products?category=SEALING%20MACHINES" className="hover:text-white transition-colors">Sealing Machines</Link></li>
-                            <li><Link to="/products?category=SEWING%20MACHINE" className="hover:text-white transition-colors">Sewing Machines</Link></li>
-                            <li><Link to="/products?category=SPARE%20PARTS" className="hover:text-white transition-colors">Spare Parts</Link></li>
+                            <li><Link href="/products?category=BAG%20CLOSING%20MACHINES" className="hover:text-white transition-colors">Bag Closing Machines</Link></li>
+                            <li><Link href="/products?category=BAG%20CLOSING%20THREAD" className="hover:text-white transition-colors">Bag Closing Thread</Link></li>
+                            <li><Link href="/products?category=PACKAGING%20TOOLS" className="hover:text-white transition-colors">Packaging Tools</Link></li>
+                            <li><Link href="/products?category=SEALING%20MACHINES" className="hover:text-white transition-colors">Sealing Machines</Link></li>
+                            <li><Link href="/products?category=SEWING%20MACHINE" className="hover:text-white transition-colors">Sewing Machines</Link></li>
+                            <li><Link href="/products?category=SPARE%20PARTS" className="hover:text-white transition-colors">Spare Parts</Link></li>
                         </ul>
                     </div>
                     <div>
                         <h4 className="font-bold font-serif mb-6 text-white">Company</h4>
                         <ul className="space-y-4 text-sm text-blue-200 font-sans">
-                            <li><Link to="/about" className="hover:text-white transition-colors">About Us</Link></li>
-                            <li><Link to="/vision" className="hover:text-white transition-colors">Our Vision</Link></li>
-                            <li><Link to="/services" className="hover:text-white transition-colors">Our Process</Link></li>
-                            <li><Link to="/services" className="hover:text-white transition-colors">Shipping Info</Link></li>
-                            <li><Link to="/services" className="hover:text-white transition-colors">Support & Service</Link></li>
-                            <li><Link to="/contact" className="hover:text-white transition-colors">Contact Us</Link></li>
+                            <li><Link href="/about" className="hover:text-white transition-colors">About Us</Link></li>
+                            <li><Link href="/vision" className="hover:text-white transition-colors">Our Vision</Link></li>
+                            <li><Link href="/services" className="hover:text-white transition-colors">Our Process</Link></li>
+                            <li><Link href="/services" className="hover:text-white transition-colors">Shipping Info</Link></li>
+                            <li><Link href="/services" className="hover:text-white transition-colors">Support & Service</Link></li>
+                            <li><Link href="/contact" className="hover:text-white transition-colors">Contact Us</Link></li>
                         </ul>
                     </div>
                 </div>
