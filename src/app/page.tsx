@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import type { Metadata } from 'next';
 
 import HeroSlideshow from '@/components/HeroSlideshow';
@@ -7,11 +8,80 @@ import HeroSlideshow from '@/components/HeroSlideshow';
 export const metadata: Metadata = {
   title: "Junko FZE | Industrial Packaging Machinery & Supplies UAE",
   description: "Leading supplier of industrial bag closing, heat sealing, and weighing machinery in the UAE & GCC. Spare parts and technical support available in Sharjah.",
+  alternates: { canonical: '/' },
+  openGraph: {
+    title: "Junko FZE | Industrial Packaging Machinery & Supplies UAE",
+    description: "Leading supplier of industrial bag closing, heat sealing, and weighing machinery in the UAE & GCC. Spare parts and technical support available in Sharjah.",
+    url: '/',
+    type: 'website',
+  }
 };
 
 export default function Home() {
+  const localBusinessSchema = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Junko FZE",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "E-9G-10, Hamriyah Free Zone",
+      "addressLocality": "Sharjah",
+      "addressCountry": "AE"
+    },
+    "telephone": "+971503426615",
+    "url": "https://junko-fze.com",
+    "image": "https://junko-fze.com/hero-commercial-dock.jpg"
+  };
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where is your stock located?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Our main warehouse is located in Sharjah, UAE. We encourage customers to visit us to inspect the machines and see them in operation before purchasing."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you sell spare parts and consumables?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, we stock a full range of consumables including industrial thread, needles, and oil, as well as replacement parts for all our machine models."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the warranty period?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We offer a standard 12-month commercial warranty on motors and core components against manufacturing defects. Wear and tear parts are excluded."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you ship to Saudi Arabia and Oman?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, we arrange shipping daily to KSA, Oman, Bahrain, Kuwait, and Qatar. We handle the necessary export documentation to ensure smooth customs clearance."
+        }
+      }
+    ]
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <HeroSlideshow />
       <section className="border-y border-border-color dark:border-gray-800 bg-white dark:bg-surface-dark py-8">
         <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
@@ -44,9 +114,11 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <Link href="/products?category=BAG%20CLOSING%20MACHINES" className="group bg-white dark:bg-surface-dark rounded-2xl shadow-xl overflow-hidden cursor-pointer flex flex-col hover:shadow-2xl transition-all duration-300">
               <div className="aspect-[16/9] bg-gray-100 overflow-hidden relative">
-                <img
+                <Image
                   src="/products/Bag Closing Machines/Machine_heads/BCM_7.png"
                   alt="Bag Closing Machines"
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   className="w-full h-full object-contain p-4 transition-transform duration-500 group-hover:scale-105"
                 />
                 <div className="absolute top-4 right-4 bg-secondary text-white text-xs px-3 py-1.5 rounded-full backdrop-blur-sm font-bold font-sans tracking-wide">Industrial</div>
@@ -63,9 +135,11 @@ export default function Home() {
 
             <Link href="/products?category=BAG%20CLOSING%20THREAD" className="group bg-white dark:bg-surface-dark rounded-2xl shadow-xl overflow-hidden cursor-pointer flex flex-col hover:shadow-2xl transition-all duration-300">
               <div className="aspect-[16/9] bg-gray-100 overflow-hidden relative">
-                <img
+                <Image
                   src="/products/Bag_closing_threads/Thread_7.jpg"
                   alt="Bag Closing Thread"
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
                 <div className="absolute top-4 right-4 bg-secondary text-white text-xs px-3 py-1.5 rounded-full backdrop-blur-sm font-bold font-sans tracking-wide">High Tensile</div>
@@ -82,9 +156,11 @@ export default function Home() {
 
             <Link href="/products?category=PACKAGING%20TOOLS" className="group bg-white dark:bg-surface-dark rounded-2xl shadow-xl overflow-hidden cursor-pointer flex flex-col hover:shadow-2xl transition-all duration-300">
               <div className="aspect-[16/9] bg-gray-100 overflow-hidden relative">
-                <img
+                <Image
                   src="/products/Filling and packing machines/Strapping machine/KZB-1.png"
                   alt="Packaging Tools"
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   className="w-full h-full object-contain p-4 transition-transform duration-500 group-hover:scale-105"
                 />
                 <div className="absolute top-4 right-4 bg-secondary text-white text-xs px-3 py-1.5 rounded-full backdrop-blur-sm font-bold font-sans tracking-wide">Automation</div>
@@ -101,9 +177,11 @@ export default function Home() {
 
             <Link href="/products?category=SEALING%20MACHINES" className="group bg-white dark:bg-surface-dark rounded-2xl shadow-xl overflow-hidden cursor-pointer flex flex-col hover:shadow-2xl transition-all duration-300">
               <div className="aspect-[16/9] bg-gray-100 overflow-hidden relative">
-                <img
+                <Image
                   src="/products/Filling and packing machines/Shrink Packaging Machine/BSF-5540A.png"
                   alt="Sealing Machines"
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   className="w-full h-full object-contain p-4 transition-transform duration-500 group-hover:scale-105"
                 />
                 <div className="absolute top-4 right-4 bg-secondary text-white text-xs px-3 py-1.5 rounded-full backdrop-blur-sm font-bold font-sans tracking-wide">Air-Tight</div>
@@ -120,9 +198,11 @@ export default function Home() {
 
             <Link href="/products?category=SEWING%20MACHINE" className="group bg-white dark:bg-surface-dark rounded-2xl shadow-xl overflow-hidden cursor-pointer flex flex-col hover:shadow-2xl transition-all duration-300">
               <div className="aspect-[16/9] bg-gray-100 overflow-hidden relative">
-                <img
+                <Image
                   src="/products/Bag Closing Machines/bag_making_machines/DN-2HS.jpg"
                   alt="Sewing Machine"
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   className="w-full h-full object-contain p-4 transition-transform duration-500 group-hover:scale-105"
                 />
                 <div className="absolute top-4 right-4 bg-secondary text-white text-xs px-3 py-1.5 rounded-full backdrop-blur-sm font-bold font-sans tracking-wide">Heavy Duty</div>
@@ -139,9 +219,11 @@ export default function Home() {
 
             <Link href="/products?category=SPARE%20PARTS" className="group bg-white dark:bg-surface-dark rounded-2xl shadow-xl overflow-hidden cursor-pointer flex flex-col hover:shadow-2xl transition-all duration-300">
               <div className="aspect-[16/9] bg-gray-100 overflow-hidden relative">
-                <img
+                <Image
                   src="/products/consumables/Needles/Fischbein_needles.png"
                   alt="Spare Parts"
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   className="w-full h-full object-contain p-4 transition-transform duration-500 group-hover:scale-105"
                 />
                 <div className="absolute top-4 right-4 bg-secondary text-white text-xs px-3 py-1.5 rounded-full backdrop-blur-sm font-bold font-sans tracking-wide">Genuine</div>
@@ -320,10 +402,10 @@ export default function Home() {
                 <p className="text-blue-100 text-lg font-sans">Our team is ready to help you find the right equipment for your production targets.</p>
               </div>
               <div className="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
-                <a href="https://wa.me/971503426615?text=Hi, I would like to request a quote." target="_blank" className="h-12 px-8 bg-primary hover:bg-primary-dark text-white font-bold rounded shadow-lg transition-colors whitespace-nowrap flex items-center justify-center text-base">
+                <a href="https://wa.me/971503426615?text=Hi, I would like to request a quote." target="_blank" rel="noopener noreferrer nofollow" className="h-12 px-8 bg-primary hover:bg-primary-dark text-white font-bold rounded shadow-lg transition-colors whitespace-nowrap flex items-center justify-center text-base">
                   Request Quote
                 </a>
-                <a href="https://wa.me/971503426615?text=Hi, I would like to speak to sales." target="_blank" className="h-12 px-8 bg-transparent border-2 border-white text-white hover:bg-white/10 font-bold rounded transition-colors whitespace-nowrap flex items-center justify-center text-base">
+                <a href="https://wa.me/971503426615?text=Hi, I would like to speak to sales." target="_blank" rel="noopener noreferrer nofollow" className="h-12 px-8 bg-transparent border-2 border-white text-white hover:bg-white/10 font-bold rounded transition-colors whitespace-nowrap flex items-center justify-center text-base">
                   Talk to Sales
                 </a>
               </div>

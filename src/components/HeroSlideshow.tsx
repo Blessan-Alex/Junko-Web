@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const heroImages = [
   '/hero-commercial-dock.jpg',
@@ -28,12 +29,18 @@ export default function HeroSlideshow() {
       {heroImages.map((img, index) => (
         <div
           key={index}
-          className={`absolute inset-0 bg-cover bg-center transition-opacity duration-[2000ms] ease-in-out ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'
-            }`}
-          style={{
-            backgroundImage: `var(--hero-gradient), url('${img}')`
-          }}
-        />
+          className={`absolute inset-0 transition-opacity duration-[2000ms] ease-in-out ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'}`}
+        >
+          <Image
+            src={img}
+            alt="Hero background representing industrial capacity"
+            fill
+            sizes="100vw"
+            priority={index === 0}
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+          <div className="absolute inset-0" style={{ backgroundImage: 'var(--hero-gradient)' }} />
+        </div>
       ))}
 
       {/* Gradient Overlay */}
@@ -57,7 +64,7 @@ export default function HeroSlideshow() {
               <Link href="/products" className="h-14 md:h-16 px-6 md:px-10 bg-primary hover:bg-primary-dark text-white font-bold rounded-md transition-all duration-200 hover:shadow-lg active:scale-95 flex items-center justify-center gap-3 text-base md:text-lg w-full sm:w-auto min-w-[200px]">
                 Explore Machinery
               </Link>
-              <a href="https://wa.me/971503426615?text=Hi, I would like to speak to an engineer regarding packaging solutions." target="_blank" className="h-14 md:h-16 px-6 md:px-10 bg-transparent border-2 border-white hover:bg-white/10 text-white font-bold rounded-md transition-all duration-200 hover:shadow-lg active:scale-95 flex items-center justify-center gap-3 text-base md:text-lg w-full sm:w-auto min-w-[200px]">
+              <a href="https://wa.me/971503426615?text=Hi, I would like to speak to an engineer regarding packaging solutions." target="_blank" rel="noopener noreferrer nofollow" className="h-14 md:h-16 px-6 md:px-10 bg-transparent border-2 border-white hover:bg-white/10 text-white font-bold rounded-md transition-all duration-200 hover:shadow-lg active:scale-95 flex items-center justify-center gap-3 text-base md:text-lg w-full sm:w-auto min-w-[200px]">
                 Talk to an Engineer
               </a>
             </div>

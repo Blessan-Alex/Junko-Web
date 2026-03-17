@@ -1,0 +1,742 @@
+[
+  {
+    "source": "/product/BAG_CLOSING_MACHINES_Bag_closing_machine_systems_80800RL",
+    "destination": "/product/80800rl",
+    "permanent": true
+  },
+  {
+    "source": "/product/BAG_CLOSING_MACHINES_Bag_closing_machine_systems_A1_P_DS_2II",
+    "destination": "/product/a1-p-ds-2ii",
+    "permanent": true
+  },
+  {
+    "source": "/product/BAG_CLOSING_MACHINES_Bag_closing_machine_systems_BCM_1",
+    "destination": "/product/bcm-1",
+    "permanent": true
+  },
+  {
+    "source": "/product/BAG_CLOSING_MACHINES_Bag_closing_machine_systems_BCM_2",
+    "destination": "/product/bcm-2",
+    "permanent": true
+  },
+  {
+    "source": "/product/BAG_CLOSING_MACHINES_Bag_closing_machine_systems_BCM_3",
+    "destination": "/product/bcm-3",
+    "permanent": true
+  },
+  {
+    "source": "/product/BAG_CLOSING_MACHINES_Bag_closing_machine_systems_BCM_4",
+    "destination": "/product/bcm-4",
+    "permanent": true
+  },
+  {
+    "source": "/product/BAG_CLOSING_MACHINES_Bag_closing_machine_systems_BCM_5",
+    "destination": "/product/bcm-5",
+    "permanent": true
+  },
+  {
+    "source": "/product/BAG_CLOSING_MACHINES_Bag_closing_machine_systems_BCM_6",
+    "destination": "/product/bcm-6",
+    "permanent": true
+  },
+  {
+    "source": "/product/BAG_CLOSING_MACHINES_Bag_closing_machine_systems_BCM_7",
+    "destination": "/product/bcm-7",
+    "permanent": true
+  },
+  {
+    "source": "/product/BAG_CLOSING_MACHINES_Bag_closing_machine_systems_DS_9A",
+    "destination": "/product/ds-9a",
+    "permanent": true
+  },
+  {
+    "source": "/product/BAG_CLOSING_MACHINES_Bag_closing_machine_systems_FBK_24D",
+    "destination": "/product/fbk-24d",
+    "permanent": true
+  },
+  {
+    "source": "/product/BAG_CLOSING_MACHINES_Bag_closing_machine_systems_FBK_332C",
+    "destination": "/product/fbk-332c",
+    "permanent": true
+  },
+  {
+    "source": "/product/BAG_CLOSING_MACHINES_Bag_closing_machine_systems_FN600A",
+    "destination": "/product/fn600a",
+    "permanent": true
+  },
+  {
+    "source": "/product/BAG_CLOSING_MACHINES_Bag_closing_machine_systems_GK_L26",
+    "destination": "/product/gk-l26",
+    "permanent": true
+  },
+  {
+    "source": "/product/BAG_CLOSING_MACHINES_Bag_closing_machine_systems_GK35_6C",
+    "destination": "/product/gk35-6a",
+    "permanent": true
+  },
+  {
+    "source": "/product/BAG_CLOSING_MACHINES_Bag_closing_machine_systems_MW_6_5",
+    "destination": "/product/mw-6-5",
+    "permanent": true
+  },
+  {
+    "source": "/product/BAG_CLOSING_MACHINES_Bag_closing_machine_systems_SM_1",
+    "destination": "/product/sm-1",
+    "permanent": true
+  },
+  {
+    "source": "/product/BAG_CLOSING_MACHINES_Bag_making_machines_AS_102_HS_1_e1709140399614",
+    "destination": "/product/high-speed-bag-making-machine",
+    "permanent": true
+  },
+  {
+    "source": "/product/BAG_CLOSING_MACHINES_Bag_making_machines_AS_502_HD",
+    "destination": "/product/high-speed-bag-making-machine-1",
+    "permanent": true
+  },
+  {
+    "source": "/product/BAG_CLOSING_MACHINES_Bag_making_machines_DKN_3WGP_DKN_3BPGP",
+    "destination": "/product/high-speed-bag-making-machine-2",
+    "permanent": true
+  },
+  {
+    "source": "/product/BAG_CLOSING_MACHINES_Bag_making_machines_DN_2HS",
+    "destination": "/product/dn-2hs",
+    "permanent": true
+  },
+  {
+    "source": "/product/BAG_CLOSING_MACHINES_Bag_making_machines_U561",
+    "destination": "/product/high-speed-bag-making-machine-3",
+    "permanent": true
+  },
+  {
+    "source": "/product/BAG_CLOSING_MACHINES_Conveyors_Belt_Conveyor_e1709141117967",
+    "destination": "/product/belt-conveyor",
+    "permanent": true
+  },
+  {
+    "source": "/product/BAG_CLOSING_MACHINES_Feeding_device_CM4900_3_e1709141785103",
+    "destination": "/product/bag-infeed",
+    "permanent": true
+  },
+  {
+    "source": "/product/BAG_CLOSING_MACHINES_Feeding_device_CP4900_e1709141518888",
+    "destination": "/product/bag-folding-device",
+    "permanent": true
+  },
+  {
+    "source": "/product/BAG_CLOSING_MACHINES_Machine_heads_80800RL",
+    "destination": "/product/80800rl-1",
+    "permanent": true
+  },
+  {
+    "source": "/product/BAG_CLOSING_MACHINES_Machine_heads_BCM_1",
+    "destination": "/product/bcm-1-1",
+    "permanent": true
+  },
+  {
+    "source": "/product/BAG_CLOSING_MACHINES_Machine_heads_BCM_2",
+    "destination": "/product/bcm-2-1",
+    "permanent": true
+  },
+  {
+    "source": "/product/BAG_CLOSING_MACHINES_Machine_heads_BCM_3",
+    "destination": "/product/bcm-3-1",
+    "permanent": true
+  },
+  {
+    "source": "/product/BAG_CLOSING_MACHINES_Machine_heads_BCM_4",
+    "destination": "/product/bcm-4-1",
+    "permanent": true
+  },
+  {
+    "source": "/product/BAG_CLOSING_MACHINES_Machine_heads_BCM_7",
+    "destination": "/product/bcm-7-1",
+    "permanent": true
+  },
+  {
+    "source": "/product/BAG_CLOSING_MACHINES_Machine_heads_DS_9A",
+    "destination": "/product/ds-9a-1",
+    "permanent": true
+  },
+  {
+    "source": "/product/BAG_CLOSING_MACHINES_Machine_heads_GK35_6C",
+    "destination": "/product/gk35-6a-1",
+    "permanent": true
+  },
+  {
+    "source": "/product/BAG_CLOSING_THREADS_General_3_7_Silicon_Treated_1",
+    "destination": "/product/3-7-silicon-treated-1",
+    "permanent": true
+  },
+  {
+    "source": "/product/BAG_CLOSING_THREADS_General_Crepe_paper_tape",
+    "destination": "/product/crepe-paper-tape",
+    "permanent": true
+  },
+  {
+    "source": "/product/BAG_CLOSING_THREADS_General_Thread_7",
+    "destination": "/product/100-polyester-bag-closing-thread",
+    "permanent": true
+  },
+  {
+    "source": "/product/BAG_CLOSING_THREADS_Crepe_paper_tape_Crepe_paper_tape",
+    "destination": "/product/crepe-paper-tape-1",
+    "permanent": true
+  },
+  {
+    "source": "/product/BAG_CLOSING_THREADS_Monofilament_yarn_monofilament_yarn",
+    "destination": "/product/monofilament-yarn",
+    "permanent": true
+  },
+  {
+    "source": "/product/BAG_CLOSING_THREADS_Polypropelene_multifilament_yarn_Pplypropylene_multifilament",
+    "destination": "/product/polypropelene-pp-multifilament-yarn",
+    "permanent": true
+  },
+  {
+    "source": "/product/BAG_CLOSING_THREADS_Sewing_thread_Sewing_Thread",
+    "destination": "/product/sewing-thread",
+    "permanent": true
+  },
+  {
+    "source": "/product/CARPET_OVEREDGING_MACHINES_General_COEM_1_1",
+    "destination": "/product/rpe-2500-external-stitch-density-adjuster",
+    "permanent": true
+  },
+  {
+    "source": "/product/CARPET_OVEREDGING_MACHINES_General_COEM_6",
+    "destination": "/product/titan-2500ahc-3",
+    "permanent": true
+  },
+  {
+    "source": "/product/CARPET_OVEREDGING_MACHINES_General_COEM_7",
+    "destination": "/product/titan-2500ahc",
+    "permanent": true
+  },
+  {
+    "source": "/product/CARPET_OVEREDGING_MACHINES_Carpet_binding_tape_machine_COEM_8",
+    "destination": "/product/titan-2530ahc",
+    "permanent": true
+  },
+  {
+    "source": "/product/CARPET_OVEREDGING_MACHINES_Carpet_heavy_duty_buttseamer_TITAN_4510CHE_1536x678",
+    "destination": "/product/titan-4510che",
+    "permanent": true
+  },
+  {
+    "source": "/product/CARPET_OVEREDGING_MACHINES_Movable_carpet_overedging_machine_2502WD_2",
+    "destination": "/product/2502wd-2",
+    "permanent": true
+  },
+  {
+    "source": "/product/CARPET_OVEREDGING_MACHINES_Movable_carpet_overedging_machine_COEM_8",
+    "destination": "/product/titan-2530ahc-1",
+    "permanent": true
+  },
+  {
+    "source": "/product/CARPET_OVEREDGING_MACHINES_Titan_2200nc__special_fringing_machine_to_sew_cut_or_uncut_fringes_TITAN_2200_1536x681",
+    "destination": "/product/titan-2200nc",
+    "permanent": true
+  },
+  {
+    "source": "/product/CONSUMABLES_Crepe_paper_tape_Crepe_paper_tape",
+    "destination": "/product/crepe-paper-tape-2",
+    "permanent": true
+  },
+  {
+    "source": "/product/CONSUMABLES_Needles_Fischbein_needles",
+    "destination": "/product/fischbein-needles",
+    "permanent": true
+  },
+  {
+    "source": "/product/CONSUMABLES_Needles_Groz_beckert_needles_e1708936853463",
+    "destination": "/product/groz-beckert-needles",
+    "permanent": true
+  },
+  {
+    "source": "/product/CONSUMABLES_Needles_Needle_1_Schmetz",
+    "destination": "/product/needle-1-schmetz",
+    "permanent": true
+  },
+  {
+    "source": "/product/CONSUMABLES_Needles_Organ_Needles",
+    "destination": "/product/organ-needles",
+    "permanent": true
+  },
+  {
+    "source": "/product/CONSUMABLES_Oil_for_sewing_machine_SWOil_e1708935103355",
+    "destination": "/product/swoil",
+    "permanent": true
+  },
+  {
+    "source": "/product/CONSUMABLES_Repairing_of_machine_Repair_Sewing_Machines_e1708967961507",
+    "destination": "/product/repair-services",
+    "permanent": true
+  },
+  {
+    "source": "/product/CONSUMABLES_Spare_parts_Spare_Parts_Machines",
+    "destination": "/product/spare-parts",
+    "permanent": true
+  },
+  {
+    "source": "/product/CONSUMABLES_Spring_balancers_spring_balancers_all",
+    "destination": "/product/spring-balancer",
+    "permanent": true
+  },
+  {
+    "source": "/product/CONSUMABLES_Thread_Thread_Consumers_1536x396",
+    "destination": "/product/bag-closing-thread",
+    "permanent": true
+  },
+  {
+    "source": "/product/FILLING_AND_PACKING_MACHINES_Automatic_weighing_filling_machine_FLG_500A",
+    "destination": "/product/flg-5000a",
+    "permanent": true
+  },
+  {
+    "source": "/product/FILLING_AND_PACKING_MACHINES_Automatic_weighing_filling_machine_PM_1",
+    "destination": "/product/cjs-25ih",
+    "permanent": true
+  },
+  {
+    "source": "/product/FILLING_AND_PACKING_MACHINES_Automatic_weighing_filling_machine_PM_2",
+    "destination": "/product/cjd-25iiz",
+    "permanent": true
+  },
+  {
+    "source": "/product/FILLING_AND_PACKING_MACHINES_Automatic_weighing_filling_machine_PM_4",
+    "destination": "/product/pm-4",
+    "permanent": true
+  },
+  {
+    "source": "/product/FILLING_AND_PACKING_MACHINES_Carton_sealer_FXJ_4040A",
+    "destination": "/product/fxj-4040a",
+    "permanent": true
+  },
+  {
+    "source": "/product/FILLING_AND_PACKING_MACHINES_Carton_sealer_FXJ_5050A",
+    "destination": "/product/fxj-5050a",
+    "permanent": true
+  },
+  {
+    "source": "/product/FILLING_AND_PACKING_MACHINES_Carton_sealer_FXJ_8070B",
+    "destination": "/product/fxj-8070b",
+    "permanent": true
+  },
+  {
+    "source": "/product/FILLING_AND_PACKING_MACHINES_Shrink_packaging_machine_BS_4535LA",
+    "destination": "/product/bs-4535la",
+    "permanent": true
+  },
+  {
+    "source": "/product/FILLING_AND_PACKING_MACHINES_Shrink_packaging_machine_BSF_5540A",
+    "destination": "/product/bsf-5540a",
+    "permanent": true
+  },
+  {
+    "source": "/product/FILLING_AND_PACKING_MACHINES_Shrink_packaging_machine_BSL_5045L",
+    "destination": "/product/bsl-5045l",
+    "permanent": true
+  },
+  {
+    "source": "/product/FILLING_AND_PACKING_MACHINES_Strapping_machine_KZ_8060D",
+    "destination": "/product/kz-8060-d",
+    "permanent": true
+  },
+  {
+    "source": "/product/FILLING_AND_PACKING_MACHINES_Strapping_machine_KZB_1",
+    "destination": "/product/kzb-1",
+    "permanent": true
+  },
+  {
+    "source": "/product/FILLING_AND_PACKING_MACHINES_Strapping_machine_KZB_A",
+    "destination": "/product/kzb-a",
+    "permanent": true
+  },
+  {
+    "source": "/product/PACKAGING_MATERIALS_General_brown_packaging_tape_500x500_1",
+    "destination": "/product/brown-packaging-tape-500x500-1",
+    "permanent": true
+  },
+  {
+    "source": "/product/PACKAGING_MATERIALS_General_Cyklop_PET",
+    "destination": "/product/cyklop-pet",
+    "permanent": true
+  },
+  {
+    "source": "/product/PACKAGING_MATERIALS_General_Polycord_1",
+    "destination": "/product/polycord",
+    "permanent": true
+  },
+  {
+    "source": "/product/PACKAGING_MATERIALS_General_polylash",
+    "destination": "/product/polylash",
+    "permanent": true
+  },
+  {
+    "source": "/product/PACKAGING_MATERIALS_General_POLYTEX2",
+    "destination": "/product/polytex2",
+    "permanent": true
+  },
+  {
+    "source": "/product/PACKAGING_TOOLS_Strapping_tools_20210929173700_40350",
+    "destination": "/product/pneumatic-strapping-tool",
+    "permanent": true
+  },
+  {
+    "source": "/product/PACKAGING_TOOLS_Strapping_tools_20211009113522_56377_1536x1536",
+    "destination": "/product/polyester-strapping-tensioner",
+    "permanent": true
+  },
+  {
+    "source": "/product/PACKAGING_TOOLS_Strapping_tools_20211011144058_21896",
+    "destination": "/product/cord-strapping-tensioner",
+    "permanent": true
+  },
+  {
+    "source": "/product/PACKAGING_TOOLS_Strapping_tools_20211011180630_31788",
+    "destination": "/product/premium-strapping-tensioner",
+    "permanent": true
+  },
+  {
+    "source": "/product/PACKAGING_TOOLS_Strapping_tools_20211012170012_97381",
+    "destination": "/product/heavy-duty-cord-strapping-tensioner",
+    "permanent": true
+  },
+  {
+    "source": "/product/PACKAGING_TOOLS_Strapping_tools_20211013103553_33407",
+    "destination": "/product/heavy-duty-poly-strap-tensioner",
+    "permanent": true
+  },
+  {
+    "source": "/product/PACKAGING_TOOLS_Strapping_tools_20211013114914_56279",
+    "destination": "/product/premium-cord-strapping-tensioner",
+    "permanent": true
+  },
+  {
+    "source": "/product/PACKAGING_TOOLS_Strapping_tools_20211013120007_89741",
+    "destination": "/product/heavy-duty-cord-strapping-tensioner-1",
+    "permanent": true
+  },
+  {
+    "source": "/product/PACKAGING_TOOLS_Strapping_tools_20211013143615_73711",
+    "destination": "/product/pneumatic-cord-strapping-tensioner",
+    "permanent": true
+  },
+  {
+    "source": "/product/PACKAGING_TOOLS_Strapping_tools_20211014113343_78491",
+    "destination": "/product/strapping-sealer",
+    "permanent": true
+  },
+  {
+    "source": "/product/PACKAGING_TOOLS_Strapping_tools_20211014160509_88035_2",
+    "destination": "/product/jwc-poly-strapping-sealer",
+    "permanent": true
+  },
+  {
+    "source": "/product/PACKAGING_TOOLS_Strapping_tools_20240416100026_41086",
+    "destination": "/product/one-button-operated-battery-strapping-tool",
+    "permanent": true
+  },
+  {
+    "source": "/product/PORTABLE_BAG_CLOSERS_Battery_operated_single_needle_single_thread_chain_stitch_machines_KP_2701B",
+    "destination": "/product/kp-2701b",
+    "permanent": true
+  },
+  {
+    "source": "/product/PORTABLE_BAG_CLOSERS_Battery_operated_single_needle_single_thread_chain_stitch_machines_N600A_12V_BTN",
+    "destination": "/product/n600a-12v-btn",
+    "permanent": true
+  },
+  {
+    "source": "/product/PORTABLE_BAG_CLOSERS_Battery_operated_single_needle_single_thread_chain_stitch_machines_PBC_KP_3000B",
+    "destination": "/product/kp-3000b",
+    "permanent": true
+  },
+  {
+    "source": "/product/PORTABLE_BAG_CLOSERS_Double_thread_double_needle_chain_stitch_machines_DE_DA6",
+    "destination": "/product/de-da6",
+    "permanent": true
+  },
+  {
+    "source": "/product/PORTABLE_BAG_CLOSERS_Double_thread_double_needle_chain_stitch_machines_PBC_LPI_DE_DA",
+    "destination": "/product/de-da",
+    "permanent": true
+  },
+  {
+    "source": "/product/PORTABLE_BAG_CLOSERS_Double_thread_double_needle_chain_stitch_machines_PBC_N620A",
+    "destination": "/product/n620a",
+    "permanent": true
+  },
+  {
+    "source": "/product/PORTABLE_BAG_CLOSERS_Double_thread_single_needle_chain_stitch_machines_D_2",
+    "destination": "/product/d-2",
+    "permanent": true
+  },
+  {
+    "source": "/product/PORTABLE_BAG_CLOSERS_Double_thread_single_needle_chain_stitch_machines_DAD_R",
+    "destination": "/product/dad-r",
+    "permanent": true
+  },
+  {
+    "source": "/product/PORTABLE_BAG_CLOSERS_Double_thread_single_needle_chain_stitch_machines_PBC_2200A",
+    "destination": "/product/2200a",
+    "permanent": true
+  },
+  {
+    "source": "/product/PORTABLE_BAG_CLOSERS_Double_thread_single_needle_chain_stitch_machines_PBC_NP_311",
+    "destination": "/product/np-311",
+    "permanent": true
+  },
+  {
+    "source": "/product/PORTABLE_BAG_CLOSERS_Single_needle_single_thread_chain_stitch_machines_Crepe_tape_attachment_NP_7A",
+    "destination": "/product/np-7a",
+    "permanent": true
+  },
+  {
+    "source": "/product/PORTABLE_BAG_CLOSERS_Single_needle_single_thread_chain_stitch_machines_DA_6",
+    "destination": "/product/da-6",
+    "permanent": true
+  },
+  {
+    "source": "/product/PORTABLE_BAG_CLOSERS_Single_needle_single_thread_chain_stitch_machines_GNP_7A",
+    "destination": "/product/np-7a-1",
+    "permanent": true
+  },
+  {
+    "source": "/product/PORTABLE_BAG_CLOSERS_Single_needle_single_thread_chain_stitch_machines_HBC_DA_TEX",
+    "destination": "/product/da-tex",
+    "permanent": true
+  },
+  {
+    "source": "/product/PORTABLE_BAG_CLOSERS_Single_needle_single_thread_chain_stitch_machines_L_1",
+    "destination": "/product/l-1",
+    "permanent": true
+  },
+  {
+    "source": "/product/PORTABLE_BAG_CLOSERS_Single_needle_single_thread_chain_stitch_machines_NP_7A",
+    "destination": "/product/np-7a-2",
+    "permanent": true
+  },
+  {
+    "source": "/product/PORTABLE_BAG_CLOSERS_Single_needle_single_thread_chain_stitch_machines_NP_7H",
+    "destination": "/product/pbc-gk-9-2",
+    "permanent": true
+  },
+  {
+    "source": "/product/PORTABLE_BAG_CLOSERS_Single_needle_single_thread_chain_stitch_machines_PBC_Fischbein_Model",
+    "destination": "/product/pbc-fischbein-model",
+    "permanent": true
+  },
+  {
+    "source": "/product/PORTABLE_BAG_CLOSERS_Single_needle_single_thread_chain_stitch_machines_PBC_GK_9_2",
+    "destination": "/product/gk-9-2",
+    "permanent": true
+  },
+  {
+    "source": "/product/PORTABLE_BAG_CLOSERS_Single_needle_single_thread_chain_stitch_machines_PBC_GK_26_1A",
+    "destination": "/product/gk-26-1a",
+    "permanent": true
+  },
+  {
+    "source": "/product/PORTABLE_BAG_CLOSERS_Single_needle_single_thread_chain_stitch_machines_PBC_KP2701",
+    "destination": "/product/kp2701",
+    "permanent": true
+  },
+  {
+    "source": "/product/PORTABLE_BAG_CLOSERS_Single_needle_single_thread_chain_stitch_machines_PBC_LPI_DA_C",
+    "destination": "/product/da-c",
+    "permanent": true
+  },
+  {
+    "source": "/product/PORTABLE_BAG_CLOSERS_Single_needle_single_thread_chain_stitch_machines_PBC_LPI_DA",
+    "destination": "/product/lpi-made-in-india",
+    "permanent": true
+  },
+  {
+    "source": "/product/SEALING_MACHINES_Band_sealers_Continuous_band_sealer_FRB_770I",
+    "destination": "/product/continuous-band-sealer-frb-770i",
+    "permanent": true
+  },
+  {
+    "source": "/product/SEALING_MACHINES_Band_sealers_FR_1370LD",
+    "destination": "/product/fr-1370ld",
+    "permanent": true
+  },
+  {
+    "source": "/product/SEALING_MACHINES_Band_sealers_FR_1370LT",
+    "destination": "/product/fr-1370lt",
+    "permanent": true
+  },
+  {
+    "source": "/product/SEALING_MACHINES_Band_sealers_FRM_1120LD",
+    "destination": "/product/frm-1120ld",
+    "permanent": true
+  },
+  {
+    "source": "/product/SEALING_MACHINES_Band_sealers_FRM_1120W",
+    "destination": "/product/frm-1120w",
+    "permanent": true
+  },
+  {
+    "source": "/product/SEALING_MACHINES_Band_sealers_High_Speed_Band_sealer_FRB_770I",
+    "destination": "/product/high-speed-band-sealer-frb-770i",
+    "permanent": true
+  },
+  {
+    "source": "/product/SEALING_MACHINES_Blister_sealing_machine_SM_5",
+    "destination": "/product/sm-5",
+    "permanent": true
+  },
+  {
+    "source": "/product/SEALING_MACHINES_Carton_sealer_SM_7",
+    "destination": "/product/sm-7",
+    "permanent": true
+  },
+  {
+    "source": "/product/SEALING_MACHINES_Heavy_duty_bag_sealing_machine_FBH_32",
+    "destination": "/product/fbh-32",
+    "permanent": true
+  },
+  {
+    "source": "/product/SEALING_MACHINES_Impulse_sealers_Hand_Impulse_Sealer_600_800_1000_mm",
+    "destination": "/product/hand-impulse-sealer-600-800-1000-mm",
+    "permanent": true
+  },
+  {
+    "source": "/product/SEALING_MACHINES_Impulse_sealers_hand_impulse_sealer_cutter",
+    "destination": "/product/hand-impulse-sealer-cutter",
+    "permanent": true
+  },
+  {
+    "source": "/product/SEALING_MACHINES_Impulse_sealers_hand_impulse_sealer_e1709270523894",
+    "destination": "/product/hand-impulse-sealer-e1709270523894",
+    "permanent": true
+  },
+  {
+    "source": "/product/SEALING_MACHINES_Impulse_sealers_pedal_impulse_sealer",
+    "destination": "/product/pedal-impulse-sealer",
+    "permanent": true
+  },
+  {
+    "source": "/product/SEALING_MACHINES_Impulse_sealers_table_style_pedal_impulse_sealer",
+    "destination": "/product/pedal-impulse-sealer-1",
+    "permanent": true
+  },
+  {
+    "source": "/product/SEALING_MACHINES_Pneumatic_heavy_bag_sealer_QF_600LS",
+    "destination": "/product/qf-600ls",
+    "permanent": true
+  },
+  {
+    "source": "/product/SEALING_MACHINES_Sealing_and_stitching_packaging_machine_FBK_24D",
+    "destination": "/product/fbk-24d-1",
+    "permanent": true
+  },
+  {
+    "source": "/product/SEALING_MACHINES_Sealing_and_stitching_packaging_machine_FBK_332C",
+    "destination": "/product/fbk-332c-1",
+    "permanent": true
+  },
+  {
+    "source": "/product/SEALING_MACHINES_Sealing_and_stitching_packaging_machine_SM_1",
+    "destination": "/product/sm-1-1",
+    "permanent": true
+  },
+  {
+    "source": "/product/SEALING_MACHINES_Solid_ink_coding_band_sealer_SM_3",
+    "destination": "/product/sm-3",
+    "permanent": true
+  },
+  {
+    "source": "/product/SEALING_MACHINES_Solid_ink_coding_band_sealer_SM_6",
+    "destination": "/product/sm-6",
+    "permanent": true
+  },
+  {
+    "source": "/product/SEALING_MACHINES_Strapping_machine_SM_9",
+    "destination": "/product/sm-6-1",
+    "permanent": true
+  },
+  {
+    "source": "/product/SEALING_MACHINES_Vaccum_packaging_machine_SM_8",
+    "destination": "/product/sm-6-2",
+    "permanent": true
+  },
+  {
+    "source": "/product/WEIGHING_SCALES_Electronic_weighing_scales_asss_jpg",
+    "destination": "/product/animal-scale-https-junko-fze-com-product-animal-scale",
+    "permanent": true
+  },
+  {
+    "source": "/product/WEIGHING_SCALES_Electronic_weighing_scales_Bench_Model",
+    "destination": "/product/bench-platform-weighing-scale",
+    "permanent": true
+  },
+  {
+    "source": "/product/WEIGHING_SCALES_Electronic_weighing_scales_Bench_Model_Mini",
+    "destination": "/product/mini-bench-model",
+    "permanent": true
+  },
+  {
+    "source": "/product/WEIGHING_SCALES_Electronic_weighing_scales_Field_Scale",
+    "destination": "/product/field-scale",
+    "permanent": true
+  },
+  {
+    "source": "/product/WEIGHING_SCALES_Electronic_weighing_scales_heavy_platform",
+    "destination": "/product/heavy-platform",
+    "permanent": true
+  },
+  {
+    "source": "/product/WEIGHING_SCALES_Electronic_weighing_scales_Jewelley_Scale",
+    "destination": "/product/jewellery-scale",
+    "permanent": true
+  },
+  {
+    "source": "/product/WEIGHING_SCALES_Electronic_weighing_scales_pallet_scale_1734x2048",
+    "destination": "/product/pallet-scale-https-junko-fze-com-product-pallet-scale",
+    "permanent": true
+  },
+  {
+    "source": "/product/WEIGHING_SCALES_Electronic_weighing_scales_Platform_Type",
+    "destination": "/product/platform-type-weighing-scale",
+    "permanent": true
+  },
+  {
+    "source": "/product/WEIGHING_SCALES_Electronic_weighing_scales_Price_Computing",
+    "destination": "/product/price-computing",
+    "permanent": true
+  },
+  {
+    "source": "/product/WEIGHING_SCALES_Electronic_weighing_scales_Table_Top",
+    "destination": "/product/table-top-weighing-scale",
+    "permanent": true
+  },
+  {
+    "source": "/product/WEIGHING_SCALES_Electronic_weighing_scales_table_top_front_back_display",
+    "destination": "/product/table-top-weighing-scale-1",
+    "permanent": true
+  },
+  {
+    "source": "/product/WEIGHING_SCALES_Electronic_weighing_scales_table_top_water_proof",
+    "destination": "/product/table-top-weighing-scale-2",
+    "permanent": true
+  },
+  {
+    "source": "/product/WEIGHING_SCALES_Mechanical_weighing_scales_1220_Long__Hand__Pallet_Truck_png",
+    "destination": "/product/1220-long-hand-pallet-truck-png",
+    "permanent": true
+  },
+  {
+    "source": "/product/WEIGHING_SCALES_Mechanical_weighing_scales_counter_scale",
+    "destination": "/product/counter-scale",
+    "permanent": true
+  },
+  {
+    "source": "/product/WEIGHING_SCALES_Mechanical_weighing_scales_manual_platform",
+    "destination": "/product/manual-platform",
+    "permanent": true
+  }
+]

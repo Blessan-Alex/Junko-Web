@@ -5,6 +5,13 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: "Our Vision | Junko FZE Industrial Packaging",
   description: "Empowering businesses to grow efficiently and sustainably by delivering reliable packaging machinery and materials that support efficient operations worldwide.",
+  alternates: { canonical: '/vision' },
+  openGraph: {
+    title: "Our Vision | Junko FZE Industrial Packaging",
+    description: "Empowering businesses to grow efficiently and sustainably by delivering reliable packaging machinery and materials that support efficient operations worldwide.",
+    url: '/vision',
+    type: 'website',
+  }
 };
 
 export default function VisionPage() {
@@ -32,7 +39,7 @@ export default function VisionPage() {
                             <div className="bg-primary/10 w-16 h-16 rounded-full flex items-center justify-center mb-6 text-primary">
                                 <span className="material-symbols-outlined text-3xl">trending_up</span>
                             </div>
-                            <h3 className="text-xl font-bold font-serif text-secondary dark:text-white mb-3">Efficiency</h3>
+                            <h2 className="text-xl font-bold font-serif text-secondary dark:text-white mb-3">Efficiency</h2>
                             <p className="text-text-sub dark:text-gray-400 font-sans leading-relaxed">
                                 Streamlining production lines with high-speed, low-maintenance machinery that minimizes downtime and maximizes throughput for businesses of all sizes.
                             </p>
@@ -42,7 +49,7 @@ export default function VisionPage() {
                             <div className="bg-secondary/10 w-16 h-16 rounded-full flex items-center justify-center mb-6 text-secondary dark:text-gray-200">
                                 <span className="material-symbols-outlined text-3xl">eco</span>
                             </div>
-                            <h3 className="text-xl font-bold font-serif text-secondary dark:text-white mb-3">Sustainability</h3>
+                            <h2 className="text-xl font-bold font-serif text-secondary dark:text-white mb-3">Sustainability</h2>
                             <p className="text-text-sub dark:text-gray-400 font-sans leading-relaxed">
                                 Providing durable equipment designed for longevity and supporting eco-friendly packaging materials to reduce environmental impact.
                             </p>
@@ -52,7 +59,7 @@ export default function VisionPage() {
                             <div className="bg-primary/10 w-16 h-16 rounded-full flex items-center justify-center mb-6 text-primary">
                                 <span className="material-symbols-outlined text-3xl">handshake</span>
                             </div>
-                            <h3 className="text-xl font-bold font-serif text-secondary dark:text-white mb-3">Reliability</h3>
+                            <h2 className="text-xl font-bold font-serif text-secondary dark:text-white mb-3">Reliability</h2>
                             <p className="text-text-sub dark:text-gray-400 font-sans leading-relaxed">
                                 Building lasting partnerships through honest advice, dependable after-sales support, and a commitment to your long-term operational success.
                             </p>

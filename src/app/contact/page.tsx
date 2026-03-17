@@ -5,6 +5,13 @@ import ContactClient from './ContactClient';
 export const metadata: Metadata = {
   title: "Contact Junko FZE | Packaging Machine Sales & Support",
   description: "Get a quote or request support. Visit our office in Hamriyah Free Zone, Sharjah, call us, or send an inquiry. We respond typically within 24 hours.",
+  alternates: { canonical: '/contact' },
+  openGraph: {
+    title: "Contact Junko FZE | Packaging Machine Sales & Support",
+    description: "Get a quote or request support. Visit our office in Hamriyah Free Zone, Sharjah, call us, or send an inquiry. We respond typically within 24 hours.",
+    url: '/contact',
+    type: 'website',
+  }
 };
 
 export default function ContactPage() {

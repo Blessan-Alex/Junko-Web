@@ -1,10 +1,26 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: "About Junko FZE | Industrial Packaging Solutions Sharjah",
-  description: "Since 2011, Junko FZE has provided top-tier industrial packaging machines and consumables. Based in Sharjah SAIF Zone, serving the entire GCC region.",
+  title: 'About Junko FZE | Established UAE Packaging Supplier',
+  description: "Learn about Junko Industrial's reliable packaging machinery, our 30+ year history serving the UAE, and our commitment to operational excellence.",
+  alternates: { canonical: '/about' },
+  openGraph: {
+    title: 'About Junko FZE | Established UAE Packaging Supplier',
+    description: "Learn about Junko Industrial's reliable packaging machinery, our 30+ year history serving the UAE, and our commitment to operational excellence.",
+    url: '/about',
+    type: 'website',
+    images: [
+      {
+        url: 'https://images.pexels.com/photos/18471441/pexels-photo-18471441.jpeg',
+        width: 1260,
+        height: 750,
+        alt: 'Junko Industrial Team',
+      },
+    ],
+  }
 };
 
 export default function AboutPage() {
@@ -32,8 +48,14 @@ export default function AboutPage() {
                 </Link>
               </div>
               <div className="w-full flex-1">
-                <div className="w-full bg-center bg-no-repeat bg-cover rounded aspect-[4/3] lg:aspect-auto lg:h-[400px] shadow-lg" style={{ backgroundImage: 'url("https://images.pexels.com/photos/18471441/pexels-photo-18471441.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1")' }}>
-                </div>
+                <Image 
+                  src="https://images.pexels.com/photos/18471441/pexels-photo-18471441.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                  alt="Junko Industrial Team"
+                  priority
+                  width={1260}
+                  height={750}
+                  className="w-full object-cover rounded aspect-[4/3] lg:aspect-auto lg:h-[400px] shadow-lg"
+                />
               </div>
             </div>
           </div>
@@ -168,7 +190,7 @@ export default function AboutPage() {
             <h2 className="text-white text-3xl md:text-4xl font-bold font-serif leading-tight tracking-[-0.033em]">Ready to streamline your packaging?</h2>
             <p className="text-indigo-100 text-lg max-w-[600px]">Speak directly with our team in Sharjah about your specific packaging needs and discover how Junko FZE can increase your efficiency.</p>
             <div className="flex gap-4 pt-4">
-              <a href="https://wa.me/971503426615?text=Hi, I would like to speak to sales." target="_blank" className="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded h-12 px-6 bg-primary hover:bg-primary-hover transition-colors text-white text-base font-bold leading-normal tracking-[0.015em]">
+              <a href="https://wa.me/971503426615?text=Hi, I would like to speak to sales." target="_blank" rel="noopener noreferrer nofollow" className="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded h-12 px-6 bg-primary hover:bg-primary-hover transition-colors text-white text-base font-bold leading-normal tracking-[0.015em]">
                 Talk to Sales
               </a>
             </div>

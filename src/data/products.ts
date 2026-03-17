@@ -1,5 +1,6 @@
 export interface Product {
     id: string;
+    slug: string;
     name: string;
     category: string;
     subcategory?: string;
@@ -129,7 +130,8 @@ export const allProducts: Product[] = [
         "image": "/products/Bag Closing Machines/bag_closing_machine_systems/80800RL.jpg",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "80800rl"
     },
     {
         "id": "BAG_CLOSING_MACHINES_Bag_closing_machine_systems_A1_P_DS_2II",
@@ -140,7 +142,8 @@ export const allProducts: Product[] = [
         "image": "/products/Bag Closing Machines/bag_closing_machine_systems/A1-P-DS-2II.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "a1-p-ds-2ii"
     },
     {
         "id": "BAG_CLOSING_MACHINES_Bag_closing_machine_systems_BCM_1",
@@ -151,7 +154,8 @@ export const allProducts: Product[] = [
         "image": "/products/Bag Closing Machines/bag_closing_machine_systems/BCM_1.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "bcm-1"
     },
     {
         "id": "BAG_CLOSING_MACHINES_Bag_closing_machine_systems_BCM_2",
@@ -162,7 +166,8 @@ export const allProducts: Product[] = [
         "image": "/products/Bag Closing Machines/bag_closing_machine_systems/BCM_2.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "bcm-2"
     },
     {
         "id": "BAG_CLOSING_MACHINES_Bag_closing_machine_systems_BCM_3",
@@ -173,7 +178,8 @@ export const allProducts: Product[] = [
         "image": "/products/Bag Closing Machines/bag_closing_machine_systems/BCM_3.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "bcm-3"
     },
     {
         "id": "BAG_CLOSING_MACHINES_Bag_closing_machine_systems_BCM_4",
@@ -184,7 +190,8 @@ export const allProducts: Product[] = [
         "image": "/products/Bag Closing Machines/bag_closing_machine_systems/BCM_4.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "bcm-4"
     },
     {
         "id": "BAG_CLOSING_MACHINES_Bag_closing_machine_systems_BCM_5",
@@ -195,7 +202,8 @@ export const allProducts: Product[] = [
         "image": "/products/Bag Closing Machines/bag_closing_machine_systems/BCM_5.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "bcm-5"
     },
     {
         "id": "BAG_CLOSING_MACHINES_Bag_closing_machine_systems_BCM_6",
@@ -206,7 +214,8 @@ export const allProducts: Product[] = [
         "image": "/products/Bag Closing Machines/bag_closing_machine_systems/BCM_6.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "bcm-6"
     },
     {
         "id": "BAG_CLOSING_MACHINES_Bag_closing_machine_systems_BCM_7",
@@ -217,7 +226,8 @@ export const allProducts: Product[] = [
         "image": "/products/Bag Closing Machines/bag_closing_machine_systems/BCM_7.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "bcm-7"
     },
     {
         "id": "BAG_CLOSING_MACHINES_Bag_closing_machine_systems_DS_9A",
@@ -228,7 +238,8 @@ export const allProducts: Product[] = [
         "image": "/products/Bag Closing Machines/bag_closing_machine_systems/DS-9A.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "ds-9a"
     },
     {
         "id": "BAG_CLOSING_MACHINES_Bag_closing_machine_systems_FBK_24D",
@@ -239,7 +250,8 @@ export const allProducts: Product[] = [
         "image": "/products/Bag Closing Machines/bag_closing_machine_systems/FBK-24D.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "fbk-24d"
     },
     {
         "id": "BAG_CLOSING_MACHINES_Bag_closing_machine_systems_FBK_332C",
@@ -250,7 +262,8 @@ export const allProducts: Product[] = [
         "image": "/products/Bag Closing Machines/bag_closing_machine_systems/FBK-332C.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "fbk-332c"
     },
     {
         "id": "BAG_CLOSING_MACHINES_Bag_closing_machine_systems_FN600A",
@@ -261,7 +274,8 @@ export const allProducts: Product[] = [
         "image": "/products/Bag Closing Machines/bag_closing_machine_systems/FN600A.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "fn600a"
     },
     {
         "id": "BAG_CLOSING_MACHINES_Bag_closing_machine_systems_GK_L26",
@@ -272,7 +286,8 @@ export const allProducts: Product[] = [
         "image": "/products/Bag Closing Machines/bag_closing_machine_systems/GK-L26.jpg",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "gk-l26"
     },
     {
         "id": "BAG_CLOSING_MACHINES_Bag_closing_machine_systems_GK35_6C",
@@ -283,7 +298,8 @@ export const allProducts: Product[] = [
         "image": "/products/Bag Closing Machines/bag_closing_machine_systems/GK35-6C.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "gk35-6a"
     },
     {
         "id": "BAG_CLOSING_MACHINES_Bag_closing_machine_systems_MW_6_5",
@@ -294,7 +310,8 @@ export const allProducts: Product[] = [
         "image": "/products/Bag Closing Machines/bag_closing_machine_systems/MW-6.5.jpg",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "mw-6-5"
     },
     {
         "id": "BAG_CLOSING_MACHINES_Bag_closing_machine_systems_SM_1",
@@ -305,7 +322,8 @@ export const allProducts: Product[] = [
         "image": "/products/Bag Closing Machines/bag_closing_machine_systems/SM-1.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "sm-1"
     },
     {
         "id": "BAG_CLOSING_MACHINES_Bag_making_machines_AS_102_HS_1_e1709140399614",
@@ -316,7 +334,8 @@ export const allProducts: Product[] = [
         "image": "/products/Bag Closing Machines/bag_making_machines/AS-102-HS-1-e1709140399614.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "high-speed-bag-making-machine"
     },
     {
         "id": "BAG_CLOSING_MACHINES_Bag_making_machines_AS_502_HD",
@@ -327,7 +346,8 @@ export const allProducts: Product[] = [
         "image": "/products/Bag Closing Machines/bag_making_machines/AS-502-HD.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "high-speed-bag-making-machine-1"
     },
     {
         "id": "BAG_CLOSING_MACHINES_Bag_making_machines_DKN_3WGP_DKN_3BPGP",
@@ -338,7 +358,8 @@ export const allProducts: Product[] = [
         "image": "/products/Bag Closing Machines/bag_making_machines/DKN-3WGP-DKN-3BPGP.jpeg",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "high-speed-bag-making-machine-2"
     },
     {
         "id": "BAG_CLOSING_MACHINES_Bag_making_machines_DN_2HS",
@@ -349,7 +370,8 @@ export const allProducts: Product[] = [
         "image": "/products/Bag Closing Machines/bag_making_machines/DN-2HS.jpg",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "dn-2hs"
     },
     {
         "id": "BAG_CLOSING_MACHINES_Bag_making_machines_U561",
@@ -360,7 +382,8 @@ export const allProducts: Product[] = [
         "image": "/products/Bag Closing Machines/bag_making_machines/U561.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "high-speed-bag-making-machine-3"
     },
     {
         "id": "BAG_CLOSING_MACHINES_Conveyors_Belt_Conveyor_e1709141117967",
@@ -371,7 +394,8 @@ export const allProducts: Product[] = [
         "image": "/products/Bag Closing Machines/conveyors/Belt-Conveyor-e1709141117967.jpg",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "belt-conveyor"
     },
     {
         "id": "BAG_CLOSING_MACHINES_Feeding_device_CM4900_3_e1709141785103",
@@ -382,7 +406,8 @@ export const allProducts: Product[] = [
         "image": "/products/Bag Closing Machines/feeding_device/CM4900-3-e1709141785103.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "bag-infeed"
     },
     {
         "id": "BAG_CLOSING_MACHINES_Feeding_device_CP4900_e1709141518888",
@@ -393,7 +418,8 @@ export const allProducts: Product[] = [
         "image": "/products/Bag Closing Machines/feeding_device/CP4900-e1709141518888.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "bag-folding-device"
     },
     {
         "id": "BAG_CLOSING_MACHINES_Machine_heads_80800RL",
@@ -404,7 +430,8 @@ export const allProducts: Product[] = [
         "image": "/products/Bag Closing Machines/Machine_heads/80800RL.jpg",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "80800rl-1"
     },
     {
         "id": "BAG_CLOSING_MACHINES_Machine_heads_BCM_1",
@@ -415,7 +442,8 @@ export const allProducts: Product[] = [
         "image": "/products/Bag Closing Machines/Machine_heads/BCM_1.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "bcm-1-1"
     },
     {
         "id": "BAG_CLOSING_MACHINES_Machine_heads_BCM_2",
@@ -426,7 +454,8 @@ export const allProducts: Product[] = [
         "image": "/products/Bag Closing Machines/Machine_heads/BCM_2.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "bcm-2-1"
     },
     {
         "id": "BAG_CLOSING_MACHINES_Machine_heads_BCM_3",
@@ -437,7 +466,8 @@ export const allProducts: Product[] = [
         "image": "/products/Bag Closing Machines/Machine_heads/BCM_3.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "bcm-3-1"
     },
     {
         "id": "BAG_CLOSING_MACHINES_Machine_heads_BCM_4",
@@ -448,7 +478,8 @@ export const allProducts: Product[] = [
         "image": "/products/Bag Closing Machines/Machine_heads/BCM_4.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "bcm-4-1"
     },
     {
         "id": "BAG_CLOSING_MACHINES_Machine_heads_BCM_7",
@@ -459,7 +490,8 @@ export const allProducts: Product[] = [
         "image": "/products/Bag Closing Machines/Machine_heads/BCM_7.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "bcm-7-1"
     },
     {
         "id": "BAG_CLOSING_MACHINES_Machine_heads_DS_9A",
@@ -470,7 +502,8 @@ export const allProducts: Product[] = [
         "image": "/products/Bag Closing Machines/Machine_heads/DS-9A.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "ds-9a-1"
     },
     {
         "id": "BAG_CLOSING_MACHINES_Machine_heads_GK35_6C",
@@ -481,7 +514,8 @@ export const allProducts: Product[] = [
         "image": "/products/Bag Closing Machines/Machine_heads/GK35-6C.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "gk35-6a-1"
     },
     {
         "id": "BAG_CLOSING_THREADS_General_3_7_Silicon_Treated_1",
@@ -492,7 +526,8 @@ export const allProducts: Product[] = [
         "image": "/products/Bag_closing_threads/3-7_Silicon_Treated-1.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "3-7-silicon-treated-1"
     },
     {
         "id": "BAG_CLOSING_THREADS_General_Crepe_paper_tape",
@@ -503,7 +538,8 @@ export const allProducts: Product[] = [
         "image": "/products/Bag_closing_threads/Crepe_paper_tape.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "crepe-paper-tape"
     },
     {
         "id": "BAG_CLOSING_THREADS_General_Thread_7",
@@ -514,7 +550,8 @@ export const allProducts: Product[] = [
         "image": "/products/Bag_closing_threads/Thread_7.jpg",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "100-polyester-bag-closing-thread"
     },
     {
         "id": "BAG_CLOSING_THREADS_Crepe_paper_tape_Crepe_paper_tape",
@@ -525,7 +562,8 @@ export const allProducts: Product[] = [
         "image": "/products/Bag_closing_threads/Crepe Paper Tape/Crepe_paper_tape.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "crepe-paper-tape-1"
     },
     {
         "id": "BAG_CLOSING_THREADS_Monofilament_yarn_monofilament_yarn",
@@ -536,7 +574,8 @@ export const allProducts: Product[] = [
         "image": "/products/Bag_closing_threads/Monofilament Yarn/monofilament_yarn.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "monofilament-yarn"
     },
     {
         "id": "BAG_CLOSING_THREADS_Polypropelene_multifilament_yarn_Pplypropylene_multifilament",
@@ -547,7 +586,8 @@ export const allProducts: Product[] = [
         "image": "/products/Bag_closing_threads/Polypropelene Multifilament Yarn/Pplypropylene_multifilament.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "polypropelene-pp-multifilament-yarn"
     },
     {
         "id": "BAG_CLOSING_THREADS_Sewing_thread_Sewing_Thread",
@@ -558,7 +598,8 @@ export const allProducts: Product[] = [
         "image": "/products/Bag_closing_threads/sewing_thread/Sewing_Thread.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "sewing-thread"
     },
     {
         "id": "CARPET_OVEREDGING_MACHINES_General_COEM_1_1",
@@ -569,7 +610,8 @@ export const allProducts: Product[] = [
         "image": "/products/Carpet_overedging_machines/COEM_1-1.jpg",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "rpe-2500-external-stitch-density-adjuster"
     },
     {
         "id": "CARPET_OVEREDGING_MACHINES_General_COEM_6",
@@ -580,7 +622,8 @@ export const allProducts: Product[] = [
         "image": "/products/Carpet_overedging_machines/COEM_6.jpg",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "titan-2500ahc-3"
     },
     {
         "id": "CARPET_OVEREDGING_MACHINES_General_COEM_7",
@@ -591,7 +634,8 @@ export const allProducts: Product[] = [
         "image": "/products/Carpet_overedging_machines/COEM_7.jpg",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "titan-2500ahc"
     },
     {
         "id": "CARPET_OVEREDGING_MACHINES_Carpet_binding_tape_machine_COEM_8",
@@ -602,7 +646,8 @@ export const allProducts: Product[] = [
         "image": "/products/Carpet_overedging_machines/Carpet Binding Tape Machine/COEM_8.jpg",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "titan-2530ahc"
     },
     {
         "id": "CARPET_OVEREDGING_MACHINES_Carpet_heavy_duty_buttseamer_TITAN_4510CHE_1536x678",
@@ -613,7 +658,8 @@ export const allProducts: Product[] = [
         "image": "/products/Carpet_overedging_machines/Carpet Heavy Duty Buttseamer/TITAN-4510CHE-1536x678.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "titan-4510che"
     },
     {
         "id": "CARPET_OVEREDGING_MACHINES_Movable_carpet_overedging_machine_2502WD_2",
@@ -624,7 +670,8 @@ export const allProducts: Product[] = [
         "image": "/products/Carpet_overedging_machines/Movable Carpet Overedging Machine/2502WD-2.webp",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "2502wd-2"
     },
     {
         "id": "CARPET_OVEREDGING_MACHINES_Movable_carpet_overedging_machine_COEM_8",
@@ -635,7 +682,8 @@ export const allProducts: Product[] = [
         "image": "/products/Carpet_overedging_machines/Movable Carpet Overedging Machine/COEM_8.jpg",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "titan-2530ahc-1"
     },
     {
         "id": "CARPET_OVEREDGING_MACHINES_Titan_2200nc__special_fringing_machine_to_sew_cut_or_uncut_fringes_TITAN_2200_1536x681",
@@ -646,7 +694,8 @@ export const allProducts: Product[] = [
         "image": "/products/Carpet_overedging_machines/TITAN 2200NC, Special Fringing Machine to sew cut or uncut fringes/TITAN-2200-1536x681.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "titan-2200nc"
     },
     {
         "id": "CONSUMABLES_Crepe_paper_tape_Crepe_paper_tape",
@@ -657,7 +706,8 @@ export const allProducts: Product[] = [
         "image": "/products/consumables/Crepe paper tape/Crepe_paper_tape.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "crepe-paper-tape-2"
     },
     {
         "id": "CONSUMABLES_Needles_Fischbein_needles",
@@ -668,7 +718,8 @@ export const allProducts: Product[] = [
         "image": "/products/consumables/Needles/Fischbein_needles.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "fischbein-needles"
     },
     {
         "id": "CONSUMABLES_Needles_Groz_beckert_needles_e1708936853463",
@@ -679,7 +730,8 @@ export const allProducts: Product[] = [
         "image": "/products/consumables/Needles/Groz_beckert_needles-e1708936853463.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "groz-beckert-needles"
     },
     {
         "id": "CONSUMABLES_Needles_Needle_1_Schmetz",
@@ -690,7 +742,8 @@ export const allProducts: Product[] = [
         "image": "/products/consumables/Needles/Needle_1_Schmetz.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "needle-1-schmetz"
     },
     {
         "id": "CONSUMABLES_Needles_Organ_Needles",
@@ -701,7 +754,8 @@ export const allProducts: Product[] = [
         "image": "/products/consumables/Needles/Organ-Needles.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "organ-needles"
     },
     {
         "id": "CONSUMABLES_Oil_for_sewing_machine_SWOil_e1708935103355",
@@ -712,7 +766,8 @@ export const allProducts: Product[] = [
         "image": "/products/consumables/Oil for sewing machine/SWOil-e1708935103355.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "swoil"
     },
     {
         "id": "CONSUMABLES_Repairing_of_machine_Repair_Sewing_Machines_e1708967961507",
@@ -723,7 +778,8 @@ export const allProducts: Product[] = [
         "image": "/products/consumables/Repairing of machine/Repair_Sewing_Machines-e1708967961507.jpg",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "repair-services"
     },
     {
         "id": "CONSUMABLES_Spare_parts_Spare_Parts_Machines",
@@ -734,7 +790,8 @@ export const allProducts: Product[] = [
         "image": "/products/consumables/Spare parts/Spare_Parts_Machines.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "spare-parts"
     },
     {
         "id": "CONSUMABLES_Spring_balancers_spring_balancers_all",
@@ -745,7 +802,8 @@ export const allProducts: Product[] = [
         "image": "/products/consumables/Spring balancers/spring_balancers_all.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "spring-balancer"
     },
     {
         "id": "CONSUMABLES_Thread_Thread_Consumers_1536x396",
@@ -756,7 +814,8 @@ export const allProducts: Product[] = [
         "image": "/products/consumables/Thread/Thread_Consumers-1536x396.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "bag-closing-thread"
     },
     {
         "id": "FILLING_AND_PACKING_MACHINES_Automatic_weighing_filling_machine_FLG_500A",
@@ -767,7 +826,8 @@ export const allProducts: Product[] = [
         "image": "/products/Filling and packing machines/Automatic weighing filling machine/FLG-500A.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "flg-5000a"
     },
     {
         "id": "FILLING_AND_PACKING_MACHINES_Automatic_weighing_filling_machine_PM_1",
@@ -778,7 +838,8 @@ export const allProducts: Product[] = [
         "image": "/products/Filling and packing machines/Automatic weighing filling machine/PM-1.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "cjs-25ih"
     },
     {
         "id": "FILLING_AND_PACKING_MACHINES_Automatic_weighing_filling_machine_PM_2",
@@ -789,7 +850,8 @@ export const allProducts: Product[] = [
         "image": "/products/Filling and packing machines/Automatic weighing filling machine/PM-2.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "cjd-25iiz"
     },
     {
         "id": "FILLING_AND_PACKING_MACHINES_Automatic_weighing_filling_machine_PM_4",
@@ -800,7 +862,8 @@ export const allProducts: Product[] = [
         "image": "/products/Filling and packing machines/Automatic weighing filling machine/PM-4.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "pm-4"
     },
     {
         "id": "FILLING_AND_PACKING_MACHINES_Carton_sealer_FXJ_4040A",
@@ -811,7 +874,8 @@ export const allProducts: Product[] = [
         "image": "/products/Filling and packing machines/carton sealer/FXJ-4040A.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "fxj-4040a"
     },
     {
         "id": "FILLING_AND_PACKING_MACHINES_Carton_sealer_FXJ_5050A",
@@ -822,7 +886,8 @@ export const allProducts: Product[] = [
         "image": "/products/Filling and packing machines/carton sealer/FXJ-5050A.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "fxj-5050a"
     },
     {
         "id": "FILLING_AND_PACKING_MACHINES_Carton_sealer_FXJ_8070B",
@@ -833,7 +898,8 @@ export const allProducts: Product[] = [
         "image": "/products/Filling and packing machines/carton sealer/FXJ-8070B.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "fxj-8070b"
     },
     {
         "id": "FILLING_AND_PACKING_MACHINES_Shrink_packaging_machine_BS_4535LA",
@@ -844,7 +910,8 @@ export const allProducts: Product[] = [
         "image": "/products/Filling and packing machines/Shrink Packaging Machine/BS-4535LA.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "bs-4535la"
     },
     {
         "id": "FILLING_AND_PACKING_MACHINES_Shrink_packaging_machine_BSF_5540A",
@@ -855,7 +922,8 @@ export const allProducts: Product[] = [
         "image": "/products/Filling and packing machines/Shrink Packaging Machine/BSF-5540A.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "bsf-5540a"
     },
     {
         "id": "FILLING_AND_PACKING_MACHINES_Shrink_packaging_machine_BSL_5045L",
@@ -866,7 +934,8 @@ export const allProducts: Product[] = [
         "image": "/products/Filling and packing machines/Shrink Packaging Machine/BSL-5045L.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "bsl-5045l"
     },
     {
         "id": "FILLING_AND_PACKING_MACHINES_Strapping_machine_KZ_8060D",
@@ -877,7 +946,8 @@ export const allProducts: Product[] = [
         "image": "/products/Filling and packing machines/Strapping machine/KZ-8060D.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "kz-8060-d"
     },
     {
         "id": "FILLING_AND_PACKING_MACHINES_Strapping_machine_KZB_1",
@@ -888,7 +958,8 @@ export const allProducts: Product[] = [
         "image": "/products/Filling and packing machines/Strapping machine/KZB-1.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "kzb-1"
     },
     {
         "id": "FILLING_AND_PACKING_MACHINES_Strapping_machine_KZB_A",
@@ -899,7 +970,8 @@ export const allProducts: Product[] = [
         "image": "/products/Filling and packing machines/Strapping machine/KZB-A.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "kzb-a"
     },
     {
         "id": "PACKAGING_MATERIALS_General_brown_packaging_tape_500x500_1",
@@ -910,7 +982,8 @@ export const allProducts: Product[] = [
         "image": "/products/Packaging materials/brown-packaging-tape-500x500-1.jpg",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "brown-packaging-tape-500x500-1"
     },
     {
         "id": "PACKAGING_MATERIALS_General_Cyklop_PET",
@@ -921,7 +994,8 @@ export const allProducts: Product[] = [
         "image": "/products/Packaging materials/Cyklop_PET.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "cyklop-pet"
     },
     {
         "id": "PACKAGING_MATERIALS_General_Polycord_1",
@@ -932,7 +1006,8 @@ export const allProducts: Product[] = [
         "image": "/products/Packaging materials/Polycord-1.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "polycord"
     },
     {
         "id": "PACKAGING_MATERIALS_General_polylash",
@@ -943,7 +1018,8 @@ export const allProducts: Product[] = [
         "image": "/products/Packaging materials/polylash.jpeg",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "polylash"
     },
     {
         "id": "PACKAGING_MATERIALS_General_POLYTEX2",
@@ -954,7 +1030,8 @@ export const allProducts: Product[] = [
         "image": "/products/Packaging materials/POLYTEX2.jpg",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "polytex2"
     },
     {
         "id": "PACKAGING_TOOLS_Strapping_tools_20210929173700_40350",
@@ -965,7 +1042,8 @@ export const allProducts: Product[] = [
         "image": "/products/Packaging tools/Strapping tools/20210929173700_40350.jpg",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "pneumatic-strapping-tool"
     },
     {
         "id": "PACKAGING_TOOLS_Strapping_tools_20211009113522_56377_1536x1536",
@@ -976,7 +1054,8 @@ export const allProducts: Product[] = [
         "image": "/products/Packaging tools/Strapping tools/20211009113522_56377-1536x1536.jpg",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "polyester-strapping-tensioner"
     },
     {
         "id": "PACKAGING_TOOLS_Strapping_tools_20211011144058_21896",
@@ -987,7 +1066,8 @@ export const allProducts: Product[] = [
         "image": "/products/Packaging tools/Strapping tools/20211011144058_21896.jpg",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "cord-strapping-tensioner"
     },
     {
         "id": "PACKAGING_TOOLS_Strapping_tools_20211011180630_31788",
@@ -998,7 +1078,8 @@ export const allProducts: Product[] = [
         "image": "/products/Packaging tools/Strapping tools/20211011180630_31788.jpg",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "premium-strapping-tensioner"
     },
     {
         "id": "PACKAGING_TOOLS_Strapping_tools_20211012170012_97381",
@@ -1009,7 +1090,8 @@ export const allProducts: Product[] = [
         "image": "/products/Packaging tools/Strapping tools/20211012170012_97381.jpg",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "heavy-duty-cord-strapping-tensioner"
     },
     {
         "id": "PACKAGING_TOOLS_Strapping_tools_20211013103553_33407",
@@ -1020,7 +1102,8 @@ export const allProducts: Product[] = [
         "image": "/products/Packaging tools/Strapping tools/20211013103553_33407.jpg",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "heavy-duty-poly-strap-tensioner"
     },
     {
         "id": "PACKAGING_TOOLS_Strapping_tools_20211013114914_56279",
@@ -1031,7 +1114,8 @@ export const allProducts: Product[] = [
         "image": "/products/Packaging tools/Strapping tools/20211013114914_56279.jpg",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "premium-cord-strapping-tensioner"
     },
     {
         "id": "PACKAGING_TOOLS_Strapping_tools_20211013120007_89741",
@@ -1042,7 +1126,8 @@ export const allProducts: Product[] = [
         "image": "/products/Packaging tools/Strapping tools/20211013120007_89741.jpg",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "heavy-duty-cord-strapping-tensioner-1"
     },
     {
         "id": "PACKAGING_TOOLS_Strapping_tools_20211013143615_73711",
@@ -1053,7 +1138,8 @@ export const allProducts: Product[] = [
         "image": "/products/Packaging tools/Strapping tools/20211013143615_73711.jpg",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "pneumatic-cord-strapping-tensioner"
     },
     {
         "id": "PACKAGING_TOOLS_Strapping_tools_20211014113343_78491",
@@ -1064,7 +1150,8 @@ export const allProducts: Product[] = [
         "image": "/products/Packaging tools/Strapping tools/20211014113343_78491.jpg",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "strapping-sealer"
     },
     {
         "id": "PACKAGING_TOOLS_Strapping_tools_20211014160509_88035_2",
@@ -1075,7 +1162,8 @@ export const allProducts: Product[] = [
         "image": "/products/Packaging tools/Strapping tools/20211014160509_88035-2.jpg",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "jwc-poly-strapping-sealer"
     },
     {
         "id": "PACKAGING_TOOLS_Strapping_tools_20240416100026_41086",
@@ -1086,7 +1174,8 @@ export const allProducts: Product[] = [
         "image": "/products/Packaging tools/Strapping tools/20240416100026_41086.jpg",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "one-button-operated-battery-strapping-tool"
     },
     {
         "id": "PORTABLE_BAG_CLOSERS_Battery_operated_single_needle_single_thread_chain_stitch_machines_KP_2701B",
@@ -1097,7 +1186,8 @@ export const allProducts: Product[] = [
         "image": "/products/Portable bag closers/Battery Operated Single Needle Single Thread Chain Stitch Machines/KP-2701B.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "kp-2701b"
     },
     {
         "id": "PORTABLE_BAG_CLOSERS_Battery_operated_single_needle_single_thread_chain_stitch_machines_N600A_12V_BTN",
@@ -1108,7 +1198,8 @@ export const allProducts: Product[] = [
         "image": "/products/Portable bag closers/Battery Operated Single Needle Single Thread Chain Stitch Machines/N600A-12V-BTN.jpg",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "n600a-12v-btn"
     },
     {
         "id": "PORTABLE_BAG_CLOSERS_Battery_operated_single_needle_single_thread_chain_stitch_machines_PBC_KP_3000B",
@@ -1119,7 +1210,8 @@ export const allProducts: Product[] = [
         "image": "/products/Portable bag closers/Battery Operated Single Needle Single Thread Chain Stitch Machines/PBC_KP-3000B.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "kp-3000b"
     },
     {
         "id": "PORTABLE_BAG_CLOSERS_Double_thread_double_needle_chain_stitch_machines_DE_DA6",
@@ -1130,7 +1222,8 @@ export const allProducts: Product[] = [
         "image": "/products/Portable bag closers/Double Thread Double Needle Chain Stitch Machines/DE-DA6.jpg",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "de-da6"
     },
     {
         "id": "PORTABLE_BAG_CLOSERS_Double_thread_double_needle_chain_stitch_machines_PBC_LPI_DE_DA",
@@ -1141,7 +1234,8 @@ export const allProducts: Product[] = [
         "image": "/products/Portable bag closers/Double Thread Double Needle Chain Stitch Machines/PBC_LPI_DE-DA.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "de-da"
     },
     {
         "id": "PORTABLE_BAG_CLOSERS_Double_thread_double_needle_chain_stitch_machines_PBC_N620A",
@@ -1152,7 +1246,8 @@ export const allProducts: Product[] = [
         "image": "/products/Portable bag closers/Double Thread Double Needle Chain Stitch Machines/PBC_N620A.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "n620a"
     },
     {
         "id": "PORTABLE_BAG_CLOSERS_Double_thread_single_needle_chain_stitch_machines_D_2",
@@ -1163,7 +1258,8 @@ export const allProducts: Product[] = [
         "image": "/products/Portable bag closers/Double Thread Single Needle Chain Stitch Machines/D-2.jpg",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "d-2"
     },
     {
         "id": "PORTABLE_BAG_CLOSERS_Double_thread_single_needle_chain_stitch_machines_DAD_R",
@@ -1174,7 +1270,8 @@ export const allProducts: Product[] = [
         "image": "/products/Portable bag closers/Double Thread Single Needle Chain Stitch Machines/DAD-R.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "dad-r"
     },
     {
         "id": "PORTABLE_BAG_CLOSERS_Double_thread_single_needle_chain_stitch_machines_PBC_2200A",
@@ -1185,7 +1282,8 @@ export const allProducts: Product[] = [
         "image": "/products/Portable bag closers/Double Thread Single Needle Chain Stitch Machines/PBC_2200A.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "2200a"
     },
     {
         "id": "PORTABLE_BAG_CLOSERS_Double_thread_single_needle_chain_stitch_machines_PBC_NP_311",
@@ -1196,7 +1294,8 @@ export const allProducts: Product[] = [
         "image": "/products/Portable bag closers/Double Thread Single Needle Chain Stitch Machines/PBC_NP-311.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "np-311"
     },
     {
         "id": "PORTABLE_BAG_CLOSERS_Single_needle_single_thread_chain_stitch_machines_Crepe_tape_attachment_NP_7A",
@@ -1207,7 +1306,8 @@ export const allProducts: Product[] = [
         "image": "/products/Portable bag closers/Single Needle Single Thread Chain Stitch Machines/Crepe-tape-attachment-NP-7A.jpg",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "np-7a"
     },
     {
         "id": "PORTABLE_BAG_CLOSERS_Single_needle_single_thread_chain_stitch_machines_DA_6",
@@ -1218,7 +1318,8 @@ export const allProducts: Product[] = [
         "image": "/products/Portable bag closers/Single Needle Single Thread Chain Stitch Machines/DA-6.jpg",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "da-6"
     },
     {
         "id": "PORTABLE_BAG_CLOSERS_Single_needle_single_thread_chain_stitch_machines_GNP_7A",
@@ -1229,7 +1330,8 @@ export const allProducts: Product[] = [
         "image": "/products/Portable bag closers/Single Needle Single Thread Chain Stitch Machines/GNP-7A.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "np-7a-1"
     },
     {
         "id": "PORTABLE_BAG_CLOSERS_Single_needle_single_thread_chain_stitch_machines_HBC_DA_TEX",
@@ -1240,7 +1342,8 @@ export const allProducts: Product[] = [
         "image": "/products/Portable bag closers/Single Needle Single Thread Chain Stitch Machines/HBC_DA_TEX.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "da-tex"
     },
     {
         "id": "PORTABLE_BAG_CLOSERS_Single_needle_single_thread_chain_stitch_machines_L_1",
@@ -1251,7 +1354,8 @@ export const allProducts: Product[] = [
         "image": "/products/Portable bag closers/Single Needle Single Thread Chain Stitch Machines/L-1.jpg",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "l-1"
     },
     {
         "id": "PORTABLE_BAG_CLOSERS_Single_needle_single_thread_chain_stitch_machines_NP_7A",
@@ -1262,7 +1366,8 @@ export const allProducts: Product[] = [
         "image": "/products/Portable bag closers/Single Needle Single Thread Chain Stitch Machines/NP-7A.jpg",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "np-7a-2"
     },
     {
         "id": "PORTABLE_BAG_CLOSERS_Single_needle_single_thread_chain_stitch_machines_NP_7H",
@@ -1273,7 +1378,8 @@ export const allProducts: Product[] = [
         "image": "/products/Portable bag closers/Single Needle Single Thread Chain Stitch Machines/NP-7H.jpg",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "pbc-gk-9-2"
     },
     {
         "id": "PORTABLE_BAG_CLOSERS_Single_needle_single_thread_chain_stitch_machines_PBC_Fischbein_Model",
@@ -1284,7 +1390,8 @@ export const allProducts: Product[] = [
         "image": "/products/Portable bag closers/Single Needle Single Thread Chain Stitch Machines/PBC_Fischbein_Model.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "pbc-fischbein-model"
     },
     {
         "id": "PORTABLE_BAG_CLOSERS_Single_needle_single_thread_chain_stitch_machines_PBC_GK_9_2",
@@ -1295,7 +1402,8 @@ export const allProducts: Product[] = [
         "image": "/products/Portable bag closers/Single Needle Single Thread Chain Stitch Machines/PBC_GK-9-2.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "gk-9-2"
     },
     {
         "id": "PORTABLE_BAG_CLOSERS_Single_needle_single_thread_chain_stitch_machines_PBC_GK_26_1A",
@@ -1306,7 +1414,8 @@ export const allProducts: Product[] = [
         "image": "/products/Portable bag closers/Single Needle Single Thread Chain Stitch Machines/PBC_GK_26_1A.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "gk-26-1a"
     },
     {
         "id": "PORTABLE_BAG_CLOSERS_Single_needle_single_thread_chain_stitch_machines_PBC_KP2701",
@@ -1317,7 +1426,8 @@ export const allProducts: Product[] = [
         "image": "/products/Portable bag closers/Single Needle Single Thread Chain Stitch Machines/PBC_KP2701.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "kp2701"
     },
     {
         "id": "PORTABLE_BAG_CLOSERS_Single_needle_single_thread_chain_stitch_machines_PBC_LPI_DA_C",
@@ -1328,7 +1438,8 @@ export const allProducts: Product[] = [
         "image": "/products/Portable bag closers/Single Needle Single Thread Chain Stitch Machines/PBC_LPI_DA-C.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "da-c"
     },
     {
         "id": "PORTABLE_BAG_CLOSERS_Single_needle_single_thread_chain_stitch_machines_PBC_LPI_DA",
@@ -1339,7 +1450,8 @@ export const allProducts: Product[] = [
         "image": "/products/Portable bag closers/Single Needle Single Thread Chain Stitch Machines/PBC_LPI_DA.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "lpi-made-in-india"
     },
     {
         "id": "SEALING_MACHINES_Band_sealers_Continuous_band_sealer_FRB_770I",
@@ -1350,7 +1462,8 @@ export const allProducts: Product[] = [
         "image": "/products/Sealing Machines/Band Sealers/Continuous-band-sealer-FRB-770I.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "continuous-band-sealer-frb-770i"
     },
     {
         "id": "SEALING_MACHINES_Band_sealers_FR_1370LD",
@@ -1361,7 +1474,8 @@ export const allProducts: Product[] = [
         "image": "/products/Sealing Machines/Band Sealers/FR-1370LD.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "fr-1370ld"
     },
     {
         "id": "SEALING_MACHINES_Band_sealers_FR_1370LT",
@@ -1372,7 +1486,8 @@ export const allProducts: Product[] = [
         "image": "/products/Sealing Machines/Band Sealers/FR-1370LT.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "fr-1370lt"
     },
     {
         "id": "SEALING_MACHINES_Band_sealers_FRM_1120LD",
@@ -1383,7 +1498,8 @@ export const allProducts: Product[] = [
         "image": "/products/Sealing Machines/Band Sealers/FRM-1120LD.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "frm-1120ld"
     },
     {
         "id": "SEALING_MACHINES_Band_sealers_FRM_1120W",
@@ -1394,7 +1510,8 @@ export const allProducts: Product[] = [
         "image": "/products/Sealing Machines/Band Sealers/FRM-1120W.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "frm-1120w"
     },
     {
         "id": "SEALING_MACHINES_Band_sealers_High_Speed_Band_sealer_FRB_770I",
@@ -1405,7 +1522,8 @@ export const allProducts: Product[] = [
         "image": "/products/Sealing Machines/Band Sealers/High-Speed-Band-sealer-FRB-770I.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "high-speed-band-sealer-frb-770i"
     },
     {
         "id": "SEALING_MACHINES_Blister_sealing_machine_SM_5",
@@ -1416,7 +1534,8 @@ export const allProducts: Product[] = [
         "image": "/products/Sealing Machines/Blister Sealing Machine/SM-5.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "sm-5"
     },
     {
         "id": "SEALING_MACHINES_Carton_sealer_SM_7",
@@ -1427,7 +1546,8 @@ export const allProducts: Product[] = [
         "image": "/products/Sealing Machines/Carton Sealer/SM-7.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "sm-7"
     },
     {
         "id": "SEALING_MACHINES_Heavy_duty_bag_sealing_machine_FBH_32",
@@ -1438,7 +1558,8 @@ export const allProducts: Product[] = [
         "image": "/products/Sealing Machines/Heavy Duty Bag Sealing Machine/FBH-32.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "fbh-32"
     },
     {
         "id": "SEALING_MACHINES_Impulse_sealers_Hand_Impulse_Sealer_600_800_1000_mm",
@@ -1449,7 +1570,8 @@ export const allProducts: Product[] = [
         "image": "/products/Sealing Machines/Impulse Sealers/Hand-Impulse-Sealer-600-800-1000-mm.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "hand-impulse-sealer-600-800-1000-mm"
     },
     {
         "id": "SEALING_MACHINES_Impulse_sealers_hand_impulse_sealer_cutter",
@@ -1460,7 +1582,8 @@ export const allProducts: Product[] = [
         "image": "/products/Sealing Machines/Impulse Sealers/hand-impulse-sealer-cutter.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "hand-impulse-sealer-cutter"
     },
     {
         "id": "SEALING_MACHINES_Impulse_sealers_hand_impulse_sealer_e1709270523894",
@@ -1471,7 +1594,8 @@ export const allProducts: Product[] = [
         "image": "/products/Sealing Machines/Impulse Sealers/hand-impulse-sealer-e1709270523894.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "hand-impulse-sealer-e1709270523894"
     },
     {
         "id": "SEALING_MACHINES_Impulse_sealers_pedal_impulse_sealer",
@@ -1482,7 +1606,8 @@ export const allProducts: Product[] = [
         "image": "/products/Sealing Machines/Impulse Sealers/pedal-impulse-sealer.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "pedal-impulse-sealer"
     },
     {
         "id": "SEALING_MACHINES_Impulse_sealers_table_style_pedal_impulse_sealer",
@@ -1493,7 +1618,8 @@ export const allProducts: Product[] = [
         "image": "/products/Sealing Machines/Impulse Sealers/table-style-pedal-impulse-sealer.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "pedal-impulse-sealer-1"
     },
     {
         "id": "SEALING_MACHINES_Pneumatic_heavy_bag_sealer_QF_600LS",
@@ -1504,7 +1630,8 @@ export const allProducts: Product[] = [
         "image": "/products/Sealing Machines/Pneumatic heavy bag sealer/QF-600LS.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "qf-600ls"
     },
     {
         "id": "SEALING_MACHINES_Sealing_and_stitching_packaging_machine_FBK_24D",
@@ -1515,7 +1642,8 @@ export const allProducts: Product[] = [
         "image": "/products/Sealing Machines/Sealing and Stitching Packaging Machine/FBK-24D.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "fbk-24d-1"
     },
     {
         "id": "SEALING_MACHINES_Sealing_and_stitching_packaging_machine_FBK_332C",
@@ -1526,7 +1654,8 @@ export const allProducts: Product[] = [
         "image": "/products/Sealing Machines/Sealing and Stitching Packaging Machine/FBK-332C.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "fbk-332c-1"
     },
     {
         "id": "SEALING_MACHINES_Sealing_and_stitching_packaging_machine_SM_1",
@@ -1537,7 +1666,8 @@ export const allProducts: Product[] = [
         "image": "/products/Sealing Machines/Sealing and Stitching Packaging Machine/SM-1.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "sm-1-1"
     },
     {
         "id": "SEALING_MACHINES_Solid_ink_coding_band_sealer_SM_3",
@@ -1548,7 +1678,8 @@ export const allProducts: Product[] = [
         "image": "/products/Sealing Machines/Solid Ink Coding Band Sealer/SM-3.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "sm-3"
     },
     {
         "id": "SEALING_MACHINES_Solid_ink_coding_band_sealer_SM_6",
@@ -1559,7 +1690,8 @@ export const allProducts: Product[] = [
         "image": "/products/Sealing Machines/Solid Ink Coding Band Sealer/SM-6.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "sm-6"
     },
     {
         "id": "SEALING_MACHINES_Strapping_machine_SM_9",
@@ -1570,7 +1702,8 @@ export const allProducts: Product[] = [
         "image": "/products/Sealing Machines/Strapping Machine/SM-9.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "sm-6-1"
     },
     {
         "id": "SEALING_MACHINES_Vaccum_packaging_machine_SM_8",
@@ -1581,7 +1714,8 @@ export const allProducts: Product[] = [
         "image": "/products/Sealing Machines/Vaccum Packaging Machine/SM-8.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "sm-6-2"
     },
     {
         "id": "WEIGHING_SCALES_Electronic_weighing_scales_asss_jpg",
@@ -1592,7 +1726,8 @@ export const allProducts: Product[] = [
         "image": "/products/weighing scales/Electronic Weighing Scales/asss.jpg.webp",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "animal-scale-https-junko-fze-com-product-animal-scale"
     },
     {
         "id": "WEIGHING_SCALES_Electronic_weighing_scales_Bench_Model",
@@ -1603,7 +1738,8 @@ export const allProducts: Product[] = [
         "image": "/products/weighing scales/Electronic Weighing Scales/Bench_Model.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "bench-platform-weighing-scale"
     },
     {
         "id": "WEIGHING_SCALES_Electronic_weighing_scales_Bench_Model_Mini",
@@ -1614,7 +1750,8 @@ export const allProducts: Product[] = [
         "image": "/products/weighing scales/Electronic Weighing Scales/Bench_Model_Mini.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "mini-bench-model"
     },
     {
         "id": "WEIGHING_SCALES_Electronic_weighing_scales_Field_Scale",
@@ -1625,7 +1762,8 @@ export const allProducts: Product[] = [
         "image": "/products/weighing scales/Electronic Weighing Scales/Field_Scale.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "field-scale"
     },
     {
         "id": "WEIGHING_SCALES_Electronic_weighing_scales_heavy_platform",
@@ -1636,7 +1774,8 @@ export const allProducts: Product[] = [
         "image": "/products/weighing scales/Electronic Weighing Scales/heavy_platform.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "heavy-platform"
     },
     {
         "id": "WEIGHING_SCALES_Electronic_weighing_scales_Jewelley_Scale",
@@ -1647,7 +1786,8 @@ export const allProducts: Product[] = [
         "image": "/products/weighing scales/Electronic Weighing Scales/Jewelley_Scale.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "jewellery-scale"
     },
     {
         "id": "WEIGHING_SCALES_Electronic_weighing_scales_pallet_scale_1734x2048",
@@ -1658,7 +1798,8 @@ export const allProducts: Product[] = [
         "image": "/products/weighing scales/Electronic Weighing Scales/pallet-scale-1734x2048.jpg",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "pallet-scale-https-junko-fze-com-product-pallet-scale"
     },
     {
         "id": "WEIGHING_SCALES_Electronic_weighing_scales_Platform_Type",
@@ -1669,7 +1810,8 @@ export const allProducts: Product[] = [
         "image": "/products/weighing scales/Electronic Weighing Scales/Platform_Type.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "platform-type-weighing-scale"
     },
     {
         "id": "WEIGHING_SCALES_Electronic_weighing_scales_Price_Computing",
@@ -1680,7 +1822,8 @@ export const allProducts: Product[] = [
         "image": "/products/weighing scales/Electronic Weighing Scales/Price_Computing.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "price-computing"
     },
     {
         "id": "WEIGHING_SCALES_Electronic_weighing_scales_Table_Top",
@@ -1691,7 +1834,8 @@ export const allProducts: Product[] = [
         "image": "/products/weighing scales/Electronic Weighing Scales/Table_Top.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "table-top-weighing-scale"
     },
     {
         "id": "WEIGHING_SCALES_Electronic_weighing_scales_table_top_front_back_display",
@@ -1702,7 +1846,8 @@ export const allProducts: Product[] = [
         "image": "/products/weighing scales/Electronic Weighing Scales/table_top_front_back_display.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "table-top-weighing-scale-1"
     },
     {
         "id": "WEIGHING_SCALES_Electronic_weighing_scales_table_top_water_proof",
@@ -1713,7 +1858,8 @@ export const allProducts: Product[] = [
         "image": "/products/weighing scales/Electronic Weighing Scales/table_top_water_proof.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "table-top-weighing-scale-2"
     },
     {
         "id": "WEIGHING_SCALES_Mechanical_weighing_scales_1220_Long__Hand__Pallet_Truck_png",
@@ -1724,7 +1870,8 @@ export const allProducts: Product[] = [
         "image": "/products/weighing scales/Mechanical Weighing Scales/1220_Long-_Hand-_Pallet_Truck.png.webp",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "1220-long-hand-pallet-truck-png"
     },
     {
         "id": "WEIGHING_SCALES_Mechanical_weighing_scales_counter_scale",
@@ -1735,7 +1882,8 @@ export const allProducts: Product[] = [
         "image": "/products/weighing scales/Mechanical Weighing Scales/counter_scale.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "counter-scale"
     },
     {
         "id": "WEIGHING_SCALES_Mechanical_weighing_scales_manual_platform",
@@ -1746,6 +1894,7 @@ export const allProducts: Product[] = [
         "image": "/products/weighing scales/Mechanical Weighing Scales/manual_platform.png",
         "specs": {},
         "features": [],
-        "featured": false
+        "featured": false,
+        "slug": "manual-platform"
     }
 ];

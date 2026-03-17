@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { allProducts } from '@/data/products';
 import type { Metadata, ResolvingMetadata } from 'next';
 
@@ -12,7 +13,7 @@ export async function generateMetadata(
   parent: ResolvingMetadata
 ): Promise<Metadata> {
   const id = (await params).id;
-  const product = allProducts.find(p => p.id === id);
+  const product = allProducts.find(p => p.slug === id || p.id === id);
 
   if (!product) {
     return {
@@ -20,15 +21,40 @@ export async function generateMetadata(
     }
   }
 
+  const desc = product.description || `Details for ${product.name}`;
+  const urlParams = product.slug || product.id;
+  const image = product.image || '/hero-commercial-dock.jpg';
+
   return {
     title: product.name,
-    description: product.description || `Details for ${product.name}`,
+    description: desc,
+    alternates: { canonical: `/product/${urlParams}` },
+    openGraph: {
+      title: product.name,
+      description: desc,
+      url: `/product/${urlParams}`,
+      type: 'website',
+      images: [
+        {
+          url: image,
+          width: 800,
+          height: 600,
+          alt: product.name,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: product.name,
+      description: desc,
+      images: [image],
+    }
   }
 }
 
 export default async function ProductDetailPage({ params }: Props) {
   const id = (await params).id;
-  const product = allProducts.find(p => p.id === id);
+  const product = allProducts.find(p => p.slug === id || p.id === id);
 
   // Logic for Related Products: Same subcategory (preferred) or category
   const relatedProducts = (() => {
@@ -52,9 +78,63 @@ export default async function ProductDetailPage({ params }: Props) {
 
   // Use product image or a placeholder if missing
   const mainImage = product.image || '/products/placeholders/no-image.png';
+  const desc = product.description || `Details for ${product.name}`;
+  const urlParams = product.slug || product.id;
+
+  const productSchema = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": product.name,
+    "description": desc,
+    "image": `https://junko-fze.com${mainImage}`,
+    "offers": {
+      "@type": "Offer",
+      "availability": "https://schema.org/InStock",
+      "url": `https://junko-fze.com/product/${urlParams}`
+    }
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://junko-fze.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Products",
+        "item": "https://junko-fze.com/products"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": product.category,
+        "item": `https://junko-fze.com/products?category=${encodeURIComponent(product.category)}`
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "name": product.name,
+        "item": `https://junko-fze.com/product/${urlParams}`
+      }
+    ]
+  };
 
   return (
     <div className="layout-container flex h-full grow flex-col max-w-[1440px] mx-auto w-full px-4 sm:px-6 lg:px-12">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       {/* Breadcrumbs */}
       <div className="flex flex-wrap gap-2 py-8 border-b border-gray-100 dark:border-white/5 mb-8">
         <Link href="/" className="text-text-sub dark:text-gray-400 text-sm font-medium hover:text-primary transition-colors">Home</Link>
@@ -70,10 +150,13 @@ export default async function ProductDetailPage({ params }: Props) {
         {/* Left Column: Images */}
         <div className="lg:col-span-7 flex flex-col gap-6">
           <div className="w-full bg-gray-50 dark:bg-white/5 rounded-2xl border border-gray-100 dark:border-white/10 p-8 flex items-center justify-center overflow-hidden aspect-[4/3] relative group">
-            <img
+            <Image
               src={mainImage}
               alt={product.name}
-              className="w-full h-full object-contain mix-blend-multiply dark:mix-blend-normal transition-transform duration-500 hover:scale-110"
+              fill
+              sizes="(max-width: 1024px) 100vw, 58vw"
+              priority
+              className="w-full h-full object-contain transition-transform duration-500 hover:scale-110"
             />
             <div className="absolute top-4 right-4 bg-white/90 dark:bg-black/50 backdrop-blur-sm px-3 py-1.5 rounded-full shadow-sm border border-gray-200 dark:border-white/10">
               <span className="text-xs font-bold uppercase tracking-wider text-text-main dark:text-white">
@@ -123,10 +206,10 @@ export default async function ProductDetailPage({ params }: Props) {
 
           {product.features && product.features.length > 0 && (
             <div className="mb-10">
-              <h3 className="font-bold text-lg mb-4 text-text-main dark:text-white flex items-center gap-2">
+              <h2 className="font-bold text-lg mb-4 text-text-main dark:text-white flex items-center gap-2">
                 <span className="material-symbols-outlined text-primary">verified</span>
                 Key Features
-              </h3>
+              </h2>
               <ul className="space-y-2">
                 {product.features.map((feature: string, idx: number) => (
                   <li key={idx} className="flex items-start gap-3">
@@ -140,10 +223,10 @@ export default async function ProductDetailPage({ params }: Props) {
 
           {product.specs && (
             <div className="bg-gray-50 dark:bg-white/5 rounded-xl p-6 border border-gray-100 dark:border-white/10">
-              <h3 className="font-bold text-lg mb-4 text-text-main dark:text-white flex items-center gap-2">
+              <h2 className="font-bold text-lg mb-4 text-text-main dark:text-white flex items-center gap-2">
                 <span className="material-symbols-outlined text-primary">analytics</span>
                 Key Specifications
-              </h3>
+              </h2>
               <div className="grid grid-cols-1 gap-3">
                 {Object.entries(product.specs).slice(0, 4).map(([key, value]) => (
                   <div key={key} className="flex justify-between items-center py-2 border-b border-gray-200 dark:border-white/10 last:border-0">
@@ -162,11 +245,12 @@ export default async function ProductDetailPage({ params }: Props) {
         <div className="py-16 border-t border-gray-200 dark:border-white/10">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-10">
-              <h3 className="text-3xl font-bold text-text-main dark:text-white mb-4 font-serif">Technical Specifications</h3>
+              <h2 className="text-3xl font-bold text-text-main dark:text-white mb-4 font-serif">Technical Specifications</h2>
               <p className="text-text-sub dark:text-gray-400">Detailed performance metrics and physical characteristics.</p>
             </div>
             <div className="overflow-hidden rounded-xl border border-gray-200 dark:border-white/10 shadow-sm">
               <table className="w-full text-left text-sm">
+                <caption className="sr-only">Technical specifications for this product</caption>
                 <tbody className="divide-y divide-gray-100 dark:divide-white/5">
                   {Object.entries(product.specs).map(([key, value], index) => (
                     <tr key={key} className={`group hover:bg-gray-50 dark:hover:bg-white/5 transition-colors ${index % 2 === 0 ? "bg-white dark:bg-black/20" : "bg-gray-50/50 dark:bg-white/5"}`}>
@@ -185,16 +269,16 @@ export default async function ProductDetailPage({ params }: Props) {
       {relatedProducts.length > 0 && (
         <div className="py-16 border-t border-gray-200 dark:border-white/10">
           <div className="flex items-center justify-between mb-8">
-            <h3 className="text-2xl font-bold text-text-main dark:text-white font-serif">Related Products</h3>
+            <h2 className="text-2xl font-bold text-text-main dark:text-white font-serif">Related Products</h2>
             <Link href="/products" className="text-primary font-bold hover:underline flex items-center gap-1">
               View All <span className="material-symbols-outlined text-sm">arrow_forward</span>
             </Link>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {relatedProducts.map(related => (
-              <Link key={related.id} href={`/product/${related.id}`} className="group block bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl overflow-hidden hover:shadow-xl hover:border-primary/30 transition-all duration-300">
+              <Link key={related.id} href={`/product/${related.slug || related.id}`} className="group block bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl overflow-hidden hover:shadow-xl hover:border-primary/30 transition-all duration-300">
                 <div className="aspect-square bg-gray-50 dark:bg-white/5 p-4 flex items-center justify-center relative overflow-hidden">
-                  <img src={related.image} alt={related.name} className="w-full h-full object-contain mix-blend-multiply dark:mix-blend-normal transition-transform duration-500 group-hover:scale-110" />
+                  <Image src={related.image} alt={related.name} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw" className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-110" />
                 </div>
                 <div className="p-4">
                   <p className="text-xs text-text-sub dark:text-gray-400 mb-1">{related.category}</p>

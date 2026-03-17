@@ -101,7 +101,7 @@ export default function ProductsClient() {
               >
                 <span className="material-symbols-outlined">close</span>
               </button>
-              <h3 className="font-serif font-bold text-xl text-secondary dark:text-white">Filters</h3>
+              <div className="font-serif font-bold text-xl text-secondary dark:text-white">Filters</div>
             </div>
             <button
               onClick={() => {
@@ -130,7 +130,7 @@ export default function ProductsClient() {
           {/* Categories */}
           <div className="space-y-6">
             <div>
-              <h4 className="text-xs font-sans font-bold mb-3 dark:text-gray-400 uppercase tracking-widest opacity-70">Categories</h4>
+              <div className="text-xs font-sans font-bold mb-3 dark:text-gray-400 uppercase tracking-widest opacity-70">Categories</div>
               <div className="space-y-1">
                 {categories.map((category) => (
                   <div key={category.name}>
@@ -183,7 +183,7 @@ export default function ProductsClient() {
         ></div>
       )}
 
-      <main className="flex-1 p-6 lg:p-12 overflow-hidden w-full">
+      <div className="flex-1 p-6 lg:p-12 overflow-hidden w-full" role="region" aria-label="Product listings">
         {/* Header */}
         <div className="mb-8">
           <h1 className="text-3xl md:text-5xl font-serif font-black text-secondary dark:text-white tracking-tight mb-4">
@@ -232,7 +232,7 @@ export default function ProductsClient() {
         ) : (
           <div className="flex flex-col items-center justify-center py-20 text-center">
             <span className="material-symbols-outlined text-6xl text-gray-200 dark:text-gray-700 mb-4">inventory_2</span>
-            <h3 className="text-xl font-bold text-secondary dark:text-white mb-2">No products found</h3>
+            <div className="text-xl font-bold text-secondary dark:text-white mb-2">No products found</div>
             <p className="text-gray-500 max-w-md">We couldn't find any products matching your current filters. Try adjusting your search or category selection.</p>
             <button
               onClick={() => {
@@ -246,7 +246,7 @@ export default function ProductsClient() {
             </button>
           </div>
         )}
-      </main>
+      </div>
     </div>
   );
 }

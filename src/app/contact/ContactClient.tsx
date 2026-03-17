@@ -61,8 +61,8 @@ export default function ContactClient() {
                 <span className="material-symbols-outlined text-[24px]">call</span>
               </div>
               <div className="flex flex-col gap-1">
-                <h3 className="text-base font-bold text-text-main-light dark:text-white font-serif">Phone</h3>
-                <a className="text-sm text-text-sec-light dark:text-text-sec-dark font-mono hover:text-primary hover:underline transition-colors block" href="https://wa.me/971503426615?text=Hi, I would like to speak to sales." target="_blank">+971 50 342 6615</a>
+                <h2 className="text-base font-bold text-text-main-light dark:text-white font-serif">Phone</h2>
+                <a className="text-sm text-text-sec-light dark:text-text-sec-dark font-mono hover:text-primary hover:underline transition-colors block" href="https://wa.me/971503426615?text=Hi, I would like to speak to sales." target="_blank" rel="noopener noreferrer nofollow">+971 50 342 6615</a>
                 <p className="text-xs text-text-sec-light/70 dark:text-text-sec-dark/70">Mon–Sat 9:00–18:00 (UAE)</p>
               </div>
             </div>
@@ -71,7 +71,7 @@ export default function ContactClient() {
                 <span className="material-symbols-outlined text-[24px]">mail</span>
               </div>
               <div className="flex flex-col gap-1">
-                <h3 className="text-base font-bold text-text-main-light dark:text-white font-serif">Email</h3>
+                <h2 className="text-base font-bold text-text-main-light dark:text-white font-serif">Email</h2>
                 <a className="text-sm text-text-sec-light dark:text-text-sec-dark hover:text-primary hover:underline font-mono" href="mailto:info@junko-fze.com">info@junko-fze.com</a>
                 <p className="text-xs text-text-sec-light/70 dark:text-text-sec-dark/70">Typical response time: within 1 business day</p>
               </div>
@@ -81,7 +81,7 @@ export default function ContactClient() {
                 <span className="material-symbols-outlined text-[24px]">location_on</span>
               </div>
               <div className="flex flex-col gap-1">
-                <h3 className="text-base font-bold text-text-main-light dark:text-white font-serif">Office Location</h3>
+                <h2 className="text-base font-bold text-text-main-light dark:text-white font-serif">Office Location</h2>
                 <p className="text-sm text-text-sec-light dark:text-text-sec-dark">Hamriya Free Zone<br />Sharjah - United Arab Emirates</p>
               </div>
             </div>
@@ -90,9 +90,9 @@ export default function ContactClient() {
                 <span className="material-symbols-outlined text-[24px]">warehouse</span>
               </div>
               <div className="flex flex-col gap-1">
-                <h3 className="text-base font-bold text-text-main-light dark:text-white font-serif">Warehouse Location</h3>
+                <h2 className="text-base font-bold text-text-main-light dark:text-white font-serif">Warehouse Location</h2>
                 <p className="text-sm text-text-sec-light dark:text-text-sec-dark">7G2G+2XV - Maleha St<br />Industrial Areas - Sharjah</p>
-                <a className="text-xs text-primary hover:underline mt-1" href="https://maps.app.goo.gl/zDnmKvTbcLadgXMz8" target="_blank">View on Map</a>
+                <a className="text-xs text-primary hover:underline mt-1" href="https://maps.app.goo.gl/zDnmKvTbcLadgXMz8" target="_blank" rel="noopener noreferrer nofollow">View on Map</a>
               </div>
             </div>
           </div>

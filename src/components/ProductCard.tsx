@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Product } from '../data/products';
 
 interface ProductCardProps {
@@ -9,17 +10,18 @@ interface ProductCardProps {
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     return (
         <Link
-            href={`/product/${product.id}`}
+            href={`/product/${product.slug || product.id}`}
             className="group flex flex-col bg-white dark:bg-[#1a1a2e] border border-gray-200 dark:border-white/10 rounded-xl overflow-hidden hover:shadow-2xl hover:border-primary/50 dark:hover:border-primary/50 transition-all duration-300 transform hover:-translate-y-1 h-full"
         >
             <div className="relative h-64 bg-gray-50 dark:bg-white/5 overflow-hidden p-6 flex items-center justify-center">
                 {/* Image with hover zoom effect */}
                 <div className="absolute inset-0 bg-white/50 dark:bg-black/20 z-0"></div>
-                <img
+                <Image
                     src={product.image}
                     alt={product.name}
-                    className="relative z-10 w-full h-full object-contain mix-blend-multiply dark:mix-blend-normal transition-transform duration-500 group-hover:scale-110"
-                    loading="lazy"
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                    className="relative z-10 w-full h-full object-contain transition-transform duration-500 group-hover:scale-110"
                 />
 
                 {/* Badges */}

@@ -3,7 +3,22 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: "Service & Support | Packaging Machine Repair Dubai & Sharjah",
-  description: "Expert installation, training, and repair services for industrial packaging machinery. We stock spare parts and provide fast technical support to minimize downtime.",
+  description: "Expert installation, training, and repair services for industrial packaging machinery. Fast technical support and spare parts to minimize downtime.",
+  alternates: { canonical: '/services' },
+  openGraph: {
+    title: "Service & Support | Packaging Machine Repair Dubai & Sharjah",
+    description: "Expert installation, training, and repair services for industrial packaging machinery. Fast technical support and spare parts to minimize downtime.",
+    url: '/services',
+    type: 'website',
+    images: [
+      {
+        url: 'https://images.pexels.com/photos/29181492/pexels-photo-29181492.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        width: 1260,
+        height: 750,
+        alt: 'Expert Packaging Support',
+      },
+    ],
+  }
 };
 
 export default function ServicesPage() {
@@ -21,7 +36,7 @@ export default function ServicesPage() {
               </h2>
             </div>
             <div className="mt-10">
-              <a href="https://wa.me/971503426615?text=Hi, I would like to speak to sales." target="_blank" className="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded h-14 px-8 bg-primary text-white text-lg font-bold leading-normal tracking-[0.015em] hover:bg-primary-hover transition-all transform hover:scale-105 shadow-lg w-fit">
+              <a href="https://wa.me/971503426615?text=Hi, I would like to speak to sales." target="_blank" rel="noopener noreferrer nofollow" className="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded h-14 px-8 bg-primary text-white text-lg font-bold leading-normal tracking-[0.015em] hover:bg-primary-hover transition-all transform hover:scale-105 shadow-lg w-fit">
                 <span className="truncate">Talk to Sales</span>
               </a>
             </div>
@@ -42,7 +57,7 @@ export default function ServicesPage() {
                 <p className="text-text-sub dark:text-gray-300 text-sm leading-relaxed flex-grow">
                   Need help choosing the right strapping or wrapping machine? Our sales team will guide you to the best model for your specific products.
                 </p>
-                <a href="https://wa.me/971503426615?text=Hi, I would like to speak to Joseph P Joseph regarding sales." target="_blank" className="text-primary font-bold text-sm mt-4 flex items-center gap-1 hover:gap-2 transition-all">
+                <a href="https://wa.me/971503426615?text=Hi, I would like to speak to Joseph P Joseph regarding sales." target="_blank" rel="noopener noreferrer nofollow" className="text-primary font-bold text-sm mt-4 flex items-center gap-1 hover:gap-2 transition-all">
                   Contact Sales <span className="material-symbols-outlined text-sm font-bold">arrow_forward</span>
                 </a>
               </div>
@@ -56,7 +71,7 @@ export default function ServicesPage() {
                 <p className="text-text-sub dark:text-gray-300 text-sm leading-relaxed flex-grow">
                   Once you purchase a machine, our technical team can help set it up and show your staff how to operate it safely and efficiently.
                 </p>
-                <a href="https://wa.me/971562293636?text=Hi Ben, I need help with machine installation/spare parts." target="_blank" className="text-primary font-bold text-sm mt-4 flex items-center gap-1 hover:gap-2 transition-all">
+                <a href="https://wa.me/971562293636?text=Hi Ben, I need help with machine installation/spare parts." target="_blank" rel="noopener noreferrer nofollow" className="text-primary font-bold text-sm mt-4 flex items-center gap-1 hover:gap-2 transition-all">
                   Book Installation <span className="material-symbols-outlined text-sm font-bold">arrow_forward</span>
                 </a>
               </div>
@@ -70,7 +85,7 @@ export default function ServicesPage() {
                 <p className="text-text-sub dark:text-gray-300 text-sm leading-relaxed flex-grow">
                   From strapping rolls to replacement motors and blades, we stock a wide range of parts and consumables to keep your machines running without long interruptions.
                 </p>
-                <a href="https://wa.me/971503426615?text=Hi, checking availability for spare parts." target="_blank" className="text-primary font-bold text-sm mt-4 flex items-center gap-1 hover:gap-2 transition-all">
+                <a href="https://wa.me/971503426615?text=Hi, checking availability for spare parts." target="_blank" rel="noopener noreferrer nofollow" className="text-primary font-bold text-sm mt-4 flex items-center gap-1 hover:gap-2 transition-all">
                   Check Availability <span className="material-symbols-outlined text-sm font-bold">arrow_forward</span>
                 </a>
               </div>
@@ -84,7 +99,7 @@ export default function ServicesPage() {
                 <p className="text-text-sub dark:text-gray-300 text-sm leading-relaxed flex-grow">
                   If a machine breaks down, our expert technicians are available to troubleshoot and repair your equipment quickly.
                 </p>
-                <a href="https://wa.me/971559524280?text=Hi Jibu, I need to request service/repair." target="_blank" className="text-primary font-bold text-sm mt-4 flex items-center gap-1 hover:gap-2 transition-all">
+                <a href="https://wa.me/971559524280?text=Hi Jibu, I need to request service/repair." target="_blank" rel="noopener noreferrer nofollow" className="text-primary font-bold text-sm mt-4 flex items-center gap-1 hover:gap-2 transition-all">
                   Request Service <span className="material-symbols-outlined text-sm font-bold">arrow_forward</span>
                 </a>
               </div>
@@ -101,10 +116,10 @@ export default function ServicesPage() {
                 Our support team is standing by to help you minimize downtime and get back to full production capacity.
               </p>
               <div className="flex flex-col md:flex-row gap-6 mt-4 items-center">
-                <a href="https://wa.me/971559524280?text=Hi Jibu, I need to request service." target="_blank" className="flex min-w-[280px] cursor-pointer items-center justify-center rounded-lg h-14 px-8 bg-primary text-white text-lg font-bold hover:bg-primary-hover transition-all hover:scale-105 shadow-xl w-full md:w-auto">
+                <a href="https://wa.me/971559524280?text=Hi Jibu, I need to request service." target="_blank" rel="noopener noreferrer nofollow" className="flex min-w-[280px] cursor-pointer items-center justify-center rounded-lg h-14 px-8 bg-primary text-white text-lg font-bold hover:bg-primary-hover transition-all hover:scale-105 shadow-xl w-full md:w-auto">
                   Request Technical Support
                 </a>
-                <a href="https://wa.me/971562293636?text=Hi Ben, I would like to speak to sales." target="_blank" className="flex min-w-[280px] cursor-pointer items-center justify-center rounded-lg h-14 px-8 bg-transparent border-2 border-white/30 text-white text-lg font-bold hover:bg-white/10 transition-colors w-full md:w-auto">
+                <a href="https://wa.me/971562293636?text=Hi Ben, I would like to speak to sales." target="_blank" rel="noopener noreferrer nofollow" className="flex min-w-[280px] cursor-pointer items-center justify-center rounded-lg h-14 px-8 bg-transparent border-2 border-white/30 text-white text-lg font-bold hover:bg-white/10 transition-colors w-full md:w-auto">
                   Contact Sales Team
                 </a>
               </div>
