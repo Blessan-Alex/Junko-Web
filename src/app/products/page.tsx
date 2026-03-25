@@ -1,6 +1,7 @@
 import React, { Suspense } from 'react';
 import type { Metadata } from 'next';
 import ProductsClient from './ProductsClient';
+import { allProducts } from '@/data/products';
 
 export const metadata: Metadata = {
   title: "Industrial Packaging Machinery Catalog | Junko FZE",
@@ -16,8 +17,20 @@ export const metadata: Metadata = {
 
 export default function ProductsPage() {
   return (
-    <Suspense fallback={<div className="flex justify-center items-center py-20">Loading catalog...</div>}>
-      <ProductsClient />
-    </Suspense>
+    <>
+      <Suspense fallback={<div className="flex justify-center items-center py-20">Loading catalog...</div>}>
+        <ProductsClient />
+      </Suspense>
+      {/* Server-rendered product links for SEO crawlability */}
+      <nav className="sr-only" aria-label="Complete product catalog">
+        <ul>
+          {allProducts.map(p => (
+            <li key={p.id}>
+              <a href={`/product/${p.slug || p.id}`}>{p.name} — {p.category}</a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </>
   );
 }

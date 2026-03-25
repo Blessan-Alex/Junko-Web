@@ -29,8 +29,8 @@ export default function Home() {
       "addressCountry": "AE"
     },
     "telephone": "+971503426615",
-    "url": "https://junko-fze.com",
-    "image": "https://junko-fze.com/hero-commercial-dock.jpg"
+    "url": "https://www.junko-fze.com",
+    "image": "https://www.junko-fze.com/hero-commercial-dock.jpg"
   };
 
   const faqSchema = {

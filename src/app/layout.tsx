@@ -15,7 +15,7 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://junko-fze.com"),
+  metadataBase: new URL("https://www.junko-fze.com"),
   title: {
     default: "Junko Industrial | Packaging Machinery Supplier UAE",
     template: "%s | Junko Industrial",

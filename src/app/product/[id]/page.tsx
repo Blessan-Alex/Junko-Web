@@ -8,6 +8,12 @@ type Props = {
   params: Promise<{ id: string }>
 }
 
+export async function generateStaticParams() {
+  return allProducts.map(product => ({
+    id: product.slug || product.id,
+  }));
+}
+
 export async function generateMetadata(
   { params }: Props,
   parent: ResolvingMetadata
@@ -21,7 +27,9 @@ export async function generateMetadata(
     }
   }
 
-  const desc = product.description || `Details for ${product.name}`;
+  const rawDesc = product.description || `Details for ${product.name}`;
+  // Truncate meta descriptions to ~155 chars for SEO (Google recommends under 160)
+  const desc = rawDesc.length > 155 ? rawDesc.substring(0, 155).trimEnd() + '…' : rawDesc;
   const urlParams = product.slug || product.id;
   const image = product.image || '/hero-commercial-dock.jpg';
 
@@ -86,11 +94,11 @@ export default async function ProductDetailPage({ params }: Props) {
     "@type": "Product",
     "name": product.name,
     "description": desc,
-    "image": `https://junko-fze.com${mainImage}`,
+    "image": `https://www.junko-fze.com${mainImage}`,
     "offers": {
       "@type": "Offer",
       "availability": "https://schema.org/InStock",
-      "url": `https://junko-fze.com/product/${urlParams}`
+      "url": `https://www.junko-fze.com/product/${urlParams}`
     }
   };
 
@@ -102,25 +110,25 @@ export default async function ProductDetailPage({ params }: Props) {
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://junko-fze.com/"
+        "item": "https://www.junko-fze.com/"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Products",
-        "item": "https://junko-fze.com/products"
+        "item": "https://www.junko-fze.com/products"
       },
       {
         "@type": "ListItem",
         "position": 3,
         "name": product.category,
-        "item": `https://junko-fze.com/products?category=${encodeURIComponent(product.category)}`
+        "item": `https://www.junko-fze.com/products?category=${encodeURIComponent(product.category)}`
       },
       {
         "@type": "ListItem",
         "position": 4,
         "name": product.name,
-        "item": `https://junko-fze.com/product/${urlParams}`
+        "item": `https://www.junko-fze.com/product/${urlParams}`
       }
     ]
   };
