@@ -2,10 +2,18 @@
 
 import React, { useState, useMemo } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { allProducts, categories } from '@/data/products';
+import type { Category, Product } from '@/data/products';
 import ProductCard from '@/components/ProductCard';
 
-export default function ProductsClient() {
+type ProductsClientProps = {
+  categories: Category[];
+  allProducts: Product[];
+};
+
+export default function ProductsClient({
+  categories,
+  allProducts,
+}: ProductsClientProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const selectedCategory = searchParams.get('category');
@@ -63,7 +71,7 @@ export default function ProductsClient() {
 
       return true;
     });
-  }, [selectedCategory, searchQuery, activeSubcategories]);
+  }, [selectedCategory, searchQuery, activeSubcategories, allProducts]);
 
   return (
     <div className="flex flex-1 max-w-[1440px] mx-auto w-full min-h-screen">

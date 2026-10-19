@@ -17,16 +17,20 @@ Re-running `npm run catalog:snapshot` on the same UTC day **overwrites** that da
 
 ```bash
 npm run catalog:snapshot   # export catalog + image manifest
-npm run catalog:parity     # compare live products.ts to latest catalog-*.json
+npm run catalog:parity     # default: --source=file (products.ts vs snapshot)
 npm run catalog:parity -- --snapshot=snapshots/catalog-2026-10-19.json
-npm run catalog:parity -- --check-images   # report missing public/ files (informational; does not fail parity)
+npm run catalog:parity -- --check-images   # file source only: missing public/ images (informational)
+npm run catalog:parity -- --source=firestore   # Phase 2: staging Firestore vs snapshot (needs Admin creds)
 ```
 
 Parity v1 uses **strict** field equality (no whitespace normalization).
 
-## Firebase staging (Phase 1)
+## Firebase staging (Phase 1–2)
 
-Seed Firestore from a catalog snapshot: `npm run catalog:seed`. Setup and credentials: [`docs/firebase-setup.md`](../docs/firebase-setup.md).
+1. Seed: `npm run catalog:seed` (staging credentials).
+2. **Phase 2 gate:** `npm run catalog:parity -- --source=firestore` must **PASS** before any Firestore cutover.
+
+Setup and credentials: [`docs/firebase-setup.md`](../docs/firebase-setup.md).
 
 ## Rollback
 

@@ -36,8 +36,10 @@ export function initFirebaseAdmin() {
         `GOOGLE_APPLICATION_CREDENTIALS file not found: ${credPath}`,
       );
     }
+    const parsed = JSON.parse(fs.readFileSync(credPath, "utf8"));
     admin.initializeApp({
-      credential: admin.credential.applicationDefault(),
+      credential: admin.credential.cert(parsed),
+      projectId: parsed.project_id,
     });
     return admin;
   }

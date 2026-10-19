@@ -82,12 +82,52 @@ await admin.auth().setCustomUserClaims("UID_HERE", { admin: true });
 
 User must **sign out and sign in** before the ID token includes `admin`.
 
-## 7. Phase 1 verification checklist
+## 7. Verification checklist
+
+**Phase 1**
 
 - [ ] `npm run catalog:parity` passes (file vs snapshot; `products.ts` unchanged).
 - [ ] `npm run build` passes (no Firestore wiring in app yet).
 - [ ] Staging Firestore shows 148 products + `catalog/categories`.
 - [ ] Rules deployed; simulator denies public writes.
+
+**Phase 2 (mandatory before cutover)**
+
+```bash
+# Same credentials as seed
+$env:GOOGLE_APPLICATION_CREDENTIALS = (Resolve-Path ".\secrets\your-staging-key.json").Path
+npm run catalog:parity -- --source=firestore
+```
+
+- [ ] Exit **0** — Firestore matches `snapshots/catalog-2026-10-19.json` (148 products, categories, fields).
+- [ ] After a deliberate console edit to one product name, parity exits **1** with a field mismatch.
+
+`--check-images` applies to **file** source only (paths under `public/`).
+
+## 8. Phase 3 — Preview runtime (`CATALOG_SOURCE=firestore`)
+
+Production defaults to **`CATALOG_SOURCE=file`** (unchanged). On Vercel **Preview** only:
+
+1. Set env: `CATALOG_SOURCE=firestore`, `FIREBASE_SERVICE_ACCOUNT_JSON` or `GOOGLE_APPLICATION_CREDENTIALS` (via Vercel secret), optional `FIREBASE_PROJECT_ID=junko-web-staging`.
+2. Deploy preview; smoke test:
+   - `/products` → **148** results
+   - `/product/bcm-1`, `/product/80800rl`, weighing-scale SKUs, duplicate-name cases (e.g. NP-7A)
+   - Images still `/products/...` under `public/`
+   - `/sitemap.xml` → 148 product URLs
+   - `redirects.json` behavior unchanged
+3. Data gate: `npm run catalog:parity -- --source=firestore` (local, with creds).
+
+**On-demand cache refresh (no admin UI yet):**
+
+```http
+POST /api/admin/revalidate
+Authorization: Bearer <Firebase ID token with admin claim>
+Content-Type: application/json
+
+{ "slugs": ["bcm-1"] }
+```
+
+Sign in as admin in Firebase Auth, obtain ID token (client SDK or REST), then call the route. Rollback: set `CATALOG_SOURCE=file` on the environment.
 
 ## Related
 

@@ -1,15 +1,18 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { allProducts } from '@/data/products';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+import { getCatalog, getProductBySlug } from '@/lib/catalog/get-catalog';
 
 type Props = {
   params: Promise<{ id: string }>
 }
 
+export const dynamicParams = true;
+
 export async function generateStaticParams() {
+  const { allProducts } = await getCatalog();
   return allProducts.map(product => ({
     id: product.slug || product.id,
   }));
@@ -17,7 +20,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const id = (await params).id;
-  const product = allProducts.find(p => p.slug === id || p.id === id);
+  const product = await getProductBySlug(id);
 
   if (!product) {
     return {
@@ -60,7 +63,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ProductDetailPage({ params }: Props) {
   const id = (await params).id;
-  const product = allProducts.find(p => p.slug === id || p.id === id);
+  const product = await getProductBySlug(id);
+  const { allProducts } = await getCatalog();
 
   // Logic for Related Products: Same subcategory (preferred) or category
   const relatedProducts = (() => {

@@ -1,7 +1,7 @@
 import React, { Suspense } from 'react';
 import type { Metadata } from 'next';
 import ProductsClient from './ProductsClient';
-import { allProducts } from '@/data/products';
+import { getCatalog } from '@/lib/catalog/get-catalog';
 
 export const metadata: Metadata = {
   title: "Industrial Packaging Machinery Catalog | Junko FZE",
@@ -15,11 +15,13 @@ export const metadata: Metadata = {
   }
 };
 
-export default function ProductsPage() {
+export default async function ProductsPage() {
+  const { categories, allProducts } = await getCatalog();
+
   return (
     <>
       <Suspense fallback={<div className="flex justify-center items-center py-20">Loading catalog...</div>}>
-        <ProductsClient />
+        <ProductsClient categories={categories} allProducts={allProducts} />
       </Suspense>
       {/* Server-rendered product links for SEO crawlability */}
       <nav className="sr-only" aria-label="Complete product catalog">
