@@ -57,9 +57,9 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                 </p>
 
                 <div className="mt-auto pt-4 border-t border-gray-100 dark:border-white/5 flex items-center justify-between gap-4">
-                    <button className="flex-1 bg-gray-100 dark:bg-white/10 hover:bg-primary hover:text-white text-secondary dark:text-white text-xs font-bold py-2.5 px-4 rounded transition-all duration-300">
+                    <span className="flex-1 text-center bg-gray-100 dark:bg-white/10 group-hover:bg-primary group-hover:text-white text-secondary dark:text-white text-xs font-bold py-2.5 px-4 rounded transition-all duration-300">
                         Request Quote
-                    </button>
+                    </span>
                 </div>
             </div>
         </Link>

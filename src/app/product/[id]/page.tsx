@@ -2,7 +2,8 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { allProducts } from '@/data/products';
-import type { Metadata, ResolvingMetadata } from 'next';
+import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 
 type Props = {
   params: Promise<{ id: string }>
@@ -14,10 +15,7 @@ export async function generateStaticParams() {
   }));
 }
 
-export async function generateMetadata(
-  { params }: Props,
-  parent: ResolvingMetadata
-): Promise<Metadata> {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const id = (await params).id;
   const product = allProducts.find(p => p.slug === id || p.id === id);
 
@@ -76,12 +74,7 @@ export default async function ProductDetailPage({ params }: Props) {
   })();
 
   if (!product) {
-    return (
-      <div className="layout-container flex h-full grow flex-col max-w-[1280px] mx-auto w-full px-4 sm:px-6 lg:px-8 py-20 text-center">
-        <h2 className="text-3xl font-bold mb-4 dark:text-white">Product Not Found</h2>
-        <Link href="/products" className="text-primary hover:underline">Return to Catalog</Link>
-      </div>
-    );
+    notFound();
   }
 
   // Use product image or a placeholder if missing
@@ -204,7 +197,7 @@ export default async function ProductDetailPage({ params }: Props) {
               Request Quote via WhatsApp
             </a>
             <a
-              href="mailto:sales@junkofze.com"
+              href="mailto:info@junko-fze.com"
               className="w-full h-14 flex items-center justify-center gap-3 rounded-xl border-2 border-gray-200 dark:border-white/10 hover:border-text-main dark:hover:border-white bg-transparent text-text-main dark:text-white text-base font-bold transition-all"
             >
               <span className="material-symbols-outlined">mail</span>

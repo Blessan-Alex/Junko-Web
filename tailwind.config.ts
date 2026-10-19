@@ -2,7 +2,6 @@ import type { Config } from "tailwindcss";
 
 const config: Config = {
   content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
@@ -35,27 +34,6 @@ const config: Config = {
       },
       backgroundImage: {
         'texture-dots': 'radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px)',
-        'subtle-navy-texture': `repeating-linear-gradient(
-                45deg,
-                rgba(22, 15, 82, 0.05) 0,
-                rgba(22, 15, 82, 0.05) 1px,
-                transparent 1px,
-                transparent 50%
-            )`,
-        'dark-blue-texture': `repeating-linear-gradient(
-                45deg,
-                rgba(22, 15, 82, 0.05) 0,
-                rgba(22, 15, 82, 0.05) 1px,
-                transparent 1px,
-                transparent 50%
-            )`,
-        'hero-gradient': `linear-gradient(
-                90deg,
-                rgba(22, 15, 82, 0.85) 0%,
-                rgba(22, 15, 82, 0.55) 40%,
-                rgba(22, 15, 82, 0.15) 70%,
-                rgba(22, 15, 82, 0.0) 100%
-            )`
       },
       backgroundSize: {
         'texture-dots': '20px 20px',

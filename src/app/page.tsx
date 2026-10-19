@@ -133,7 +133,7 @@ export default function Home() {
               </div>
             </Link>
 
-            <Link href="/products?category=BAG%20CLOSING%20THREAD" className="group bg-white dark:bg-surface-dark rounded-2xl shadow-xl overflow-hidden cursor-pointer flex flex-col hover:shadow-2xl transition-all duration-300">
+            <Link href="/products?category=BAG%20CLOSING%20THREADS" className="group bg-white dark:bg-surface-dark rounded-2xl shadow-xl overflow-hidden cursor-pointer flex flex-col hover:shadow-2xl transition-all duration-300">
               <div className="aspect-[16/9] bg-gray-100 overflow-hidden relative">
                 <Image
                   src="/products/Bag_closing_threads/Thread_7.jpg"
@@ -196,7 +196,7 @@ export default function Home() {
               </div>
             </Link>
 
-            <Link href="/products?category=SEWING%20MACHINE" className="group bg-white dark:bg-surface-dark rounded-2xl shadow-xl overflow-hidden cursor-pointer flex flex-col hover:shadow-2xl transition-all duration-300">
+            <Link href="/products?category=BAG%20CLOSING%20MACHINES" className="group bg-white dark:bg-surface-dark rounded-2xl shadow-xl overflow-hidden cursor-pointer flex flex-col hover:shadow-2xl transition-all duration-300">
               <div className="aspect-[16/9] bg-gray-100 overflow-hidden relative">
                 <Image
                   src="/products/Bag Closing Machines/bag_making_machines/DN-2HS.jpg"
@@ -217,7 +217,7 @@ export default function Home() {
               </div>
             </Link>
 
-            <Link href="/products?category=SPARE%20PARTS" className="group bg-white dark:bg-surface-dark rounded-2xl shadow-xl overflow-hidden cursor-pointer flex flex-col hover:shadow-2xl transition-all duration-300">
+            <Link href="/products?category=CONSUMABLES" className="group bg-white dark:bg-surface-dark rounded-2xl shadow-xl overflow-hidden cursor-pointer flex flex-col hover:shadow-2xl transition-all duration-300">
               <div className="aspect-[16/9] bg-gray-100 overflow-hidden relative">
                 <Image
                   src="/products/consumables/Needles/Fischbein_needles.png"
@@ -284,7 +284,7 @@ export default function Home() {
             <div className="order-1 lg:order-2">
               <h2 className="text-4xl font-semibold font-serif text-white mb-6 leading-tight">A Supplier You Can Rely On After the Purchase</h2>
               <p className="text-blue-100 text-lg mb-8 leading-relaxed font-sans">
-                We don't just sell a box and walk away. Junko invests heavily in after-sales infrastructure, ensuring you have the support, spare parts, and technical advice needed to keep your lines running efficiently.
+                We do not just sell a box and walk away. Junko invests heavily in after-sales infrastructure, ensuring you have the support, spare parts, and technical advice needed to keep your lines running efficiently.
               </p>
               <ul className="space-y-4 font-sans">
                 <li className="flex items-center gap-3">
