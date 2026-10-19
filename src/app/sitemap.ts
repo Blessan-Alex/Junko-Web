@@ -1,8 +1,9 @@
 import { MetadataRoute } from 'next'
-import { allProducts } from '@/data/products'
+import { getCatalog } from '@/lib/catalog/get-catalog'
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://www.junko-fze.com'
+  const { allProducts } = await getCatalog()
 
   const staticRoutes = [
     '',

@@ -375,7 +375,9 @@ Test rules in Firebase console before connecting production.
 | Each `image` | Same string as snapshot |
 | `categories` | Deep-equal to snapshot |
 
-**Command:** `npm run catalog:parity -- --source firestore` (to implement) comparing snapshot JSON vs Firestore export.
+**Command:** `npm run catalog:parity -- --source=firestore` (optional `--snapshot=snapshots/catalog-2026-10-19.json`). Default `npm run catalog:parity` remains file (`products.ts`) vs snapshot.
+
+**Implemented:** shared logic in `scripts/catalog/parity-core.mjs`, loader `scripts/catalog/load-firestore-catalog.mjs`.
 
 **Fail = do not cut over.**
 
@@ -394,6 +396,8 @@ Test rules in Firebase console before connecting production.
 | 3.5 | Keep `src/data/products.ts` in repo as fallback + snapshot source until phase 7 |
 | 3.6 | Product pages: fetch by slug from Firestore; `dynamicParams` true for new products after admin add |
 | 3.7 | Implement `POST /api/admin/products/...` with auth + **revalidateTag** after write (can ship behind flag before admin UI) |
+
+**Implemented (Phase 3):** `src/lib/catalog/get-catalog.ts` (`getCatalog`, `getProductBySlug`), `CATALOG_SOURCE` default `file`, `POST /api/admin/revalidate` (admin token + `revalidateTag`). Firestore writes in admin API deferred to Phase 6.
 
 **Do not** use build-time-only Firestore fetch as the long-term publish model — it forces a full **deploy** for every content change.
 

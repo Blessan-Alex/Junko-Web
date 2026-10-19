@@ -1,121 +1,110 @@
 const fs = require("fs");
 const path = require("path");
 const { loadCatalog } = require("./catalog/load-catalog.cjs");
-
-const PRODUCT_FIELDS = [
-  "slug",
-  "name",
-  "category",
-  "subcategory",
-  "description",
-  "image",
-  "featured",
-];
+const {
+  resolveSnapshotPath,
+  loadSnapshotFile,
+} = require("./catalog/resolve-snapshot.cjs");
 
 function parseArgs(argv) {
   let snapshotPath = null;
   let checkImages = false;
-  for (const arg of argv) {
+  let source = "file";
+  for (let i = 0; i < argv.length; i++) {
+    const arg = argv[i];
     if (arg === "--check-images") {
       checkImages = true;
     } else if (arg.startsWith("--snapshot=")) {
       snapshotPath = arg.slice("--snapshot=".length);
+    } else if (arg.startsWith("--source=")) {
+      source = arg.slice("--source=".length).trim().toLowerCase();
+    } else if (arg === "--source" && argv[i + 1]) {
+      source = argv[i + 1].trim().toLowerCase();
+      i += 1;
     }
   }
-  return { snapshotPath, checkImages };
-}
-
-const { latestCatalogSnapshot } = require("./catalog/resolve-snapshot.cjs");
-
-function normalizeOptional(value) {
-  return value === undefined || value === null ? undefined : value;
-}
-
-function setSymmetricDiff(a, b) {
-  const onlyA = [...a].filter((x) => !b.has(x));
-  const onlyB = [...b].filter((x) => !a.has(x));
-  return { onlyA, onlyB };
+  if (source !== "file" && source !== "firestore") {
+    console.error(`catalog:parity: unknown --source=${source} (use file or firestore)`);
+    process.exit(1);
+  }
+  return { snapshotPath, checkImages, source };
 }
 
 async function main() {
+  const { compareCatalogToSnapshot, printParityResult } = await import(
+    "./catalog/parity-core.mjs"
+  );
   const { buildImageManifest, formatMissingImages } = await import(
     "./catalog/image-manifest.mjs"
   );
+  const { EXPECTED_PRODUCT_COUNT } = await import("./catalog/validate.mjs");
 
-  const { snapshotPath: snapshotArg, checkImages } = parseArgs(
+  const { snapshotPath: snapshotArg, checkImages, source } = parseArgs(
     process.argv.slice(2),
   );
-  const snapshotsDir = path.join(process.cwd(), "snapshots");
-  const snapshotPath =
-    snapshotArg ?? latestCatalogSnapshot(snapshotsDir);
 
-  if (!snapshotPath || !fs.existsSync(snapshotPath)) {
+  if (checkImages && source !== "file") {
+    console.log(
+      "catalog:parity: --check-images applies only to --source=file (snapshot image paths vs public/)",
+    );
+  }
+
+  const resolved = resolveSnapshotPath(snapshotArg);
+  const snapshot = loadSnapshotFile(resolved);
+  if (!snapshot) {
     console.error(
       "catalog:parity: no snapshot found. Run npm run catalog:snapshot or pass --snapshot=path",
     );
     process.exit(1);
   }
 
-  const snapshot = JSON.parse(fs.readFileSync(snapshotPath, "utf8"));
-  const { categories: liveCategories, allProducts: liveProducts } = loadCatalog();
   const baselineProducts = snapshot.allProducts ?? [];
   const baselineCategories = snapshot.categories ?? [];
+  const snapshotRel = path.relative(process.cwd(), resolved);
 
-  const failures = [];
-  const mismatchSamples = [];
-  const MAX_SAMPLES = 20;
+  let liveCategories;
+  let liveProducts;
+  let liveLabel;
+  let projectId = null;
+  let firestoreDocIds = null;
 
-  if (liveProducts.length !== baselineProducts.length) {
-    failures.push(
-      `product count: live=${liveProducts.length}, snapshot=${baselineProducts.length}`,
+  if (source === "file") {
+    const live = loadCatalog();
+    liveCategories = live.categories;
+    liveProducts = live.allProducts;
+    liveLabel = "products.ts";
+    console.log(`Compared ${liveLabel} to ${snapshotRel}`);
+  } else {
+    const { loadFirestoreCatalog } = await import(
+      "./catalog/load-firestore-catalog.mjs"
     );
-  }
-
-  const liveIds = new Set(liveProducts.map((p) => p.id));
-  const baseIds = new Set(baselineProducts.map((p) => p.id));
-  const idDiff = setSymmetricDiff(liveIds, baseIds);
-  if (idDiff.onlyA.length > 0) {
-    failures.push(`ids only in live (${idDiff.onlyA.length}): ${idDiff.onlyA.slice(0, 5).join(", ")}${idDiff.onlyA.length > 5 ? "…" : ""}`);
-  }
-  if (idDiff.onlyB.length > 0) {
-    failures.push(`ids only in snapshot (${idDiff.onlyB.length}): ${idDiff.onlyB.slice(0, 5).join(", ")}${idDiff.onlyB.length > 5 ? "…" : ""}`);
-  }
-
-  const liveSlugs = new Set(liveProducts.map((p) => p.slug));
-  const baseSlugs = new Set(baselineProducts.map((p) => p.slug));
-  const slugDiff = setSymmetricDiff(liveSlugs, baseSlugs);
-  if (slugDiff.onlyA.length > 0) {
-    failures.push(`slugs only in live (${slugDiff.onlyA.length})`);
-  }
-  if (slugDiff.onlyB.length > 0) {
-    failures.push(`slugs only in snapshot (${slugDiff.onlyB.length})`);
-  }
-
-  const baselineById = new Map(baselineProducts.map((p) => [p.id, p]));
-  for (const live of liveProducts) {
-    const base = baselineById.get(live.id);
-    if (!base) continue;
-    for (const field of PRODUCT_FIELDS) {
-      const a = normalizeOptional(live[field]);
-      const b = normalizeOptional(base[field]);
-      if (a !== b) {
-        failures.push(`field mismatch on id=${live.id} field=${field}`);
-        if (mismatchSamples.length < MAX_SAMPLES) {
-          mismatchSamples.push({ id: live.id, field, live: a, snapshot: b });
-        }
-      }
+    try {
+      const live = await loadFirestoreCatalog();
+      liveCategories = live.categories;
+      liveProducts = live.allProducts;
+      projectId = live.projectId;
+      firestoreDocIds = live.firestoreDocIds;
+      liveLabel = "Firestore";
+      console.log(
+        `Compared ${liveLabel} (project ${projectId}) to ${snapshotRel}`,
+      );
+    } catch (err) {
+      console.error(err.message || err);
+      process.exit(1);
     }
   }
 
-  const liveCatJson = JSON.stringify(liveCategories);
-  const baseCatJson = JSON.stringify(baselineCategories);
-  if (liveCatJson !== baseCatJson) {
-    failures.push("categories array does not match snapshot");
-  }
+  const { failures, mismatchSamples } = compareCatalogToSnapshot({
+    liveCategories,
+    liveProducts,
+    baselineCategories,
+    baselineProducts,
+    liveLabel,
+    requirePublished: source === "firestore",
+    firestoreDocIds,
+  });
 
-  console.log(`Compared live products.ts to ${path.relative(process.cwd(), snapshotPath)}`);
-
-  if (checkImages) {
+  if (source === "file" && checkImages) {
     const manifest = buildImageManifest(liveProducts);
     const missing = formatMissingImages(manifest);
     console.log(
@@ -129,29 +118,24 @@ async function main() {
     }
   }
 
-  if (mismatchSamples.length > 0) {
-    console.log("Sample field mismatches:");
-    for (const s of mismatchSamples) {
-      console.log(`  ${s.id} .${s.field}`);
-    }
+  const ok = printParityResult({
+    failures,
+    mismatchSamples,
+    successMessage:
+      source === "file"
+        ? "catalog:parity OK — live catalog matches snapshot."
+        : `catalog:parity OK — Firestore matches snapshot (${EXPECTED_PRODUCT_COUNT}/${EXPECTED_PRODUCT_COUNT} products).`,
+  });
+
+  if (ok && source === "firestore" && projectId) {
+    console.log(`  project: ${projectId}`);
+    console.log(`  snapshot: ${snapshotRel}`);
   }
 
-  if (failures.length > 0) {
-    console.error(`catalog:parity FAILED (${failures.length} issue(s)):`);
-    for (const f of failures.slice(0, 30)) {
-      console.error(`  - ${f}`);
-    }
-    if (failures.length > 30) {
-      console.error(`  … and ${failures.length - 30} more`);
-    }
-    process.exit(1);
-  }
-
-  console.log("catalog:parity OK — live catalog matches snapshot.");
-  process.exit(0);
+  process.exit(ok ? 0 : 1);
 }
 
 main().catch((err) => {
-  console.error(err);
+  console.error(err.message || err);
   process.exit(1);
 });
