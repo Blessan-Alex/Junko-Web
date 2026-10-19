@@ -29,6 +29,7 @@ Parity v1 uses **strict** field equality (no whitespace normalization).
 
 1. Seed: `npm run catalog:seed` (staging credentials).
 2. **Phase 2 gate:** `npm run catalog:parity -- --source=firestore` must **PASS** before any Firestore cutover.
+3. **Phase 4 production:** see [`docs/firebase-setup.md`](../docs/firebase-setup.md) §9 (seed prod with `catalog:seed:production`, parity with prod creds, then Vercel Production `CATALOG_SOURCE=firestore` manually).
 
 Setup and credentials: [`docs/firebase-setup.md`](../docs/firebase-setup.md).
 

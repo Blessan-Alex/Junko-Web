@@ -9,7 +9,8 @@
     "lint": "eslint",
     "catalog:snapshot": "node scripts/catalog-snapshot.cjs",
     "catalog:parity": "node scripts/catalog-parity.cjs",
-    "catalog:seed": "node scripts/catalog-seed.cjs"
+    "catalog:seed": "node scripts/catalog-seed.cjs",
+    "catalog:seed:production": "node scripts/catalog-seed.cjs --confirm-production"
   },
   "dependencies": {
     "firebase-admin": "^13.4.0",
