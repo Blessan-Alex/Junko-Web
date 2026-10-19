@@ -8,12 +8,18 @@ const FIRESTORE_BATCH_LIMIT = 500;
 
 function parseArgs(argv) {
   let snapshotPath = null;
+  let confirmProduction = false;
+  let expectedProjectId = null;
   for (const arg of argv) {
     if (arg.startsWith("--snapshot=")) {
       snapshotPath = arg.slice("--snapshot=".length);
+    } else if (arg === "--confirm-production") {
+      confirmProduction = true;
+    } else if (arg.startsWith("--expected-project-id=")) {
+      expectedProjectId = arg.slice("--expected-project-id=".length);
     }
   }
-  return { snapshotPath };
+  return { snapshotPath, confirmProduction, expectedProjectId };
 }
 
 function productToFirestoreDoc(product) {
@@ -40,10 +46,28 @@ async function main() {
   const { initFirebaseAdmin } = await import(
     "./catalog/firebase-admin-init.mjs"
   );
+  const { assertSeedTargetAllowed, getResolvedProjectId } = await import(
+    "./catalog/seed-guard.mjs"
+  );
   const admin = initFirebaseAdmin();
   const { FieldValue } = admin.firestore;
 
-  const { snapshotPath: snapshotArg } = parseArgs(process.argv.slice(2));
+  const {
+    snapshotPath: snapshotArg,
+    confirmProduction,
+    expectedProjectId,
+  } = parseArgs(process.argv.slice(2));
+
+  const projectId = getResolvedProjectId(admin);
+  try {
+    assertSeedTargetAllowed(projectId, {
+      confirmProduction,
+      expectedProjectId,
+    });
+  } catch (err) {
+    console.error(err.message);
+    process.exit(1);
+  }
   const resolved = resolveSnapshotPath(snapshotArg);
 
   const snapshot = loadSnapshotFile(resolved);
@@ -105,6 +129,7 @@ async function main() {
   }
 
   console.log(`catalog:seed OK`);
+  console.log(`  project: ${projectId}`);
   console.log(`  snapshot: ${path.relative(process.cwd(), resolved)}`);
   console.log(`  products written: ${allProducts.length}`);
   console.log(`  categories doc: catalog/categories`);

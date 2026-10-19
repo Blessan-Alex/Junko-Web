@@ -129,6 +129,97 @@ Content-Type: application/json
 
 Sign in as admin in Firebase Auth, obtain ID token (client SDK or REST), then call the route. Rollback: set `CATALOG_SOURCE=file` on the environment.
 
+## 9. Production cutover (Phase 4 — catalog data only)
+
+**Goal:** Live visitors on **www.junko-fze.com** read **production Firestore** (same 148-product baseline as [`snapshots/catalog-2026-10-19.json`](../snapshots/catalog-2026-10-19.json)). **No admin UI, no Blob, no catalog write APIs** in this phase.
+
+**This repo never sets production `CATALOG_SOURCE=firestore`.** You flip that manually in **Vercel → Production** only after parity passes.
+
+### 9.1 Create production Firebase project
+
+1. Firebase Console → **Add project** (e.g. `junko-web-prod` or `junko-fze-prod` — pick one id and keep it documented).
+2. Enable **Authentication** → Email/Password (for future admin; same pattern as staging).
+3. Create **Firestore** (production mode).
+4. Deploy rules from this repo:
+
+   ```bash
+   firebase deploy --only firestore:rules --project YOUR_PRODUCTION_PROJECT_ID
+   ```
+
+   Same rules file as staging: [`firestore.rules`](../firestore.rules).
+
+5. Create **production** service account JSON (Project settings → Service accounts). Store as e.g. `secrets/junko-web-prod-service-account.json` (gitignored). **Do not commit.**
+
+### 9.2 Seed production Firestore (snapshot only)
+
+Use a **dedicated** prod key — never reuse staging creds by mistake.
+
+```powershell
+$env:GOOGLE_APPLICATION_CREDENTIALS = (Resolve-Path ".\secrets\junko-web-prod-service-account.json").Path
+$env:CATALOG_SEED_CONFIRM = "yes"
+$env:CATALOG_SEED_EXPECTED_PROJECT = "YOUR_PRODUCTION_PROJECT_ID"
+
+npm run catalog:seed:production -- --expected-project-id=YOUR_PRODUCTION_PROJECT_ID
+```
+
+- `npm run catalog:seed` alone only allows **`junko-web-staging`** without extra flags.
+- `catalog:seed:production` adds `--confirm-production`; both **`CATALOG_SEED_CONFIRM=yes`** and **`--expected-project-id`** (or `CATALOG_SEED_EXPECTED_PROJECT`) are required for non-staging projects.
+- **Do not** hand-edit documents in the console during seed; re-run the command if you need a clean copy.
+
+Console check: **148** docs in `products`, document `catalog/categories`.
+
+### 9.3 Parity gate (production Firestore)
+
+```powershell
+$env:GOOGLE_APPLICATION_CREDENTIALS = (Resolve-Path ".\secrets\junko-web-prod-service-account.json").Path
+npm run catalog:parity -- --source=firestore
+```
+
+Must exit **0** before any production traffic cutover. Parity uses Admin SDK (same as the app); `project_id` comes from the service account JSON.
+
+### 9.4 Vercel Production env (manual — after 9.2 + 9.3)
+
+In **Vercel → Settings → Environment Variables → Production** only:
+
+| Variable | Value |
+|----------|--------|
+| `CATALOG_SOURCE` | `firestore` |
+| `FIREBASE_SERVICE_ACCOUNT_JSON` | Full production service account JSON (Sensitive) |
+| `FIREBASE_PROJECT_ID` | Production project id (optional if embedded in JSON) |
+
+**Do not** add these to the git repo. **Preview** can keep staging vars; **Production** uses prod JSON.
+
+Redeploy **Production** (not just Preview). Build will call Firestore during static generation for product routes.
+
+### 9.5 Production smoke checklist
+
+After deploy:
+
+- [ ] `https://www.junko-fze.com/products` → **148** results (same filters/SEO list as file era).
+- [ ] Spot URLs: `/product/bcm-1`, `/product/80800rl`, weighing-scale products, duplicate-name cases (e.g. NP-7A).
+- [ ] Product images still load from `/products/...` (paths unchanged; Blob is Phase 5).
+- [ ] `/sitemap.xml` → **148** product URLs; canonicals `/product/{slug}`.
+- [ ] Legacy URLs still redirect via [`scripts/redirects.json`](../scripts/redirects.json) / `next.config.ts`.
+- [ ] `npm run catalog:parity` (file) still passes on CI — `products.ts` remains the snapshot source of truth in git.
+
+### 9.6 Rollback (document and rehearse before cutover)
+
+If the live catalog is wrong or Firestore is unavailable:
+
+1. Vercel **Production** → set `CATALOG_SOURCE` to **`file`** (or remove the variable).
+2. Remove or disable production `FIREBASE_SERVICE_ACCOUNT_JSON` on Production if you want builds to avoid Firestore entirely.
+3. **Redeploy** the last known-good deployment or trigger a new production deploy from `main` / release branch.
+4. Site serves [`src/data/products.ts`](../src/data/products.ts) again; no Firestore read at runtime.
+
+Optional: keep a git tag on the commit used for the last file-only production deploy.
+
+### Phase 4 acceptance (ops)
+
+- [ ] Production Firestore seeded: 148 products + `catalog/categories`, rules deployed.
+- [ ] `catalog:parity -- --source=firestore` with **prod** creds → exit 0.
+- [ ] After Vercel Production env flip + deploy → live site matches file-era URLs and count.
+- [ ] Rollback steps above agreed with team (no code change required to roll back).
+
 ## Related
 
 - Snapshot tooling: [`snapshots/README.md`](../snapshots/README.md)

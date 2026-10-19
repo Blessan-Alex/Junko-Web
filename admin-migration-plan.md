@@ -426,6 +426,8 @@ Test rules in Firebase console before connecting production.
 
 **Rollback:** `CATALOG_SOURCE=file` + redeploy previous commit.
 
+**Documented (Phase 4 ops):** [`docs/firebase-setup.md`](docs/firebase-setup.md) §9 — prod project, seed guard (`catalog:seed:production` + `CATALOG_SEED_CONFIRM=yes`), prod parity, Vercel Production env flip (manual), smoke + rollback. No production `CATALOG_SOURCE` in repo.
+
 ---
 
 ## Phase 5 — Vercel Blob (images)

@@ -36,13 +36,17 @@ function findProductBySlug(products: Product[], slug: string): Product | null {
   );
 }
 
+/**
+ * Firestore: one shared getCatalog() fetch (~149 reads), not per-slug collection scans.
+ * unstable_cache keeps product:{slug} tags for POST /api/admin/revalidate without extra reads.
+ */
 async function getFirestoreProductBySlugCached(slug: string): Promise<Product | null> {
   return unstable_cache(
     async () => {
-      const { allProducts: products } = await fetchCatalogFromFirestore();
+      const { allProducts: products } = await getCatalog();
       return findProductBySlug(products, slug);
     },
-    ["catalog-product-firestore-v1", slug],
+    ["catalog-product-lookup-v2", slug],
     {
       tags: ["catalog", `product:${slug}`],
       revalidate: CACHE_REVALIDATE_SECONDS,
