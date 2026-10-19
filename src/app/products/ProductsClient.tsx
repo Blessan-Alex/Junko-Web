@@ -1,38 +1,33 @@
 'use client';
 
-import React, { useState, useMemo, useEffect } from 'react';
-import { useSearchParams } from 'next/navigation';
+import React, { useState, useMemo } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { allProducts, categories } from '@/data/products';
 import ProductCard from '@/components/ProductCard';
 
 export default function ProductsClient() {
+  const router = useRouter();
   const searchParams = useSearchParams();
-  const initialCategory = searchParams.get('category');
+  const selectedCategory = searchParams.get('category');
 
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(initialCategory);
   const [searchQuery, setSearchQuery] = useState('');
   const [activeSubcategories, setActiveSubcategories] = useState<string[]>([]);
   const [showFilters, setShowFilters] = useState(false);
 
-  // Derive categories for ease of use
-  const categoryNames = useMemo(() => categories.map(c => c.name), []);
-
-  // Effect to update selected category if URL changes
-  useEffect(() => {
-    const cat = searchParams.get('category');
-    if (cat) {
-      setSelectedCategory(cat);
-    }
-  }, [searchParams]);
-
   const handleCategoryChange = (category: string) => {
     if (selectedCategory === category) {
-      setSelectedCategory(null);
+      router.push('/products');
       setActiveSubcategories([]);
     } else {
-      setSelectedCategory(category);
+      router.push(`/products?category=${encodeURIComponent(category)}`);
       setActiveSubcategories([]);
     }
+  };
+
+  const clearAllFilters = () => {
+    router.push('/products');
+    setSearchQuery('');
+    setActiveSubcategories([]);
   };
 
   const toggleSubcategory = (sub: string) => {
@@ -70,8 +65,6 @@ export default function ProductsClient() {
     });
   }, [selectedCategory, searchQuery, activeSubcategories]);
 
-  const currentCategoryData = categories.find(c => c.name === selectedCategory);
-
   return (
     <div className="flex flex-1 max-w-[1440px] mx-auto w-full min-h-screen">
       {/* Mobile Filter Toggle */}
@@ -104,11 +97,7 @@ export default function ProductsClient() {
               <div className="font-serif font-bold text-xl text-secondary dark:text-white">Filters</div>
             </div>
             <button
-              onClick={() => {
-                setSelectedCategory(null);
-                setActiveSubcategories([]);
-                setSearchQuery('');
-              }}
+              onClick={clearAllFilters}
               className="text-xs text-primary font-bold hover:underline uppercase tracking-wider"
             >
               Clear All
@@ -190,10 +179,9 @@ export default function ProductsClient() {
             {selectedCategory || 'All Products'}
           </h1>
           <p className="text-gray-500 dark:text-gray-400 max-w-2xl text-lg">
-            {(selectedCategory && currentCategoryData?.subcategories.length === 0)
+            {selectedCategory
               ? `Explore our range of ${selectedCategory}.`
-              : "Premium industrial machinery for high-volume manufacturing lines."
-            }
+              : 'Premium industrial machinery for high-volume manufacturing lines.'}
           </p>
         </div>
 
@@ -208,7 +196,7 @@ export default function ProductsClient() {
             <div className="flex gap-2 flex-wrap justify-end">
               {searchQuery && (
                 <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-gray-100 dark:bg-white/10 text-xs font-bold text-secondary dark:text-white">
-                  "{searchQuery}"
+                  &ldquo;{searchQuery}&rdquo;
                   <button onClick={() => setSearchQuery('')} className="hover:text-red-500"><span className="material-symbols-outlined text-[14px]">close</span></button>
                 </span>
               )}
@@ -233,13 +221,9 @@ export default function ProductsClient() {
           <div className="flex flex-col items-center justify-center py-20 text-center">
             <span className="material-symbols-outlined text-6xl text-gray-200 dark:text-gray-700 mb-4">inventory_2</span>
             <div className="text-xl font-bold text-secondary dark:text-white mb-2">No products found</div>
-            <p className="text-gray-500 max-w-md">We couldn't find any products matching your current filters. Try adjusting your search or category selection.</p>
+            <p className="text-gray-500 max-w-md">We could not find any products matching your current filters. Try adjusting your search or category selection.</p>
             <button
-              onClick={() => {
-                setSelectedCategory(null);
-                setSearchQuery('');
-                setActiveSubcategories([]);
-              }}
+              onClick={clearAllFilters}
               className="mt-6 text-primary font-bold hover:underline"
             >
               Clear all filters

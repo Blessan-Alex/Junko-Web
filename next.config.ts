@@ -1,6 +1,12 @@
 import type { NextConfig } from "next";
 import redirectsData from "./scripts/redirects.json";
 
+type RedirectRule = {
+  source: string;
+  destination: string;
+  permanent: boolean;
+};
+
 const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
@@ -11,7 +17,7 @@ const nextConfig: NextConfig = {
     ],
   },
   async redirects() {
-    return redirectsData as any;
+    return redirectsData as RedirectRule[];
   },
 };
 

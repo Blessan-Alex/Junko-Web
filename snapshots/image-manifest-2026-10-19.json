@@ -1,0 +1,751 @@
+{
+  "exportedAt": "2026-10-19T12:08:17.669Z",
+  "gitCommit": "8bf5021f0a9ed5c6b1ede81c80474439bd676d93",
+  "entries": [
+    {
+      "path": "/products/Bag Closing Machines/bag_closing_machine_systems/80800RL.jpg",
+      "exists": true,
+      "sizeBytes": 26213
+    },
+    {
+      "path": "/products/Bag Closing Machines/bag_closing_machine_systems/A1-P-DS-2II.png",
+      "exists": true,
+      "sizeBytes": 136837
+    },
+    {
+      "path": "/products/Bag Closing Machines/bag_closing_machine_systems/BCM_1.png",
+      "exists": true,
+      "sizeBytes": 410911
+    },
+    {
+      "path": "/products/Bag Closing Machines/bag_closing_machine_systems/BCM_2.png",
+      "exists": true,
+      "sizeBytes": 332085
+    },
+    {
+      "path": "/products/Bag Closing Machines/bag_closing_machine_systems/BCM_3.png",
+      "exists": true,
+      "sizeBytes": 493393
+    },
+    {
+      "path": "/products/Bag Closing Machines/bag_closing_machine_systems/BCM_4.png",
+      "exists": true,
+      "sizeBytes": 184894
+    },
+    {
+      "path": "/products/Bag Closing Machines/bag_closing_machine_systems/BCM_5.png",
+      "exists": true,
+      "sizeBytes": 191219
+    },
+    {
+      "path": "/products/Bag Closing Machines/bag_closing_machine_systems/BCM_6.png",
+      "exists": true,
+      "sizeBytes": 278345
+    },
+    {
+      "path": "/products/Bag Closing Machines/bag_closing_machine_systems/BCM_7.png",
+      "exists": true,
+      "sizeBytes": 524709
+    },
+    {
+      "path": "/products/Bag Closing Machines/bag_closing_machine_systems/DS-9A.png",
+      "exists": true,
+      "sizeBytes": 64960
+    },
+    {
+      "path": "/products/Bag Closing Machines/bag_closing_machine_systems/FBK-24D.png",
+      "exists": true,
+      "sizeBytes": 321847
+    },
+    {
+      "path": "/products/Bag Closing Machines/bag_closing_machine_systems/FBK-332C.png",
+      "exists": true,
+      "sizeBytes": 282159
+    },
+    {
+      "path": "/products/Bag Closing Machines/bag_closing_machine_systems/FN600A.png",
+      "exists": true,
+      "sizeBytes": 100244
+    },
+    {
+      "path": "/products/Bag Closing Machines/bag_closing_machine_systems/GK-L26.jpg",
+      "exists": true,
+      "sizeBytes": 32624
+    },
+    {
+      "path": "/products/Bag Closing Machines/bag_closing_machine_systems/GK35-6C.png",
+      "exists": true,
+      "sizeBytes": 41938
+    },
+    {
+      "path": "/products/Bag Closing Machines/bag_closing_machine_systems/MW-6.5.jpg",
+      "exists": true,
+      "sizeBytes": 15643
+    },
+    {
+      "path": "/products/Bag Closing Machines/bag_closing_machine_systems/SM-1.png",
+      "exists": true,
+      "sizeBytes": 262629
+    },
+    {
+      "path": "/products/Bag Closing Machines/bag_making_machines/AS-102-HS-1-e1709140399614.png",
+      "exists": true,
+      "sizeBytes": 185066
+    },
+    {
+      "path": "/products/Bag Closing Machines/bag_making_machines/AS-502-HD.png",
+      "exists": true,
+      "sizeBytes": 244948
+    },
+    {
+      "path": "/products/Bag Closing Machines/bag_making_machines/DKN-3WGP-DKN-3BPGP.jpeg",
+      "exists": true,
+      "sizeBytes": 57119
+    },
+    {
+      "path": "/products/Bag Closing Machines/bag_making_machines/DN-2HS.jpg",
+      "exists": true,
+      "sizeBytes": 47820
+    },
+    {
+      "path": "/products/Bag Closing Machines/bag_making_machines/U561.png",
+      "exists": true,
+      "sizeBytes": 302394
+    },
+    {
+      "path": "/products/Bag Closing Machines/conveyors/Belt-Conveyor-e1709141117967.jpg",
+      "exists": true,
+      "sizeBytes": 18653
+    },
+    {
+      "path": "/products/Bag Closing Machines/feeding_device/CM4900-3-e1709141785103.png",
+      "exists": true,
+      "sizeBytes": 47771
+    },
+    {
+      "path": "/products/Bag Closing Machines/feeding_device/CP4900-e1709141518888.png",
+      "exists": true,
+      "sizeBytes": 31392
+    },
+    {
+      "path": "/products/Bag Closing Machines/Machine_heads/80800RL.jpg",
+      "exists": true,
+      "sizeBytes": 26213
+    },
+    {
+      "path": "/products/Bag Closing Machines/Machine_heads/BCM_1.png",
+      "exists": true,
+      "sizeBytes": 410911
+    },
+    {
+      "path": "/products/Bag Closing Machines/Machine_heads/BCM_2.png",
+      "exists": true,
+      "sizeBytes": 332085
+    },
+    {
+      "path": "/products/Bag Closing Machines/Machine_heads/BCM_3.png",
+      "exists": true,
+      "sizeBytes": 493393
+    },
+    {
+      "path": "/products/Bag Closing Machines/Machine_heads/BCM_4.png",
+      "exists": true,
+      "sizeBytes": 184894
+    },
+    {
+      "path": "/products/Bag Closing Machines/Machine_heads/BCM_7.png",
+      "exists": true,
+      "sizeBytes": 524709
+    },
+    {
+      "path": "/products/Bag Closing Machines/Machine_heads/DS-9A.png",
+      "exists": true,
+      "sizeBytes": 64960
+    },
+    {
+      "path": "/products/Bag Closing Machines/Machine_heads/GK35-6C.png",
+      "exists": true,
+      "sizeBytes": 41938
+    },
+    {
+      "path": "/products/Bag_closing_threads/3-7_Silicon_Treated-1.png",
+      "exists": true,
+      "sizeBytes": 747774
+    },
+    {
+      "path": "/products/Bag_closing_threads/Crepe_paper_tape.png",
+      "exists": true,
+      "sizeBytes": 772180
+    },
+    {
+      "path": "/products/Bag_closing_threads/Thread_7.jpg",
+      "exists": true,
+      "sizeBytes": 150968
+    },
+    {
+      "path": "/products/Bag_closing_threads/Crepe Paper Tape/Crepe_paper_tape.png",
+      "exists": true,
+      "sizeBytes": 772180
+    },
+    {
+      "path": "/products/Bag_closing_threads/Monofilament Yarn/monofilament_yarn.png",
+      "exists": true,
+      "sizeBytes": 565588
+    },
+    {
+      "path": "/products/Bag_closing_threads/Polypropelene Multifilament Yarn/Pplypropylene_multifilament.png",
+      "exists": true,
+      "sizeBytes": 467488
+    },
+    {
+      "path": "/products/Bag_closing_threads/sewing_thread/Sewing_Thread.png",
+      "exists": true,
+      "sizeBytes": 740788
+    },
+    {
+      "path": "/products/Carpet_overedging_machines/COEM_1-1.jpg",
+      "exists": true,
+      "sizeBytes": 78847
+    },
+    {
+      "path": "/products/Carpet_overedging_machines/COEM_6.jpg",
+      "exists": true,
+      "sizeBytes": 56309
+    },
+    {
+      "path": "/products/Carpet_overedging_machines/COEM_7.jpg",
+      "exists": true,
+      "sizeBytes": 88374
+    },
+    {
+      "path": "/products/Carpet_overedging_machines/Carpet Binding Tape Machine/COEM_8.jpg",
+      "exists": true,
+      "sizeBytes": 160127
+    },
+    {
+      "path": "/products/Carpet_overedging_machines/Carpet Heavy Duty Buttseamer/TITAN-4510CHE-1536x678.png",
+      "exists": true,
+      "sizeBytes": 1879527
+    },
+    {
+      "path": "/products/Carpet_overedging_machines/Movable Carpet Overedging Machine/2502WD-2.webp",
+      "exists": true,
+      "sizeBytes": 40298
+    },
+    {
+      "path": "/products/Carpet_overedging_machines/Movable Carpet Overedging Machine/COEM_8.jpg",
+      "exists": true,
+      "sizeBytes": 160127
+    },
+    {
+      "path": "/products/Carpet_overedging_machines/TITAN 2200NC, Special Fringing Machine to sew cut or uncut fringes/TITAN-2200-1536x681.png",
+      "exists": true,
+      "sizeBytes": 1279378
+    },
+    {
+      "path": "/products/consumables/Crepe paper tape/Crepe_paper_tape.png",
+      "exists": true,
+      "sizeBytes": 772180
+    },
+    {
+      "path": "/products/consumables/Needles/Fischbein_needles.png",
+      "exists": true,
+      "sizeBytes": 346574
+    },
+    {
+      "path": "/products/consumables/Needles/Groz_beckert_needles-e1708936853463.png",
+      "exists": true,
+      "sizeBytes": 328130
+    },
+    {
+      "path": "/products/consumables/Needles/Needle_1_Schmetz.png",
+      "exists": true,
+      "sizeBytes": 561361
+    },
+    {
+      "path": "/products/consumables/Needles/Organ-Needles.png",
+      "exists": true,
+      "sizeBytes": 281846
+    },
+    {
+      "path": "/products/consumables/Oil for sewing machine/SWOil-e1708935103355.png",
+      "exists": true,
+      "sizeBytes": 651490
+    },
+    {
+      "path": "/products/consumables/Repairing of machine/Repair_Sewing_Machines-e1708967961507.jpg",
+      "exists": true,
+      "sizeBytes": 45942
+    },
+    {
+      "path": "/products/consumables/Spare parts/Spare_Parts_Machines.png",
+      "exists": true,
+      "sizeBytes": 969699
+    },
+    {
+      "path": "/products/consumables/Spring balancers/spring_balancers_all.png",
+      "exists": true,
+      "sizeBytes": 967311
+    },
+    {
+      "path": "/products/consumables/Thread/Thread_Consumers-1536x396.png",
+      "exists": true,
+      "sizeBytes": 779328
+    },
+    {
+      "path": "/products/Filling and packing machines/Automatic weighing filling machine/FLG-500A.png",
+      "exists": true,
+      "sizeBytes": 222235
+    },
+    {
+      "path": "/products/Filling and packing machines/Automatic weighing filling machine/PM-1.png",
+      "exists": true,
+      "sizeBytes": 35718
+    },
+    {
+      "path": "/products/Filling and packing machines/Automatic weighing filling machine/PM-2.png",
+      "exists": true,
+      "sizeBytes": 58321
+    },
+    {
+      "path": "/products/Filling and packing machines/Automatic weighing filling machine/PM-4.png",
+      "exists": true,
+      "sizeBytes": 107328
+    },
+    {
+      "path": "/products/Filling and packing machines/carton sealer/FXJ-4040A.png",
+      "exists": true,
+      "sizeBytes": 211235
+    },
+    {
+      "path": "/products/Filling and packing machines/carton sealer/FXJ-5050A.png",
+      "exists": true,
+      "sizeBytes": 283616
+    },
+    {
+      "path": "/products/Filling and packing machines/carton sealer/FXJ-8070B.png",
+      "exists": true,
+      "sizeBytes": 189275
+    },
+    {
+      "path": "/products/Filling and packing machines/Shrink Packaging Machine/BS-4535LA.png",
+      "exists": true,
+      "sizeBytes": 263137
+    },
+    {
+      "path": "/products/Filling and packing machines/Shrink Packaging Machine/BSF-5540A.png",
+      "exists": true,
+      "sizeBytes": 274985
+    },
+    {
+      "path": "/products/Filling and packing machines/Shrink Packaging Machine/BSL-5045L.png",
+      "exists": true,
+      "sizeBytes": 221708
+    },
+    {
+      "path": "/products/Filling and packing machines/Strapping machine/KZ-8060D.png",
+      "exists": true,
+      "sizeBytes": 164836
+    },
+    {
+      "path": "/products/Filling and packing machines/Strapping machine/KZB-1.png",
+      "exists": true,
+      "sizeBytes": 156491
+    },
+    {
+      "path": "/products/Filling and packing machines/Strapping machine/KZB-A.png",
+      "exists": true,
+      "sizeBytes": 271301
+    },
+    {
+      "path": "/products/Packaging materials/brown-packaging-tape-500x500-1.jpg",
+      "exists": true,
+      "sizeBytes": 17436
+    },
+    {
+      "path": "/products/Packaging materials/Cyklop_PET.png",
+      "exists": true,
+      "sizeBytes": 387885
+    },
+    {
+      "path": "/products/Packaging materials/Polycord-1.png",
+      "exists": true,
+      "sizeBytes": 35456
+    },
+    {
+      "path": "/products/Packaging materials/polylash.jpeg",
+      "exists": true,
+      "sizeBytes": 43073
+    },
+    {
+      "path": "/products/Packaging materials/POLYTEX2.jpg",
+      "exists": true,
+      "sizeBytes": 26667
+    },
+    {
+      "path": "/products/Packaging tools/Strapping tools/20210929173700_40350.jpg",
+      "exists": true,
+      "sizeBytes": 109218
+    },
+    {
+      "path": "/products/Packaging tools/Strapping tools/20211009113522_56377-1536x1536.jpg",
+      "exists": true,
+      "sizeBytes": 141154
+    },
+    {
+      "path": "/products/Packaging tools/Strapping tools/20211011144058_21896.jpg",
+      "exists": true,
+      "sizeBytes": 144009
+    },
+    {
+      "path": "/products/Packaging tools/Strapping tools/20211011180630_31788.jpg",
+      "exists": true,
+      "sizeBytes": 259347
+    },
+    {
+      "path": "/products/Packaging tools/Strapping tools/20211012170012_97381.jpg",
+      "exists": true,
+      "sizeBytes": 271154
+    },
+    {
+      "path": "/products/Packaging tools/Strapping tools/20211013103553_33407.jpg",
+      "exists": true,
+      "sizeBytes": 81639
+    },
+    {
+      "path": "/products/Packaging tools/Strapping tools/20211013114914_56279.jpg",
+      "exists": true,
+      "sizeBytes": 179006
+    },
+    {
+      "path": "/products/Packaging tools/Strapping tools/20211013120007_89741.jpg",
+      "exists": true,
+      "sizeBytes": 336833
+    },
+    {
+      "path": "/products/Packaging tools/Strapping tools/20211013143615_73711.jpg",
+      "exists": true,
+      "sizeBytes": 133231
+    },
+    {
+      "path": "/products/Packaging tools/Strapping tools/20211014113343_78491.jpg",
+      "exists": true,
+      "sizeBytes": 288623
+    },
+    {
+      "path": "/products/Packaging tools/Strapping tools/20211014160509_88035-2.jpg",
+      "exists": true,
+      "sizeBytes": 195760
+    },
+    {
+      "path": "/products/Packaging tools/Strapping tools/20240416100026_41086.jpg",
+      "exists": true,
+      "sizeBytes": 333029
+    },
+    {
+      "path": "/products/Portable bag closers/Battery Operated Single Needle Single Thread Chain Stitch Machines/KP-2701B.png",
+      "exists": true,
+      "sizeBytes": 174495
+    },
+    {
+      "path": "/products/Portable bag closers/Battery Operated Single Needle Single Thread Chain Stitch Machines/N600A-12V-BTN.jpg",
+      "exists": true,
+      "sizeBytes": 24298
+    },
+    {
+      "path": "/products/Portable bag closers/Battery Operated Single Needle Single Thread Chain Stitch Machines/PBC_KP-3000B.png",
+      "exists": true,
+      "sizeBytes": 153447
+    },
+    {
+      "path": "/products/Portable bag closers/Double Thread Double Needle Chain Stitch Machines/DE-DA6.jpg",
+      "exists": true,
+      "sizeBytes": 89326
+    },
+    {
+      "path": "/products/Portable bag closers/Double Thread Double Needle Chain Stitch Machines/PBC_LPI_DE-DA.png",
+      "exists": true,
+      "sizeBytes": 177905
+    },
+    {
+      "path": "/products/Portable bag closers/Double Thread Double Needle Chain Stitch Machines/PBC_N620A.png",
+      "exists": true,
+      "sizeBytes": 181491
+    },
+    {
+      "path": "/products/Portable bag closers/Double Thread Single Needle Chain Stitch Machines/D-2.jpg",
+      "exists": true,
+      "sizeBytes": 25969
+    },
+    {
+      "path": "/products/Portable bag closers/Double Thread Single Needle Chain Stitch Machines/DAD-R.png",
+      "exists": true,
+      "sizeBytes": 468681
+    },
+    {
+      "path": "/products/Portable bag closers/Double Thread Single Needle Chain Stitch Machines/PBC_2200A.png",
+      "exists": true,
+      "sizeBytes": 173898
+    },
+    {
+      "path": "/products/Portable bag closers/Double Thread Single Needle Chain Stitch Machines/PBC_NP-311.png",
+      "exists": true,
+      "sizeBytes": 136933
+    },
+    {
+      "path": "/products/Portable bag closers/Single Needle Single Thread Chain Stitch Machines/Crepe-tape-attachment-NP-7A.jpg",
+      "exists": true,
+      "sizeBytes": 5371
+    },
+    {
+      "path": "/products/Portable bag closers/Single Needle Single Thread Chain Stitch Machines/DA-6.jpg",
+      "exists": true,
+      "sizeBytes": 89326
+    },
+    {
+      "path": "/products/Portable bag closers/Single Needle Single Thread Chain Stitch Machines/GNP-7A.png",
+      "exists": true,
+      "sizeBytes": 171849
+    },
+    {
+      "path": "/products/Portable bag closers/Single Needle Single Thread Chain Stitch Machines/HBC_DA_TEX.png",
+      "exists": true,
+      "sizeBytes": 197240
+    },
+    {
+      "path": "/products/Portable bag closers/Single Needle Single Thread Chain Stitch Machines/L-1.jpg",
+      "exists": true,
+      "sizeBytes": 94709
+    },
+    {
+      "path": "/products/Portable bag closers/Single Needle Single Thread Chain Stitch Machines/NP-7A.jpg",
+      "exists": true,
+      "sizeBytes": 58663
+    },
+    {
+      "path": "/products/Portable bag closers/Single Needle Single Thread Chain Stitch Machines/NP-7H.jpg",
+      "exists": true,
+      "sizeBytes": 24066
+    },
+    {
+      "path": "/products/Portable bag closers/Single Needle Single Thread Chain Stitch Machines/PBC_Fischbein_Model.png",
+      "exists": true,
+      "sizeBytes": 157246
+    },
+    {
+      "path": "/products/Portable bag closers/Single Needle Single Thread Chain Stitch Machines/PBC_GK-9-2.png",
+      "exists": true,
+      "sizeBytes": 124863
+    },
+    {
+      "path": "/products/Portable bag closers/Single Needle Single Thread Chain Stitch Machines/PBC_GK_26_1A.png",
+      "exists": true,
+      "sizeBytes": 137358
+    },
+    {
+      "path": "/products/Portable bag closers/Single Needle Single Thread Chain Stitch Machines/PBC_KP2701.png",
+      "exists": true,
+      "sizeBytes": 150809
+    },
+    {
+      "path": "/products/Portable bag closers/Single Needle Single Thread Chain Stitch Machines/PBC_LPI_DA-C.png",
+      "exists": true,
+      "sizeBytes": 280476
+    },
+    {
+      "path": "/products/Portable bag closers/Single Needle Single Thread Chain Stitch Machines/PBC_LPI_DA.png",
+      "exists": true,
+      "sizeBytes": 193080
+    },
+    {
+      "path": "/products/Sealing Machines/Band Sealers/Continuous-band-sealer-FRB-770I.png",
+      "exists": true,
+      "sizeBytes": 206538
+    },
+    {
+      "path": "/products/Sealing Machines/Band Sealers/FR-1370LD.png",
+      "exists": true,
+      "sizeBytes": 280141
+    },
+    {
+      "path": "/products/Sealing Machines/Band Sealers/FR-1370LT.png",
+      "exists": true,
+      "sizeBytes": 162191
+    },
+    {
+      "path": "/products/Sealing Machines/Band Sealers/FRM-1120LD.png",
+      "exists": true,
+      "sizeBytes": 236860
+    },
+    {
+      "path": "/products/Sealing Machines/Band Sealers/FRM-1120W.png",
+      "exists": true,
+      "sizeBytes": 317977
+    },
+    {
+      "path": "/products/Sealing Machines/Band Sealers/High-Speed-Band-sealer-FRB-770I.png",
+      "exists": true,
+      "sizeBytes": 203937
+    },
+    {
+      "path": "/products/Sealing Machines/Blister Sealing Machine/SM-5.png",
+      "exists": true,
+      "sizeBytes": 117454
+    },
+    {
+      "path": "/products/Sealing Machines/Carton Sealer/SM-7.png",
+      "exists": true,
+      "sizeBytes": 123657
+    },
+    {
+      "path": "/products/Sealing Machines/Heavy Duty Bag Sealing Machine/FBH-32.png",
+      "exists": true,
+      "sizeBytes": 311254
+    },
+    {
+      "path": "/products/Sealing Machines/Impulse Sealers/Hand-Impulse-Sealer-600-800-1000-mm.png",
+      "exists": true,
+      "sizeBytes": 136654
+    },
+    {
+      "path": "/products/Sealing Machines/Impulse Sealers/hand-impulse-sealer-cutter.png",
+      "exists": true,
+      "sizeBytes": 133361
+    },
+    {
+      "path": "/products/Sealing Machines/Impulse Sealers/hand-impulse-sealer-e1709270523894.png",
+      "exists": true,
+      "sizeBytes": 115334
+    },
+    {
+      "path": "/products/Sealing Machines/Impulse Sealers/pedal-impulse-sealer.png",
+      "exists": true,
+      "sizeBytes": 196491
+    },
+    {
+      "path": "/products/Sealing Machines/Impulse Sealers/table-style-pedal-impulse-sealer.png",
+      "exists": true,
+      "sizeBytes": 138369
+    },
+    {
+      "path": "/products/Sealing Machines/Pneumatic heavy bag sealer/QF-600LS.png",
+      "exists": true,
+      "sizeBytes": 267062
+    },
+    {
+      "path": "/products/Sealing Machines/Sealing and Stitching Packaging Machine/FBK-24D.png",
+      "exists": true,
+      "sizeBytes": 321847
+    },
+    {
+      "path": "/products/Sealing Machines/Sealing and Stitching Packaging Machine/FBK-332C.png",
+      "exists": true,
+      "sizeBytes": 282159
+    },
+    {
+      "path": "/products/Sealing Machines/Sealing and Stitching Packaging Machine/SM-1.png",
+      "exists": true,
+      "sizeBytes": 262629
+    },
+    {
+      "path": "/products/Sealing Machines/Solid Ink Coding Band Sealer/SM-3.png",
+      "exists": true,
+      "sizeBytes": 91349
+    },
+    {
+      "path": "/products/Sealing Machines/Solid Ink Coding Band Sealer/SM-6.png",
+      "exists": true,
+      "sizeBytes": 278342
+    },
+    {
+      "path": "/products/Sealing Machines/Strapping Machine/SM-9.png",
+      "exists": true,
+      "sizeBytes": 120150
+    },
+    {
+      "path": "/products/Sealing Machines/Vaccum Packaging Machine/SM-8.png",
+      "exists": true,
+      "sizeBytes": 127328
+    },
+    {
+      "path": "/products/weighing scales/Electronic Weighing Scales/asss.jpg.webp",
+      "exists": true,
+      "sizeBytes": 35116
+    },
+    {
+      "path": "/products/weighing scales/Electronic Weighing Scales/Bench_Model.png",
+      "exists": true,
+      "sizeBytes": 96692
+    },
+    {
+      "path": "/products/weighing scales/Electronic Weighing Scales/Bench_Model_Mini.png",
+      "exists": true,
+      "sizeBytes": 116581
+    },
+    {
+      "path": "/products/weighing scales/Electronic Weighing Scales/Field_Scale.png",
+      "exists": true,
+      "sizeBytes": 105433
+    },
+    {
+      "path": "/products/weighing scales/Electronic Weighing Scales/heavy_platform.png",
+      "exists": true,
+      "sizeBytes": 100106
+    },
+    {
+      "path": "/products/weighing scales/Electronic Weighing Scales/Jewelley_Scale.png",
+      "exists": true,
+      "sizeBytes": 108101
+    },
+    {
+      "path": "/products/weighing scales/Electronic Weighing Scales/pallet-scale-1734x2048.jpg",
+      "exists": true,
+      "sizeBytes": 204357
+    },
+    {
+      "path": "/products/weighing scales/Electronic Weighing Scales/Platform_Type.png",
+      "exists": true,
+      "sizeBytes": 91819
+    },
+    {
+      "path": "/products/weighing scales/Electronic Weighing Scales/Price_Computing.png",
+      "exists": true,
+      "sizeBytes": 89029
+    },
+    {
+      "path": "/products/weighing scales/Electronic Weighing Scales/Table_Top.png",
+      "exists": true,
+      "sizeBytes": 123738
+    },
+    {
+      "path": "/products/weighing scales/Electronic Weighing Scales/table_top_front_back_display.png",
+      "exists": true,
+      "sizeBytes": 145851
+    },
+    {
+      "path": "/products/weighing scales/Electronic Weighing Scales/table_top_water_proof.png",
+      "exists": true,
+      "sizeBytes": 105240
+    },
+    {
+      "path": "/products/weighing scales/Mechanical Weighing Scales/1220_Long-_Hand-_Pallet_Truck.png.webp",
+      "exists": true,
+      "sizeBytes": 69548
+    },
+    {
+      "path": "/products/weighing scales/Mechanical Weighing Scales/counter_scale.png",
+      "exists": true,
+      "sizeBytes": 125367
+    },
+    {
+      "path": "/products/weighing scales/Mechanical Weighing Scales/manual_platform.png",
+      "exists": true,
+      "sizeBytes": 87986
+    }
+  ],
+  "summary": {
+    "totalReferenced": 148,
+    "uniquePaths": 148,
+    "missingCount": 0
+  }
+}

@@ -26,7 +26,6 @@ export default function ContactClient() {
 
     // Honeypot check
     if (honeypot) {
-      console.log('Bot detected!');
       return;
     }
 
