@@ -220,6 +220,38 @@ Optional: keep a git tag on the commit used for the last file-only production de
 - [ ] After Vercel Production env flip + deploy → live site matches file-era URLs and count.
 - [ ] Rollback steps above agreed with team (no code change required to roll back).
 
+## 10. Admin UI (Phase 6)
+
+The catalog admin at `/admin` uses the **Firebase Web client SDK** for sign-in only. All catalog writes go through Next.js API routes (Admin SDK + `verifyAdminIdToken`).
+
+### 10.1 Vercel env (Production + Preview)
+
+Add the **Web app** config from Firebase Console → Project settings → Your apps (project **`junko-web-prod`** for Production; use staging project for Preview if you test admin against staging Firestore).
+
+| Variable | Notes |
+|----------|--------|
+| `NEXT_PUBLIC_FIREBASE_API_KEY` | Public |
+| `NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN` | e.g. `junko-web-prod.firebaseapp.com` |
+| `NEXT_PUBLIC_FIREBASE_PROJECT_ID` | `junko-web-prod` |
+| `NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET` | |
+| `NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID` | |
+| `NEXT_PUBLIC_FIREBASE_APP_ID` | |
+
+Server vars unchanged: `FIREBASE_SERVICE_ACCOUNT_JSON`, `CATALOG_SOURCE=firestore`, optional `FIREBASE_PROJECT_ID`.
+
+Local: copy the same `NEXT_PUBLIC_*` keys into `.env.local` (see [`.env.example`](../.env.example)).
+
+### 10.2 First admin login
+
+1. Ensure the user exists in Firebase **Authentication** (Email/Password) for the same project as `CATALOG_SOURCE`.
+2. Set the custom claim: `node scripts/catalog-set-admin-claim.mjs <uid>` (see Phase 1 docs) — claim name **`admin: true`**.
+3. Open `/admin/login`, sign in. Without the claim you see: “Not an admin — contact support”.
+4. **Save & publish** on a product runs Firestore write + cache revalidation; the public site updates within ~30–60s without redeploy.
+
+### 10.3 Manual revalidate (optional)
+
+`POST /api/admin/revalidate` with `Authorization: Bearer <idToken>` still works for ops; product APIs revalidate automatically on publish.
+
 ## Related
 
 - Snapshot tooling: [`snapshots/README.md`](../snapshots/README.md)

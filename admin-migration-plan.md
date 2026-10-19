@@ -510,6 +510,8 @@ Test rules in Firebase console before connecting production.
 
 Admin UI: one button **“Save & publish”** → API → Firestore/Blob → `revalidateTag` / `revalidatePath`. Message: “Changes go live within about a minute.”
 
+**Implemented (Phase 6 v1):** `/admin/*` routes, Firebase client login, `GET/POST /api/admin/products`, `GET/PUT/DELETE /api/admin/products/[id]`, `GET/PUT /api/admin/categories`, shared `revalidateCatalog()` in `src/lib/admin/revalidate-catalog.ts`. Image field is path-only (no Blob). See `docs/firebase-setup.md` §10.
+
 ---
 
 ## Phase 7 — Deprecate `products.ts` as source of truth

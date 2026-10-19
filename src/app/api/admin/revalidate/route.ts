@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import { revalidatePath, revalidateTag } from "next/cache";
 import { verifyAdminIdToken } from "@/lib/firebase/admin";
+import { revalidateCatalog } from "@/lib/admin/revalidate-catalog";
 
 export const runtime = "nodejs";
 
@@ -37,21 +37,10 @@ export async function POST(request: NextRequest) {
     ? body.slugs.filter((s): s is string => typeof s === "string" && s.length > 0)
     : [];
 
-  revalidateTag("catalog", {});
-  revalidatePath("/products");
-  revalidatePath("/sitemap.xml");
-
-  for (const slug of slugs) {
-    revalidateTag(`product:${slug}`, {});
-    revalidatePath(`/product/${slug}`);
-  }
+  const revalidated = revalidateCatalog(slugs);
 
   return NextResponse.json({
     ok: true,
-    revalidated: {
-      catalog: true,
-      paths: ["/products", "/sitemap.xml"],
-      slugs,
-    },
+    revalidated,
   });
 }
