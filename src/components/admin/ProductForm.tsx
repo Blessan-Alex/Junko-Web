@@ -32,6 +32,7 @@ export default function ProductForm({ mode, initial, getIdToken }: ProductFormPr
     (initial?.features ?? []).join("\n"),
   );
   const [saving, setSaving] = useState(false);
+  const [uploading, setUploading] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [slugWarning, setSlugWarning] = useState(false);
@@ -42,6 +43,45 @@ export default function ProductForm({ mode, initial, getIdToken }: ProductFormPr
     setForm((f) => ({ ...f, [key]: value }));
     if (key === "slug" && mode === "edit" && value !== originalSlug) {
       setSlugWarning(true);
+    }
+  }
+
+  async function handleImageUpload(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    e.target.value = "";
+    if (!file) return;
+
+    setUploading(true);
+    setError(null);
+    setMessage(null);
+
+    try {
+      const token = await getIdToken();
+      const body = new FormData();
+      body.append("file", file);
+      if (form.slug.trim()) body.append("slug", form.slug.trim());
+      if (form.id.trim()) body.append("productId", form.id.trim());
+
+      const res = await fetch("/api/admin/upload", {
+        method: "POST",
+        headers: { Authorization: `Bearer ${token}` },
+        body,
+      });
+      const data = (await res.json()) as { url?: string; error?: string };
+      if (!res.ok) {
+        setError(data.error ?? `Upload failed (${res.status})`);
+        return;
+      }
+      if (!data.url) {
+        setError("Upload succeeded but no URL was returned");
+        return;
+      }
+      update("image", data.url);
+      setMessage("Image uploaded — click Save & publish to go live.");
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Upload failed");
+    } finally {
+      setUploading(false);
     }
   }
 
@@ -156,14 +196,27 @@ export default function ProductForm({ mode, initial, getIdToken }: ProductFormPr
       </div>
 
       <div>
-        <label className="block text-sm font-medium mb-1">Image path</label>
+        <label className="block text-sm font-medium mb-1">Image (URL or path)</label>
         <input
           required
           className="w-full border rounded-lg px-3 py-2 dark:bg-white/5 font-mono text-sm"
           value={form.image}
           onChange={(e) => update("image", e.target.value)}
-          placeholder="/products/..."
+          placeholder="/products/... or https://....blob.vercel-storage.com/..."
         />
+        <div className="mt-2 flex flex-wrap items-center gap-3">
+          <label className="inline-flex items-center gap-2 text-sm cursor-pointer">
+            <input
+              type="file"
+              accept="image/jpeg,image/png,image/webp"
+              className="text-sm"
+              disabled={uploading || saving}
+              onChange={handleImageUpload}
+            />
+            {uploading ? "Uploading…" : "Upload to Vercel Blob"}
+          </label>
+          <span className="text-xs text-gray-500">JPEG, PNG, WebP · max 5 MB</span>
+        </div>
       </div>
 
       <div>

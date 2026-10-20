@@ -9,6 +9,7 @@ import {
 } from "@/lib/admin/firestore-admin-catalog";
 import type { ProductWriteInput } from "@/lib/admin/product-doc";
 import { validateProductWrite } from "@/lib/admin/validate-product";
+import { taxonomyFromProducts } from "@/lib/admin/revalidate-catalog";
 import { jsonFirestoreOkRevalidateFailed, jsonPublishOk } from "@/lib/admin/publish-response";
 
 export const runtime = "nodejs";
@@ -58,7 +59,11 @@ export async function POST(request: NextRequest) {
   }
 
   try {
-    return jsonPublishOk([body.slug]);
+    return jsonPublishOk(
+      [body.slug, body.id],
+      undefined,
+      taxonomyFromProducts(body),
+    );
   } catch (err) {
     return jsonFirestoreOkRevalidateFailed(err);
   }

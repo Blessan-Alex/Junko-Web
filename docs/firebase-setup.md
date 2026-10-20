@@ -1,6 +1,30 @@
-# Firebase staging setup (Phase 1)
+# Firebase setup
 
-Public site **still reads** [`src/data/products.ts`](../src/data/products.ts). Staging Firestore is seeded for later admin/ISR work only.
+**Active project:** `junko-web-final` (rules + indexes deployed; 148 products seeded; parity OK).
+
+```bash
+firebase deploy --only firestore --project junko-web-final
+npm run catalog:seed          # uses GOOGLE_APPLICATION_CREDENTIALS for junko-web-final
+npm run catalog:parity -- --source=firestore
+```
+
+**Vercel (Production + Preview)** — set before deploy reads Firestore:
+
+| Variable | Value |
+|----------|--------|
+| `CATALOG_SOURCE` | `firestore` |
+| `FIREBASE_SERVICE_ACCOUNT_JSON` | Service account JSON for **junko-web-final** (Sensitive) |
+| `FIREBASE_PROJECT_ID` | `junko-web-final` (optional if in JSON) |
+| `NEXT_PUBLIC_FIREBASE_*` | Web app config from Firebase Console |
+| `BLOB_READ_WRITE_TOKEN` | Vercel Blob (Phase 5 uploads) |
+
+Local: copy [`.env.example`](../.env.example) → `.env.local` with the same keys; use `GOOGLE_APPLICATION_CREDENTIALS=./secrets/junko-web-final-570234ae72de.json`.
+
+---
+
+## Phase 1 (historical staging notes)
+
+Public site **still reads** [`src/data/products.ts`](../src/data/products.ts) when `CATALOG_SOURCE=file`.
 
 ## 1. Create staging project
 
@@ -250,7 +274,50 @@ Local: copy the same `NEXT_PUBLIC_*` keys into `.env.local` (see [`.env.example`
 
 ### 10.3 Manual revalidate (optional)
 
-`POST /api/admin/revalidate` with `Authorization: Bearer <idToken>` still works for ops; product APIs revalidate automatically on publish.
+`POST /api/admin/revalidate` with `Authorization: Bearer <idToken>` still works for ops; body may include `slugs`, `categories`, and `subcategories` arrays to match publish-time cache invalidation. Product APIs revalidate automatically on publish.
+
+### 10.4 Firestore composite indexes (product lookups)
+
+Public product-by-slug and related-product queries need composite indexes on `products`. Deploy from the repo root after linking your Firebase project:
+
+```bash
+firebase deploy --only firestore:indexes --project YOUR_PROJECT_ID
+```
+
+Index definitions: [`firestore.indexes.json`](../firestore.indexes.json) (`published` + `slug`, `subcategory`, `category`). The console may also prompt with a one-click link on the first query failure.
+
+## 11. Vercel Blob (Phase 5 — product images)
+
+**Goal:** Admin uploads go to Blob; `image` in Firestore is a public `https://` URL. Legacy `/products/...` paths in Git keep working until bulk migrate is verified.
+
+### 11.1 Create store and env
+
+1. Vercel project → **Storage** → **Blob** → create a store (link to this app).
+2. Copy **`BLOB_READ_WRITE_TOKEN`** into Vercel **Preview** and **Production** (server env only — never `NEXT_PUBLIC_*`).
+3. Local admin upload tests: add the same token to `.env.local` (see [`.env.example`](../.env.example)).
+
+`next.config.ts` allows `*.public.blob.vercel-storage.com` for `next/image`. If your store uses a different hostname, add it to `images.remotePatterns`.
+
+### 11.2 Admin upload flow
+
+1. Edit product → **Upload to Vercel Blob** (JPEG/PNG/WebP, max 5 MB) → sets the image field to the returned URL.
+2. **Save & publish** → Firestore `image` + existing `revalidateCatalog()` (unchanged).
+3. Path-based images (`/products/...`) remain valid during migration.
+
+API: `POST /api/admin/upload` (Bearer admin id token, multipart field `file`, optional `slug` / `productId`).
+
+### 11.3 Bulk migrate (optional)
+
+From repo root with Firebase Admin creds and `BLOB_READ_WRITE_TOKEN`:
+
+```bash
+npm run blob:migrate:dry-run
+npm run blob:migrate
+```
+
+Production Firebase: add `--confirm-production` and `--expected-project-id=YOUR_PROD_ID` (same guards as catalog seed). The script does **not** delete files under `public/products`.
+
+After migrate, smoke-test product pages (paths + Blob URLs). `npm run catalog:parity` still compares catalog **data** from snapshot; image HTTP checks are separate (optional `--check-images` on parity if enabled).
 
 ## Related
 

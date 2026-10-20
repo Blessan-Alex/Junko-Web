@@ -9,6 +9,7 @@ import {
 import { requireAdminApi } from "@/lib/admin/require-admin-api";
 import type { ProductWriteInput } from "@/lib/admin/product-doc";
 import { validateProductWrite } from "@/lib/admin/validate-product";
+import { taxonomyFromProducts } from "@/lib/admin/revalidate-catalog";
 import { jsonFirestoreOkRevalidateFailed, jsonPublishOk } from "@/lib/admin/publish-response";
 
 export const runtime = "nodejs";
@@ -73,7 +74,11 @@ export async function PUT(request: NextRequest, context: RouteContext) {
   }
 
   try {
-    return jsonPublishOk(slugsToRevalidate, { product: body });
+    return jsonPublishOk(
+      [...slugsToRevalidate, body.id],
+      { product: body },
+      taxonomyFromProducts(existing, body),
+    );
   } catch (err) {
     return jsonFirestoreOkRevalidateFailed(err);
   }
@@ -96,7 +101,11 @@ export async function DELETE(request: NextRequest, context: RouteContext) {
     if (!slug) {
       return NextResponse.json({ error: "Not found" }, { status: 404 });
     }
-    return jsonPublishOk([slug, existing.slug]);
+    return jsonPublishOk(
+      [slug, existing.slug, existing.id].filter(Boolean),
+      undefined,
+      taxonomyFromProducts(existing),
+    );
   } catch (err) {
     console.error(err);
     return NextResponse.json({ error: "Unpublish failed" }, { status: 500 });

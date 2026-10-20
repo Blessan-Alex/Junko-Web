@@ -1,11 +1,16 @@
 import { NextRequest, NextResponse } from "next/server";
 import { verifyAdminIdToken } from "@/lib/firebase/admin";
-import { revalidateCatalog } from "@/lib/admin/revalidate-catalog";
+import {
+  revalidateCatalog,
+  type RevalidateTaxonomy,
+} from "@/lib/admin/revalidate-catalog";
 
 export const runtime = "nodejs";
 
 type RevalidateBody = {
   slugs?: string[];
+  categories?: string[];
+  subcategories?: string[];
 };
 
 export async function POST(request: NextRequest) {
@@ -37,7 +42,16 @@ export async function POST(request: NextRequest) {
     ? body.slugs.filter((s): s is string => typeof s === "string" && s.length > 0)
     : [];
 
-  const revalidated = revalidateCatalog(slugs);
+  const taxonomy: RevalidateTaxonomy = {
+    categories: Array.isArray(body.categories)
+      ? body.categories.filter((s): s is string => typeof s === "string" && s.length > 0)
+      : undefined,
+    subcategories: Array.isArray(body.subcategories)
+      ? body.subcategories.filter((s): s is string => typeof s === "string" && s.length > 0)
+      : undefined,
+  };
+
+  const revalidated = revalidateCatalog(slugs, taxonomy);
 
   return NextResponse.json({
     ok: true,

@@ -1,6 +1,14 @@
 import type { Category } from "@/data/products";
 import type { ProductWriteInput } from "./product-doc";
 
+export function isValidImageRef(image: string | undefined): boolean {
+  const trimmed = image?.trim() ?? "";
+  if (!trimmed) return false;
+  if (trimmed.startsWith("/")) return true;
+  if (trimmed.startsWith("https://")) return true;
+  return false;
+}
+
 export function validateProductWrite(
   input: ProductWriteInput,
   categories: Category[],
@@ -10,7 +18,9 @@ export function validateProductWrite(
   if (!input.slug?.trim()) return "slug is required";
   if (!input.name?.trim()) return "name is required";
   if (!input.category?.trim()) return "category is required";
-  if (!input.image?.trim()) return "image path is required";
+  if (!isValidImageRef(input.image)) {
+    return "image URL or path is required";
+  }
 
   const cat = categories.find((c) => c.name === input.category);
   if (!cat) return `category "${input.category}" is not in the categories tree`;

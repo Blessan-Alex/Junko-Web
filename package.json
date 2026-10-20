@@ -10,9 +10,12 @@
     "catalog:snapshot": "node scripts/catalog-snapshot.cjs",
     "catalog:parity": "node scripts/catalog-parity.cjs",
     "catalog:seed": "node scripts/catalog-seed.cjs",
-    "catalog:seed:production": "node scripts/catalog-seed.cjs --confirm-production"
+    "catalog:seed:production": "node scripts/catalog-seed.cjs --confirm-production",
+    "blob:migrate:dry-run": "node scripts/blob-migrate-catalog.cjs --dry-run",
+    "blob:migrate": "node scripts/blob-migrate-catalog.cjs --confirm"
   },
   "dependencies": {
+    "@vercel/blob": "^2.8.2",
     "firebase": "^13.0.0",
     "firebase-admin": "^13.4.0",
     "next": "16.1.6",

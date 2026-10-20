@@ -1,5 +1,6 @@
 /** Default staging project — seed without extra flags when creds match this id. */
-export const STAGING_PROJECT_ID = "junko-web-staging";
+/** Primary Firebase project for seed/migrate without --confirm-production. */
+export const STAGING_PROJECT_ID = "junko-web-final";
 
 export function getResolvedProjectId(admin) {
   return (

@@ -1,12 +1,16 @@
 import "server-only";
 
+import { cache } from "react";
 import { unstable_cache } from "next/cache";
 import { categories, allProducts } from "@/data/products";
 import type { Catalog, Product } from "./types";
 import { getCatalogSource } from "./source";
-import { fetchCatalogFromFirestore } from "./fetch-firestore";
+import {
+  fetchCatalogFromFirestore,
+  fetchProductBySlugOrId,
+} from "./fetch-firestore";
 
-const CACHE_REVALIDATE_SECONDS = 3600;
+export const CACHE_REVALIDATE_SECONDS = 3600;
 
 function getFileCatalog(): Catalog {
   return { categories, allProducts };
@@ -36,27 +40,28 @@ function findProductBySlug(products: Product[], slug: string): Product | null {
   );
 }
 
-/**
- * Firestore: one shared getCatalog() fetch (~149 reads), not per-slug collection scans.
- * unstable_cache keeps product:{slug} tags for POST /api/admin/revalidate without extra reads.
- */
-async function getFirestoreProductBySlugCached(slug: string): Promise<Product | null> {
+async function getFirestoreProductBySlugCached(
+  slug: string,
+): Promise<Product | null> {
   return unstable_cache(
-    async () => {
-      const { allProducts: products } = await getCatalog();
-      return findProductBySlug(products, slug);
-    },
-    ["catalog-product-lookup-v2", slug],
+    async () => fetchProductBySlugOrId(slug),
+    ["catalog-product-v3", slug],
     {
-      tags: ["catalog", `product:${slug}`],
+      tags: [`product:${slug}`],
       revalidate: CACHE_REVALIDATE_SECONDS,
     },
   )();
 }
 
-export async function getProductBySlug(slug: string): Promise<Product | null> {
+const getProductBySlugRequest = cache(async (slug: string): Promise<Product | null> => {
   if (getCatalogSource() === "file") {
     return findProductBySlug(allProducts, slug);
   }
   return getFirestoreProductBySlugCached(slug);
+});
+
+export async function getProductBySlug(slug: string): Promise<Product | null> {
+  return getProductBySlugRequest(slug);
 }
+
+export { getRelatedProducts } from "./get-related-products";

@@ -3,20 +3,13 @@ import Link from 'next/link';
 import Image from 'next/image';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { getCatalog, getProductBySlug } from '@/lib/catalog/get-catalog';
+import { getProductBySlug, getRelatedProducts } from '@/lib/catalog/get-catalog';
 
 type Props = {
   params: Promise<{ id: string }>
 }
 
 export const dynamicParams = true;
-
-export async function generateStaticParams() {
-  const { allProducts } = await getCatalog();
-  return allProducts.map(product => ({
-    id: product.slug || product.id,
-  }));
-}
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const id = (await params).id;
@@ -64,22 +57,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function ProductDetailPage({ params }: Props) {
   const id = (await params).id;
   const product = await getProductBySlug(id);
-  const { allProducts } = await getCatalog();
-
-  // Logic for Related Products: Same subcategory (preferred) or category
-  const relatedProducts = (() => {
-    if (!product) return [];
-    return allProducts
-      .filter(p =>
-        p.id !== product.id &&
-        (p.subcategory === product.subcategory || p.category === product.category)
-      )
-      .slice(0, 4); // Limit to 4 related products
-  })();
 
   if (!product) {
     notFound();
   }
+
+  const relatedProducts = await getRelatedProducts(product);
 
   // Use product image or a placeholder if missing
   const mainImage = product.image || '/products/placeholders/no-image.png';

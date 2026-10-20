@@ -1,10 +1,17 @@
 import "server-only";
 
 import { NextResponse } from "next/server";
-import { revalidateCatalog } from "./revalidate-catalog";
+import {
+  revalidateCatalog,
+  type RevalidateTaxonomy,
+} from "./revalidate-catalog";
 
-export function jsonPublishOk(slugs: string[], extra?: Record<string, unknown>) {
-  const revalidated = revalidateCatalog(slugs);
+export function jsonPublishOk(
+  slugs: string[],
+  extra?: Record<string, unknown>,
+  taxonomy?: RevalidateTaxonomy,
+) {
+  const revalidated = revalidateCatalog(slugs, taxonomy);
   return NextResponse.json({
     ok: true,
     published: true,

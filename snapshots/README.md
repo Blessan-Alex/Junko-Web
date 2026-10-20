@@ -23,7 +23,9 @@ npm run catalog:parity -- --check-images   # file source only: missing public/ i
 npm run catalog:parity -- --source=firestore   # Phase 2: staging Firestore vs snapshot (needs Admin creds)
 ```
 
-Parity v1 uses **strict** field equality (no whitespace normalization).
+Parity v1 uses **strict** field equality (no whitespace normalization). After Phase 5 Blob migration, `image` values may be `https://` URLs; parity still compares stored strings to the snapshot unless you re-export a snapshot from Firestore.
+
+**Blob bulk migrate:** `npm run blob:migrate:dry-run` / `npm run blob:migrate` — see [`docs/firebase-setup.md`](../docs/firebase-setup.md) §11.
 
 ## Firebase staging (Phase 1–2)
 

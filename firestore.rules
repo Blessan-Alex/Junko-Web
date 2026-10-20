@@ -1,5 +1,5 @@
 rules_version = '2';
-// Deploy to staging: firebase deploy --only firestore:rules --project junko-web-staging
+// Deploy: firebase deploy --only firestore --project junko-web-final
 // (requires Firebase CLI + firebase.json; see docs/firebase-setup.md)
 
 service cloud.firestore {
