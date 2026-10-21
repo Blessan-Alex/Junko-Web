@@ -1,15 +1,20 @@
 import { NextRequest, NextResponse } from "next/server";
 import { requireAdminApi } from "@/lib/admin/require-admin-api";
 import {
+  projectionRebuildResponseExtra,
+  tryRebuildCatalogProjections,
+} from "@/lib/admin/catalog-projection";
+import {
   createProductAdmin,
   getCategoriesAdmin,
   idExists,
-  listAllProductsAdmin,
+  listProductsAdminPage,
   slugExists,
 } from "@/lib/admin/firestore-admin-catalog";
 import type { ProductWriteInput } from "@/lib/admin/product-doc";
 import { normalizeProductSlug } from "@/lib/admin/normalize-slug";
 import { validateProductWrite } from "@/lib/admin/validate-product";
+import { scopeForProductCreate } from "@/lib/admin/revalidate-scope";
 import { taxonomyFromProducts } from "@/lib/admin/revalidate-catalog";
 import { jsonFirestoreOkRevalidateFailed, jsonPublishOk } from "@/lib/admin/publish-response";
 
@@ -20,8 +25,9 @@ export async function GET(request: NextRequest) {
   if ("error" in auth) {
     return NextResponse.json({ error: auth.error }, { status: auth.status });
   }
-  const products = await listAllProductsAdmin();
-  return NextResponse.json({ products });
+  const cursor = request.nextUrl.searchParams.get("cursor");
+  const page = await listProductsAdminPage(cursor);
+  return NextResponse.json(page);
 }
 
 export async function POST(request: NextRequest) {
@@ -59,13 +65,14 @@ export async function POST(request: NextRequest) {
     console.error(err);
     return NextResponse.json({ error: "Firestore create failed" }, { status: 500 });
   }
+  const projectionOk = await tryRebuildCatalogProjections();
 
   try {
-    return jsonPublishOk(
-      [body.slug, body.id],
-      undefined,
-      taxonomyFromProducts(body),
-    );
+    const segments = [body.slug, body.id].filter(Boolean);
+    return jsonPublishOk(segments, projectionRebuildResponseExtra(projectionOk), {
+      ...scopeForProductCreate(segments),
+      taxonomy: taxonomyFromProducts(body),
+    });
   } catch (err) {
     return jsonFirestoreOkRevalidateFailed(err);
   }

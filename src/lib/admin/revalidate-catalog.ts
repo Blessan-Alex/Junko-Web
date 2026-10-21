@@ -7,6 +7,13 @@ export type RevalidateTaxonomy = {
   subcategories?: string[];
 };
 
+export type RevalidateScope = {
+  productSegments?: string[];
+  listing?: boolean;
+  sitemap?: boolean;
+  taxonomy?: RevalidateTaxonomy;
+};
+
 export function taxonomyFromProducts(
   ...items: Array<{ category: string; subcategory?: string }>
 ): RevalidateTaxonomy {
@@ -20,28 +27,38 @@ export function taxonomyFromProducts(
 }
 
 /**
- * Invalidate public caches after admin publish.
- * Catalogue tag affects getCatalog() only (listing/sitemap), not per-product data caches.
+ * Invalidate public caches after admin publish (granular scope).
  */
-/** URL path segments used in /product/[id] (slug and/or Firestore doc id). */
 export function revalidateCatalog(
   urlSegments: string[] = [],
-  taxonomy?: RevalidateTaxonomy,
+  scope?: RevalidateScope,
 ) {
-  const segments = [...new Set(urlSegments.filter(Boolean))];
+  const segments = [
+    ...new Set(
+      (scope?.productSegments ?? urlSegments).filter(Boolean),
+    ),
+  ];
 
-  revalidateTag("catalog", {});
-  revalidatePath("/products");
-  revalidatePath("/sitemap.xml");
+  if (scope?.listing) {
+    revalidateTag("catalog", {});
+    revalidatePath("/products");
+  }
+
+  if (scope?.sitemap) {
+    revalidateTag("sitemap", {});
+    revalidatePath("/sitemap.xml");
+  }
 
   for (const segment of segments) {
     revalidateTag(`product:${segment}`, {});
     revalidatePath(`/product/${segment}`);
   }
 
-  const categories = [...new Set(taxonomy?.categories?.filter(Boolean) ?? [])];
+  const categories = [
+    ...new Set(scope?.taxonomy?.categories?.filter(Boolean) ?? []),
+  ];
   const subcategories = [
-    ...new Set(taxonomy?.subcategories?.filter(Boolean) ?? []),
+    ...new Set(scope?.taxonomy?.subcategories?.filter(Boolean) ?? []),
   ];
   for (const category of categories) {
     revalidateTag(`related:category:${category}`, {});
@@ -51,8 +68,12 @@ export function revalidateCatalog(
   }
 
   return {
-    catalog: true,
-    paths: ["/products", "/sitemap.xml"],
+    catalog: Boolean(scope?.listing),
+    sitemap: Boolean(scope?.sitemap),
+    paths: [
+      ...(scope?.listing ? ["/products"] : []),
+      ...(scope?.sitemap ? ["/sitemap.xml"] : []),
+    ],
     slugs: segments,
   };
 }

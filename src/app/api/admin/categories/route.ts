@@ -6,6 +6,11 @@ import {
 } from "@/lib/admin/firestore-admin-catalog";
 import { requireAdminApi } from "@/lib/admin/require-admin-api";
 import { validateCategories } from "@/lib/admin/validate-product";
+import {
+  projectionRebuildResponseExtra,
+  tryRebuildCatalogProjections,
+} from "@/lib/admin/catalog-projection";
+import { scopeForCategoriesUpdate } from "@/lib/admin/revalidate-scope";
 import { jsonFirestoreOkRevalidateFailed, jsonPublishOk } from "@/lib/admin/publish-response";
 
 export const runtime = "nodejs";
@@ -43,9 +48,14 @@ export async function PUT(request: NextRequest) {
     console.error(err);
     return NextResponse.json({ error: "Firestore update failed" }, { status: 500 });
   }
+  const projectionOk = await tryRebuildCatalogProjections();
 
   try {
-    return jsonPublishOk([]);
+    return jsonPublishOk(
+      [],
+      projectionRebuildResponseExtra(projectionOk),
+      scopeForCategoriesUpdate(),
+    );
   } catch (err) {
     return jsonFirestoreOkRevalidateFailed(err);
   }

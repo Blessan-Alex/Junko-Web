@@ -14,34 +14,69 @@ function slugLooksBroken(slug: string): boolean {
 export default function ProductsAdminClient() {
   const { getIdToken } = useAdminAuth();
   const [products, setProducts] = useState<AdminProduct[]>([]);
+  const [nextCursor, setNextCursor] = useState<string | null>(null);
+  const [listCursor, setListCursor] = useState<string | null>(null);
+  const [cursorHistory, setCursorHistory] = useState<(string | null)[]>([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [actionMessage, setActionMessage] = useState<string | null>(null);
 
-  const load = useCallback(async () => {
-    setLoading(true);
-    setError(null);
-    try {
-      const token = await getIdToken();
-      const res = await adminFetch("/api/admin/products", token);
-      if (!res.ok) {
-        setError(await parseApiError(res));
-        return;
+  const loadPage = useCallback(
+    async (cursor: string | null) => {
+      setLoading(true);
+      setError(null);
+      try {
+        const token = await getIdToken();
+        const path = cursor
+          ? `/api/admin/products?cursor=${encodeURIComponent(cursor)}`
+          : "/api/admin/products";
+        const res = await adminFetch(path, token);
+        if (!res.ok) {
+          setError(await parseApiError(res));
+          return;
+        }
+        const data = (await res.json()) as {
+          products: AdminProduct[];
+          nextCursor: string | null;
+          hasMore: boolean;
+        };
+        setProducts(data.products);
+        setNextCursor(data.nextCursor);
+      } catch (e) {
+        setError(e instanceof Error ? e.message : "Failed to load");
+      } finally {
+        setLoading(false);
       }
-      const data = (await res.json()) as { products: AdminProduct[] };
-      setProducts(data.products);
-    } catch (e) {
-      setError(e instanceof Error ? e.message : "Failed to load");
-    } finally {
-      setLoading(false);
-    }
-  }, [getIdToken]);
+    },
+    [getIdToken],
+  );
 
   useEffect(() => {
-    load();
-  }, [load]);
+    loadPage(null);
+  }, [loadPage]);
+
+  function reloadFirstPage() {
+    setListCursor(null);
+    setCursorHistory([]);
+    return loadPage(null);
+  }
+
+  function goNextPage() {
+    if (!nextCursor) return;
+    setCursorHistory((h) => [...h, listCursor]);
+    setListCursor(nextCursor);
+    loadPage(nextCursor);
+  }
+
+  function goPrevPage() {
+    if (cursorHistory.length === 0) return;
+    const prev = cursorHistory[cursorHistory.length - 1] ?? null;
+    setCursorHistory((h) => h.slice(0, -1));
+    setListCursor(prev);
+    loadPage(prev);
+  }
 
   const categories = useMemo(() => {
     const set = new Set(products.map((p) => p.category));
@@ -93,7 +128,7 @@ export default function ProductsAdminClient() {
         msg += ` Some storage cleanup warnings occurred — check server logs.`;
       }
       setActionMessage(msg);
-      await load();
+      await reloadFirstPage();
     } catch (e) {
       setError(e instanceof Error ? e.message : "Could not delete product");
     }
@@ -118,7 +153,7 @@ export default function ProductsAdminClient() {
         return;
       }
       setActionMessage(`"${name}" is now hidden from the public website.`);
-      await load();
+      await reloadFirstPage();
     } catch (e) {
       setError(e instanceof Error ? e.message : "Could not hide product");
     }
@@ -160,7 +195,8 @@ export default function ProductsAdminClient() {
           ))}
         </select>
         <span className="text-sm text-gray-500 self-center">
-          Showing {filtered.length} of {products.length}
+          {filtered.length} on this page
+          {search || category ? " (filtered)" : ""}
         </span>
       </div>
 
@@ -249,6 +285,25 @@ export default function ProductsAdminClient() {
             })}
           </tbody>
         </table>
+      </div>
+
+      <div className="flex items-center justify-between gap-4 mt-4">
+        <button
+          type="button"
+          className="text-sm font-medium border rounded-lg px-4 py-2 disabled:opacity-40 dark:border-white/20"
+          disabled={cursorHistory.length === 0 || loading}
+          onClick={goPrevPage}
+        >
+          Previous
+        </button>
+        <button
+          type="button"
+          className="text-sm font-medium border rounded-lg px-4 py-2 disabled:opacity-40 dark:border-white/20"
+          disabled={!nextCursor || loading}
+          onClick={goNextPage}
+        >
+          Next
+        </button>
       </div>
     </div>
   );

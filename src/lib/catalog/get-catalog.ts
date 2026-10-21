@@ -2,11 +2,12 @@ import "server-only";
 
 import { cache } from "react";
 import { unstable_cache } from "next/cache";
-import { categories, allProducts } from "@/data/products";
+import { allProducts } from "@/data/products";
 import type { Catalog, Product } from "./types";
 import { getCatalogSource } from "./source";
 import {
   fetchCatalogFromFirestore,
+  fetchCatalogFromProjection,
   fetchProductBySlugOrId,
 } from "./fetch-firestore";
 import {
@@ -21,10 +22,19 @@ function getFileCatalog(): Catalog {
   return getFileCatalogFallback();
 }
 
+async function loadFirestoreCatalog(): Promise<Catalog> {
+  const projected = await fetchCatalogFromProjection();
+  if (projected) return projected;
+  console.warn(
+    "catalog/listing projection missing; falling back to full Firestore scan",
+  );
+  return fetchCatalogFromFirestore();
+}
+
 async function getFirestoreCatalogCached(): Promise<Catalog> {
   return unstable_cache(
-    async () => fetchCatalogFromFirestore(),
-    ["catalog-firestore-v1"],
+    async () => loadFirestoreCatalog(),
+    ["catalog-firestore-v2"],
     {
       tags: ["catalog"],
       revalidate: CACHE_REVALIDATE_SECONDS,
@@ -58,21 +68,14 @@ function findProductBySlug(products: Product[], slug: string): Product | null {
 async function getFirestoreProductBySlugCached(
   slug: string,
 ): Promise<Product | null> {
-  const live = await fetchProductBySlugOrId(slug);
-  if (!live) {
-    return null;
-  }
-
-  const cached = await unstable_cache(
+  return unstable_cache(
     async () => fetchProductBySlugOrId(slug),
-    ["catalog-product-v4", slug],
+    ["catalog-product-v5", slug],
     {
       tags: [`product:${slug}`],
       revalidate: CACHE_REVALIDATE_SECONDS,
     },
   )();
-
-  return cached ?? live;
 }
 
 const getProductBySlugRequest = cache(async (slug: string): Promise<Product | null> => {

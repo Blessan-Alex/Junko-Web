@@ -134,6 +134,58 @@ export async function fetchRelatedProductsFromFirestore(
   return results.slice(0, RELATED_MAX);
 }
 
+export async function fetchCatalogFromProjection(): Promise<{
+  categories: Category[];
+  allProducts: Product[];
+} | null> {
+  const db = firestore();
+  const listingDoc = await db.collection("catalog").doc("listing").get();
+  if (!listingDoc.exists) return null;
+
+  const data = listingDoc.data() as {
+    categories?: Category[];
+    products?: ListingCardLike[];
+  };
+
+  const categories = (data.categories ?? []) as Category[];
+  const allProducts: Product[] = (data.products ?? []).map((p) => ({
+    id: p.id,
+    slug: p.slug,
+    name: p.name,
+    category: p.category,
+    image: p.image,
+    ...(p.subcategory ? { subcategory: p.subcategory } : {}),
+    ...(p.description ? { description: p.description } : {}),
+  }));
+
+  return { categories, allProducts };
+}
+
+type ListingCardLike = {
+  id: string;
+  slug: string;
+  name: string;
+  category: string;
+  image: string;
+  subcategory?: string;
+  description?: string;
+};
+
+export type SitemapProjectionEntry = {
+  id: string;
+  slug: string;
+};
+
+export async function fetchSitemapFromProjection(): Promise<
+  SitemapProjectionEntry[] | null
+> {
+  const db = firestore();
+  const doc = await db.collection("catalog").doc("sitemap").get();
+  if (!doc.exists) return null;
+  const entries = (doc.data()?.entries ?? []) as SitemapProjectionEntry[];
+  return entries;
+}
+
 export async function fetchCatalogFromFirestore(): Promise<{
   categories: Category[];
   allProducts: Product[];

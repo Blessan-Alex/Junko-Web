@@ -14,13 +14,52 @@ function db() {
   return getFirebaseAdmin().firestore();
 }
 
-export async function listAllProductsAdmin(): Promise<AdminProduct[]> {
-  const snap = await db().collection("products").get();
-  const products = snap.docs.map((doc) =>
+const ADMIN_PAGE_SIZE = 25;
+
+export type AdminProductsPageResult = {
+  products: AdminProduct[];
+  nextCursor: string | null;
+  hasMore: boolean;
+};
+
+function encodeAdminCursor(docId: string): string {
+  return Buffer.from(docId, "utf8").toString("base64url");
+}
+
+function decodeAdminCursor(cursor: string): string {
+  return Buffer.from(cursor, "base64url").toString("utf8");
+}
+
+export async function listProductsAdminPage(
+  cursor?: string | null,
+): Promise<AdminProductsPageResult> {
+  let query = db()
+    .collection("products")
+    .orderBy("updatedAt", "desc")
+    .limit(ADMIN_PAGE_SIZE + 1);
+
+  if (cursor) {
+    const docId = decodeAdminCursor(cursor);
+    const cursorDoc = await db().collection("products").doc(docId).get();
+    if (cursorDoc.exists) {
+      query = query.startAfter(cursorDoc);
+    }
+  }
+
+  const snap = await query.get();
+  const hasMore = snap.docs.length > ADMIN_PAGE_SIZE;
+  const pageDocs = hasMore ? snap.docs.slice(0, ADMIN_PAGE_SIZE) : snap.docs;
+
+  const products = pageDocs.map((doc) =>
     docToAdminProduct(doc.id, doc.data() as Record<string, unknown>),
   );
-  products.sort((a, b) => a.name.localeCompare(b.name));
-  return products;
+
+  const lastDoc = pageDocs[pageDocs.length - 1];
+  return {
+    products,
+    hasMore,
+    nextCursor: hasMore && lastDoc ? encodeAdminCursor(lastDoc.id) : null,
+  };
 }
 
 export async function getProductAdmin(id: string): Promise<AdminProduct | null> {

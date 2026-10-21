@@ -16,6 +16,15 @@ import { requireAdminApi } from "@/lib/admin/require-admin-api";
 import type { ProductWriteInput } from "@/lib/admin/product-doc";
 import { normalizeProductSlug } from "@/lib/admin/normalize-slug";
 import { validateProductWrite } from "@/lib/admin/validate-product";
+import {
+  projectionRebuildResponseExtra,
+  tryRebuildCatalogProjections,
+} from "@/lib/admin/catalog-projection";
+import {
+  scopeForProductDelete,
+  scopeForProductUnpublish,
+  scopeForProductUpdate,
+} from "@/lib/admin/revalidate-scope";
 import { taxonomyFromProducts } from "@/lib/admin/revalidate-catalog";
 import { jsonFirestoreOkRevalidateFailed, jsonPublishOk } from "@/lib/admin/publish-response";
 
@@ -80,6 +89,7 @@ export async function PUT(request: NextRequest, context: RouteContext) {
     console.error(err);
     return NextResponse.json({ error: "Firestore update failed" }, { status: 500 });
   }
+  const projectionOk = await tryRebuildCatalogProjections();
 
   const blobCleanupWarnings: string[] = [];
   if (
@@ -92,16 +102,17 @@ export async function PUT(request: NextRequest, context: RouteContext) {
   }
 
   try {
-    return jsonPublishOk(
-      [...slugsToRevalidate, body.id],
-      {
-        product: body,
-        ...(blobCleanupWarnings.length > 0
-          ? { blobCleanupWarnings }
-          : undefined),
-      },
-      taxonomyFromProducts(existing, body),
-    );
+    const segments = [...slugsToRevalidate, body.id].filter(Boolean);
+    return jsonPublishOk(segments, {
+      product: body,
+      ...(blobCleanupWarnings.length > 0
+        ? { blobCleanupWarnings }
+        : undefined),
+      ...projectionRebuildResponseExtra(projectionOk),
+    }, {
+      ...scopeForProductUpdate(existing, body),
+      taxonomy: taxonomyFromProducts(existing, body),
+    });
   } catch (err) {
     return jsonFirestoreOkRevalidateFailed(err);
   }
@@ -129,17 +140,19 @@ export async function DELETE(request: NextRequest, context: RouteContext) {
       if (!deleted) {
         return NextResponse.json({ error: "Not found" }, { status: 404 });
       }
+      const projectionOk = await tryRebuildCatalogProjections();
       const blobCleanupWarnings = await deleteProductBlobFolder(blobKey);
-      return jsonPublishOk(
-        [existing.slug, existing.id].filter(Boolean),
-        {
-          deleted: true,
-          ...(blobCleanupWarnings.length > 0
-            ? { blobCleanupWarnings }
-            : undefined),
-        },
-        taxonomyFromProducts(existing),
-      );
+      const segments = [existing.slug, existing.id].filter(Boolean);
+      return jsonPublishOk(segments, {
+        deleted: true,
+        ...(blobCleanupWarnings.length > 0
+          ? { blobCleanupWarnings }
+          : undefined),
+        ...projectionRebuildResponseExtra(projectionOk),
+      }, {
+        ...scopeForProductDelete(segments),
+        taxonomy: taxonomyFromProducts(existing),
+      });
     } catch (err) {
       console.error(err);
       return NextResponse.json(
@@ -154,11 +167,12 @@ export async function DELETE(request: NextRequest, context: RouteContext) {
     if (!slug) {
       return NextResponse.json({ error: "Not found" }, { status: 404 });
     }
-    return jsonPublishOk(
-      [slug, existing.slug, existing.id].filter(Boolean),
-      undefined,
-      taxonomyFromProducts(existing),
-    );
+    const projectionOk = await tryRebuildCatalogProjections();
+    const segments = [slug, existing.slug, existing.id].filter(Boolean);
+    return jsonPublishOk(segments, projectionRebuildResponseExtra(projectionOk), {
+      ...scopeForProductUnpublish(segments),
+      taxonomy: taxonomyFromProducts(existing),
+    });
   } catch (err) {
     console.error(err);
     return NextResponse.json({ error: "Unpublish failed" }, { status: 500 });

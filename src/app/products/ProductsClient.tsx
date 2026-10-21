@@ -1,9 +1,10 @@
 'use client';
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect, useCallback, useRef } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import type { Category, Product } from '@/data/products';
 import ProductCard from '@/components/ProductCard';
+import { PUBLIC_PRODUCTS_PAGE_SIZE } from '@/lib/catalog/public-page-size';
 
 type ProductsClientProps = {
   categories: Category[];
@@ -17,10 +18,32 @@ export default function ProductsClient({
   const router = useRouter();
   const searchParams = useSearchParams();
   const selectedCategory = searchParams.get('category');
+  const pageParam = searchParams.get('page');
+  const currentPage = Math.max(1, Number.parseInt(pageParam ?? '1', 10) || 1);
 
   const [searchQuery, setSearchQuery] = useState('');
   const [activeSubcategories, setActiveSubcategories] = useState<string[]>([]);
   const [showFilters, setShowFilters] = useState(false);
+
+  const buildProductsUrl = useCallback(
+    (opts: { category?: string | null; page?: number }) => {
+      const params = new URLSearchParams();
+      const cat = opts.category ?? selectedCategory;
+      if (cat) params.set('category', cat);
+      const page = opts.page ?? 1;
+      if (page > 1) params.set('page', String(page));
+      const q = params.toString();
+      return q ? `/products?${q}` : '/products';
+    },
+    [selectedCategory],
+  );
+
+  const setPageInUrl = useCallback(
+    (page: number) => {
+      router.push(buildProductsUrl({ page }));
+    },
+    [router, buildProductsUrl],
+  );
 
   const handleCategoryChange = (category: string) => {
     if (selectedCategory === category) {
@@ -72,6 +95,31 @@ export default function ProductsClient({
       return true;
     });
   }, [selectedCategory, searchQuery, activeSubcategories, allProducts]);
+
+  const totalPages = Math.max(
+    1,
+    Math.ceil(filteredProducts.length / PUBLIC_PRODUCTS_PAGE_SIZE),
+  );
+  const safePage = Math.min(currentPage, totalPages);
+  const pageStart = (safePage - 1) * PUBLIC_PRODUCTS_PAGE_SIZE;
+  const pagedProducts = filteredProducts.slice(
+    pageStart,
+    pageStart + PUBLIC_PRODUCTS_PAGE_SIZE,
+  );
+
+  useEffect(() => {
+    if (currentPage !== safePage) {
+      setPageInUrl(safePage);
+    }
+  }, [currentPage, safePage, setPageInUrl]);
+
+  const filterKey = `${selectedCategory ?? ''}|${searchQuery}|${activeSubcategories.join('\u0000')}`;
+  const prevFilterKey = useRef(filterKey);
+  useEffect(() => {
+    if (prevFilterKey.current === filterKey) return;
+    prevFilterKey.current = filterKey;
+    if (currentPage > 1) setPageInUrl(1);
+  }, [filterKey, currentPage, setPageInUrl]);
 
   return (
     <div className="flex flex-1 max-w-[1440px] mx-auto w-full min-h-screen">
@@ -196,7 +244,16 @@ export default function ProductsClient({
         {/* Results Info */}
         <div className="flex items-center justify-between mb-6 pb-6 border-b border-gray-100 dark:border-white/10">
           <div className="text-sm font-medium text-gray-500">
-            Showing <span className="text-secondary dark:text-white font-bold">{filteredProducts.length}</span> results
+            Showing{' '}
+            <span className="text-secondary dark:text-white font-bold">
+              {filteredProducts.length === 0
+                ? 0
+                : `${pageStart + 1}–${Math.min(pageStart + PUBLIC_PRODUCTS_PAGE_SIZE, filteredProducts.length)}`}
+            </span>{' '}
+            of <span className="text-secondary dark:text-white font-bold">{filteredProducts.length}</span> results
+            {totalPages > 1 && (
+              <span className="text-gray-400"> · page {safePage} of {totalPages}</span>
+            )}
           </div>
 
           {/* Active Filters Display */}
@@ -220,11 +277,39 @@ export default function ProductsClient({
 
         {/* Product Grid */}
         {filteredProducts.length > 0 ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 pb-20">
-            {filteredProducts.map(product => (
-              <ProductCard key={product.id} product={product} />
-            ))}
-          </div>
+          <>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 pb-8">
+              {pagedProducts.map(product => (
+                <ProductCard key={product.id} product={product} />
+              ))}
+            </div>
+            {totalPages > 1 && (
+              <nav
+                className="flex flex-wrap items-center justify-center gap-3 pb-20"
+                aria-label="Product list pages"
+              >
+                <button
+                  type="button"
+                  className="text-sm font-semibold border border-gray-200 dark:border-white/10 rounded-lg px-4 py-2 disabled:opacity-40"
+                  disabled={safePage <= 1}
+                  onClick={() => setPageInUrl(safePage - 1)}
+                >
+                  Previous
+                </button>
+                <span className="text-sm text-gray-500">
+                  Page {safePage} of {totalPages}
+                </span>
+                <button
+                  type="button"
+                  className="text-sm font-semibold border border-gray-200 dark:border-white/10 rounded-lg px-4 py-2 disabled:opacity-40"
+                  disabled={safePage >= totalPages}
+                  onClick={() => setPageInUrl(safePage + 1)}
+                >
+                  Next
+                </button>
+              </nav>
+            )}
+          </>
         ) : (
           <div className="flex flex-col items-center justify-center py-20 text-center">
             <span className="material-symbols-outlined text-6xl text-gray-200 dark:text-gray-700 mb-4">inventory_2</span>

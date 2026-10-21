@@ -320,6 +320,51 @@ Production Firebase: add `--confirm-production` and `--expected-project-id=YOUR_
 
 After migrate, smoke-test product pages (paths + Blob URLs). `npm run catalog:parity` still compares catalog **data** from snapshot; image HTTP checks are separate (optional `--check-images` on parity if enabled).
 
+## 12. Firestore read budget (catalog projections)
+
+Public traffic should stay **under ~50k reads/day** for solo testing and normal browsing. The app avoids full `products` collection scans on page views.
+
+### 12.1 Projection documents
+
+| Document | Purpose |
+|----------|---------|
+| `catalog/listing` | Categories + listing cards for `/products` (one read per cache miss) |
+| `catalog/sitemap` | Published product slugs for `/sitemap.xml` (one read per cache miss) |
+
+Admin **publish / unpublish / permanent delete / categories save** rebuilds these via `rebuildCatalogProjections()` (full scan — acceptable only on write).
+
+**Backfill once** after deploy or if projections are missing (otherwise public code logs a warning and falls back to a full scan):
+
+```bash
+npm run catalog:rebuild-projection
+# production Firebase (junko-web-final):
+npm run catalog:rebuild-projection:production
+```
+
+Uses the same credentials as `catalog:seed` (`GOOGLE_APPLICATION_CREDENTIALS` or `FIREBASE_SERVICE_ACCOUNT_JSON`).
+
+### 12.2 Expected reads (warm = Next.js `unstable_cache` hit)
+
+| Scenario | Target |
+|----------|--------|
+| Warm `/product/{slug}` | 0 |
+| Cold product page | 1–2 |
+| Warm `/products` (any `?page=`) | 0 |
+| Cold `/products` after revalidate | 1 |
+| Sitemap cold regen | 1 |
+| Admin products list (one page) | ≤26 |
+| Publish (description-only edit) | 0 public reads until next cold product view |
+
+Granular revalidation: listing/sitemap/catalog tags refresh only when name, slug, category, subcategory, image, or published status changes — not on typo fixes in body copy.
+
+### 12.3 Local development
+
+Use **`CATALOG_SOURCE=file`** in `.env.local` when iterating on UI so you do not burn production Firestore quota. Use `firestore` only when testing admin publish or projection behavior.
+
+### 12.4 Quota monitoring
+
+In Firebase Console → **Firestore** → **Usage**, set an alert around **40k reads/day** so you can investigate before hitting free-tier limits.
+
 ## Related
 
 - Snapshot tooling: [`snapshots/README.md`](../snapshots/README.md)

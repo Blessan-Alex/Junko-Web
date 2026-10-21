@@ -1,9 +1,9 @@
 import { MetadataRoute } from 'next'
-import { getCatalog } from '@/lib/catalog/get-catalog'
+import { getSitemapEntries } from '@/lib/catalog/get-sitemap'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://www.junko-fze.com'
-  const { allProducts } = await getCatalog()
+  const productEntries = await getSitemapEntries()
 
   const staticRoutes = [
     '',
@@ -19,7 +19,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: route === '' ? 1 : 0.8,
   }))
 
-  const productRoutes = allProducts.map(product => ({
+  const productRoutes = productEntries.map((product) => ({
     url: `${baseUrl}/product/${product.slug || product.id}`,
     lastModified: new Date(),
     changeFrequency: 'monthly' as const,

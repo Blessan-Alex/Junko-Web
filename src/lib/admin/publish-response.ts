@@ -3,15 +3,15 @@ import "server-only";
 import { NextResponse } from "next/server";
 import {
   revalidateCatalog,
-  type RevalidateTaxonomy,
+  type RevalidateScope,
 } from "./revalidate-catalog";
 
 export function jsonPublishOk(
   slugs: string[],
   extra?: Record<string, unknown>,
-  taxonomy?: RevalidateTaxonomy,
+  scope?: RevalidateScope,
 ) {
-  const revalidated = revalidateCatalog(slugs, taxonomy);
+  const revalidated = revalidateCatalog(slugs, scope);
   return NextResponse.json({
     ok: true,
     published: true,

@@ -51,7 +51,12 @@ export async function POST(request: NextRequest) {
       : undefined,
   };
 
-  const revalidated = revalidateCatalog(slugs, taxonomy);
+  const revalidated = revalidateCatalog(slugs, {
+    productSegments: slugs,
+    listing: true,
+    sitemap: true,
+    taxonomy,
+  });
 
   return NextResponse.json({
     ok: true,
