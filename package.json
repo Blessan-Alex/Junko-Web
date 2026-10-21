@@ -12,7 +12,8 @@
     "catalog:seed": "node scripts/catalog-seed.cjs",
     "catalog:seed:production": "node scripts/catalog-seed.cjs --confirm-production",
     "blob:migrate:dry-run": "node scripts/blob-migrate-catalog.cjs --dry-run",
-    "blob:migrate": "node scripts/blob-migrate-catalog.cjs --confirm"
+    "blob:migrate": "node scripts/blob-migrate-catalog.cjs --confirm",
+    "blob:migrate:production": "node scripts/blob-migrate-catalog.cjs --confirm --confirm-production --expected-project-id=junko-web-final"
   },
   "dependencies": {
     "@vercel/blob": "^2.8.2",

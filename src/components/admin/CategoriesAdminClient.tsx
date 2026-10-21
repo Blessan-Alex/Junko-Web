@@ -159,7 +159,7 @@ export default function CategoriesAdminClient() {
       <div className="space-y-4">
         {categories.map((cat, catIndex) => (
           <div
-            key={`${catIndex}-${cat.name}`}
+            key={catIndex}
             className="border rounded-xl p-4 dark:border-white/10 bg-white dark:bg-white/5"
           >
             <div className="flex flex-wrap items-start gap-3 mb-4">
@@ -185,7 +185,7 @@ export default function CategoriesAdminClient() {
             <p className="text-xs font-medium text-gray-500 mb-2">Subcategories</p>
             <ul className="space-y-2">
               {cat.subcategories.map((sub, subIndex) => (
-                <li key={subIndex} className="flex gap-2">
+                <li key={`${catIndex}-sub-${subIndex}`} className="flex gap-2">
                   <input
                     className="flex-1 border rounded-lg px-3 py-1.5 text-sm dark:bg-white/5"
                     value={sub}

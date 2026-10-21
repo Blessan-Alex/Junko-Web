@@ -11,6 +11,7 @@ import {
   formatFileSize,
   imageUploadTooLargeMessage,
 } from "@/lib/admin/image-upload-limits";
+import { parseSpecsPlainText, specsToPlainText } from "@/lib/admin/parse-specs";
 import AdminStatusBanner from "./AdminStatusBanner";
 
 type ProductFormProps = {
@@ -42,8 +43,8 @@ function FieldHint({ children }: { children: React.ReactNode }) {
 export default function ProductForm({ mode, initial, getIdToken }: ProductFormProps) {
   const [form, setForm] = useState<AdminProduct>(initial ?? empty);
   const [categories, setCategories] = useState<Category[]>([]);
-  const [specsJson, setSpecsJson] = useState(
-    JSON.stringify(initial?.specs ?? {}, null, 2),
+  const [specsText, setSpecsText] = useState(() =>
+    specsToPlainText(initial?.specs),
   );
   const [featuresText, setFeaturesText] = useState(
     (initial?.features ?? []).join("\n"),
@@ -169,14 +170,7 @@ export default function ProductForm({ mode, initial, getIdToken }: ProductFormPr
       return;
     }
 
-    let specs: Record<string, string> | undefined;
-    try {
-      specs = specsJson.trim() ? (JSON.parse(specsJson) as Record<string, string>) : {};
-    } catch {
-      setError("Technical specs must be valid JSON. Use { } or fix the format.");
-      setSaving(false);
-      return;
-    }
+    const specs = parseSpecsPlainText(specsText);
 
     const features = featuresText
       .split("\n")
@@ -384,13 +378,15 @@ export default function ProductForm({ mode, initial, getIdToken }: ProductFormPr
       <div>
         <label className="block text-sm font-medium mb-1">Technical specs (optional)</label>
         <textarea
-          rows={4}
-          className="w-full border rounded-lg px-3 py-2 font-mono text-sm dark:bg-white/5"
-          value={specsJson}
-          onChange={(e) => setSpecsJson(e.target.value)}
-          placeholder='{ "Voltage": "220V" }'
+          rows={6}
+          className="w-full border rounded-lg px-3 py-2 dark:bg-white/5"
+          value={specsText}
+          onChange={(e) => setSpecsText(e.target.value)}
+          placeholder={"Capacity: 500 kg\nVoltage: 220V"}
         />
-        <FieldHint>JSON format for specification labels and values. Leave as {`{}`} if none.</FieldHint>
+        <FieldHint>
+          One line per spec, like Label: value. Leave empty if none.
+        </FieldHint>
       </div>
 
       <div>
