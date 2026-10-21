@@ -92,6 +92,10 @@ async function main() {
     process.exit(1);
   }
 
+  // Local runs: vercel link adds OIDC vars; force read/write token for put().
+  const blobToken = process.env.BLOB_READ_WRITE_TOKEN;
+  delete process.env.VERCEL_OIDC_TOKEN;
+
   const { put } = await import("@vercel/blob");
   const { initFirebaseAdmin } = await import("./catalog/firebase-admin-init.mjs");
   const { assertSeedTargetAllowed, getResolvedProjectId } = await import(
@@ -154,6 +158,7 @@ async function main() {
         access: "public",
         contentType: mimeFromExt(ext),
         addRandomSuffix: false,
+        token: blobToken,
       });
 
       await doc.ref.update({ image: result.url });
