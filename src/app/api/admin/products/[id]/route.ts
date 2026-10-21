@@ -1,5 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
 import {
+  deleteBlobUrl,
+  deleteProductBlobFolder,
+  isManagedBlobImageUrl,
+} from "@/lib/admin/blob-cleanup";
+import {
+  deleteProductAdmin,
   getCategoriesAdmin,
   getProductAdmin,
   slugExists,
@@ -75,10 +81,25 @@ export async function PUT(request: NextRequest, context: RouteContext) {
     return NextResponse.json({ error: "Firestore update failed" }, { status: 500 });
   }
 
+  const blobCleanupWarnings: string[] = [];
+  if (
+    existing.image &&
+    body.image !== existing.image &&
+    isManagedBlobImageUrl(existing.image)
+  ) {
+    const warning = await deleteBlobUrl(existing.image);
+    if (warning) blobCleanupWarnings.push(warning);
+  }
+
   try {
     return jsonPublishOk(
       [...slugsToRevalidate, body.id],
-      { product: body },
+      {
+        product: body,
+        ...(blobCleanupWarnings.length > 0
+          ? { blobCleanupWarnings }
+          : undefined),
+      },
       taxonomyFromProducts(existing, body),
     );
   } catch (err) {
@@ -96,6 +117,36 @@ export async function DELETE(request: NextRequest, context: RouteContext) {
   const existing = await getProductAdmin(id);
   if (!existing) {
     return NextResponse.json({ error: "Not found" }, { status: 404 });
+  }
+
+  const permanent =
+    request.nextUrl.searchParams.get("permanent") === "true";
+
+  if (permanent) {
+    const blobKey = existing.slug || existing.id;
+    try {
+      const deleted = await deleteProductAdmin(id);
+      if (!deleted) {
+        return NextResponse.json({ error: "Not found" }, { status: 404 });
+      }
+      const blobCleanupWarnings = await deleteProductBlobFolder(blobKey);
+      return jsonPublishOk(
+        [existing.slug, existing.id].filter(Boolean),
+        {
+          deleted: true,
+          ...(blobCleanupWarnings.length > 0
+            ? { blobCleanupWarnings }
+            : undefined),
+        },
+        taxonomyFromProducts(existing),
+      );
+    } catch (err) {
+      console.error(err);
+      return NextResponse.json(
+        { error: "Permanent delete failed" },
+        { status: 500 },
+      );
+    }
   }
 
   try {

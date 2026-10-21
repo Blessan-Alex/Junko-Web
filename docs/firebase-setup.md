@@ -301,8 +301,9 @@ Index definitions: [`firestore.indexes.json`](../firestore.indexes.json) (`publi
 ### 11.2 Admin upload flow
 
 1. Edit product → **Upload to Vercel Blob** (JPEG/PNG/WebP, max 5 MB) → sets the image field to the returned URL.
-2. **Save & publish** → Firestore `image` + existing `revalidateCatalog()` (unchanged).
+2. **Save & publish** → Firestore `image` + existing `revalidateCatalog()` (unchanged). If the image URL changed, the previous Vercel Blob object for that product is deleted.
 3. Path-based images (`/products/...`) remain valid during migration.
+4. **Permanent delete** (admin product list trash icon) → `DELETE /api/admin/products/[id]?permanent=true` removes the Firestore document and blobs under `products/{slug}/`.
 
 API: `POST /api/admin/upload` (Bearer admin id token, multipart field `file`, optional `slug` / `productId`).
 

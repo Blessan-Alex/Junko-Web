@@ -56,6 +56,14 @@ export async function updateProductAdmin(
   await ref.set(data, { merge: false });
 }
 
+export async function deleteProductAdmin(id: string): Promise<boolean> {
+  const ref = db().collection("products").doc(id);
+  const doc = await ref.get();
+  if (!doc.exists) return false;
+  await ref.delete();
+  return true;
+}
+
 export async function unpublishProductAdmin(id: string): Promise<string | null> {
   const ref = db().collection("products").doc(id);
   const doc = await ref.get();

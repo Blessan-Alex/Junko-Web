@@ -61,6 +61,44 @@ export default function ProductsAdminClient() {
     });
   }, [products, search, category]);
 
+  async function deletePermanent(id: string, name: string) {
+    if (
+      !confirm(
+        `Permanently delete "${name}"?\n\nThis removes the product from the website, Firestore, and stored images in Vercel Blob. This cannot be undone.`,
+      )
+    ) {
+      return;
+    }
+    setActionMessage(null);
+    try {
+      const token = await getIdToken();
+      const res = await adminFetch(
+        `/api/admin/products/${encodeURIComponent(id)}?permanent=true`,
+        token,
+        { method: "DELETE" },
+      );
+      const data = (await res.json()) as {
+        blobCleanupWarnings?: string[];
+        error?: string;
+        message?: string;
+      };
+      if (!res.ok) {
+        setError(
+          data.error ?? data.message ?? `Request failed (${res.status})`,
+        );
+        return;
+      }
+      let msg = `"${name}" was permanently deleted.`;
+      if (data.blobCleanupWarnings?.length) {
+        msg += ` Some storage cleanup warnings occurred — check server logs.`;
+      }
+      setActionMessage(msg);
+      await load();
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "Could not delete product");
+    }
+  }
+
   async function unpublish(id: string, name: string) {
     if (
       !confirm(
@@ -193,6 +231,17 @@ export default function ProductsAdminClient() {
                           Hide from website
                         </button>
                       )}
+                      <button
+                        type="button"
+                        className="text-xs font-semibold text-red-800 border border-red-300 rounded-md px-2.5 py-1.5 hover:bg-red-50 dark:border-red-900/50 dark:hover:bg-red-950/30"
+                        onClick={() => deletePermanent(p.id, p.name)}
+                        aria-label="Delete product permanently"
+                        title="Delete permanently"
+                      >
+                        <span className="material-symbols-outlined text-base leading-none align-middle">
+                          delete
+                        </span>
+                      </button>
                     </div>
                   </td>
                 </tr>
