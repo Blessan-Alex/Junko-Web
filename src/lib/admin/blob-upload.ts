@@ -1,6 +1,8 @@
 import "server-only";
 
-export const BLOB_MAX_BYTES = 5 * 1024 * 1024;
+import { IMAGE_UPLOAD_MAX_BYTES } from "./image-upload-limits";
+
+export const BLOB_MAX_BYTES = IMAGE_UPLOAD_MAX_BYTES;
 
 const ALLOWED_MIME = new Set([
   "image/jpeg",

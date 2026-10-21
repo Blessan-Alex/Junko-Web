@@ -5,16 +5,16 @@ import { useRouter } from "next/navigation";
 import { useAdminAuth } from "./AdminAuthProvider";
 
 export default function LoginForm() {
-  const { signIn, isAdmin, adminCheckError, user } = useAdminAuth();
+  const { signIn, isAdmin, adminCheckError, user, loading: authLoading } = useAdminAuth();
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
-  const [loading, setLoading] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
-    setLoading(true);
+    setSubmitting(true);
     setError(null);
     try {
       const ok = await signIn(email, password);
@@ -22,7 +22,7 @@ export default function LoginForm() {
     } catch (err) {
       setError(err instanceof Error ? err.message : "Sign in failed");
     } finally {
-      setLoading(false);
+      setSubmitting(false);
     }
   }
 
@@ -58,15 +58,15 @@ export default function LoginForm() {
           />
         </div>
         {error && <p className="text-red-600 text-sm">{error}</p>}
-        {user && adminCheckError && (
-          <p className="text-red-600 text-sm">{adminCheckError}</p>
+        {!authLoading && adminCheckError && (
+          <p className="text-red-600 text-sm" role="alert">{adminCheckError}</p>
         )}
         <button
           type="submit"
-          disabled={loading}
+          disabled={submitting}
           className="w-full bg-primary text-white font-bold py-2.5 rounded-lg disabled:opacity-50"
         >
-          {loading ? "Signing in…" : "Sign in"}
+          {submitting ? "Signing in…" : "Sign in"}
         </button>
       </form>
     </div>

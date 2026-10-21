@@ -39,7 +39,10 @@ export default function AdminEditProductPage() {
 
   return (
     <div>
-      <h2 className="text-xl font-bold mb-4">Edit product</h2>
+      <h2 className="text-xl font-bold mb-1">Edit product</h2>
+      <p className="text-sm text-gray-500 mb-6">
+        Update details below, then save to refresh the live website.
+      </p>
       <ProductForm mode="edit" initial={product} getIdToken={getIdToken} />
     </div>
   );

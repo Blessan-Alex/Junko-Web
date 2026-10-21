@@ -16,7 +16,8 @@ export function jsonPublishOk(
     ok: true,
     published: true,
     revalidated,
-    message: "Published — live site updates within about a minute.",
+    message:
+      "Your changes are live on the website. Visitors should see updates within about a minute.",
     ...extra,
   });
 }

@@ -8,6 +8,7 @@ import {
   isAllowedImageMime,
   blobPathSegment,
 } from "@/lib/admin/blob-upload";
+import { imageUploadTooLargeMessage } from "@/lib/admin/image-upload-limits";
 
 export const runtime = "nodejs";
 
@@ -45,7 +46,7 @@ export async function POST(request: NextRequest) {
 
   if (file.size > BLOB_MAX_BYTES) {
     return NextResponse.json(
-      { error: "Image must be 5 MB or smaller" },
+      { error: imageUploadTooLargeMessage(file.size) },
       { status: 400 },
     );
   }
