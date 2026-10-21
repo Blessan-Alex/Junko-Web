@@ -3,6 +3,8 @@ import "server-only";
 import { FieldValue } from "firebase-admin/firestore";
 import { getFirebaseAdmin } from "@/lib/firebase/admin";
 import type { Category } from "@/data/products";
+import { loadAdminListRows } from "./admin-list-projection";
+import { toAdminListRow, type AdminListRow } from "./admin-list-projection";
 import {
   buildFirestoreProductFields,
   docToAdminProduct,
@@ -20,17 +22,87 @@ export type AdminProductsPageResult = {
   products: AdminProduct[];
   nextCursor: string | null;
   hasMore: boolean;
+  /** Null when total count is unknown (Firestore pagination fallback). */
+  totalMatches: number | null;
 };
 
-function encodeAdminCursor(docId: string): string {
-  return Buffer.from(docId, "utf8").toString("base64url");
+export type ListProductsAdminPageOptions = {
+  q?: string;
+  category?: string;
+  cursor?: string | null;
+};
+
+function encodeOffsetCursor(offset: number): string {
+  return Buffer.from(String(offset), "utf8").toString("base64url");
 }
 
-function decodeAdminCursor(cursor: string): string {
-  return Buffer.from(cursor, "base64url").toString("utf8");
+function decodeOffsetCursor(cursor: string): number {
+  const n = Number.parseInt(
+    Buffer.from(cursor, "base64url").toString("utf8"),
+    10,
+  );
+  return Number.isFinite(n) && n >= 0 ? n : 0;
 }
 
-export async function listProductsAdminPage(
+function encodeFirestoreDocCursor(docId: string): string {
+  return Buffer.from(`doc:${docId}`, "utf8").toString("base64url");
+}
+
+function decodeFirestoreDocCursor(cursor: string): string | null {
+  const raw = Buffer.from(cursor, "base64url").toString("utf8");
+  if (raw.startsWith("doc:")) return raw.slice(4);
+  return null;
+}
+
+function adminRowToProduct(row: AdminListRow): AdminProduct {
+  return {
+    id: row.id,
+    slug: row.slug,
+    name: row.name,
+    category: row.category,
+    image: row.image,
+    published: row.published,
+  };
+}
+
+function filterAdminRows(
+  rows: AdminListRow[],
+  q?: string,
+  category?: string,
+): AdminListRow[] {
+  let list = rows;
+  if (category) {
+    list = list.filter((r) => r.category === category);
+  }
+  const term = q?.trim().toLowerCase();
+  if (term) {
+    list = list.filter(
+      (r) =>
+        r.name.toLowerCase().includes(term) ||
+        r.slug.toLowerCase().includes(term) ||
+        r.id.toLowerCase().includes(term),
+    );
+  }
+  return [...list].sort((a, b) => b.updatedAtMs - a.updatedAtMs);
+}
+
+function pageFromFilteredRows(
+  rows: AdminListRow[],
+  offset: number,
+): AdminProductsPageResult {
+  const slice = rows.slice(offset, offset + ADMIN_PAGE_SIZE + 1);
+  const hasMore = slice.length > ADMIN_PAGE_SIZE;
+  const pageRows = hasMore ? slice.slice(0, ADMIN_PAGE_SIZE) : slice;
+  const nextOffset = offset + ADMIN_PAGE_SIZE;
+  return {
+    products: pageRows.map(adminRowToProduct),
+    hasMore,
+    nextCursor: hasMore ? encodeOffsetCursor(nextOffset) : null,
+    totalMatches: rows.length,
+  };
+}
+
+async function listProductsAdminPageFirestore(
   cursor?: string | null,
 ): Promise<AdminProductsPageResult> {
   let query = db()
@@ -38,8 +110,8 @@ export async function listProductsAdminPage(
     .orderBy("updatedAt", "desc")
     .limit(ADMIN_PAGE_SIZE + 1);
 
-  if (cursor) {
-    const docId = decodeAdminCursor(cursor);
+  const docId = cursor ? decodeFirestoreDocCursor(cursor) : null;
+  if (docId) {
     const cursorDoc = await db().collection("products").doc(docId).get();
     if (cursorDoc.exists) {
       query = query.startAfter(cursorDoc);
@@ -58,8 +130,43 @@ export async function listProductsAdminPage(
   return {
     products,
     hasMore,
-    nextCursor: hasMore && lastDoc ? encodeAdminCursor(lastDoc.id) : null,
+    nextCursor:
+      hasMore && lastDoc ? encodeFirestoreDocCursor(lastDoc.id) : null,
+    totalMatches: null,
   };
+}
+
+async function listFromFullScanFallback(
+  opts: ListProductsAdminPageOptions,
+): Promise<AdminProductsPageResult> {
+  const snap = await db().collection("products").get();
+  const rows = snap.docs.map((doc) =>
+    toAdminListRow(doc.id, doc.data() as Record<string, unknown>),
+  );
+  const offset = opts.cursor ? decodeOffsetCursor(opts.cursor) : 0;
+  const filtered = filterAdminRows(rows, opts.q, opts.category);
+  return pageFromFilteredRows(filtered, offset);
+}
+
+export async function listProductsAdminPage(
+  opts: ListProductsAdminPageOptions = {},
+): Promise<AdminProductsPageResult> {
+  const rows = await loadAdminListRows();
+  if (rows) {
+    const offset = opts.cursor ? decodeOffsetCursor(opts.cursor) : 0;
+    const filtered = filterAdminRows(rows, opts.q, opts.category);
+    return pageFromFilteredRows(filtered, offset);
+  }
+
+  console.warn(
+    "catalog/admin-list missing; run npm run catalog:rebuild-projection. Using Firestore fallback.",
+  );
+
+  if (opts.q?.trim() || opts.category) {
+    return listFromFullScanFallback(opts);
+  }
+
+  return listProductsAdminPageFirestore(opts.cursor);
 }
 
 export async function getProductAdmin(id: string): Promise<AdminProduct | null> {

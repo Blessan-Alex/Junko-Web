@@ -4,6 +4,11 @@ import { FieldValue, type QueryDocumentSnapshot } from "firebase-admin/firestore
 import type { Category, Product } from "@/data/products";
 import { getFirebaseAdmin } from "@/lib/firebase/admin";
 import { isProductPublished } from "@/lib/catalog/published";
+import {
+  type AdminListRow,
+  type CatalogAdminListDoc,
+  toAdminListRow,
+} from "./admin-list-projection";
 import { getCategoriesAdmin } from "./firestore-admin-catalog";
 
 export type ListingCard = Pick<
@@ -64,6 +69,8 @@ export const PROJECTION_REBUILD_WARNING =
 export async function tryRebuildCatalogProjections(): Promise<boolean> {
   try {
     await rebuildCatalogProjections();
+    const { revalidateAdminCatalogTag } = await import("./revalidate-catalog");
+    revalidateAdminCatalogTag();
     return true;
   } catch (err) {
     console.error("rebuildCatalogProjections failed:", err);
@@ -114,9 +121,11 @@ export async function rebuildCatalogProjections(): Promise<void> {
 
   const products: ListingCard[] = [];
   const entries: SitemapEntry[] = [];
+  const adminProducts: AdminListRow[] = [];
 
   for (const doc of snap.docs) {
     const raw = doc.data() as Record<string, unknown>;
+    adminProducts.push(toAdminListRow(doc.id, raw));
     const card = toListingCard(doc.id, raw);
     if (!card) continue;
     products.push(card);
@@ -126,6 +135,7 @@ export async function rebuildCatalogProjections(): Promise<void> {
     });
   }
 
+  adminProducts.sort((a, b) => b.updatedAtMs - a.updatedAtMs);
   products.sort((a, b) => a.name.localeCompare(b.name));
   entries.sort((a, b) => a.slug.localeCompare(b.slug));
 
@@ -142,8 +152,17 @@ export async function rebuildCatalogProjections(): Promise<void> {
     entries,
   };
 
+  const adminList: CatalogAdminListDoc = {
+    version: 1,
+    updatedAt: FieldValue.serverTimestamp(),
+    products: adminProducts,
+  };
+
   const batch = db().batch();
   batch.set(db().collection("catalog").doc("listing"), listing, { merge: false });
   batch.set(db().collection("catalog").doc("sitemap"), sitemap, { merge: false });
+  batch.set(db().collection("catalog").doc("admin-list"), adminList, {
+    merge: false,
+  });
   await batch.commit();
 }

@@ -330,6 +330,7 @@ Public traffic should stay **under ~50k reads/day** for solo testing and normal 
 |----------|---------|
 | `catalog/listing` | Categories + listing cards for `/products` (one read per cache miss) |
 | `catalog/sitemap` | Published product slugs for `/sitemap.xml` (one read per cache miss) |
+| `catalog/admin-list` | All products (live + hidden) for admin list search/filter (one read per cache miss) |
 
 Admin **publish / unpublish / permanent delete / categories save** rebuilds these via `rebuildCatalogProjections()` (full scan — acceptable only on write).
 
@@ -352,7 +353,8 @@ Uses the same credentials as `catalog:seed` (`GOOGLE_APPLICATION_CREDENTIALS` or
 | Warm `/products` (any `?page=`) | 0 |
 | Cold `/products` after revalidate | 1 |
 | Sitemap cold regen | 1 |
-| Admin products list (one page) | ≤26 |
+| Admin products list (search/filter/page, warm) | 0 |
+| Admin products list (cold) | 1 (`catalog/admin-list`) |
 | Publish (description-only edit) | 0 public reads until next cold product view |
 
 Granular revalidation: listing/sitemap/catalog tags refresh only when name, slug, category, subcategory, image, or published status changes — not on typo fixes in body copy.

@@ -1,11 +1,14 @@
 "use client";
 
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import type { Category } from "@/data/products";
 import type { AdminProduct } from "@/lib/admin/product-doc";
 import { adminFetch, parseApiError } from "@/lib/admin/api-client";
 import { useAdminAuth } from "./AdminAuthProvider";
 import AdminStatusBanner from "./AdminStatusBanner";
+
+const SEARCH_DEBOUNCE_MS = 300;
 
 function slugLooksBroken(slug: string): boolean {
   return /^https?:\/\//i.test(slug) || slug.length > 80;
@@ -15,24 +18,39 @@ export default function ProductsAdminClient() {
   const { getIdToken } = useAdminAuth();
   const [products, setProducts] = useState<AdminProduct[]>([]);
   const [nextCursor, setNextCursor] = useState<string | null>(null);
+  const [totalMatches, setTotalMatches] = useState<number | null>(0);
   const [listCursor, setListCursor] = useState<string | null>(null);
   const [cursorHistory, setCursorHistory] = useState<(string | null)[]>([]);
   const [loading, setLoading] = useState(true);
-  const [search, setSearch] = useState("");
+  const [searchInput, setSearchInput] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
   const [category, setCategory] = useState("");
+  const [categories, setCategories] = useState<Category[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [actionMessage, setActionMessage] = useState<string | null>(null);
+  const loadRequestId = useRef(0);
+
+  const buildListPath = useCallback(
+    (cursor: string | null) => {
+      const params = new URLSearchParams();
+      if (searchQuery.trim()) params.set("q", searchQuery.trim());
+      if (category) params.set("category", category);
+      if (cursor) params.set("cursor", cursor);
+      const qs = params.toString();
+      return qs ? `/api/admin/products?${qs}` : "/api/admin/products";
+    },
+    [searchQuery, category],
+  );
 
   const loadPage = useCallback(
     async (cursor: string | null) => {
+      const requestId = ++loadRequestId.current;
       setLoading(true);
       setError(null);
       try {
         const token = await getIdToken();
-        const path = cursor
-          ? `/api/admin/products?cursor=${encodeURIComponent(cursor)}`
-          : "/api/admin/products";
-        const res = await adminFetch(path, token);
+        const res = await adminFetch(buildListPath(cursor), token);
+        if (requestId !== loadRequestId.current) return;
         if (!res.ok) {
           setError(await parseApiError(res));
           return;
@@ -41,21 +59,54 @@ export default function ProductsAdminClient() {
           products: AdminProduct[];
           nextCursor: string | null;
           hasMore: boolean;
+          totalMatches: number | null;
         };
+        if (requestId !== loadRequestId.current) return;
         setProducts(data.products);
         setNextCursor(data.nextCursor);
+        setTotalMatches(data.totalMatches);
       } catch (e) {
+        if (requestId !== loadRequestId.current) return;
         setError(e instanceof Error ? e.message : "Failed to load");
       } finally {
-        setLoading(false);
+        if (requestId === loadRequestId.current) {
+          setLoading(false);
+        }
       }
     },
-    [getIdToken],
+    [getIdToken, buildListPath],
   );
 
   useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      try {
+        const token = await getIdToken();
+        const res = await adminFetch("/api/admin/categories", token);
+        if (!res.ok || cancelled) return;
+        const data = (await res.json()) as { categories: Category[] };
+        setCategories(data.categories ?? []);
+      } catch {
+        /* category filter still works if user types exact name */
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [getIdToken]);
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => {
+      setSearchQuery(searchInput);
+    }, SEARCH_DEBOUNCE_MS);
+    return () => window.clearTimeout(timer);
+  }, [searchInput]);
+
+  useEffect(() => {
+    setListCursor(null);
+    setCursorHistory([]);
     loadPage(null);
-  }, [loadPage]);
+  }, [searchQuery, category, loadPage]);
 
   function reloadFirstPage() {
     setListCursor(null);
@@ -77,24 +128,6 @@ export default function ProductsAdminClient() {
     setListCursor(prev);
     loadPage(prev);
   }
-
-  const categories = useMemo(() => {
-    const set = new Set(products.map((p) => p.category));
-    return [...set].sort();
-  }, [products]);
-
-  const filtered = useMemo(() => {
-    const term = search.toLowerCase();
-    return products.filter((p) => {
-      if (category && p.category !== category) return false;
-      if (!term) return true;
-      return (
-        p.name.toLowerCase().includes(term) ||
-        p.slug.toLowerCase().includes(term) ||
-        p.id.toLowerCase().includes(term)
-      );
-    });
-  }, [products, search, category]);
 
   async function deletePermanent(id: string, name: string) {
     if (
@@ -159,7 +192,10 @@ export default function ProductsAdminClient() {
     }
   }
 
-  if (loading) return <p className="text-gray-500">Loading products…</p>;
+  const pageIndex = cursorHistory.length;
+  const rangeStart =
+    products.length === 0 ? 0 : pageIndex * 25 + 1;
+  const rangeEnd = pageIndex * 25 + products.length;
 
   return (
     <div>
@@ -181,8 +217,8 @@ export default function ProductsAdminClient() {
           type="search"
           placeholder="Search by name or web address…"
           className="border rounded-lg px-3 py-2 flex-1 min-w-[200px] dark:bg-white/5"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
+          value={searchInput}
+          onChange={(e) => setSearchInput(e.target.value)}
         />
         <select
           className="border rounded-lg px-3 py-2 dark:bg-white/5"
@@ -191,16 +227,26 @@ export default function ProductsAdminClient() {
         >
           <option value="">All categories</option>
           {categories.map((c) => (
-            <option key={c} value={c}>{c}</option>
+            <option key={c.name} value={c.name}>{c.name}</option>
           ))}
         </select>
         <span className="text-sm text-gray-500 self-center">
-          {filtered.length} on this page
-          {search || category ? " (filtered)" : ""}
+          {loading && products.length === 0
+            ? "Loading…"
+            : products.length === 0
+              ? "No matches"
+              : totalMatches != null
+                ? `Showing ${rangeStart}–${rangeEnd} of ${totalMatches}`
+                : `Showing ${rangeStart}–${rangeEnd}`}
         </span>
       </div>
 
-      <div className="overflow-x-auto border rounded-xl dark:border-white/10">
+      <div className="overflow-x-auto border rounded-xl dark:border-white/10 relative">
+        {loading && (
+          <div className="absolute inset-0 bg-white/50 dark:bg-black/30 z-10 flex items-center justify-center text-sm text-gray-600">
+            Updating…
+          </div>
+        )}
         <table className="w-full text-sm text-left min-w-[720px]">
           <thead className="bg-gray-50 dark:bg-white/5">
             <tr>
@@ -212,7 +258,7 @@ export default function ProductsAdminClient() {
             </tr>
           </thead>
           <tbody>
-            {filtered.map((p) => {
+            {products.map((p) => {
               const live = p.published !== false;
               const publicPath = `/product/${p.slug || p.id}`;
               return (

@@ -25,8 +25,12 @@ export async function GET(request: NextRequest) {
   if ("error" in auth) {
     return NextResponse.json({ error: auth.error }, { status: auth.status });
   }
-  const cursor = request.nextUrl.searchParams.get("cursor");
-  const page = await listProductsAdminPage(cursor);
+  const params = request.nextUrl.searchParams;
+  const page = await listProductsAdminPage({
+    q: params.get("q") ?? undefined,
+    category: params.get("category") ?? undefined,
+    cursor: params.get("cursor"),
+  });
   return NextResponse.json(page);
 }
 

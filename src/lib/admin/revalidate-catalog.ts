@@ -14,6 +14,10 @@ export type RevalidateScope = {
   taxonomy?: RevalidateTaxonomy;
 };
 
+export function revalidateAdminCatalogTag() {
+  revalidateTag("admin-catalog", {});
+}
+
 export function taxonomyFromProducts(
   ...items: Array<{ category: string; subcategory?: string }>
 ): RevalidateTaxonomy {
@@ -42,6 +46,7 @@ export function revalidateCatalog(
   if (scope?.listing) {
     revalidateTag("catalog", {});
     revalidatePath("/products");
+    revalidateAdminCatalogTag();
   }
 
   if (scope?.sitemap) {
