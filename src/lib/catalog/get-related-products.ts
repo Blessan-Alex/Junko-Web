@@ -1,23 +1,14 @@
 import "server-only";
 
 import { unstable_cache } from "next/cache";
-import { allProducts } from "@/data/products";
 import type { Product } from "./types";
 import { getCatalogSource } from "./source";
 import { fetchRelatedProductsFromFirestore } from "./fetch-firestore";
+import { getFileCatalogRelatedProducts } from "./catalog-fallback";
+import { isFirestoreQuotaExceeded } from "./firestore-quota";
 
 const CACHE_REVALIDATE_SECONDS = 3600;
 
-function getRelatedProductsFromFile(product: Product): Product[] {
-  return allProducts
-    .filter(
-      (p) =>
-        p.id !== product.id &&
-        (p.subcategory === product.subcategory ||
-          p.category === product.category),
-    )
-    .slice(0, 4);
-}
 
 async function getFirestoreRelatedProductsCached(
   product: Product,
@@ -44,7 +35,17 @@ export async function getRelatedProducts(
   product: Product,
 ): Promise<Product[]> {
   if (getCatalogSource() === "file") {
-    return getRelatedProductsFromFile(product);
+    return getFileCatalogRelatedProducts(product);
   }
-  return getFirestoreRelatedProductsCached(product);
+  try {
+    return await getFirestoreRelatedProductsCached(product);
+  } catch (error) {
+    if (isFirestoreQuotaExceeded(error)) {
+      console.error(
+        "Firestore quota exceeded; serving file catalog related-products fallback",
+      );
+      return getFileCatalogRelatedProducts(product);
+    }
+    throw error;
+  }
 }

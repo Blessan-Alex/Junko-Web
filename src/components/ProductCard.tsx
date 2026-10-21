@@ -24,15 +24,6 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                     className="relative z-10 w-full h-full object-contain transition-transform duration-500 group-hover:scale-110"
                 />
 
-                {/* Badges */}
-                <div className="absolute top-3 left-3 z-20 flex flex-col gap-2">
-                    {product.featured && (
-                        <span className="bg-primary text-white text-[10px] font-bold px-2 py-1 rounded shadow-sm tracking-wider uppercase">
-                            Featured
-                        </span>
-                    )}
-                </div>
-
                 {/* Quick Action Overlay */}
                 <div className="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex justify-center z-20">
                     <span className="text-white text-sm font-bold flex items-center gap-1">

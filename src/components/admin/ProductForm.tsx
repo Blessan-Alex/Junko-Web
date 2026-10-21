@@ -403,15 +403,6 @@ export default function ProductForm({ mode, initial, getIdToken }: ProductFormPr
       <label className="flex items-center gap-2 text-sm">
         <input
           type="checkbox"
-          checked={form.featured ?? false}
-          onChange={(e) => update("featured", e.target.checked)}
-        />
-        Show as featured on the website
-      </label>
-
-      <label className="flex items-center gap-2 text-sm">
-        <input
-          type="checkbox"
           checked={form.published !== false}
           onChange={(e) => update("published", e.target.checked)}
         />

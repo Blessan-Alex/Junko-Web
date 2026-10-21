@@ -9,11 +9,16 @@ import {
   fetchCatalogFromFirestore,
   fetchProductBySlugOrId,
 } from "./fetch-firestore";
+import {
+  findFileCatalogProductBySlug,
+  getFileCatalogFallback,
+} from "./catalog-fallback";
+import { isFirestoreQuotaExceeded } from "./firestore-quota";
 
 export const CACHE_REVALIDATE_SECONDS = 3600;
 
 function getFileCatalog(): Catalog {
-  return { categories, allProducts };
+  return getFileCatalogFallback();
 }
 
 async function getFirestoreCatalogCached(): Promise<Catalog> {
@@ -31,7 +36,17 @@ export async function getCatalog(): Promise<Catalog> {
   if (getCatalogSource() === "file") {
     return getFileCatalog();
   }
-  return getFirestoreCatalogCached();
+  try {
+    return await getFirestoreCatalogCached();
+  } catch (error) {
+    if (isFirestoreQuotaExceeded(error)) {
+      console.error(
+        "Firestore quota exceeded; serving read-only file catalog fallback",
+      );
+      return getFileCatalogFallback();
+    }
+    throw error;
+  }
 }
 
 function findProductBySlug(products: Product[], slug: string): Product | null {
@@ -67,8 +82,27 @@ const getProductBySlugRequest = cache(async (slug: string): Promise<Product | nu
   return getFirestoreProductBySlugCached(slug);
 });
 
+async function getProductBySlugWithQuotaFallback(
+  slug: string,
+): Promise<Product | null> {
+  try {
+    return await getProductBySlugRequest(slug);
+  } catch (error) {
+    if (isFirestoreQuotaExceeded(error)) {
+      console.error(
+        "Firestore quota exceeded; serving file catalog product fallback",
+      );
+      return findFileCatalogProductBySlug(slug);
+    }
+    throw error;
+  }
+}
+
 export async function getProductBySlug(slug: string): Promise<Product | null> {
-  return getProductBySlugRequest(slug);
+  if (getCatalogSource() === "file") {
+    return getProductBySlugRequest(slug);
+  }
+  return getProductBySlugWithQuotaFallback(slug);
 }
 
 export { getRelatedProducts } from "./get-related-products";
