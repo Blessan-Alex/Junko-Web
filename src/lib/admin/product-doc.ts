@@ -37,7 +37,7 @@ export function buildFirestoreProductFields(
   if (input.features !== undefined) doc.features = input.features;
   if (input.featured !== undefined) doc.featured = input.featured;
   if (includePublished) {
-    doc.published = input.published !== false;
+    doc.published = input.published === false ? false : true;
   }
   return doc;
 }

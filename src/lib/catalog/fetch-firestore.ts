@@ -3,6 +3,7 @@ import "server-only";
 import type { QueryDocumentSnapshot } from "firebase-admin/firestore";
 import type { Product, Category } from "@/data/products";
 import { getFirebaseAdmin } from "@/lib/firebase/admin";
+import { isProductPublished } from "@/lib/catalog/published";
 
 const RELATED_FETCH_LIMIT = 8;
 const RELATED_MAX = 4;
@@ -18,7 +19,7 @@ function docToProduct(
   id: string,
   data: Record<string, unknown>,
 ): Product | null {
-  if (data.published !== true) {
+  if (!isProductPublished(data)) {
     return null;
   }
 
@@ -82,7 +83,6 @@ export async function fetchProductBySlugOrId(
   const slugSnap = await db
     .collection("products")
     .where("slug", "==", param)
-    .where("published", "==", true)
     .limit(1)
     .get();
 
@@ -116,7 +116,6 @@ export async function fetchRelatedProductsFromFirestore(
   if (product.subcategory) {
     const snap = await db
       .collection("products")
-      .where("published", "==", true)
       .where("subcategory", "==", product.subcategory)
       .limit(RELATED_FETCH_LIMIT)
       .get();
@@ -126,7 +125,6 @@ export async function fetchRelatedProductsFromFirestore(
   if (results.length < RELATED_MAX && product.category) {
     const snap = await db
       .collection("products")
-      .where("published", "==", true)
       .where("category", "==", product.category)
       .limit(RELATED_FETCH_LIMIT)
       .get();
@@ -142,10 +140,7 @@ export async function fetchCatalogFromFirestore(): Promise<{
 }> {
   const db = firestore();
 
-  const productsSnap = await db
-    .collection("products")
-    .where("published", "==", true)
-    .get();
+  const productsSnap = await db.collection("products").get();
 
   const allProducts: Product[] = [];
   for (const doc of productsSnap.docs) {

@@ -8,6 +8,7 @@ import {
 } from "@/lib/admin/firestore-admin-catalog";
 import { requireAdminApi } from "@/lib/admin/require-admin-api";
 import type { ProductWriteInput } from "@/lib/admin/product-doc";
+import { normalizeProductSlug } from "@/lib/admin/normalize-slug";
 import { validateProductWrite } from "@/lib/admin/validate-product";
 import { taxonomyFromProducts } from "@/lib/admin/revalidate-catalog";
 import { jsonFirestoreOkRevalidateFailed, jsonPublishOk } from "@/lib/admin/publish-response";
@@ -52,6 +53,7 @@ export async function PUT(request: NextRequest, context: RouteContext) {
     return NextResponse.json({ error: "id is immutable" }, { status: 400 });
   }
 
+  body.slug = normalizeProductSlug(body.slug);
   body.published = body.published !== false;
 
   const categories = await getCategoriesAdmin();

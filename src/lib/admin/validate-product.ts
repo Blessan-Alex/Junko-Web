@@ -1,5 +1,6 @@
 import type { Category } from "@/data/products";
 import type { ProductWriteInput } from "./product-doc";
+import { isValidProductSlug, normalizeProductSlug } from "./normalize-slug";
 
 export function isValidImageRef(image: string | undefined): boolean {
   const trimmed = image?.trim() ?? "";
@@ -16,6 +17,9 @@ export function validateProductWrite(
 ): string | null {
   if (!input.id?.trim()) return "id is required";
   if (!input.slug?.trim()) return "slug is required";
+  if (!isValidProductSlug(input.slug)) {
+    return "web address must use lowercase letters, numbers, and hyphens only";
+  }
   if (!input.name?.trim()) return "name is required";
   if (!input.category?.trim()) return "category is required";
   if (!isValidImageRef(input.image)) {

@@ -207,7 +207,7 @@ export default function ProductForm({ mode, initial, getIdToken }: ProductFormPr
       }
       setMessage(
         data.message ??
-          "Your changes are live on the website. Visitors should see updates within about a minute.",
+          "Your changes are live on the website. Visitors should see updates within a few seconds.",
       );
     } catch (err) {
       setError(err instanceof Error ? err.message : "Save failed");

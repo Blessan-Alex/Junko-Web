@@ -8,6 +8,7 @@ import {
   slugExists,
 } from "@/lib/admin/firestore-admin-catalog";
 import type { ProductWriteInput } from "@/lib/admin/product-doc";
+import { normalizeProductSlug } from "@/lib/admin/normalize-slug";
 import { validateProductWrite } from "@/lib/admin/validate-product";
 import { taxonomyFromProducts } from "@/lib/admin/revalidate-catalog";
 import { jsonFirestoreOkRevalidateFailed, jsonPublishOk } from "@/lib/admin/publish-response";
@@ -36,6 +37,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Invalid JSON body" }, { status: 400 });
   }
 
+  body.slug = normalizeProductSlug(body.slug);
   body.published = body.published !== false;
 
   const categories = await getCategoriesAdmin();

@@ -43,14 +43,21 @@ function findProductBySlug(products: Product[], slug: string): Product | null {
 async function getFirestoreProductBySlugCached(
   slug: string,
 ): Promise<Product | null> {
-  return unstable_cache(
+  const live = await fetchProductBySlugOrId(slug);
+  if (!live) {
+    return null;
+  }
+
+  const cached = await unstable_cache(
     async () => fetchProductBySlugOrId(slug),
-    ["catalog-product-v3", slug],
+    ["catalog-product-v4", slug],
     {
       tags: [`product:${slug}`],
       revalidate: CACHE_REVALIDATE_SECONDS,
     },
   )();
+
+  return cached ?? live;
 }
 
 const getProductBySlugRequest = cache(async (slug: string): Promise<Product | null> => {

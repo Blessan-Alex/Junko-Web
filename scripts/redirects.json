@@ -666,7 +666,12 @@
   },
   {
     "source": "/product/WEIGHING_SCALES_Electronic_weighing_scales_asss_jpg",
-    "destination": "/product/animal-scale-https-junko-fze-com-product-animal-scale",
+    "destination": "/product/animal-scale",
+    "permanent": true
+  },
+  {
+    "source": "/product/animal-scale-https-junko-fze-com-product-animal-scale",
+    "destination": "/product/animal-scale",
     "permanent": true
   },
   {
