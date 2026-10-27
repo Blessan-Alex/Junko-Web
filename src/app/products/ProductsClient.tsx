@@ -5,19 +5,25 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import type { Category, Product } from '@/data/products';
 import ProductCard from '@/components/ProductCard';
 import { PUBLIC_PRODUCTS_PAGE_SIZE } from '@/lib/catalog/public-page-size';
+import { getCategoryPath } from '@/lib/catalog/category-slugs';
 
 type ProductsClientProps = {
   categories: Category[];
   allProducts: Product[];
+  activeCategoryName: string | null;
+  categorySlugByName: Record<string, string>;
+  children?: React.ReactNode;
 };
 
 export default function ProductsClient({
   categories,
   allProducts,
+  activeCategoryName,
+  categorySlugByName,
+  children,
 }: ProductsClientProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const selectedCategory = searchParams.get('category');
   const pageParam = searchParams.get('page');
   const currentPage = Math.max(1, Number.parseInt(pageParam ?? '1', 10) || 1);
 
@@ -27,15 +33,17 @@ export default function ProductsClient({
 
   const buildProductsUrl = useCallback(
     (opts: { category?: string | null; page?: number }) => {
-      const params = new URLSearchParams();
-      const cat = opts.category ?? selectedCategory;
-      if (cat) params.set('category', cat);
+      const catName =
+        opts.category !== undefined ? opts.category : activeCategoryName;
+      let path = '/products';
+      if (catName) {
+        path = getCategoryPath(catName, categorySlugByName);
+      }
       const page = opts.page ?? 1;
-      if (page > 1) params.set('page', String(page));
-      const q = params.toString();
-      return q ? `/products?${q}` : '/products';
+      if (page > 1) return `${path}?page=${page}`;
+      return path;
     },
-    [selectedCategory],
+    [activeCategoryName, categorySlugByName],
   );
 
   const setPageInUrl = useCallback(
@@ -46,11 +54,11 @@ export default function ProductsClient({
   );
 
   const handleCategoryChange = (category: string) => {
-    if (selectedCategory === category) {
+    if (activeCategoryName === category) {
       router.push('/products');
       setActiveSubcategories([]);
     } else {
-      router.push(`/products?category=${encodeURIComponent(category)}`);
+      router.push(getCategoryPath(category, categorySlugByName));
       setActiveSubcategories([]);
     }
   };
@@ -80,7 +88,7 @@ export default function ProductsClient({
       if (!matchesSearch) return false;
 
       // 2. Category Filter
-      if (selectedCategory && product.category.toLowerCase() !== selectedCategory.toLowerCase()) {
+      if (activeCategoryName && product.category.toLowerCase() !== activeCategoryName.toLowerCase()) {
         return false;
       }
 
@@ -94,7 +102,7 @@ export default function ProductsClient({
 
       return true;
     });
-  }, [selectedCategory, searchQuery, activeSubcategories, allProducts]);
+  }, [activeCategoryName, searchQuery, activeSubcategories, allProducts]);
 
   const totalPages = Math.max(
     1,
@@ -113,7 +121,7 @@ export default function ProductsClient({
     }
   }, [currentPage, safePage, setPageInUrl]);
 
-  const filterKey = `${selectedCategory ?? ''}|${searchQuery}|${activeSubcategories.join('\u0000')}`;
+  const filterKey = `${activeCategoryName ?? ''}|${searchQuery}|${activeSubcategories.join('\u0000')}`;
   const prevFilterKey = useRef(filterKey);
   useEffect(() => {
     if (prevFilterKey.current === filterKey) return;
@@ -181,21 +189,21 @@ export default function ProductsClient({
                   <div key={category.name}>
                     <label className={`
                                     flex items-center gap-3 cursor-pointer group p-2 rounded-lg transition-colors
-                                    ${selectedCategory === category.name ? 'bg-primary/10 dark:bg-primary/20' : 'hover:bg-gray-50 dark:hover:bg-white/5'}
+                                    ${activeCategoryName === category.name ? 'bg-primary/10 dark:bg-primary/20' : 'hover:bg-gray-50 dark:hover:bg-white/5'}
                                 `}>
                       <input
                         type="checkbox"
                         className="w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary bg-transparent"
-                        checked={selectedCategory === category.name}
+                        checked={activeCategoryName === category.name}
                         onChange={() => handleCategoryChange(category.name)}
                       />
-                      <span className={`text-base font-bold transition-colors ${selectedCategory === category.name ? 'text-primary' : 'text-gray-700 dark:text-gray-200'}`}>
+                      <span className={`text-base font-bold transition-colors ${activeCategoryName === category.name ? 'text-primary' : 'text-gray-700 dark:text-gray-200'}`}>
                         {category.name}
                       </span>
                     </label>
 
                     {/* Subcategories (Only shown when parent is selected) */}
-                    {selectedCategory === category.name && category.subcategories.length > 0 && (
+                    {activeCategoryName === category.name && category.subcategories.length > 0 && (
                       <div className="ml-7 mt-1 space-y-1 border-l-2 border-gray-100 dark:border-white/10 pl-3">
                         {category.subcategories.map(sub => (
                           <label key={sub} className="flex items-center gap-2 cursor-pointer group py-1">
@@ -229,17 +237,7 @@ export default function ProductsClient({
       )}
 
       <div className="flex-1 p-6 lg:p-12 overflow-hidden w-full" role="region" aria-label="Product listings">
-        {/* Header */}
-        <div className="mb-8">
-          <h1 className="text-3xl md:text-5xl font-serif font-black text-secondary dark:text-white tracking-tight mb-4">
-            {selectedCategory || 'All Products'}
-          </h1>
-          <p className="text-gray-500 dark:text-gray-400 max-w-2xl text-lg">
-            {selectedCategory
-              ? `Explore our range of ${selectedCategory}.`
-              : 'Premium industrial machinery for high-volume manufacturing lines.'}
-          </p>
-        </div>
+        {children}
 
         {/* Results Info */}
         <div className="flex items-center justify-between mb-6 pb-6 border-b border-gray-100 dark:border-white/10">
@@ -257,7 +255,7 @@ export default function ProductsClient({
           </div>
 
           {/* Active Filters Display */}
-          {(selectedCategory || searchQuery) && (
+          {(activeCategoryName || searchQuery) && (
             <div className="flex gap-2 flex-wrap justify-end">
               {searchQuery && (
                 <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-gray-100 dark:bg-white/10 text-xs font-bold text-secondary dark:text-white">

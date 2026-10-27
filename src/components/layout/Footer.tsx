@@ -29,12 +29,12 @@ const Footer = () => {
                     <nav aria-label="Solutions">
                         <h4 className="font-bold font-serif mb-6 text-white">Solutions</h4>
                         <ul className="space-y-4 text-sm text-blue-200 font-sans">
-                            <li><Link href="/products?category=BAG%20CLOSING%20MACHINES" className="hover:text-white transition-colors">Bag Closing Machines</Link></li>
-                            <li><Link href="/products?category=BAG%20CLOSING%20THREADS" className="hover:text-white transition-colors">Bag Closing Thread</Link></li>
-                            <li><Link href="/products?category=PACKAGING%20TOOLS" className="hover:text-white transition-colors">Packaging Tools</Link></li>
-                            <li><Link href="/products?category=SEALING%20MACHINES" className="hover:text-white transition-colors">Sealing Machines</Link></li>
-                            <li><Link href="/products?category=BAG%20CLOSING%20MACHINES" className="hover:text-white transition-colors">Sewing Machines</Link></li>
-                            <li><Link href="/products?category=CONSUMABLES" className="hover:text-white transition-colors">Spare Parts</Link></li>
+                            <li><Link href="/products/bag-closing-machines" className="hover:text-white transition-colors">Bag Closing Machines</Link></li>
+                            <li><Link href="/products/bag-closing-threads" className="hover:text-white transition-colors">Bag Closing Thread</Link></li>
+                            <li><Link href="/products/packaging-tools" className="hover:text-white transition-colors">Packaging Tools</Link></li>
+                            <li><Link href="/products/sealing-machines" className="hover:text-white transition-colors">Sealing Machines</Link></li>
+                            <li><Link href="/products/portable-bag-closers" className="hover:text-white transition-colors">Sewing Machines</Link></li>
+                            <li><Link href="/products/consumables" className="hover:text-white transition-colors">Spare Parts</Link></li>
                         </ul>
                     </nav>
                     <nav aria-label="Company">

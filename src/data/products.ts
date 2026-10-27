@@ -1719,7 +1719,7 @@ export const allProducts: Product[] = [
     },
     {
         "id": "WEIGHING_SCALES_Electronic_weighing_scales_asss_jpg",
-        "name": "#### [**Animal Scale**](https://junko-fze.com/product/animal-scale/)**",
+        "name": "Animal Scale",
         "category": "WEIGHING SCALES",
         "subcategory": "Electronic weighing scales",
         "description": "",
@@ -1727,7 +1727,7 @@ export const allProducts: Product[] = [
         "specs": {},
         "features": [],
         "featured": false,
-        "slug": "animal-scale-https-junko-fze-com-product-animal-scale"
+        "slug": "animal-scale"
     },
     {
         "id": "WEIGHING_SCALES_Electronic_weighing_scales_Bench_Model",
@@ -1791,7 +1791,7 @@ export const allProducts: Product[] = [
     },
     {
         "id": "WEIGHING_SCALES_Electronic_weighing_scales_pallet_scale_1734x2048",
-        "name": "#### [**Pallet Scale**](https://junko-fze.com/product/pallet-scale/)**",
+        "name": "Pallet Scale",
         "category": "WEIGHING SCALES",
         "subcategory": "Electronic weighing scales",
         "description": "",
@@ -1799,7 +1799,7 @@ export const allProducts: Product[] = [
         "specs": {},
         "features": [],
         "featured": false,
-        "slug": "pallet-scale-https-junko-fze-com-product-pallet-scale"
+        "slug": "pallet-scale"
     },
     {
         "id": "WEIGHING_SCALES_Electronic_weighing_scales_Platform_Type",

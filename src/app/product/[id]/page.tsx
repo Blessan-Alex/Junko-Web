@@ -3,7 +3,14 @@ import Link from 'next/link';
 import Image from 'next/image';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { getProductBySlug, getRelatedProducts } from '@/lib/catalog/get-catalog';
+import {
+  getCatalog,
+  getProductBySlug,
+  getRelatedProducts,
+} from '@/lib/catalog/get-catalog';
+import { categoryNameToSlug } from '@/lib/catalog/category-slugs';
+import { getProductDescriptionForDisplay } from '@/lib/catalog/product-copy';
+import { getProductPageTitleMetadata } from '@/lib/catalog/product-seo';
 
 type Props = {
   params: Promise<{ id: string }>
@@ -21,18 +28,21 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     }
   }
 
-  const rawDesc = product.description || `Details for ${product.name}`;
+  const { allProducts } = await getCatalog();
+  const titleMeta = getProductPageTitleMetadata(product, allProducts);
+
+  const rawDesc = getProductDescriptionForDisplay(product);
   // Truncate meta descriptions to ~155 chars for SEO (Google recommends under 160)
   const desc = rawDesc.length > 155 ? rawDesc.substring(0, 155).trimEnd() + '…' : rawDesc;
   const urlParams = product.slug || product.id;
   const image = product.image || '/hero-commercial-dock.jpg';
 
   return {
-    title: product.name,
+    ...titleMeta,
     description: desc,
     alternates: { canonical: `/product/${urlParams}` },
     openGraph: {
-      title: product.name,
+      ...titleMeta.openGraph,
       description: desc,
       url: `/product/${urlParams}`,
       type: 'website',
@@ -47,11 +57,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     },
     twitter: {
       card: 'summary_large_image',
-      title: product.name,
+      ...titleMeta.twitter,
       description: desc,
       images: [image],
-    }
-  }
+    },
+  };
 }
 
 export default async function ProductDetailPage({ params }: Props) {
@@ -66,7 +76,7 @@ export default async function ProductDetailPage({ params }: Props) {
 
   // Use product image or a placeholder if missing
   const mainImage = product.image || '/products/placeholders/no-image.png';
-  const desc = product.description || `Details for ${product.name}`;
+  const desc = getProductDescriptionForDisplay(product);
   const urlParams = product.slug || product.id;
 
   const productSchema = {
@@ -102,7 +112,7 @@ export default async function ProductDetailPage({ params }: Props) {
         "@type": "ListItem",
         "position": 3,
         "name": product.category,
-        "item": `https://www.junko-fze.com/products?category=${encodeURIComponent(product.category)}`
+        "item": `https://www.junko-fze.com/products/${categoryNameToSlug(product.category)}`
       },
       {
         "@type": "ListItem",
@@ -170,7 +180,7 @@ export default async function ProductDetailPage({ params }: Props) {
           </div>
 
           <p className="text-text-sub dark:text-gray-300 text-lg leading-relaxed mb-8 border-l-4 border-primary pl-4">
-            {product.description || `High quality ${product.name} designed for industrial applications. Part of our premium ${product.category} line.`}
+            {desc}
           </p>
 
           <div className="flex flex-col gap-4 mb-10">

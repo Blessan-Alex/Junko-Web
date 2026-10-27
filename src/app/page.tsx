@@ -112,7 +112,7 @@ export default function Home() {
             </Link>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <Link href="/products?category=BAG%20CLOSING%20MACHINES" className="group bg-white dark:bg-surface-dark rounded-2xl shadow-xl overflow-hidden cursor-pointer flex flex-col hover:shadow-2xl transition-all duration-300">
+            <Link href="/products/bag-closing-machines" className="group bg-white dark:bg-surface-dark rounded-2xl shadow-xl overflow-hidden cursor-pointer flex flex-col hover:shadow-2xl transition-all duration-300">
               <div className="aspect-[16/9] bg-gray-100 overflow-hidden relative">
                 <Image
                   src="/products/Bag Closing Machines/Machine_heads/BCM_7.png"
@@ -133,7 +133,7 @@ export default function Home() {
               </div>
             </Link>
 
-            <Link href="/products?category=BAG%20CLOSING%20THREADS" className="group bg-white dark:bg-surface-dark rounded-2xl shadow-xl overflow-hidden cursor-pointer flex flex-col hover:shadow-2xl transition-all duration-300">
+            <Link href="/products/bag-closing-threads" className="group bg-white dark:bg-surface-dark rounded-2xl shadow-xl overflow-hidden cursor-pointer flex flex-col hover:shadow-2xl transition-all duration-300">
               <div className="aspect-[16/9] bg-gray-100 overflow-hidden relative">
                 <Image
                   src="/products/Bag_closing_threads/Thread_7.jpg"
@@ -154,7 +154,7 @@ export default function Home() {
               </div>
             </Link>
 
-            <Link href="/products?category=PACKAGING%20TOOLS" className="group bg-white dark:bg-surface-dark rounded-2xl shadow-xl overflow-hidden cursor-pointer flex flex-col hover:shadow-2xl transition-all duration-300">
+            <Link href="/products/packaging-tools" className="group bg-white dark:bg-surface-dark rounded-2xl shadow-xl overflow-hidden cursor-pointer flex flex-col hover:shadow-2xl transition-all duration-300">
               <div className="aspect-[16/9] bg-gray-100 overflow-hidden relative">
                 <Image
                   src="/products/Filling and packing machines/Strapping machine/KZB-1.png"
@@ -175,7 +175,7 @@ export default function Home() {
               </div>
             </Link>
 
-            <Link href="/products?category=SEALING%20MACHINES" className="group bg-white dark:bg-surface-dark rounded-2xl shadow-xl overflow-hidden cursor-pointer flex flex-col hover:shadow-2xl transition-all duration-300">
+            <Link href="/products/sealing-machines" className="group bg-white dark:bg-surface-dark rounded-2xl shadow-xl overflow-hidden cursor-pointer flex flex-col hover:shadow-2xl transition-all duration-300">
               <div className="aspect-[16/9] bg-gray-100 overflow-hidden relative">
                 <Image
                   src="/products/Filling and packing machines/Shrink Packaging Machine/BSF-5540A.png"
@@ -196,7 +196,7 @@ export default function Home() {
               </div>
             </Link>
 
-            <Link href="/products?category=BAG%20CLOSING%20MACHINES" className="group bg-white dark:bg-surface-dark rounded-2xl shadow-xl overflow-hidden cursor-pointer flex flex-col hover:shadow-2xl transition-all duration-300">
+            <Link href="/products/portable-bag-closers" className="group bg-white dark:bg-surface-dark rounded-2xl shadow-xl overflow-hidden cursor-pointer flex flex-col hover:shadow-2xl transition-all duration-300">
               <div className="aspect-[16/9] bg-gray-100 overflow-hidden relative">
                 <Image
                   src="/products/Bag Closing Machines/bag_making_machines/DN-2HS.jpg"
@@ -217,7 +217,7 @@ export default function Home() {
               </div>
             </Link>
 
-            <Link href="/products?category=CONSUMABLES" className="group bg-white dark:bg-surface-dark rounded-2xl shadow-xl overflow-hidden cursor-pointer flex flex-col hover:shadow-2xl transition-all duration-300">
+            <Link href="/products/consumables" className="group bg-white dark:bg-surface-dark rounded-2xl shadow-xl overflow-hidden cursor-pointer flex flex-col hover:shadow-2xl transition-all duration-300">
               <div className="aspect-[16/9] bg-gray-100 overflow-hidden relative">
                 <Image
                   src="/products/consumables/Needles/Fischbein_needles.png"

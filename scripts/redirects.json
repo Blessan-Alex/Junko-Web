@@ -701,7 +701,12 @@
   },
   {
     "source": "/product/WEIGHING_SCALES_Electronic_weighing_scales_pallet_scale_1734x2048",
-    "destination": "/product/pallet-scale-https-junko-fze-com-product-pallet-scale",
+    "destination": "/product/pallet-scale",
+    "permanent": true
+  },
+  {
+    "source": "/product/pallet-scale-https-junko-fze-com-product-pallet-scale",
+    "destination": "/product/pallet-scale",
     "permanent": true
   },
   {
