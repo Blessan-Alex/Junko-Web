@@ -501,7 +501,11 @@ export const allProducts: Product[] = [
         "description": "High Speed Bag Closing Machine Head with mechanically operated cutter (Single Needle, Double Thread Chain Stitch Machine).\n\nMax Speed : 2,700 rpm\n\nSeam : Double Thread Chain Stitch\n\nStitch width : 7-11.5mm\n\nBag Material : Paper. PP\n\nThickness : Paper bag 4P with a Tuck\n\nNeedle : DR-H30 \\#26",
         "image": "/products/Bag Closing Machines/Machine_heads/DS-9A.png",
         "specs": {},
-        "features": [],
+        "features": [
+            "Max speed 2,700 rpm with mechanical cutter",
+            "Double thread chain stitch for paper and PP bags",
+            "Stitch width 7–11.5 mm"
+        ],
         "featured": false,
         "slug": "ds-9a-1"
     },
@@ -762,10 +766,14 @@ export const allProducts: Product[] = [
         "name": "SWOil",
         "category": "CONSUMABLES",
         "subcategory": "Oil for sewing machine",
-        "description": "No description\n\n\nBelow are Spare Parts\nPLEASE ENQUIRE FOR THE SPARE PARTS OF THESE MACHINES!",
+        "description": "Specially formulated clear oil for high-speed bag closing and portable sewing machines. Reduces wear, prevents rust, and keeps heads running smoothly in UAE industrial environments. Contact Junko for bulk supply and compatible machine guidance.",
         "image": "/products/consumables/Oil for sewing machine/SWOil-e1708935103355.png",
         "specs": {},
-        "features": [],
+        "features": [
+            "Formulated for bag closing machine heads",
+            "Helps prevent rust and excessive wear",
+            "Suitable for routine industrial maintenance"
+        ],
         "featured": false,
         "slug": "swoil"
     },
@@ -1638,10 +1646,14 @@ export const allProducts: Product[] = [
         "name": "FBK-24D",
         "category": "SEALING MACHINES",
         "subcategory": "Sealing and stitching packaging machine",
-        "description": "Next",
+        "description": "FBK series one-lined sealing and stitching automatic packaging machine for single-layer Kraft paper, multi-layer Kraft paper, and paper/plastic laminated bags. Integrated line trims, stitches, and seals for a dust-resistant industrial finish. Sealing and stitching automatic packaging machine for demanding bagging lines.",
         "image": "/products/Sealing Machines/Sealing and Stitching Packaging Machine/FBK-24D.png",
         "specs": {},
-        "features": [],
+        "features": [
+            "One-line sealing and stitching for Kraft and laminated bags",
+            "Automatic packaging line integration",
+            "Suitable for industrial bagging and sealing applications"
+        ],
         "featured": false,
         "slug": "fbk-24d-1"
     },
@@ -1794,10 +1806,14 @@ export const allProducts: Product[] = [
         "name": "Pallet Scale",
         "category": "WEIGHING SCALES",
         "subcategory": "Electronic weighing scales",
-        "description": "",
+        "description": "Heavy-duty pallet scale for warehouses, logistics, and production floors. Built for reliable weighing of palletised goods with a stable platform and clear readout for commercial and industrial use across the UAE. Request a quote for capacity options and installation support.",
         "image": "/products/weighing scales/Electronic Weighing Scales/pallet-scale-1734x2048.jpg",
         "specs": {},
-        "features": [],
+        "features": [
+            "Designed for pallet and skid weighing",
+            "Suited to warehouse and logistics operations",
+            "Enquire for capacity and platform dimensions"
+        ],
         "featured": false,
         "slug": "pallet-scale"
     },

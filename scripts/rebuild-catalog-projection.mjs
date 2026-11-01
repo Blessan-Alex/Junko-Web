@@ -73,10 +73,10 @@ async function main() {
   }
 
   const { rebuildCatalogProjections } = await import(
-    "../src/lib/admin/catalog-projection.ts"
+    "./catalog/rebuild-projections.mjs"
   );
   console.log(`Rebuilding catalog projections for ${projectId}…`);
-  await rebuildCatalogProjections();
+  await rebuildCatalogProjections(admin);
   console.log("Done. Wrote catalog/listing and catalog/sitemap.");
 }
 

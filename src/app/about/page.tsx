@@ -4,8 +4,9 @@ import Image from 'next/image';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'About Junko FZE | Established UAE Packaging Supplier',
-  description: "Learn about Junko Industrial's reliable packaging machinery, our 30+ year history serving the UAE, and our commitment to operational excellence.",
+  title: { absolute: 'About Junko FZE | Established UAE Packaging Supplier' },
+  description:
+    'Learn how Junko FZE supplies bag closing, sealing, and weighing machinery across the UAE with long-standing industrial expertise and support.',
   alternates: { canonical: '/about' },
   openGraph: {
     title: 'About Junko FZE | Established UAE Packaging Supplier',

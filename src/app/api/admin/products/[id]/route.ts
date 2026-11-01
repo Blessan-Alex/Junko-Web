@@ -140,9 +140,17 @@ export async function DELETE(request: NextRequest, context: RouteContext) {
       if (!deleted) {
         return NextResponse.json({ error: "Not found" }, { status: 404 });
       }
-      const projectionOk = await tryRebuildCatalogProjections();
-      const blobCleanupWarnings = await deleteProductBlobFolder(blobKey);
-      const segments = [existing.slug, existing.id].filter(Boolean);
+    } catch (err) {
+      console.error(err);
+      return NextResponse.json(
+        { error: "Permanent delete failed" },
+        { status: 500 },
+      );
+    }
+    const projectionOk = await tryRebuildCatalogProjections();
+    const blobCleanupWarnings = await deleteProductBlobFolder(blobKey);
+    const segments = [existing.slug, existing.id].filter(Boolean);
+    try {
       return jsonPublishOk(segments, {
         deleted: true,
         ...(blobCleanupWarnings.length > 0
@@ -154,11 +162,7 @@ export async function DELETE(request: NextRequest, context: RouteContext) {
         taxonomy: taxonomyFromProducts(existing),
       });
     } catch (err) {
-      console.error(err);
-      return NextResponse.json(
-        { error: "Permanent delete failed" },
-        { status: 500 },
-      );
+      return jsonFirestoreOkRevalidateFailed(err);
     }
   }
 

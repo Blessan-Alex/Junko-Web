@@ -1,12 +1,13 @@
 import { MetadataRoute } from 'next'
-import { getSitemapEntries } from '@/lib/catalog/get-sitemap'
 import { getCatalog } from '@/lib/catalog/get-catalog'
 import { categoryNameToSlug } from '@/lib/catalog/category-slugs'
+import { resolvePublicProductPathSegment } from '@/lib/catalog/public-slug'
+
+export const revalidate = 604800;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://www.junko-fze.com'
-  const productEntries = await getSitemapEntries()
-  const { categories } = await getCatalog()
+  const { allProducts, categories } = await getCatalog()
 
   const staticRoutes = [
     '',
@@ -29,12 +30,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.75,
   }))
 
-  const productRoutes = productEntries.map((product) => ({
-    url: `${baseUrl}/product/${product.slug || product.id}`,
-    lastModified: new Date(),
-    changeFrequency: 'monthly' as const,
-    priority: 0.6,
-  }))
+  const productRoutes = allProducts.flatMap((product) => {
+    const segment = resolvePublicProductPathSegment(product.slug, product.id)
+    if (!segment) return []
+    return [{
+      url: `${baseUrl}/product/${segment}`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
+    }]
+  })
 
   return [...staticRoutes, ...categoryRoutes, ...productRoutes]
 }

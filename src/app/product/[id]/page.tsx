@@ -5,12 +5,19 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import {
   getCatalog,
-  getProductBySlug,
-  getRelatedProducts,
 } from '@/lib/catalog/get-catalog';
+import type { Product } from '@/lib/catalog/types';
 import { categoryNameToSlug } from '@/lib/catalog/category-slugs';
-import { getProductDescriptionForDisplay } from '@/lib/catalog/product-copy';
+import { getProductH1Disambiguator } from '@/lib/catalog/product-display';
+import {
+  getProductDescriptionForDisplay,
+  getProductDescriptionForMetadata,
+} from '@/lib/catalog/product-copy';
 import { getProductPageTitleMetadata } from '@/lib/catalog/product-seo';
+import {
+  publicProductHref,
+  resolvePublicProductPathSegment,
+} from '@/lib/catalog/public-slug';
 
 type Props = {
   params: Promise<{ id: string }>
@@ -18,9 +25,19 @@ type Props = {
 
 export const dynamicParams = true;
 
+export async function generateStaticParams() {
+  const { allProducts } = await getCatalog();
+  return allProducts.flatMap((product) => {
+    const segment = resolvePublicProductPathSegment(product.slug, product.id);
+    return segment ? [{ id: segment }] : [];
+  });
+}
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const id = (await params).id;
-  const product = await getProductBySlug(id);
+  const { allProducts } = await getCatalog();
+  const product =
+    allProducts.find((p) => p.slug === id || p.id === id) ?? null;
 
   if (!product) {
     return {
@@ -28,13 +45,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     }
   }
 
-  const { allProducts } = await getCatalog();
   const titleMeta = getProductPageTitleMetadata(product, allProducts);
 
-  const rawDesc = getProductDescriptionForDisplay(product);
-  // Truncate meta descriptions to ~155 chars for SEO (Google recommends under 160)
-  const desc = rawDesc.length > 155 ? rawDesc.substring(0, 155).trimEnd() + '…' : rawDesc;
-  const urlParams = product.slug || product.id;
+  const desc = getProductDescriptionForMetadata(product);
+  const urlParams = resolvePublicProductPathSegment(product.slug, product.id);
+  if (!urlParams) {
+    return { title: 'Product Not Found', robots: { index: false, follow: false } };
+  }
   const image = product.image || '/hero-commercial-dock.jpg';
 
   return {
@@ -66,18 +83,24 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ProductDetailPage({ params }: Props) {
   const id = (await params).id;
-  const product = await getProductBySlug(id);
+  const { allProducts } = await getCatalog();
+  const product =
+    allProducts.find((p) => p.slug === id || p.id === id) ?? null;
 
   if (!product) {
     notFound();
   }
 
-  const relatedProducts = await getRelatedProducts(product);
+  const h1Disambiguator = getProductH1Disambiguator(product, allProducts);
+  const relatedProducts = deriveRelatedProducts(allProducts, product);
 
   // Use product image or a placeholder if missing
   const mainImage = product.image || '/products/placeholders/no-image.png';
   const desc = getProductDescriptionForDisplay(product);
-  const urlParams = product.slug || product.id;
+  const urlParams = resolvePublicProductPathSegment(product.slug, product.id);
+  if (!urlParams) {
+    notFound();
+  }
 
   const productSchema = {
     "@context": "https://schema.org",
@@ -166,7 +189,14 @@ export default async function ProductDetailPage({ params }: Props) {
 
         {/* Right Column: Details */}
         <div className="lg:col-span-5 flex flex-col">
-          <h1 className="text-text-main dark:text-white text-4xl lg:text-5xl font-black font-serif leading-tight tracking-tight mb-6">{product.name}</h1>
+          <h1 className="text-text-main dark:text-white text-4xl lg:text-5xl font-black font-serif leading-tight tracking-tight mb-2">{product.name}</h1>
+          {h1Disambiguator ? (
+            <p className="text-text-sub dark:text-gray-400 text-base font-medium mb-6">
+              {h1Disambiguator}
+            </p>
+          ) : (
+            <div className="mb-6" />
+          )}
 
           <div className="flex flex-wrap gap-3 mb-8">
             <div className="flex items-center gap-2 text-green-600 dark:text-green-400 bg-green-50 dark:bg-green-900/20 px-3 py-1.5 rounded-full border border-green-100 dark:border-green-900/30">
@@ -273,20 +303,55 @@ export default async function ProductDetailPage({ params }: Props) {
             </Link>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {relatedProducts.map(related => (
-              <Link key={related.id} href={`/product/${related.slug || related.id}`} className="group block bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl overflow-hidden hover:shadow-xl hover:border-primary/30 transition-all duration-300">
-                <div className="aspect-square bg-gray-50 dark:bg-white/5 p-4 flex items-center justify-center relative overflow-hidden">
-                  <Image src={related.image} alt={related.name} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw" className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-110" />
-                </div>
-                <div className="p-4">
-                  <p className="text-xs text-text-sub dark:text-gray-400 mb-1">{related.category}</p>
-                  <h4 className="font-bold text-text-main dark:text-white truncate group-hover:text-primary transition-colors">{related.name}</h4>
-                </div>
-              </Link>
-            ))}
+            {relatedProducts.map((related) => {
+              const relatedHref = publicProductHref(related.slug, related.id);
+              if (!relatedHref) return null;
+              return (
+                <Link
+                  key={related.id}
+                  href={relatedHref}
+                  className="group block bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl overflow-hidden hover:shadow-xl hover:border-primary/30 transition-all duration-300"
+                >
+                  <div className="aspect-square bg-gray-50 dark:bg-white/5 p-4 flex items-center justify-center relative overflow-hidden">
+                    <Image src={related.image} alt={related.name} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw" className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-110" />
+                  </div>
+                  <div className="p-4">
+                    <p className="text-xs text-text-sub dark:text-gray-400 mb-1">{related.category}</p>
+                    <h4 className="font-bold text-text-main dark:text-white truncate group-hover:text-primary transition-colors">{related.name}</h4>
+                  </div>
+                </Link>
+              );
+            })}
           </div>
         </div>
       )}
     </div>
   );
+}
+
+const RELATED_MAX = 4;
+
+function deriveRelatedProducts(
+  allProducts: Product[],
+  product: Product,
+): Product[] {
+  const results: Product[] = [];
+  const seen = new Set<string>([product.id]);
+
+  const add = (candidates: Product[]) => {
+    for (const p of candidates) {
+      if (seen.has(p.id)) continue;
+      seen.add(p.id);
+      results.push(p);
+      if (results.length >= RELATED_MAX) return;
+    }
+  };
+
+  if (product.subcategory) {
+    add(allProducts.filter((p) => p.subcategory === product.subcategory));
+  }
+  if (results.length < RELATED_MAX && product.category) {
+    add(allProducts.filter((p) => p.category === product.category));
+  }
+  return results.slice(0, RELATED_MAX);
 }

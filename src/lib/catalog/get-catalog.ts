@@ -16,7 +16,7 @@ import {
 } from "./catalog-fallback";
 import { isFirestoreQuotaExceeded } from "./firestore-quota";
 
-export const CACHE_REVALIDATE_SECONDS = 3600;
+export const CACHE_REVALIDATE_SECONDS = 604800;
 
 function getFileCatalog(): Catalog {
   return getFileCatalogFallback();
@@ -70,7 +70,7 @@ async function getFirestoreProductBySlugCached(
 ): Promise<Product | null> {
   return unstable_cache(
     async () => fetchProductBySlugOrId(slug),
-    ["catalog-product-v5", slug],
+    ["catalog-product-v6", slug],
     {
       tags: [`product:${slug}`],
       revalidate: CACHE_REVALIDATE_SECONDS,

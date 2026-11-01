@@ -4,6 +4,7 @@ import { FieldValue, type QueryDocumentSnapshot } from "firebase-admin/firestore
 import type { Category, Product } from "@/data/products";
 import { getFirebaseAdmin } from "@/lib/firebase/admin";
 import { isProductPublished } from "@/lib/catalog/published";
+import { resolvePublicProductPathSegment } from "@/lib/catalog/public-slug";
 import {
   type AdminListRow,
   type CatalogAdminListDoc,
@@ -129,9 +130,16 @@ export async function rebuildCatalogProjections(): Promise<void> {
     const card = toListingCard(doc.id, raw);
     if (!card) continue;
     products.push(card);
+    const pathSegment = resolvePublicProductPathSegment(card.slug, card.id);
+    if (!pathSegment) {
+      console.warn(
+        `catalog projection: skipping sitemap entry for product ${card.id} (invalid slug: ${card.slug})`,
+      );
+      continue;
+    }
     entries.push({
       id: card.id,
-      slug: card.slug || card.id,
+      slug: pathSegment,
     });
   }
 

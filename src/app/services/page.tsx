@@ -2,8 +2,9 @@ import React from 'react';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: "Service & Support | Packaging Machine Repair Dubai & Sharjah",
-  description: "Expert installation, training, and repair services for industrial packaging machinery. Fast technical support and spare parts to minimize downtime.",
+  title: { absolute: 'Service & Support | Packaging Machine Repair UAE' },
+  description:
+    'Installation, training, and repair for industrial packaging machinery in Dubai and Sharjah. Junko FZE technical support and genuine spare parts.',
   alternates: { canonical: '/services' },
   openGraph: {
     title: "Service & Support | Packaging Machine Repair Dubai & Sharjah",

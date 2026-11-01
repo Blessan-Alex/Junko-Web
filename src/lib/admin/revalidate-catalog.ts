@@ -37,6 +37,9 @@ export function revalidateCatalog(
   urlSegments: string[] = [],
   scope?: RevalidateScope,
 ) {
+  revalidateTag("catalog", {});
+  revalidatePath("/", "layout");
+
   const segments = [
     ...new Set(
       (scope?.productSegments ?? urlSegments).filter(Boolean),
@@ -44,7 +47,6 @@ export function revalidateCatalog(
   ];
 
   if (scope?.listing) {
-    revalidateTag("catalog", {});
     revalidatePath("/products");
     revalidateAdminCatalogTag();
   }
@@ -73,9 +75,10 @@ export function revalidateCatalog(
   }
 
   return {
-    catalog: Boolean(scope?.listing),
+    catalog: true,
     sitemap: Boolean(scope?.sitemap),
     paths: [
+      "/",
       ...(scope?.listing ? ["/products"] : []),
       ...(scope?.sitemap ? ["/sitemap.xml"] : []),
     ],

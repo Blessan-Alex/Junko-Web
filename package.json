@@ -13,6 +13,11 @@
     "catalog:seed:production": "node scripts/catalog-seed.cjs --confirm-production",
     "catalog:rebuild-projection": "npx tsx scripts/rebuild-catalog-projection.mjs",
     "catalog:rebuild-projection:production": "npx tsx scripts/rebuild-catalog-projection.mjs --confirm-production --expected-project-id=junko-web-final",
+    "catalog:phase1-seo:production": "node scripts/catalog/phase1-seo-products.mjs --confirm-production --expected-project-id=junko-web-final",
+    "catalog:phase1-seo:verify": "node scripts/catalog/verify-phase1-firestore.mjs",
+    "seo:audit": "node scripts/seo/audit-metadata.mjs",
+    "seo:assert": "node scripts/seo/assert-product-seo.mjs",
+    "catalog:phase2-seo:production": "node scripts/catalog/phase2-seo-metadata.mjs --confirm-production --expected-project-id=junko-web-final",
     "blob:migrate:dry-run": "node scripts/blob-migrate-catalog.cjs --dry-run",
     "blob:migrate": "node scripts/blob-migrate-catalog.cjs --confirm",
     "blob:migrate:production": "node scripts/blob-migrate-catalog.cjs --confirm --confirm-production --expected-project-id=junko-web-final"

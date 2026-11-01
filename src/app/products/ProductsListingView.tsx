@@ -2,6 +2,7 @@ import React, { Suspense } from 'react';
 import type { Category, Product } from '@/data/products';
 import ProductsClient from './ProductsClient';
 import ProductsCatalogHeader from './ProductsCatalogHeader';
+import { publicProductHref } from '@/lib/catalog/public-slug';
 import ProductsServerFirstPageLinks from './ProductsServerFirstPageLinks';
 import {
   filterProductsByCategory,
@@ -15,7 +16,6 @@ type ProductsListingViewProps = {
   allProducts: Product[];
   activeCategoryName: string | null;
   categorySlugByName: Record<string, string>;
-  pageNumber?: number;
   canonicalPath: string;
   listingTitle: string;
   listingDescription: string;
@@ -26,7 +26,6 @@ export default function ProductsListingView({
   allProducts,
   activeCategoryName,
   categorySlugByName,
-  pageNumber = 1,
   canonicalPath,
   listingTitle,
   listingDescription,
@@ -34,26 +33,21 @@ export default function ProductsListingView({
   const filtered = filterProductsByCategory(allProducts, activeCategoryName);
   const firstPage = getFirstPageProducts(filtered, PUBLIC_PRODUCTS_PAGE_SIZE);
 
-  const collectionPageJsonLd =
-    pageNumber === 1
-      ? buildListingCollectionPageJsonLd({
-          name: listingTitle,
-          description: listingDescription,
-          canonicalPath,
-          filteredProducts: filtered,
-        })
-      : null;
+  const collectionPageJsonLd = buildListingCollectionPageJsonLd({
+    name: listingTitle,
+    description: listingDescription,
+    canonicalPath,
+    filteredProducts: filtered,
+  });
 
   return (
     <>
-      {collectionPageJsonLd && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(collectionPageJsonLd),
-          }}
-        />
-      )}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(collectionPageJsonLd),
+        }}
+      />
       <Suspense
         fallback={
           <div className="flex justify-center items-center py-20">
@@ -73,13 +67,17 @@ export default function ProductsListingView({
       </Suspense>
       <nav className="sr-only" aria-label="Complete product catalog">
         <ul>
-          {allProducts.map((p) => (
-            <li key={p.id}>
-              <a href={`/product/${p.slug || p.id}`}>
-                {p.name} — {p.category}
-              </a>
-            </li>
-          ))}
+          {allProducts.map((p) => {
+            const href = publicProductHref(p.slug, p.id);
+            if (!href) return null;
+            return (
+              <li key={p.id}>
+                <a href={href}>
+                  {p.name} — {p.category}
+                </a>
+              </li>
+            );
+          })}
         </ul>
       </nav>
     </>

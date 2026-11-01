@@ -3,8 +3,9 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: "Our Vision | Junko FZE Industrial Packaging",
-  description: "Empowering businesses to grow efficiently and sustainably by delivering reliable packaging machinery and materials that support efficient operations worldwide.",
+  title: { absolute: 'Our Vision | Junko FZE Industrial Packaging' },
+  description:
+    'Junko FZE vision: reliable packaging machinery and materials that help GCC businesses operate efficiently, safely, and sustainably over the long term.',
   alternates: { canonical: '/vision' },
   openGraph: {
     title: "Our Vision | Junko FZE Industrial Packaging",

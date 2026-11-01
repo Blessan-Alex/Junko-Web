@@ -2,15 +2,21 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Product } from '../data/products';
+import { publicProductHref } from '@/lib/catalog/public-slug';
 
 interface ProductCardProps {
     product: Product;
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
+    const href = publicProductHref(product.slug, product.id);
+    if (!href) {
+        return null;
+    }
+
     return (
         <Link
-            href={`/product/${product.slug || product.id}`}
+            href={href}
             className="group flex flex-col bg-white dark:bg-[#1a1a2e] border border-gray-200 dark:border-white/10 rounded-xl overflow-hidden hover:shadow-2xl hover:border-primary/50 dark:hover:border-primary/50 transition-all duration-300 transform hover:-translate-y-1 h-full"
         >
             <div className="relative h-64 bg-gray-50 dark:bg-white/5 overflow-hidden p-6 flex items-center justify-center">
