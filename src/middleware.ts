@@ -2,15 +2,27 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 import { categoryParamToSlug } from '@/lib/catalog/category-slugs';
 
-export function middleware(request: NextRequest) {
-  const host = request.headers.get('host') || '';
+const CANONICAL_HOST = 'www.junko-fze.com';
 
-  // Redirect non-www to www (aligns with hosting provider config)
-  if (host === 'junko-fze.com') {
-    const url = request.nextUrl.clone();
-    url.host = 'www.junko-fze.com';
-    url.protocol = 'https';
-    return NextResponse.redirect(url, 301);
+function requestHost(request: NextRequest): string {
+  return (request.headers.get('host') ?? '').split(':')[0].toLowerCase();
+}
+
+export function middleware(request: NextRequest) {
+  const host = requestHost(request);
+
+  if (host === 'junko-fze.com' || host === CANONICAL_HOST) {
+    const proto = request.headers.get('x-forwarded-proto');
+    const needsCanonicalRedirect =
+      host === 'junko-fze.com' ||
+      (host === CANONICAL_HOST && proto === 'http');
+
+    if (needsCanonicalRedirect) {
+      const url = request.nextUrl.clone();
+      url.host = CANONICAL_HOST;
+      url.protocol = 'https';
+      return NextResponse.redirect(url, 301);
+    }
   }
 
   const { pathname, searchParams } = request.nextUrl;
@@ -27,3 +39,9 @@ export function middleware(request: NextRequest) {
 
   return NextResponse.next();
 }
+
+export const config = {
+  matcher: [
+    '/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp|ico)$).*)',
+  ],
+};

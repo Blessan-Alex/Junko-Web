@@ -1,9 +1,14 @@
 import { MetadataRoute } from 'next'
+import redirectsData from '../../scripts/redirects.json'
 import { getCatalog } from '@/lib/catalog/get-catalog'
 import { categoryNameToSlug } from '@/lib/catalog/category-slugs'
 import { resolvePublicProductPathSegment } from '@/lib/catalog/public-slug'
 
 export const revalidate = 604800;
+
+const redirectSources = new Set(
+  (redirectsData as { source: string }[]).map((rule) => rule.source),
+);
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://www.junko-fze.com'
@@ -33,6 +38,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const productRoutes = allProducts.flatMap((product) => {
     const segment = resolvePublicProductPathSegment(product.slug, product.id)
     if (!segment) return []
+    const productPath = `/product/${segment}`
+    if (redirectSources.has(productPath)) return []
     return [{
       url: `${baseUrl}/product/${segment}`,
       lastModified: new Date(),

@@ -1,8 +1,7 @@
 import type { Product } from '@/data/products';
 import { PUBLIC_PRODUCTS_PAGE_SIZE } from '@/lib/catalog/public-page-size';
 import { publicProductHref } from '@/lib/catalog/public-slug';
-
-const SITE_ORIGIN = 'https://www.junko-fze.com';
+import { SITE_ORIGIN } from '@/lib/seo/site';
 
 export type ListingCollectionPageJsonLdOptions = {
   name: string;

@@ -9,6 +9,13 @@ import {
   getFirstPageProducts,
 } from '@/lib/catalog/listing-filters';
 import { buildListingCollectionPageJsonLd } from '@/lib/catalog/listing-json-ld';
+import { buildBreadcrumbListJsonLd } from '@/lib/seo/json-ld';
+import {
+  getCatalogHubSeoContent,
+  getCategorySeoContent,
+} from '@/lib/seo/catalog-seo-content';
+import CategorySeoGuide from '@/components/seo/CategorySeoGuide';
+import CatalogHubSeoSection from '@/components/seo/CatalogHubSeoSection';
 import { PUBLIC_PRODUCTS_PAGE_SIZE } from '@/lib/catalog/public-page-size';
 
 type ProductsListingViewProps = {
@@ -40,6 +47,23 @@ export default function ProductsListingView({
     filteredProducts: filtered,
   });
 
+  const categoryBreadcrumbJsonLd =
+    activeCategoryName !== null
+      ? buildBreadcrumbListJsonLd([
+          { name: 'Home', path: '/' },
+          { name: 'Products', path: '/products' },
+          { name: activeCategoryName, path: canonicalPath },
+        ])
+      : null;
+
+  const categorySlug =
+    activeCategoryName !== null
+      ? categorySlugByName[activeCategoryName] ?? null
+      : null;
+  const categorySeoContent = getCategorySeoContent(categorySlug);
+  const catalogHubContent =
+    activeCategoryName === null ? getCatalogHubSeoContent() : null;
+
   return (
     <>
       <script
@@ -48,6 +72,14 @@ export default function ProductsListingView({
           __html: JSON.stringify(collectionPageJsonLd),
         }}
       />
+      {categoryBreadcrumbJsonLd ? (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(categoryBreadcrumbJsonLd),
+          }}
+        />
+      ) : null}
       <Suspense
         fallback={
           <div className="flex justify-center items-center py-20">
@@ -65,6 +97,12 @@ export default function ProductsListingView({
           <ProductsServerFirstPageLinks products={firstPage} />
         </ProductsClient>
       </Suspense>
+      {categorySeoContent ? (
+        <CategorySeoGuide content={categorySeoContent} allProducts={allProducts} />
+      ) : null}
+      {catalogHubContent ? (
+        <CatalogHubSeoSection content={catalogHubContent} />
+      ) : null}
       <nav className="sr-only" aria-label="Complete product catalog">
         <ul>
           {allProducts.map((p) => {

@@ -1,9 +1,16 @@
 import type { Metadata } from 'next';
 import type { Product } from '@/data/products';
+import {
+  getProductDescriptionForMetadata,
+  META_DESCRIPTION_MAX,
+  truncateMetaDescription,
+} from '@/lib/catalog/product-copy';
+import { getProductMetadataOverride } from '@/lib/seo/product-metadata-overrides';
 
-const BRAND_SUFFIX = ' | Junko Industrial';
+const BRAND_SUFFIX = ' | Junko FZE';
 export const MIN_TITLE_LENGTH = 30;
 export const MAX_TITLE_LENGTH = 58;
+const SHORT_NAME_MAX = 38;
 
 function titleCaseSegment(segment: string): string {
   const trimmed = segment.trim();
@@ -45,9 +52,11 @@ export function truncateProductTitle(title: string): string {
   const brand = hasBrand ? BRAND_SUFFIX : '';
   let body = hasBrand ? title.slice(0, suffixIdx) : title;
 
-  const dashIdx = body.indexOf(' — ');
+  const dashMatch = body.match(/ [—–] /);
+  const dashIdx = dashMatch ? body.indexOf(dashMatch[0]) : -1;
+  const dashSep = dashMatch ? dashMatch[0] : ' — ';
   const name = dashIdx >= 0 ? body.slice(0, dashIdx) : body;
-  let rest = dashIdx >= 0 ? body.slice(dashIdx + 3) : '';
+  let rest = dashIdx >= 0 ? body.slice(dashIdx + dashSep.length) : '';
   let segment = rest;
   let slugPart: string | null = null;
   const slugMarker = ' · ';
@@ -58,7 +67,7 @@ export function truncateProductTitle(title: string): string {
   }
 
   while (
-    `${name} — ${segment}${slugPart ? ` · ${slugPart}` : ''}${brand}`.length >
+    `${name}${dashSep}${segment}${slugPart ? ` · ${slugPart}` : ''}${brand}`.length >
       MAX_TITLE_LENGTH &&
     segment.length > 0
   ) {
@@ -72,7 +81,7 @@ export function truncateProductTitle(title: string): string {
   }
 
   let result = segment
-    ? `${name} — ${segment}`
+    ? `${name}${dashSep}${segment}`
     : name;
   if (slugPart) result = `${result} · ${slugPart}`;
   result = `${result}${brand}`;
@@ -102,8 +111,24 @@ export function buildProductPageTitle(
   product: Product,
   allProducts: Product[],
 ): string {
-  const segment = titleContextSegment(product);
+  const override = getProductMetadataOverride(product.slug);
+  if (override?.title) {
+    return truncateProductTitle(override.title);
+  }
+
   const slug = product.slug || product.id;
+
+  if (product.name.trim().length < SHORT_NAME_MAX) {
+    const peers = peersWithSameName(product, allProducts);
+    const segmentLabel = titleContextSegment(product);
+    let title = `${product.name} – ${segmentLabel} Supplier in UAE`;
+    if (peers.length > 1) {
+      title = `${title} · ${slug}`;
+    }
+    return truncateProductTitle(`${title}${BRAND_SUFFIX}`);
+  }
+
+  const segment = titleContextSegment(product);
   let title = `${product.name} — ${segment}`;
 
   const peers = peersWithSameName(product, allProducts);
@@ -126,6 +151,21 @@ export function buildProductPageTitle(
   }
 
   return truncateProductTitle(title);
+}
+
+export function buildProductMetaDescription(product: Product): string {
+  const override = getProductMetadataOverride(product.slug);
+  if (override?.description) {
+    const slug = product.slug || product.id;
+    const suffix = ` Ref: ${slug}.`;
+    const bodyMax = META_DESCRIPTION_MAX - suffix.length;
+    const body = truncateMetaDescription(override.description, bodyMax).replace(
+      /…$/,
+      '',
+    );
+    return truncateMetaDescription(`${body}${suffix}`, META_DESCRIPTION_MAX);
+  }
+  return getProductDescriptionForMetadata(product);
 }
 
 export function getProductPageTitleMetadata(

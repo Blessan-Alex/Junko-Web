@@ -4,20 +4,27 @@ import Image from 'next/image';
 import type { Metadata } from 'next';
 
 import HeroSlideshow from '@/components/HeroSlideshow';
+import { buildOrganizationJsonLd } from '@/lib/seo/json-ld';
 
 export const metadata: Metadata = {
-  title: "Junko FZE | Industrial Packaging Machinery & Supplies UAE",
-  description: "Leading supplier of industrial bag closing, heat sealing, and weighing machinery in the UAE & GCC. Spare parts and technical support available in Sharjah.",
-  alternates: { canonical: '/' },
+  title:
+    'Industrial Packaging Machines, Bag Closing Thread & Weighing Scales Supplier in UAE & Dubai | Junko FZE',
+  description:
+    'Industrial packaging machines, bag closing thread, and weighing scales supplier in UAE & Dubai. Fast supply from Sharjah across Dubai, Abu Dhabi, and the GCC — Junko FZE.',
+  alternates: { canonical: 'https://www.junko-fze.com/' },
   openGraph: {
-    title: "Junko FZE | Industrial Packaging Machinery & Supplies UAE",
-    description: "Leading supplier of industrial bag closing, heat sealing, and weighing machinery in the UAE & GCC. Spare parts and technical support available in Sharjah.",
-    url: '/',
+    title:
+      'Industrial Packaging Machines, Bag Closing Thread & Weighing Scales Supplier in UAE & Dubai | Junko FZE',
+    description:
+      'Industrial packaging machines, bag closing thread, and weighing scales supplier in UAE & Dubai. Fast supply from Sharjah across Dubai, Abu Dhabi, and the GCC — Junko FZE.',
+    url: 'https://www.junko-fze.com/',
     type: 'website',
-  }
+  },
 };
 
 export default function Home() {
+  const organizationSchema = buildOrganizationJsonLd();
+
   const localBusinessSchema = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
@@ -74,6 +81,10 @@ export default function Home() {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}

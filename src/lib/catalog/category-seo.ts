@@ -1,74 +1,72 @@
 import type { Metadata } from 'next';
+import type { Product } from '@/data/products';
+import { truncateMetaDescription } from '@/lib/catalog/product-copy';
 import { categoryNameToSlug } from '@/lib/catalog/category-slugs';
+import { absoluteCanonical } from '@/lib/seo/site';
 
-const CATEGORY_LISTING_DESCRIPTIONS: Record<string, string> = {
-  'bag-closing-machines':
-    'Bag closing machines, portable closers, conveyors, and feeding systems for high-volume sack and bag lines. Browse Junko FZE catalog with UAE supply and support.',
-  'bag-closing-threads':
-    'Bag closing thread, crepe tape, monofilament yarn, and sewing consumables for industrial bag lines. Quality supplies from Junko FZE, Sharjah.',
-  'carpet-overedging-machines':
-    'Carpet overedging, binding, and fringe machines for textile finishing. Explore Junko FZE industrial sewing equipment for the GCC.',
-  consumables:
-    'Needles, oil, spare parts, spring balancers, and maintenance consumables for packaging machinery. Junko FZE — enquire for fast UAE supply.',
-  'filling-and-packing-machines':
-    'Carton sealers, shrink wrappers, strapping systems, and filling equipment for end-of-line packing. View Junko FZE filling and packing machines.',
-  'packaging-materials':
-    'Packaging materials and production supplies for industrial packing operations. Browse Junko FZE material solutions for UAE manufacturers.',
-  'packaging-tools':
-    'Hand strapping tools, tensioners, and packaging tools for warehouse and production use. Junko FZE tools — request a quote.',
-  'portable-bag-closers':
-    'Portable bag closers and battery chain-stitch machines for field and plant use. Compare models from Junko FZE with UAE technical support.',
-  'sealing-machines':
-    'Heat sealers, band sealers, impulse sealers, and heavy-duty bag sealing systems. Junko FZE sealing machines for food, agri, and industrial bags.',
-  'weighing-scales':
-    'Electronic and mechanical weighing scales for warehouse, retail, and industrial use. Junko FZE scales — enquire for capacity and platform options.',
-};
-
-function categoryListingDescription(categoryName: string, categorySlug: string): string {
-  const custom = CATEGORY_LISTING_DESCRIPTIONS[categorySlug];
-  if (custom) return custom;
-  return `Browse ${categoryName} in the Junko FZE industrial catalog — packaging machinery and supplies for UAE and GCC production lines.`;
-}
+const CATEGORY_META_SUFFIX =
+  'In stock at Junko FZE (SAIF Zone, Sharjah) with fast delivery across Dubai, UAE, Oman & GCC.';
 
 function truncateListingTitle(title: string, max = 58): string {
   if (title.length <= max) return title;
   return `${title.slice(0, max - 1).trimEnd()}…`;
 }
 
+export function buildCategoryMetaDescription(
+  categoryName: string,
+  productsInCategory: Product[],
+): string {
+  const examples = [...new Set(productsInCategory.map((p) => p.name.trim()))]
+    .filter(Boolean)
+    .slice(0, 3);
+  const exampleText =
+    examples.length > 0
+      ? ` Including ${examples.join(', ')}.`
+      : ` Browse ${categoryName} for industrial packaging.`;
+  const lead = `${categoryName} supplier in UAE —${exampleText} ${CATEGORY_META_SUFFIX}`;
+  return truncateMetaDescription(lead, 160);
+}
+
 export function getProductsIndexListingCopy() {
   return {
     canonicalPath: '/products',
-    listingTitle: 'Packaging Machinery Catalog | Junko FZE',
+    listingTitle:
+      'Packaging Machinery, Bag Closing Machines & Thread Catalog – UAE Supplier | Junko FZE',
     listingDescription:
-      'Full catalog of bag closing, sealing, weighing, and packing machinery plus consumables. Filter by category and request quotes from Junko FZE, UAE.',
+      'Browse bag closing machines, sealing equipment, industrial thread, and weighing scales from a UAE packaging machinery supplier. Fast supply across Sharjah, Dubai, Abu Dhabi & GCC.',
   };
 }
 
-export function getCategoryListingCopy(categoryName: string, categorySlug: string) {
+export function getCategoryListingCopy(
+  categoryName: string,
+  categorySlug: string,
+  productsInCategory: Product[] = [],
+) {
   const listingTitle = truncateListingTitle(
-    `${categoryName} | Junko FZE Catalog`,
+    `${categoryName} Supplier in UAE & Dubai – Industrial Packaging | Junko FZE`,
   );
   return {
     canonicalPath: `/products/${categorySlug}`,
     listingTitle,
-    listingDescription: categoryListingDescription(categoryName, categorySlug),
+    listingDescription: buildCategoryMetaDescription(
+      categoryName,
+      productsInCategory,
+    ),
   };
 }
 
 export function getProductsIndexMetadata(): Metadata {
   const { canonicalPath, listingTitle, listingDescription } =
     getProductsIndexListingCopy();
-  const title = listingTitle;
-  const description = listingDescription;
-  const canonical = canonicalPath;
+  const canonical = absoluteCanonical(canonicalPath);
 
   return {
-    title: { absolute: title },
-    description,
+    title: { absolute: listingTitle },
+    description: listingDescription,
     alternates: { canonical },
     openGraph: {
-      title,
-      description,
+      title: listingTitle,
+      description: listingDescription,
       url: canonical,
       type: 'website',
     },
@@ -78,20 +76,19 @@ export function getProductsIndexMetadata(): Metadata {
 export function getCategoryListingMetadata(
   categoryName: string,
   categorySlug: string,
+  productsInCategory: Product[] = [],
 ): Metadata {
   const { canonicalPath, listingTitle, listingDescription } =
-    getCategoryListingCopy(categoryName, categorySlug);
-  const canonical = canonicalPath;
-  const title = listingTitle;
-  const description = listingDescription;
+    getCategoryListingCopy(categoryName, categorySlug, productsInCategory);
+  const canonical = absoluteCanonical(canonicalPath);
 
   return {
-    title: { absolute: title },
-    description,
+    title: { absolute: listingTitle },
+    description: listingDescription,
     alternates: { canonical },
     openGraph: {
-      title,
-      description,
+      title: listingTitle,
+      description: listingDescription,
       url: canonical,
       type: 'website',
     },
@@ -101,6 +98,7 @@ export function getCategoryListingMetadata(
 /** For SEO audit script — static + category listing metadata. */
 export function getAllListingMetadataForAudit(
   categories: { name: string }[],
+  allProducts: Product[] = [],
 ): { path: string; title: string; description: string }[] {
   const index = getProductsIndexListingCopy();
   const rows = [
@@ -112,7 +110,8 @@ export function getAllListingMetadataForAudit(
   ];
   for (const c of categories) {
     const slug = categoryNameToSlug(c.name);
-    const copy = getCategoryListingCopy(c.name, slug);
+    const inCategory = allProducts.filter((p) => p.category === c.name);
+    const copy = getCategoryListingCopy(c.name, slug, inCategory);
     rows.push({
       path: copy.canonicalPath,
       title: copy.listingTitle,

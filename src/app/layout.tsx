@@ -17,8 +17,8 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.junko-fze.com"),
   title: {
-    default: "Junko Industrial | Packaging Machinery Supplier UAE",
-    template: "%s | Junko Industrial",
+    default: "Junko FZE | Packaging Machinery Supplier UAE",
+    template: "%s | Junko FZE",
   },
   description: "Junko Industrial supplies heavy-duty packaging machinery, sealing equipment, and consumables to the GCC region from Sharjah.",
   openGraph: {

@@ -1,7 +1,6 @@
 import { categories, allProducts } from '../../src/data/products';
-import { buildProductPageTitle } from '../../src/lib/catalog/product-seo';
+import { buildProductPageTitle, buildProductMetaDescription } from '../../src/lib/catalog/product-seo';
 import {
-  getProductDescriptionForMetadata,
   META_DESCRIPTION_MAX,
   META_DESCRIPTION_MIN,
 } from '../../src/lib/catalog/product-copy';
@@ -28,7 +27,7 @@ for (const product of allProducts) {
   if (!slug) continue;
 
   const title = buildProductPageTitle(product, allProducts);
-  const description = getProductDescriptionForMetadata(product);
+  const description = buildProductMetaDescription(product);
 
   if (title.length < MIN_TITLE_LENGTH) {
     issues.push({
@@ -108,7 +107,7 @@ for (const [description, slugs] of descMap) {
   }
 }
 
-const listings = getAllListingMetadataForAudit(categories);
+const listings = getAllListingMetadataForAudit(categories, allProducts);
 const listingTitleMap = new Map<string, string[]>();
 const listingDescMap = new Map<string, string[]>();
 for (const row of listings) {

@@ -17,9 +17,9 @@ for (const product of allProducts) {
 }
 
 const long =
-  'Very Long Product Name For Testing | Bag Closing Machines | Junko Industrial';
+  'Very Long Product Name For Testing | Bag Closing Machines | Junko FZE';
 const truncated = truncateProductTitle(long);
-if (truncated.length > MAX_TITLE_LENGTH || !truncated.includes('Junko Industrial')) {
+if (truncated.length > MAX_TITLE_LENGTH || !truncated.includes('Junko FZE')) {
   console.error('FAIL truncateProductTitle');
   failures += 1;
 }

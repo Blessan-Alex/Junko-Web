@@ -11,9 +11,18 @@ import { categoryNameToSlug } from '@/lib/catalog/category-slugs';
 import { getProductH1Disambiguator } from '@/lib/catalog/product-display';
 import {
   getProductDescriptionForDisplay,
-  getProductDescriptionForMetadata,
 } from '@/lib/catalog/product-copy';
-import { getProductPageTitleMetadata } from '@/lib/catalog/product-seo';
+import {
+  buildProductMetaDescription,
+  getProductPageTitleMetadata,
+} from '@/lib/catalog/product-seo';
+import {
+  buildBreadcrumbListJsonLd,
+  buildProductJsonLd,
+} from '@/lib/seo/json-ld';
+import { absoluteAssetUrl, absoluteCanonical } from '@/lib/seo/site';
+import { getProductSeoEnrichment } from '@/lib/seo/catalog-seo-content';
+import ProductSeoEnrichmentSection from '@/components/seo/ProductSeoEnrichmentSection';
 import {
   publicProductHref,
   resolvePublicProductPathSegment,
@@ -47,25 +56,27 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const titleMeta = getProductPageTitleMetadata(product, allProducts);
 
-  const desc = getProductDescriptionForMetadata(product);
+  const desc = buildProductMetaDescription(product);
   const urlParams = resolvePublicProductPathSegment(product.slug, product.id);
   if (!urlParams) {
     return { title: 'Product Not Found', robots: { index: false, follow: false } };
   }
   const image = product.image || '/hero-commercial-dock.jpg';
+  const canonical = absoluteCanonical(`/product/${urlParams}`);
+  const ogImage = absoluteAssetUrl(image);
 
   return {
     ...titleMeta,
     description: desc,
-    alternates: { canonical: `/product/${urlParams}` },
+    alternates: { canonical },
     openGraph: {
       ...titleMeta.openGraph,
       description: desc,
-      url: `/product/${urlParams}`,
+      url: canonical,
       type: 'website',
       images: [
         {
-          url: image,
+          url: ogImage,
           width: 800,
           height: 600,
           alt: product.name,
@@ -76,7 +87,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       card: 'summary_large_image',
       ...titleMeta.twitter,
       description: desc,
-      images: [image],
+      images: [ogImage],
     },
   };
 }
@@ -102,49 +113,24 @@ export default async function ProductDetailPage({ params }: Props) {
     notFound();
   }
 
-  const productSchema = {
-    "@context": "https://schema.org",
-    "@type": "Product",
-    "name": product.name,
-    "description": desc,
-    "image": `https://www.junko-fze.com${mainImage}`,
-    "offers": {
-      "@type": "Offer",
-      "availability": "https://schema.org/InStock",
-      "url": `https://www.junko-fze.com/product/${urlParams}`
-    }
-  };
+  const productSchema = buildProductJsonLd({
+    product,
+    canonicalSlug: urlParams,
+    plainDescription: desc,
+    imagePath: mainImage,
+  });
 
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://www.junko-fze.com/"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Products",
-        "item": "https://www.junko-fze.com/products"
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "name": product.category,
-        "item": `https://www.junko-fze.com/products/${categoryNameToSlug(product.category)}`
-      },
-      {
-        "@type": "ListItem",
-        "position": 4,
-        "name": product.name,
-        "item": `https://www.junko-fze.com/product/${urlParams}`
-      }
-    ]
-  };
+  const breadcrumbSchema = buildBreadcrumbListJsonLd([
+    { name: 'Home', path: '/' },
+    { name: 'Products', path: '/products' },
+    {
+      name: product.category,
+      path: `/products/${categoryNameToSlug(product.category)}`,
+    },
+    { name: product.name, path: `/product/${urlParams}` },
+  ]);
+
+  const productSeoEnrichment = getProductSeoEnrichment(urlParams);
 
   return (
     <div className="layout-container flex h-full grow flex-col max-w-[1440px] mx-auto w-full px-4 sm:px-6 lg:px-12">
@@ -292,6 +278,10 @@ export default async function ProductDetailPage({ params }: Props) {
           </div>
         </div>
       )}
+
+      {productSeoEnrichment ? (
+        <ProductSeoEnrichmentSection enrichment={productSeoEnrichment} />
+      ) : null}
 
       {/* Related Products Section */}
       {relatedProducts.length > 0 && (

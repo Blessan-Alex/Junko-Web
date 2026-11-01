@@ -29,12 +29,16 @@ export async function generateMetadata({
   params,
 }: CategoryProductsPageProps): Promise<Metadata> {
   const { categorySlug } = await params;
-  const { categories } = await getCatalog();
+  const { categories, allProducts } = await getCatalog();
   const categoryName = resolveCategorySlug(categorySlug, categories);
   if (!categoryName) {
     return { title: 'Category Not Found' };
   }
-  return getCategoryListingMetadata(categoryName, categorySlug);
+  return getCategoryListingMetadata(
+    categoryName,
+    categorySlug,
+    allProducts.filter((p) => p.category === categoryName),
+  );
 }
 
 export default async function CategoryProductsPage({
@@ -47,7 +51,14 @@ export default async function CategoryProductsPage({
     notFound();
   }
   const categorySlugByName = buildCategorySlugByName(categories);
-  const listingCopy = getCategoryListingCopy(categoryName, categorySlug);
+  const productsInCategory = allProducts.filter(
+    (p) => p.category === categoryName,
+  );
+  const listingCopy = getCategoryListingCopy(
+    categoryName,
+    categorySlug,
+    productsInCategory,
+  );
 
   return (
     <ProductsListingView
