@@ -114,8 +114,8 @@ export default function Home() {
           <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
             <div>
               <h2 className="text-4xl font-semibold font-serif text-text-main dark:text-white mb-4">Our Core Product Categories</h2>
-              <p className="text-lg text-text-sub dark:text-gray-400 max-w-2xl font-sans leading-relaxed">
-                We stock a comprehensive range of machinery for bag closing, heat sealing, and weighing applications. Engineered for performance and longevity.
+              <p className="text-lg text-text-sub dark:text-gray-400 max-w-3xl font-sans leading-relaxed">
+                Junko FZE keeps bag closing machines, portable closers, threads, carpet overedging, sealing equipment, packaging materials, consumables, and weighing scales under one roof for industrial buyers in the UAE. We serve the UAE and wider GCC with <strong className="font-bold text-text-main dark:text-gray-200">quality</strong> products, <strong className="font-bold text-text-main dark:text-gray-200">competitive prices</strong>, and <strong className="font-bold text-text-main dark:text-gray-200">reliable supply</strong> from Hamriyah Free Zone, Sharjah.
               </p>
             </div>
             <Link href="/products" className="text-primary font-bold flex items-center gap-2 hover:gap-3 transition-all font-sans text-base">

@@ -11,7 +11,7 @@ const Footer = () => {
                             <Image src="/logo.png" alt="Junko Logo" width={144} height={48} className="h-12 w-auto object-contain" />
                         </div>
                         <p className="text-blue-200 text-sm mb-6 leading-relaxed font-sans">
-                            Junko Industrial supplies heavy-duty packaging machinery to the GCC region. We prioritize reliability, stock availability, and honest technical advice.
+                            Junko FZE supplies heavy-duty packaging machinery to the GCC region from Hamriyah Free Zone, Sharjah. We prioritize reliability, stock availability, and honest technical advice.
                         </p>
                         <div className="flex gap-4">
                             <a href="https://www.instagram.com/junko_fze?igsh=cGkwZHI3bXNmMzVt" target="_blank" rel="noopener noreferrer nofollow" className="text-blue-200 hover:text-white transition-colors" aria-label="Follow us on Instagram">
@@ -50,7 +50,7 @@ const Footer = () => {
                     </nav>
                 </div>
                 <div className="border-t border-blue-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-blue-300 font-sans">
-                    <p>© 2026 Junko Industrial. All rights reserved.</p>
+                    <p>© 2026 Junko FZE. All rights reserved.</p>
                     <div className="flex gap-6">
                         <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
                         <a href="#" className="hover:text-white transition-colors">Terms of Service</a>

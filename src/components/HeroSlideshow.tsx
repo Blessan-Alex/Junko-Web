@@ -24,7 +24,7 @@ export default function HeroSlideshow() {
   }, []);
 
   return (
-    <section className="relative w-full h-[600px] md:h-[700px] lg:h-[800px] flex items-center justify-center text-white overflow-hidden rounded-b-hero-b-rounded">
+    <section className="relative w-full min-h-[max(560px,calc(100svh-4rem))] flex flex-col justify-center text-white overflow-hidden rounded-b-hero-b-rounded">
       {/* Background Slideshow */}
       {heroImages.map((img, index) => (
         <div
@@ -47,43 +47,44 @@ export default function HeroSlideshow() {
       <div className="absolute inset-0 bg-black/50 z-10"></div>
 
       {/* Content */}
-      <div className="relative z-20 max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 w-full flex flex-col items-center text-center animate-fade-in-up">
-        <div className="flex flex-col gap-6 md:gap-8 max-w-4xl items-center">
-          <div className="inline-flex items-center gap-2 px-4 py-2 md:px-6 md:py-3 rounded-full bg-primary text-white text-xs md:text-sm font-bold font-sans uppercase tracking-widest w-fit shadow-md border border-white/10">
-            <span className="material-symbols-outlined text-[16px] md:text-[20px]">verified</span>
-            UAE Based • GCC Supply & Support
+      <div className="relative z-20 max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 w-full flex flex-col items-center text-center animate-fade-in-up py-8 md:py-10">
+        <div className="flex flex-col max-w-4xl items-center">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-slate-950/60 backdrop-blur-md border border-white/15 text-[11px] sm:text-xs font-semibold font-sans uppercase tracking-widest text-white w-fit mb-4">
+            <span className="text-orange-500" aria-hidden="true">●</span>
+            UAE Based • GCC Supply &amp; Support
           </div>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-tight pr-0 font-serif">
-            Packaging solutions<br />for high-volume industry
+          <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl xl:text-[3.5rem] font-bold text-white tracking-tight leading-[1.12]">
+            Industrial Packaging &amp;{' '}
+            <span className="whitespace-nowrap">Bag Closing</span> Solutions
+            <span className="block mt-1.5 text-2xl sm:text-3xl lg:text-4xl text-sky-400 font-semibold">
+              All Under One Roof!
+            </span>
           </h1>
-          <p className="hidden md:block text-2xl md:text-3xl text-blue-100 leading-relaxed font-sans max-w-3xl">
-            Industrial bag closing, filling & packaging machinery, material, and tools selected for reliability in dust, heat, and continuous operation.
+          <p className="mt-4 text-sm sm:text-base lg:text-lg text-slate-200 font-normal leading-relaxed max-w-3xl mx-auto font-sans">
+            Your trusted UAE and GCC source for portable bag closers, sewing threads, carpet overedging and sealing machines, weighing scales, and industrial packaging consumables.
           </p>
-          <div className="flex flex-col gap-8 w-full items-center">
-            <div className="flex flex-col sm:flex-row justify-center gap-4 w-full sm:w-auto">
-              <Link href="/products" className="h-14 md:h-16 px-6 md:px-10 bg-primary hover:bg-primary-dark text-white font-bold rounded-md transition-all duration-200 hover:shadow-lg active:scale-95 flex items-center justify-center gap-3 text-base md:text-lg w-full sm:w-auto min-w-[200px]">
-                Explore Machinery
-              </Link>
-              <a href="https://wa.me/971503426615?text=Hi, I would like to speak to an engineer regarding packaging solutions." target="_blank" rel="noopener noreferrer nofollow" className="h-14 md:h-16 px-6 md:px-10 bg-transparent border-2 border-white hover:bg-white/10 text-white font-bold rounded-md transition-all duration-200 hover:shadow-lg active:scale-95 flex items-center justify-center gap-3 text-base md:text-lg w-full sm:w-auto min-w-[200px]">
-                Talk to an Engineer
-              </a>
-            </div>
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-3 sm:gap-4 w-full">
+            <Link href="/products" className="h-12 md:h-14 px-6 md:px-10 bg-primary hover:bg-primary-dark text-white font-bold rounded-md transition-all duration-200 hover:shadow-lg active:scale-95 flex items-center justify-center gap-3 text-sm sm:text-base w-full sm:w-auto min-w-[200px]">
+              Explore Machinery
+            </Link>
+            <a href="https://wa.me/971503426615?text=Hi%20Junko%20FZE%2C%20I%20would%20like%20to%20request%20a%20quotation%20for%20packaging%20solutions." target="_blank" rel="noopener noreferrer nofollow" className="h-12 md:h-14 px-6 md:px-10 bg-slate-950/40 backdrop-blur-sm border border-white/40 hover:bg-white/10 text-white font-bold rounded-md transition-all duration-200 hover:shadow-lg active:scale-95 flex items-center justify-center gap-3 text-sm sm:text-base w-full sm:w-auto min-w-[200px]">
+              Request a Quotation
+            </a>
+          </div>
 
-            {/* Trust Bullets */}
-            <div className="flex flex-wrap justify-center gap-x-8 gap-y-3 text-base text-blue-200 font-medium font-sans">
-              <div className="flex items-center gap-2">
-                <span className="material-symbols-outlined text-green-400 text-[20px]">bolt</span>
-                <span>Fast Dispatch</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="material-symbols-outlined text-green-400 text-[20px]">handyman</span>
-                <span>Ready Spares</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="material-symbols-outlined text-green-400 text-[20px]">support_agent</span>
-                <span>Local Support</span>
-              </div>
-            </div>
+          <div className="mt-6 pt-5 border-t border-white/10 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs sm:text-sm font-medium text-slate-300 font-sans w-full">
+            <span className="flex items-center gap-1.5">
+              <span className="text-orange-400" aria-hidden="true">✓</span>
+              Quality Products
+            </span>
+            <span className="flex items-center gap-1.5">
+              <span className="text-orange-400" aria-hidden="true">✓</span>
+              Competitive Prices
+            </span>
+            <span className="flex items-center gap-1.5">
+              <span className="text-orange-400" aria-hidden="true">✓</span>
+              Reliable Supply &amp; Ready Spares
+            </span>
           </div>
         </div>
       </div>

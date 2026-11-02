@@ -6,11 +6,12 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: { absolute: 'About Junko FZE | Established UAE Packaging Supplier' },
   description:
-    'Learn how Junko FZE supplies bag closing, sealing, and weighing machinery across the UAE with long-standing industrial expertise and support.',
+    'Established in 2011, Junko FZE supplies bag closing, sealing, and weighing machinery from Hamriyah Free Zone, Sharjah across the UAE and GCC.',
   alternates: { canonical: '/about' },
   openGraph: {
     title: 'About Junko FZE | Established UAE Packaging Supplier',
-    description: "Learn about Junko Industrial's reliable packaging machinery, our 30+ year history serving the UAE, and our commitment to operational excellence.",
+    description:
+      'Established in 2011, Junko FZE supplies bag closing, sealing, and weighing machinery from Hamriyah Free Zone, Sharjah across the UAE and GCC.',
     url: '/about',
     type: 'website',
     images: [
@@ -18,10 +19,17 @@ export const metadata: Metadata = {
         url: 'https://images.pexels.com/photos/18471441/pexels-photo-18471441.jpeg',
         width: 1260,
         height: 750,
-        alt: 'Junko Industrial Team',
+        alt: 'Junko FZE packaging machinery team',
       },
     ],
-  }
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'About Junko FZE | Established UAE Packaging Supplier',
+    description:
+      'Established in 2011, Junko FZE supplies bag closing, sealing, and weighing machinery from Hamriyah Free Zone, Sharjah across the UAE and GCC.',
+    images: ['https://images.pexels.com/photos/18471441/pexels-photo-18471441.jpeg'],
+  },
 };
 
 export default function AboutPage() {
@@ -40,9 +48,12 @@ export default function AboutPage() {
                   <h1 className="text-text-main dark:text-gray-100 text-4xl lg:text-5xl font-bold font-serif leading-tight tracking-[-0.033em]">
                     Packaging Machines and Supplies, Backed by Local Support
                   </h1>
-                  <h2 className="text-text-sub dark:text-gray-400 text-lg font-normal leading-relaxed">
-                    Based in Sharjah, Junko FZE provides top-tier industrial packaging solutions and consumables to businesses across the UAE and beyond, ensuring operational quality and efficiency.
+                  <h2 className="text-text-main dark:text-gray-100 text-xl lg:text-2xl font-semibold font-serif leading-snug tracking-[-0.02em]">
+                    Your one-stop shop for Packaging &amp; Weighing Solutions.
                   </h2>
+                  <p className="text-text-sub dark:text-gray-400 text-lg font-normal leading-relaxed">
+                    Based in Hamriyah Free Zone, Sharjah, Junko FZE supplies industrial packaging machinery, consumables, and weighing equipment across the UAE and GCC.
+                  </p>
                 </div>
                 <Link href="/products" className="flex w-fit cursor-pointer items-center justify-center overflow-hidden rounded h-12 px-6 bg-primary hover:bg-primary-hover transition-colors text-white text-base font-bold leading-normal tracking-[0.015em]">
                   <span className="truncate">Browse Products</span>
@@ -51,7 +62,7 @@ export default function AboutPage() {
               <div className="w-full flex-1">
                 <Image 
                   src="https://images.pexels.com/photos/18471441/pexels-photo-18471441.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                  alt="Junko Industrial Team"
+                  alt="Junko FZE packaging machinery team"
                   priority
                   width={1260}
                   height={750}
@@ -91,7 +102,7 @@ export default function AboutPage() {
                   Our Philosophy
                 </h2>
                 <p className="text-text-sub dark:text-gray-400 text-lg leading-relaxed">
-                  We believe in providing practical, efficient, and cost-effective packaging solutions tailored to the specific needs of the market, supported by a dedicated local team you can trust.
+                  We believe in practical, efficient packaging solutions tailored to the UAE market—from bag closing and sealing to weighing scales and consumables—supported by a dedicated local team you can trust.
                 </p>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -143,7 +154,7 @@ export default function AboutPage() {
               <div className="flex flex-1 flex-col py-2 pb-8">
                 <p className="text-primary text-sm font-mono font-bold tracking-wide">2011</p>
                 <p className="text-text-main dark:text-gray-100 text-xl font-bold leading-normal">Inception in Sharjah</p>
-                <p className="text-text-sub dark:text-gray-400 text-base mt-2">Junko FZE was established in the SAIF Zone with a clear vision to supply high-quality packaging machinery to the local market.</p>
+                <p className="text-text-sub dark:text-gray-400 text-base mt-2">Junko FZE was established in Hamriyah Free Zone, Sharjah with a clear vision to supply high-quality packaging machinery to the local market.</p>
               </div>
               <div className="flex flex-col items-center gap-1">
                 <div className="w-[2px] bg-border-color dark:bg-gray-700 h-full min-h-[20px]"></div>

@@ -20,9 +20,10 @@ export const metadata: Metadata = {
     default: "Junko FZE | Packaging Machinery Supplier UAE",
     template: "%s | Junko FZE",
   },
-  description: "Junko Industrial supplies heavy-duty packaging machinery, sealing equipment, and consumables to the GCC region from Sharjah.",
+  description:
+    'Junko FZE supplies industrial packaging machinery, bag closing, sealing equipment, and consumables from Hamriyah Free Zone, Sharjah across the UAE and GCC.',
   openGraph: {
-    siteName: 'Junko Industrial',
+    siteName: 'Junko FZE',
     type: 'website',
     locale: 'en_AE',
     images: [
@@ -30,14 +31,15 @@ export const metadata: Metadata = {
         url: '/hero-commercial-dock.jpg',
         width: 1200,
         height: 630,
-        alt: 'Junko Industrial Packaging Machinery',
+        alt: 'Junko FZE industrial packaging machinery',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Junko Industrial | Packaging Machinery Supplier UAE',
-    description: 'Junko Industrial supplies heavy-duty packaging machinery, sealing equipment, and consumables to the GCC region from Sharjah.',
+    title: 'Junko FZE | Packaging Machinery Supplier UAE',
+    description:
+      'Junko FZE supplies industrial packaging machinery, bag closing, sealing equipment, and consumables from Hamriyah Free Zone, Sharjah across the UAE and GCC.',
     images: ['/hero-commercial-dock.jpg'],
   },
 };

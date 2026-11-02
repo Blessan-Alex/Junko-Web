@@ -5,7 +5,7 @@ import { categoryNameToSlug } from '@/lib/catalog/category-slugs';
 import { absoluteCanonical } from '@/lib/seo/site';
 
 const CATEGORY_META_SUFFIX =
-  'In stock at Junko FZE (SAIF Zone, Sharjah) with fast delivery across Dubai, UAE, Oman & GCC.';
+  'In stock at Junko FZE (Hamriyah Free Zone, Sharjah) with fast delivery across Dubai, UAE, Oman & GCC.';
 
 function truncateListingTitle(title: string, max = 58): string {
   if (title.length <= max) return title;
